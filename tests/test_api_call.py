@@ -1,4 +1,7 @@
+import io
 import json
+import urllib.error
+import urllib.request
 
 import pytest
 
@@ -33,3 +36,65 @@ def test_get_token_fails_when_env_missing(monkeypatch):
 
     with pytest.raises(ValueError, match="WB_API_TOKEN"):
         api_call.get_token()
+
+
+class DummyResponse:
+    def __init__(self, payload):
+        self.payload = payload
+
+    def read(self):
+        return json.dumps(self.payload).encode("utf-8")
+
+
+def test_make_request_adds_authorization_and_json_headers(monkeypatch, tmp_path):
+    allowlist = tmp_path / "host-allowlist.json"
+    allowlist.write_text(json.dumps({"hosts": ["common-api.wildberries.ru"]}), encoding="utf-8")
+    monkeypatch.setattr(api_call, "ALLOWLIST_PATH", allowlist)
+    monkeypatch.setenv("WB_API_TOKEN", "secret-token")
+
+    captured = {}
+
+    def fake_urlopen(request, context=None, timeout=30):
+        captured["headers"] = dict(request.header_items())
+        captured["method"] = request.get_method()
+        return DummyResponse({"ok": True})
+
+    monkeypatch.setattr(urllib.request, "urlopen", fake_urlopen)
+
+    result = api_call.make_request("POST", "https://common-api.wildberries.ru/ping", body={"x": 1})
+
+    assert result == {"ok": True}
+    assert captured["method"] == "POST"
+    assert captured["headers"]["Authorization"] == "secret-token"
+    assert captured["headers"]["Content-type"] == "application/json"
+
+
+def test_sanitize_error_masks_token_and_paths():
+    text = "token=abc123 path=/Users/petr/dev/brainstorm/botclaw/file.txt"
+    sanitized = api_call.sanitize_error(text)
+    assert "abc123" not in sanitized
+    assert "/Users/petr" not in sanitized
+    assert "token=***" in sanitized
+
+
+def test_http_error_returns_structured_payload(monkeypatch, tmp_path):
+    allowlist = tmp_path / "host-allowlist.json"
+    allowlist.write_text(json.dumps({"hosts": ["common-api.wildberries.ru"]}), encoding="utf-8")
+    monkeypatch.setattr(api_call, "ALLOWLIST_PATH", allowlist)
+    monkeypatch.setenv("WB_API_TOKEN", "secret-token")
+
+    error = urllib.error.HTTPError(
+        url="https://common-api.wildberries.ru/ping",
+        code=401,
+        msg="Unauthorized",
+        hdrs=None,
+        fp=io.BytesIO(b'{"detail":"token=abc123"}'),
+    )
+
+    def fake_urlopen(request, context=None, timeout=30):
+        raise error
+
+    monkeypatch.setattr(urllib.request, "urlopen", fake_urlopen)
+
+    with pytest.raises(SystemExit, match="1"):
+        api_call.run_cli(["--method", "GET", "--url", "https://common-api.wildberries.ru/ping"])
