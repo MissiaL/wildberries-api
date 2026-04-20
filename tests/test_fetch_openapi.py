@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 from scripts import fetch_openapi
@@ -53,3 +54,50 @@ def test_parse_schema_document_supports_yaml():
     payload = fetch_openapi.parse_schema_document(text)
     assert payload["openapi"] == "3.0.0"
     assert payload["info"]["title"] == "Content"
+
+
+def test_build_manifest_records_servers_and_source(tmp_path):
+    schema = {
+        "openapi": "3.0.0",
+        "info": {"title": "General"},
+        "servers": [{"url": "https://common-api.wildberries.ru"}],
+    }
+    record = fetch_openapi.build_manifest_record(
+        slug="general",
+        doc_url="https://dev.wildberries.ru/en/docs/openapi/api-information",
+        schema_filename="general.json",
+        schema=schema,
+        extraction_mode="embedded",
+    )
+
+    assert record["slug"] == "general"
+    assert record["hosts"] == ["common-api.wildberries.ru"]
+    assert record["schema_filename"] == "general.json"
+    assert record["extraction_mode"] == "embedded"
+
+
+def test_write_outputs_manifest_and_allowlist(tmp_path):
+    records = [
+        {
+            "slug": "general",
+            "hosts": ["common-api.wildberries.ru"],
+            "schema_filename": "general.json",
+        },
+        {
+            "slug": "content",
+            "hosts": ["content-api.wildberries.ru"],
+            "schema_filename": "content.json",
+        },
+    ]
+    fetch_openapi.write_outputs(tmp_path, records)
+
+    manifest = json.loads((tmp_path / "manifest.json").read_text(encoding="utf-8"))
+    allowlist = json.loads(
+        (tmp_path / "host-allowlist.json").read_text(encoding="utf-8")
+    )
+
+    assert len(manifest["schemas"]) == 2
+    assert allowlist["hosts"] == [
+        "common-api.wildberries.ru",
+        "content-api.wildberries.ru",
+    ]
