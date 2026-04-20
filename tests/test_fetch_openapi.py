@@ -31,6 +31,23 @@ def test_extract_embedded_schema_payload():
     assert payload["info"]["title"] == "Analytics"
 
 
+def test_extract_embedded_schema_payload_allows_brace_semicolon_in_string():
+    html = """
+    <html><body><script>
+    window.__WB_EMBEDDED_OPENAPI__ = {"openapi":"3.0.0","info":{"title":"Analytics","example":"text }; more"},"servers":[{"url":"https://analytics-api.wildberries.ru"}]};
+    </script></body></html>
+    """
+    payload = fetch_openapi.extract_embedded_schema(html)
+    assert payload["info"]["example"] == "text }; more"
+
+
+def test_parse_schema_document_supports_json():
+    text = (FIXTURES / "direct_schema.json").read_text(encoding="utf-8")
+    payload = fetch_openapi.parse_schema_document(text)
+    assert payload["openapi"] == "3.0.0"
+    assert payload["info"]["title"] == "Content"
+
+
 def test_parse_schema_document_supports_yaml():
     text = (FIXTURES / "direct_schema.yaml").read_text(encoding="utf-8")
     payload = fetch_openapi.parse_schema_document(text)

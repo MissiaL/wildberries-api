@@ -6,10 +6,7 @@ import yaml
 
 CATEGORY_LINK_RE = re.compile(r'href="(/en/docs/openapi/[^"#?]+)"')
 SPEC_URL_RE = re.compile(r'spec-url="([^"]+)"')
-EMBEDDED_RE = re.compile(
-    r"window\.__WB_EMBEDDED_OPENAPI__\s*=\s*(\{.*?\});",
-    re.DOTALL,
-)
+EMBEDDED_ASSIGNMENT = "window.__WB_EMBEDDED_OPENAPI__"
 
 
 def extract_category_pages(html):
@@ -26,10 +23,17 @@ def extract_schema_url(html):
 
 
 def extract_embedded_schema(html):
-    match = EMBEDDED_RE.search(html)
-    if not match:
+    start = html.find(EMBEDDED_ASSIGNMENT)
+    if start == -1:
         return None
-    return json.loads(match.group(1))
+    start = html.find("=", start)
+    if start == -1:
+        return None
+    start = html.find("{", start)
+    if start == -1:
+        return None
+    payload, _ = json.JSONDecoder().raw_decode(html[start:])
+    return payload
 
 
 def parse_schema_document(text):
