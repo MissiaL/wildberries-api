@@ -101,3 +101,15 @@ def test_write_outputs_manifest_and_allowlist(tmp_path):
         "common-api.wildberries.ru",
         "content-api.wildberries.ru",
     ]
+
+
+def test_write_outputs_handles_empty_records(tmp_path):
+    fetch_openapi.write_outputs(tmp_path, [])
+
+    manifest = json.loads((tmp_path / "manifest.json").read_text(encoding="utf-8"))
+    allowlist = json.loads(
+        (tmp_path / "host-allowlist.json").read_text(encoding="utf-8")
+    )
+
+    assert manifest == {"schemas": []}
+    assert allowlist == {"hosts": []}
