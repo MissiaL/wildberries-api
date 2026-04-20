@@ -1,0 +1,29 @@
+{
+  "name": "wildberries-api",
+  "version": "0.1.0",
+  "description": "Production-only Wildberries seller API skill with local OpenAPI schemas and a safe HTTP helper.",
+  "keywords": [
+    "agent-skill",
+    "wildberries",
+    "seller-api",
+    "marketplace",
+    "product-cards",
+    "prices",
+    "orders",
+    "analytics",
+    "promotions"
+  ],
+  "author": "MissiaL",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MissiaL/wildberries-api.git"
+  },
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "scripts/",
+    "references/",
+    "assets/"
+  ]
+}
