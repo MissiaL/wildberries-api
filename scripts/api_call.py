@@ -66,7 +66,9 @@ def make_request(method, url, params=None, body=None, headers=None):
     final_url = parsed.geturl()
     if params:
         query = urllib.parse.urlencode(params, doseq=True)
-        final_url = f"{final_url}?{query}"
+        split = urllib.parse.urlsplit(final_url)
+        merged_query = "&".join(filter(None, [split.query, query]))
+        final_url = urllib.parse.urlunsplit((split.scheme, split.netloc, split.path, merged_query, split.fragment))
 
     data = None
     if body is not None:
@@ -117,3 +119,7 @@ def run_cli(argv=None):
         json.dump({"error": True, "message": sanitize_error(str(exc))}, sys.stdout, ensure_ascii=False, indent=2)
         sys.stdout.write("\n")
         raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    run_cli()

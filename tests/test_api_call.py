@@ -1,6 +1,8 @@
 import io
 import json
+from pathlib import Path
 import urllib.error
+import urllib.parse
 import urllib.request
 
 import pytest
@@ -66,7 +68,31 @@ def test_make_request_adds_authorization_and_json_headers(monkeypatch, tmp_path)
     assert result == {"ok": True}
     assert captured["method"] == "POST"
     assert captured["headers"]["Authorization"] == "secret-token"
+    assert captured["headers"]["Accept"] == "application/json"
     assert captured["headers"]["Content-type"] == "application/json"
+
+
+def test_make_request_merges_existing_query_params(monkeypatch, tmp_path):
+    allowlist = tmp_path / "host-allowlist.json"
+    allowlist.write_text(json.dumps({"hosts": ["common-api.wildberries.ru"]}), encoding="utf-8")
+    monkeypatch.setattr(api_call, "ALLOWLIST_PATH", allowlist)
+    monkeypatch.setenv("WB_API_TOKEN", "secret-token")
+
+    captured = {}
+
+    def fake_urlopen(request, context=None, timeout=30):
+        captured["query"] = urllib.parse.urlsplit(request.full_url).query
+        return DummyResponse({"ok": True})
+
+    monkeypatch.setattr(urllib.request, "urlopen", fake_urlopen)
+
+    api_call.make_request(
+        "GET",
+        "https://common-api.wildberries.ru/ping?existing=1",
+        params={"new": "2"},
+    )
+
+    assert captured["query"] == "existing=1&new=2"
 
 
 def test_sanitize_error_masks_token_and_paths():
@@ -104,3 +130,9 @@ def test_http_error_returns_structured_payload(monkeypatch, tmp_path, capsys):
     assert payload["status"] == 401
     assert "abc123" not in payload["message"]
     assert "token=***" in payload["message"]
+
+
+def test_script_entrypoint_invokes_run_cli():
+    source = Path(api_call.__file__).read_text(encoding="utf-8")
+    assert 'if __name__ == "__main__":' in source
+    assert "run_cli()" in source
