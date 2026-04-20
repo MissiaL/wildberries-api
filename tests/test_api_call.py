@@ -14,6 +14,15 @@ def test_validate_url_rejects_non_allowlisted_host(tmp_path, monkeypatch):
         api_call.validate_url("https://evil.example.com/api/v1/data")
 
 
+def test_validate_url_rejects_non_default_https_port(tmp_path, monkeypatch):
+    allowlist = tmp_path / "host-allowlist.json"
+    allowlist.write_text(json.dumps({"hosts": ["common-api.wildberries.ru"]}), encoding="utf-8")
+    monkeypatch.setattr(api_call, "ALLOWLIST_PATH", allowlist)
+
+    with pytest.raises(ValueError, match="Blocked port"):
+        api_call.validate_url("https://common-api.wildberries.ru:444/ping")
+
+
 def test_filter_headers_blocks_sensitive_headers():
     with pytest.raises(ValueError, match="Blocked headers"):
         api_call.filter_headers({"Authorization": "abc"})
