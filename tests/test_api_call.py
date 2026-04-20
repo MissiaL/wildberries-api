@@ -77,7 +77,7 @@ def test_sanitize_error_masks_token_and_paths():
     assert "token=***" in sanitized
 
 
-def test_http_error_returns_structured_payload(monkeypatch, tmp_path):
+def test_http_error_returns_structured_payload(monkeypatch, tmp_path, capsys):
     allowlist = tmp_path / "host-allowlist.json"
     allowlist.write_text(json.dumps({"hosts": ["common-api.wildberries.ru"]}), encoding="utf-8")
     monkeypatch.setattr(api_call, "ALLOWLIST_PATH", allowlist)
@@ -98,3 +98,9 @@ def test_http_error_returns_structured_payload(monkeypatch, tmp_path):
 
     with pytest.raises(SystemExit, match="1"):
         api_call.run_cli(["--method", "GET", "--url", "https://common-api.wildberries.ru/ping"])
+
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["error"] is True
+    assert payload["status"] == 401
+    assert "abc123" not in payload["message"]
+    assert "token=***" in payload["message"]
