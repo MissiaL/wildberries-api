@@ -43,3 +43,4 @@ python scripts/api_call.py --method POST --url "https://content-api.wildberries.
 
 Local OpenAPI snapshots cover product management, prices and discounts, FBS/DBS/DBW/in-store orders, FBW supplies, promotion, customer communication, tariffs, analytics, reports, finance, documents, returns, buyer chat, and general seller operations.
 
+Supported coverage is the set of schemas listed in `assets/openapi/manifest.json`, with production-only hosts from `assets/openapi/host-allowlist.json`.

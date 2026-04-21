@@ -1,7 +1,7 @@
 {
   "name": "wildberries-api",
   "version": "0.1.0",
-  "description": "Production-only Wildberries seller API skill with local OpenAPI schemas and a safe HTTP helper.",
+  "description": "Production-only Wildberries seller API skill with a safe HTTP helper and local OpenAPI coverage.",
   "keywords": [
     "agent-skill",
     "wildberries",
@@ -11,7 +11,10 @@
     "prices",
     "orders",
     "analytics",
-    "promotions"
+    "promotions",
+    "reports",
+    "finance",
+    "returns"
   ],
   "author": "MissiaL",
   "license": "MIT",

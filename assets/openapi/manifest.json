@@ -34,7 +34,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:07.757219+00:00"
+      "fetched_at": "2026-04-21T06:18:32.526662+00:00"
     },
     {
       "slug": "work-with-products",
@@ -59,7 +59,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:09.116588+00:00"
+      "fetched_at": "2026-04-21T06:18:39.661302+00:00"
     },
     {
       "slug": "orders-fbs",
@@ -82,7 +82,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:10.399272+00:00"
+      "fetched_at": "2026-04-21T06:18:41.190220+00:00"
     },
     {
       "slug": "orders-dbw",
@@ -105,7 +105,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:12.267733+00:00"
+      "fetched_at": "2026-04-21T06:18:45.183842+00:00"
     },
     {
       "slug": "orders-dbs",
@@ -128,7 +128,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:14.217751+00:00"
+      "fetched_at": "2026-04-21T06:18:47.151661+00:00"
     },
     {
       "slug": "promotion",
@@ -151,7 +151,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:15.845629+00:00"
+      "fetched_at": "2026-04-21T06:18:48.879288+00:00"
     },
     {
       "slug": "user-communication",
@@ -176,7 +176,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:17.485442+00:00"
+      "fetched_at": "2026-04-21T06:18:51.496400+00:00"
     },
     {
       "slug": "wb-tariffs",
@@ -199,7 +199,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:19.130783+00:00"
+      "fetched_at": "2026-04-21T06:18:52.644152+00:00"
     },
     {
       "slug": "in-store-pickup",
@@ -222,7 +222,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:20.213163+00:00"
+      "fetched_at": "2026-04-21T06:18:54.095395+00:00"
     },
     {
       "slug": "orders-fbw",
@@ -245,7 +245,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:21.849274+00:00"
+      "fetched_at": "2026-04-21T06:18:55.293892+00:00"
     },
     {
       "slug": "analytics",
@@ -268,7 +268,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:23.202536+00:00"
+      "fetched_at": "2026-04-21T06:18:56.809095+00:00"
     },
     {
       "slug": "reports",
@@ -292,7 +292,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:24.595485+00:00"
+      "fetched_at": "2026-04-21T06:18:58.487872+00:00"
     },
     {
       "slug": "financial-reports-and-accounting",
@@ -317,7 +317,7 @@
         "schema_source_url": null,
         "source_lastmod": "2026-04-20T13:02:56.000Z"
       },
-      "fetched_at": "2026-04-21T06:13:25.753441+00:00"
+      "fetched_at": "2026-04-21T06:18:59.997859+00:00"
     }
   ]
 }

@@ -58,6 +58,12 @@ scripts/api_call.py validates host, injects WB_API_TOKEN, calls WB API
 
 The authoritative coverage list is `assets/openapi/manifest.json`; allowed production hosts live in `assets/openapi/host-allowlist.json`.
 
+## Supported Coverage
+
+- All fetched production schemas listed in `assets/openapi/manifest.json`
+- Category routing in `references/overview.md`
+- Production-only hosts from `assets/openapi/host-allowlist.json`
+
 ## Development
 
 ```bash
@@ -70,4 +76,3 @@ Use `scripts/fetch_openapi.py` to refresh the saved schemas from the official Wi
 ## License
 
 MIT
-
