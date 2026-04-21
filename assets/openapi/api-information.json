@@ -1,0 +1,229 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "General",
+    "version": "html-snapshot",
+    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/api-information and https://dev.wildberries.ru/en/swagger/general."
+  },
+  "servers": [
+    {
+      "url": "https://common-api.wildberries.ru"
+    },
+    {
+      "url": "https://content-api.wildberries.ru"
+    },
+    {
+      "url": "https://seller-analytics-api.wildberries.ru"
+    },
+    {
+      "url": "https://discounts-prices-api.wildberries.ru"
+    },
+    {
+      "url": "https://marketplace-api.wildberries.ru"
+    },
+    {
+      "url": "https://statistics-api.wildberries.ru"
+    },
+    {
+      "url": "https://advert-api.wildberries.ru"
+    },
+    {
+      "url": "https://feedbacks-api.wildberries.ru"
+    },
+    {
+      "url": "https://buyer-chat-api.wildberries.ru"
+    },
+    {
+      "url": "https://supplies-api.wildberries.ru"
+    },
+    {
+      "url": "https://returns-api.wildberries.ru"
+    },
+    {
+      "url": "https://documents-api.wildberries.ru"
+    },
+    {
+      "url": "https://finance-api.wildberries.ru"
+    },
+    {
+      "url": "https://user-management-api.wildberries.ru"
+    }
+  ],
+  "tags": [
+    {
+      "name": "General"
+    },
+    {
+      "name": "Introduction"
+    },
+    {
+      "name": "Authorization"
+    },
+    {
+      "name": "WB API Connection Check"
+    },
+    {
+      "name": "News API"
+    },
+    {
+      "name": "Seller Information"
+    },
+    {
+      "name": "Seller User Management"
+    }
+  ],
+  "paths": {
+    "/ping": {
+      "get": {
+        "summary": "Connection Check",
+        "tags": [
+          "WB API Connection Check"
+        ],
+        "operationId": "tag/WB-API-Connection-Check/paths/~1ping/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/api-information and https://dev.wildberries.ru/en/swagger/general for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "WB API Connection Check"
+      }
+    },
+    "/api/communications/v2/news": {
+      "get": {
+        "summary": "Getting Seller Portal News",
+        "tags": [
+          "News API"
+        ],
+        "operationId": "tag/News-API/paths/~1api~1communications~1v2~1news/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/api-information and https://dev.wildberries.ru/en/swagger/general for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "News API"
+      }
+    },
+    "/api/v1/seller-info": {
+      "get": {
+        "summary": "Get Seller Information",
+        "tags": [
+          "Seller Information"
+        ],
+        "operationId": "tag/Seller-Information/paths/~1api~1v1~1seller-info/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/api-information and https://dev.wildberries.ru/en/swagger/general for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Information"
+      }
+    },
+    "/api/common/v1/rating": {
+      "get": {
+        "summary": "Get Seller Rating",
+        "tags": [
+          "Seller Information"
+        ],
+        "operationId": "tag/Seller-Information/operation/getCommonV1Rating",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/api-information and https://dev.wildberries.ru/en/swagger/general for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Information"
+      }
+    },
+    "/api/common/v1/subscriptions": {
+      "get": {
+        "summary": "Get Jam Subscription Information",
+        "tags": [
+          "Seller Information"
+        ],
+        "operationId": "tag/Seller-Information/operation/getCommonV1Subscriptions",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/api-information and https://dev.wildberries.ru/en/swagger/general for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Information"
+      }
+    },
+    "/api/v1/invite": {
+      "post": {
+        "summary": "Create an Invitation for a New User",
+        "tags": [
+          "Seller User Management"
+        ],
+        "operationId": "tag/Seller-User-Management/paths/~1api~1v1~1invite/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/api-information and https://dev.wildberries.ru/en/swagger/general for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller User Management"
+      }
+    },
+    "/api/v1/users": {
+      "get": {
+        "summary": "Get a List of Seller Active or Invited Users",
+        "tags": [
+          "Seller User Management"
+        ],
+        "operationId": "tag/Seller-User-Management/paths/~1api~1v1~1users/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/api-information and https://dev.wildberries.ru/en/swagger/general for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller User Management"
+      }
+    },
+    "/api/v1/users/access": {
+      "put": {
+        "summary": "Update User's Access Permissions",
+        "tags": [
+          "Seller User Management"
+        ],
+        "operationId": "tag/Seller-User-Management/paths/~1api~1v1~1users~1access/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/api-information and https://dev.wildberries.ru/en/swagger/general for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller User Management"
+      }
+    },
+    "/api/v1/user": {
+      "delete": {
+        "summary": "Delete User",
+        "tags": [
+          "Seller User Management"
+        ],
+        "operationId": "tag/Seller-User-Management/paths/~1api~1v1~1user/delete",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/api-information and https://dev.wildberries.ru/en/swagger/general for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller User Management"
+      }
+    }
+  },
+  "x-wb-extraction": {
+    "mode": "docs-html-snapshot",
+    "doc_url": "https://dev.wildberries.ru/en/docs/openapi/api-information",
+    "swagger_url": "https://dev.wildberries.ru/en/swagger/general",
+    "chapter_path": "api-information",
+    "group_count": 7,
+    "operation_count": 9
+  }
+}

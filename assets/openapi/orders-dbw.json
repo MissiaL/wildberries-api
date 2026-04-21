@@ -1,0 +1,288 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "DBW Orders",
+    "version": "html-snapshot",
+    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw."
+  },
+  "servers": [
+    {
+      "url": "https://marketplace-api.wildberries.ru"
+    }
+  ],
+  "tags": [
+    {
+      "name": "DBW Orders"
+    },
+    {
+      "name": "DBW Assembly Orders"
+    },
+    {
+      "name": "DBW Metadata"
+    }
+  ],
+  "paths": {
+    "/api/v3/dbw/orders/new": {
+      "get": {
+        "summary": "Get New Orders",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1new/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Assembly Orders"
+      }
+    },
+    "/api/v3/dbw/orders": {
+      "get": {
+        "summary": "Get Information on Completed Orders",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Assembly Orders"
+      }
+    },
+    "/api/v3/dbw/orders/delivery-date": {
+      "post": {
+        "summary": "Delivery Date and Time",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1delivery-date/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Assembly Orders"
+      }
+    },
+    "/api/marketplace/v3/dbw/orders/client": {
+      "post": {
+        "summary": "Buyer Information",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1marketplace~1v3~1dbw~1orders~1client/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Assembly Orders"
+      }
+    },
+    "/api/v3/dbw/orders/status": {
+      "post": {
+        "summary": "Get Orders Statuses",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1status/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Assembly Orders"
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/confirm": {
+      "patch": {
+        "summary": "Transfer to Assembly",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1{orderId}~1confirm/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Assembly Orders"
+      }
+    },
+    "/api/v3/dbw/orders/stickers": {
+      "post": {
+        "summary": "Get Orders Stickers",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1stickers/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Assembly Orders"
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/assemble": {
+      "patch": {
+        "summary": "Transfer to Delivery",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1{orderId}~1assemble/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Assembly Orders"
+      }
+    },
+    "/api/v3/dbw/orders/courier": {
+      "post": {
+        "summary": "Courier Info",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1courier/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Assembly Orders"
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/cancel": {
+      "patch": {
+        "summary": "Cancel the Order",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1{orderId}~1cancel/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Assembly Orders"
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/meta": {
+      "get": {
+        "summary": "Get Order Metadata",
+        "tags": [
+          "DBW Metadata"
+        ],
+        "operationId": "tag/DBW-Metadata/paths/~1api~1v3~1dbw~1orders~1{orderId}~1meta/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Metadata"
+      },
+      "delete": {
+        "summary": "Delete Order Metadata",
+        "tags": [
+          "DBW Metadata"
+        ],
+        "operationId": "tag/DBW-Metadata/paths/~1api~1v3~1dbw~1orders~1{orderId}~1meta/delete",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Metadata"
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/meta/sgtin": {
+      "put": {
+        "summary": "Add Data Matrix Code to the Order",
+        "tags": [
+          "DBW Metadata"
+        ],
+        "operationId": "tag/DBW-Metadata/paths/~1api~1v3~1dbw~1orders~1{orderId}~1meta~1sgtin/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Metadata"
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/meta/uin": {
+      "put": {
+        "summary": "Add UIN (Unique Identification Number) to the Order",
+        "tags": [
+          "DBW Metadata"
+        ],
+        "operationId": "tag/DBW-Metadata/paths/~1api~1v3~1dbw~1orders~1{orderId}~1meta~1uin/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Metadata"
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/meta/imei": {
+      "put": {
+        "summary": "Add IMEI to the Order",
+        "tags": [
+          "DBW Metadata"
+        ],
+        "operationId": "tag/DBW-Metadata/paths/~1api~1v3~1dbw~1orders~1{orderId}~1meta~1imei/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Metadata"
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/meta/gtin": {
+      "put": {
+        "summary": "Add GTIN to the Order",
+        "tags": [
+          "DBW Metadata"
+        ],
+        "operationId": "tag/DBW-Metadata/paths/~1api~1v3~1dbw~1orders~1{orderId}~1meta~1gtin/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "DBW Metadata"
+      }
+    }
+  },
+  "x-wb-extraction": {
+    "mode": "docs-html-snapshot",
+    "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-dbw",
+    "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-dbw",
+    "chapter_path": "orders-dbw",
+    "group_count": 3,
+    "operation_count": 16
+  }
+}

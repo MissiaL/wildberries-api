@@ -1,0 +1,310 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Analytics and Data",
+    "version": "html-snapshot",
+    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics."
+  },
+  "servers": [
+    {
+      "url": "https://seller-analytics-api.wildberries.ru"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Analytics and Data"
+    },
+    {
+      "name": "Sales Funnel"
+    },
+    {
+      "name": "Search Queries for Your Items"
+    },
+    {
+      "name": "Stocks Report"
+    },
+    {
+      "name": "Seller Analytics CSV"
+    }
+  ],
+  "paths": {
+    "/api/analytics/v3/sales-funnel/products": {
+      "post": {
+        "summary": "Product Cards Statistics per Period",
+        "tags": [
+          "Sales Funnel"
+        ],
+        "operationId": "tag/Sales-Funnel/operation/postSalesFunnelProducts",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Sales Funnel"
+      }
+    },
+    "/api/analytics/v3/sales-funnel/products/history": {
+      "post": {
+        "summary": "Product Cards Statistics per Days",
+        "tags": [
+          "Sales Funnel"
+        ],
+        "operationId": "tag/Sales-Funnel/operation/postSalesFunnelProductsHistory",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Sales Funnel"
+      }
+    },
+    "/api/analytics/v3/sales-funnel/grouped/history": {
+      "post": {
+        "summary": "Grouped Product Cards Statistics per Days",
+        "tags": [
+          "Sales Funnel"
+        ],
+        "operationId": "tag/Sales-Funnel/operation/postSalesFunnelGroupedHistory",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Sales Funnel"
+      }
+    },
+    "/api/v2/search-report/report": {
+      "post": {
+        "summary": "Main Page",
+        "tags": [
+          "Search Queries for Your Items"
+        ],
+        "operationId": "tag/Search-Queries-for-Your-Items/paths/~1api~1v2~1search-report~1report/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Search Queries for Your Items"
+      }
+    },
+    "/api/v2/search-report/table/groups": {
+      "post": {
+        "summary": "Pagination by Groups",
+        "tags": [
+          "Search Queries for Your Items"
+        ],
+        "operationId": "tag/Search-Queries-for-Your-Items/paths/~1api~1v2~1search-report~1table~1groups/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Search Queries for Your Items"
+      }
+    },
+    "/api/v2/search-report/table/details": {
+      "post": {
+        "summary": "Pagination by Products Within a Group",
+        "tags": [
+          "Search Queries for Your Items"
+        ],
+        "operationId": "tag/Search-Queries-for-Your-Items/paths/~1api~1v2~1search-report~1table~1details/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Search Queries for Your Items"
+      }
+    },
+    "/api/v2/search-report/product/search-texts": {
+      "post": {
+        "summary": "Search Texts by Product",
+        "tags": [
+          "Search Queries for Your Items"
+        ],
+        "operationId": "tag/Search-Queries-for-Your-Items/paths/~1api~1v2~1search-report~1product~1search-texts/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Search Queries for Your Items"
+      }
+    },
+    "/api/v2/search-report/product/orders": {
+      "post": {
+        "summary": "Orders and Positions by Item Search Texts",
+        "tags": [
+          "Search Queries for Your Items"
+        ],
+        "operationId": "tag/Search-Queries-for-Your-Items/paths/~1api~1v2~1search-report~1product~1orders/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Search Queries for Your Items"
+      }
+    },
+    "/api/analytics/v1/stocks-report/wb-warehouses": {
+      "post": {
+        "summary": "WB Warehouses Inventory",
+        "tags": [
+          "Stocks Report"
+        ],
+        "operationId": "tag/Stocks-Report/operation/postV1StocksReportWbWarehouses",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Stocks Report"
+      }
+    },
+    "/api/v2/stocks-report/products/groups": {
+      "post": {
+        "summary": "Group Data",
+        "tags": [
+          "Stocks Report"
+        ],
+        "operationId": "tag/Stocks-Report/paths/~1api~1v2~1stocks-report~1products~1groups/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Stocks Report"
+      }
+    },
+    "/api/v2/stocks-report/products/products": {
+      "post": {
+        "summary": "Product Data",
+        "tags": [
+          "Stocks Report"
+        ],
+        "operationId": "tag/Stocks-Report/paths/~1api~1v2~1stocks-report~1products~1products/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Stocks Report"
+      }
+    },
+    "/api/v2/stocks-report/products/sizes": {
+      "post": {
+        "summary": "Size Data",
+        "tags": [
+          "Stocks Report"
+        ],
+        "operationId": "tag/Stocks-Report/paths/~1api~1v2~1stocks-report~1products~1sizes/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Stocks Report"
+      }
+    },
+    "/api/v2/stocks-report/offices": {
+      "post": {
+        "summary": "Warehouse Data",
+        "tags": [
+          "Stocks Report"
+        ],
+        "operationId": "tag/Stocks-Report/paths/~1api~1v2~1stocks-report~1offices/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Stocks Report"
+      }
+    },
+    "/api/v2/nm-report/downloads": {
+      "post": {
+        "summary": "Create the Report",
+        "tags": [
+          "Seller Analytics CSV"
+        ],
+        "operationId": "tag/Seller-Analytics-CSV/paths/~1api~1v2~1nm-report~1downloads/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Analytics CSV"
+      },
+      "get": {
+        "summary": "Get the Reports List",
+        "tags": [
+          "Seller Analytics CSV"
+        ],
+        "operationId": "tag/Seller-Analytics-CSV/paths/~1api~1v2~1nm-report~1downloads/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Analytics CSV"
+      }
+    },
+    "/api/v2/nm-report/downloads/retry": {
+      "post": {
+        "summary": "Regenerate the Report",
+        "tags": [
+          "Seller Analytics CSV"
+        ],
+        "operationId": "tag/Seller-Analytics-CSV/paths/~1api~1v2~1nm-report~1downloads~1retry/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Analytics CSV"
+      }
+    },
+    "/api/v2/nm-report/downloads/file/{downloadId}": {
+      "get": {
+        "summary": "Get the Report",
+        "tags": [
+          "Seller Analytics CSV"
+        ],
+        "operationId": "tag/Seller-Analytics-CSV/paths/~1api~1v2~1nm-report~1downloads~1file~1{downloadId}/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Analytics CSV"
+      }
+    }
+  },
+  "x-wb-extraction": {
+    "mode": "docs-html-snapshot",
+    "doc_url": "https://dev.wildberries.ru/en/docs/openapi/analytics",
+    "swagger_url": "https://dev.wildberries.ru/en/swagger/analytics",
+    "chapter_path": "analytics",
+    "group_count": 5,
+    "operation_count": 17
+  }
+}

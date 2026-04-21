@@ -1,3 +1,18 @@
 {
-  "hosts": []
+  "hosts": [
+    "advert-api.wildberries.ru",
+    "buyer-chat-api.wildberries.ru",
+    "common-api.wildberries.ru",
+    "content-api.wildberries.ru",
+    "discounts-prices-api.wildberries.ru",
+    "documents-api.wildberries.ru",
+    "feedbacks-api.wildberries.ru",
+    "finance-api.wildberries.ru",
+    "marketplace-api.wildberries.ru",
+    "returns-api.wildberries.ru",
+    "seller-analytics-api.wildberries.ru",
+    "statistics-api.wildberries.ru",
+    "supplies-api.wildberries.ru",
+    "user-management-api.wildberries.ru"
+  ]
 }

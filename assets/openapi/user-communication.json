@@ -1,0 +1,441 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Customer Communication",
+    "version": "html-snapshot",
+    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications."
+  },
+  "servers": [
+    {
+      "url": "https://feedbacks-api.wildberries.ru"
+    },
+    {
+      "url": "https://buyer-chat-api.wildberries.ru"
+    },
+    {
+      "url": "https://returns-api.wildberries.ru"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Customer Communication"
+    },
+    {
+      "name": "Questions"
+    },
+    {
+      "name": "Feedbacks"
+    },
+    {
+      "name": "Pinned Feedback"
+    },
+    {
+      "name": "Buyers Chat"
+    },
+    {
+      "name": "Buyers Returns"
+    }
+  ],
+  "paths": {
+    "/api/v1/new-feedbacks-questions": {
+      "get": {
+        "summary": "Unseen Feedbacks and Questions",
+        "tags": [
+          "Questions"
+        ],
+        "operationId": "tag/Questions/paths/~1api~1v1~1new-feedbacks-questions/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Questions"
+      }
+    },
+    "/api/v1/questions/count-unanswered": {
+      "get": {
+        "summary": "Unanswered Questions",
+        "tags": [
+          "Questions"
+        ],
+        "operationId": "tag/Questions/paths/~1api~1v1~1questions~1count-unanswered/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Questions"
+      }
+    },
+    "/api/v1/questions/count": {
+      "get": {
+        "summary": "Number of Questions",
+        "tags": [
+          "Questions"
+        ],
+        "operationId": "tag/Questions/paths/~1api~1v1~1questions~1count/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Questions"
+      }
+    },
+    "/api/v1/questions": {
+      "get": {
+        "summary": "Question List",
+        "tags": [
+          "Questions"
+        ],
+        "operationId": "tag/Questions/paths/~1api~1v1~1questions/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Questions"
+      },
+      "patch": {
+        "summary": "Working with Questions",
+        "tags": [
+          "Questions"
+        ],
+        "operationId": "tag/Questions/paths/~1api~1v1~1questions/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Questions"
+      }
+    },
+    "/api/v1/question": {
+      "get": {
+        "summary": "Get the Question by ID",
+        "tags": [
+          "Questions"
+        ],
+        "operationId": "tag/Questions/paths/~1api~1v1~1question/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Questions"
+      }
+    },
+    "/api/v1/feedbacks/count-unanswered": {
+      "get": {
+        "summary": "Unanswered Feedbacks",
+        "tags": [
+          "Feedbacks"
+        ],
+        "operationId": "tag/Feedbacks/paths/~1api~1v1~1feedbacks~1count-unanswered/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Feedbacks"
+      }
+    },
+    "/api/v1/feedbacks/count": {
+      "get": {
+        "summary": "Number of Feedbacks",
+        "tags": [
+          "Feedbacks"
+        ],
+        "operationId": "tag/Feedbacks/paths/~1api~1v1~1feedbacks~1count/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Feedbacks"
+      }
+    },
+    "/api/v1/feedbacks": {
+      "get": {
+        "summary": "Feedbacks List",
+        "tags": [
+          "Feedbacks"
+        ],
+        "operationId": "tag/Feedbacks/paths/~1api~1v1~1feedbacks/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Feedbacks"
+      }
+    },
+    "/api/v1/feedbacks/answer": {
+      "post": {
+        "summary": "Reply to Feedback",
+        "tags": [
+          "Feedbacks"
+        ],
+        "operationId": "tag/Feedbacks/paths/~1api~1v1~1feedbacks~1answer/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Feedbacks"
+      },
+      "patch": {
+        "summary": "Edit Response to Feedback",
+        "tags": [
+          "Feedbacks"
+        ],
+        "operationId": "tag/Feedbacks/paths/~1api~1v1~1feedbacks~1answer/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Feedbacks"
+      }
+    },
+    "/api/v1/feedbacks/order/return": {
+      "post": {
+        "summary": "Return Product by Feedback ID",
+        "tags": [
+          "Feedbacks"
+        ],
+        "operationId": "tag/Feedbacks/paths/~1api~1v1~1feedbacks~1order~1return/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Feedbacks"
+      }
+    },
+    "/api/v1/feedback": {
+      "get": {
+        "summary": "Get the Feedback by ID",
+        "tags": [
+          "Feedbacks"
+        ],
+        "operationId": "tag/Feedbacks/paths/~1api~1v1~1feedback/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Feedbacks"
+      }
+    },
+    "/api/v1/feedbacks/archive": {
+      "get": {
+        "summary": "List of Archived Feedbacks",
+        "tags": [
+          "Feedbacks"
+        ],
+        "operationId": "tag/Feedbacks/paths/~1api~1v1~1feedbacks~1archive/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Feedbacks"
+      }
+    },
+    "/api/feedbacks/v1/pins": {
+      "get": {
+        "summary": "List of Pinned and Unpinned Feedback",
+        "tags": [
+          "Pinned Feedback"
+        ],
+        "operationId": "tag/Pinned-Feedback/paths/~1api~1feedbacks~1v1~1pins/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Pinned Feedback"
+      },
+      "post": {
+        "summary": "Pin Feedback",
+        "tags": [
+          "Pinned Feedback"
+        ],
+        "operationId": "tag/Pinned-Feedback/paths/~1api~1feedbacks~1v1~1pins/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Pinned Feedback"
+      },
+      "delete": {
+        "summary": "Unpin Feedback",
+        "tags": [
+          "Pinned Feedback"
+        ],
+        "operationId": "tag/Pinned-Feedback/paths/~1api~1feedbacks~1v1~1pins/delete",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Pinned Feedback"
+      }
+    },
+    "/api/feedbacks/v1/pins/count": {
+      "get": {
+        "summary": "Pinned and Unpinned Feedback Number",
+        "tags": [
+          "Pinned Feedback"
+        ],
+        "operationId": "tag/Pinned-Feedback/paths/~1api~1feedbacks~1v1~1pins~1count/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Pinned Feedback"
+      }
+    },
+    "/api/feedbacks/v1/pins/limits": {
+      "get": {
+        "summary": "Pinned Feedback Limits",
+        "tags": [
+          "Pinned Feedback"
+        ],
+        "operationId": "tag/Pinned-Feedback/paths/~1api~1feedbacks~1v1~1pins~1limits/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Pinned Feedback"
+      }
+    },
+    "/api/v1/seller/chats": {
+      "get": {
+        "summary": "Chat List",
+        "tags": [
+          "Buyers Chat"
+        ],
+        "operationId": "tag/Buyers-Chat/paths/~1api~1v1~1seller~1chats/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Buyers Chat"
+      }
+    },
+    "/api/v1/seller/events": {
+      "get": {
+        "summary": "Chat Events",
+        "tags": [
+          "Buyers Chat"
+        ],
+        "operationId": "tag/Buyers-Chat/paths/~1api~1v1~1seller~1events/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Buyers Chat"
+      }
+    },
+    "/api/v1/seller/message": {
+      "post": {
+        "summary": "Send Message",
+        "tags": [
+          "Buyers Chat"
+        ],
+        "operationId": "tag/Buyers-Chat/paths/~1api~1v1~1seller~1message/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Buyers Chat"
+      }
+    },
+    "/api/v1/seller/download/{id}": {
+      "get": {
+        "summary": "Get File from the Message",
+        "tags": [
+          "Buyers Chat"
+        ],
+        "operationId": "tag/Buyers-Chat/paths/~1api~1v1~1seller~1download~1{id}/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Buyers Chat"
+      }
+    },
+    "/api/v1/claims": {
+      "get": {
+        "summary": "Buyers Return Applications",
+        "tags": [
+          "Buyers Returns"
+        ],
+        "operationId": "tag/Buyers-Returns/paths/~1api~1v1~1claims/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Buyers Returns"
+      }
+    },
+    "/api/v1/claim": {
+      "patch": {
+        "summary": "Answer Buyers Application",
+        "tags": [
+          "Buyers Returns"
+        ],
+        "operationId": "tag/Buyers-Returns/paths/~1api~1v1~1claim/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/user-communication and https://dev.wildberries.ru/en/swagger/communications for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Buyers Returns"
+      }
+    }
+  },
+  "x-wb-extraction": {
+    "mode": "docs-html-snapshot",
+    "doc_url": "https://dev.wildberries.ru/en/docs/openapi/user-communication",
+    "swagger_url": "https://dev.wildberries.ru/en/swagger/communications",
+    "chapter_path": "user-communication",
+    "group_count": 6,
+    "operation_count": 25
+  }
+}

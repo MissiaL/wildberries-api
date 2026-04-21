@@ -1,0 +1,120 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Tariffs",
+    "version": "html-snapshot",
+    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/wb-tariffs and https://dev.wildberries.ru/en/swagger/tariffs."
+  },
+  "servers": [
+    {
+      "url": "https://common-api.wildberries.ru"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Tariffs"
+    },
+    {
+      "name": "Commissions"
+    },
+    {
+      "name": "Stock Tariffs"
+    },
+    {
+      "name": "Supply Tariffs"
+    },
+    {
+      "name": "Return Cost to Seller"
+    }
+  ],
+  "paths": {
+    "/api/v1/tariffs/commission": {
+      "get": {
+        "summary": "Product Category Commission",
+        "tags": [
+          "Commissions"
+        ],
+        "operationId": "tag/Commissions/paths/~1api~1v1~1tariffs~1commission/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/wb-tariffs and https://dev.wildberries.ru/en/swagger/tariffs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Commissions"
+      }
+    },
+    "/api/v1/tariffs/box": {
+      "get": {
+        "summary": "Box Tariffs",
+        "tags": [
+          "Stock Tariffs"
+        ],
+        "operationId": "tag/Stock-Tariffs/paths/~1api~1v1~1tariffs~1box/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/wb-tariffs and https://dev.wildberries.ru/en/swagger/tariffs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Stock Tariffs"
+      }
+    },
+    "/api/v1/tariffs/pallet": {
+      "get": {
+        "summary": "Pallet Tariffs",
+        "tags": [
+          "Stock Tariffs"
+        ],
+        "operationId": "tag/Stock-Tariffs/paths/~1api~1v1~1tariffs~1pallet/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/wb-tariffs and https://dev.wildberries.ru/en/swagger/tariffs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Stock Tariffs"
+      }
+    },
+    "/api/tariffs/v1/acceptance/coefficients": {
+      "get": {
+        "summary": "Supply Tariffs",
+        "tags": [
+          "Supply Tariffs"
+        ],
+        "operationId": "tag/Supply-Tariffs/paths/~1api~1tariffs~1v1~1acceptance~1coefficients/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/wb-tariffs and https://dev.wildberries.ru/en/swagger/tariffs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Supply Tariffs"
+      }
+    },
+    "/api/v1/tariffs/return": {
+      "get": {
+        "summary": "Return Tariffs",
+        "tags": [
+          "Return Cost to Seller"
+        ],
+        "operationId": "tag/Return-Cost-to-Seller/paths/~1api~1v1~1tariffs~1return/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/wb-tariffs and https://dev.wildberries.ru/en/swagger/tariffs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Return Cost to Seller"
+      }
+    }
+  },
+  "x-wb-extraction": {
+    "mode": "docs-html-snapshot",
+    "doc_url": "https://dev.wildberries.ru/en/docs/openapi/wb-tariffs",
+    "swagger_url": "https://dev.wildberries.ru/en/swagger/tariffs",
+    "chapter_path": "wb-tariffs",
+    "group_count": 5,
+    "operation_count": 5
+  }
+}

@@ -1,0 +1,828 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Product Management",
+    "version": "html-snapshot",
+    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products."
+  },
+  "servers": [
+    {
+      "url": "https://content-api.wildberries.ru"
+    },
+    {
+      "url": "https://discounts-prices-api.wildberries.ru"
+    },
+    {
+      "url": "https://marketplace-api.wildberries.ru"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Product Management"
+    },
+    {
+      "name": "Categories, Subjects, and Characteristics"
+    },
+    {
+      "name": "Creating Product Cards"
+    },
+    {
+      "name": "Product Cards"
+    },
+    {
+      "name": "Media Files"
+    },
+    {
+      "name": "Tags"
+    },
+    {
+      "name": "Prices and Discounts"
+    },
+    {
+      "name": "Seller Warehouses"
+    },
+    {
+      "name": "Seller Warehouses Inventory"
+    }
+  ],
+  "paths": {
+    "/content/v2/object/parent/all": {
+      "get": {
+        "summary": "Products Parent Categories",
+        "tags": [
+          "Categories, Subjects, and Characteristics"
+        ],
+        "operationId": "tag/Categories-Subjects-and-Characteristics/paths/~1content~1v2~1object~1parent~1all/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Categories, Subjects, and Characteristics"
+      }
+    },
+    "/content/v2/object/all": {
+      "get": {
+        "summary": "Subjects List",
+        "tags": [
+          "Categories, Subjects, and Characteristics"
+        ],
+        "operationId": "tag/Categories-Subjects-and-Characteristics/paths/~1content~1v2~1object~1all/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Categories, Subjects, and Characteristics"
+      }
+    },
+    "/content/v2/object/charcs/{subjectId}": {
+      "get": {
+        "summary": "Subject Characteristics",
+        "tags": [
+          "Categories, Subjects, and Characteristics"
+        ],
+        "operationId": "tag/Categories-Subjects-and-Characteristics/paths/~1content~1v2~1object~1charcs~1{subjectId}/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Categories, Subjects, and Characteristics"
+      }
+    },
+    "/content/v2/directory/colors": {
+      "get": {
+        "summary": "Color",
+        "tags": [
+          "Categories, Subjects, and Characteristics"
+        ],
+        "operationId": "tag/Categories-Subjects-and-Characteristics/paths/~1content~1v2~1directory~1colors/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Categories, Subjects, and Characteristics"
+      }
+    },
+    "/content/v2/directory/kinds": {
+      "get": {
+        "summary": "Gender",
+        "tags": [
+          "Categories, Subjects, and Characteristics"
+        ],
+        "operationId": "tag/Categories-Subjects-and-Characteristics/paths/~1content~1v2~1directory~1kinds/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Categories, Subjects, and Characteristics"
+      }
+    },
+    "/content/v2/directory/countries": {
+      "get": {
+        "summary": "Country of Origin",
+        "tags": [
+          "Categories, Subjects, and Characteristics"
+        ],
+        "operationId": "tag/Categories-Subjects-and-Characteristics/paths/~1content~1v2~1directory~1countries/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Categories, Subjects, and Characteristics"
+      }
+    },
+    "/content/v2/directory/seasons": {
+      "get": {
+        "summary": "Season",
+        "tags": [
+          "Categories, Subjects, and Characteristics"
+        ],
+        "operationId": "tag/Categories-Subjects-and-Characteristics/paths/~1content~1v2~1directory~1seasons/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Categories, Subjects, and Characteristics"
+      }
+    },
+    "/content/v2/directory/vat": {
+      "get": {
+        "summary": "VAT Rate",
+        "tags": [
+          "Categories, Subjects, and Characteristics"
+        ],
+        "operationId": "tag/Categories-Subjects-and-Characteristics/paths/~1content~1v2~1directory~1vat/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Categories, Subjects, and Characteristics"
+      }
+    },
+    "/content/v2/directory/tnved": {
+      "get": {
+        "summary": "HS-codes",
+        "tags": [
+          "Categories, Subjects, and Characteristics"
+        ],
+        "operationId": "tag/Categories-Subjects-and-Characteristics/paths/~1content~1v2~1directory~1tnved/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Categories, Subjects, and Characteristics"
+      }
+    },
+    "/api/content/v1/brands": {
+      "get": {
+        "summary": "Brands",
+        "tags": [
+          "Categories, Subjects, and Characteristics"
+        ],
+        "operationId": "tag/Categories-Subjects-and-Characteristics/paths/~1api~1content~1v1~1brands/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Categories, Subjects, and Characteristics"
+      }
+    },
+    "/content/v2/cards/limits": {
+      "get": {
+        "summary": "Limits for the Product Cards",
+        "tags": [
+          "Creating Product Cards"
+        ],
+        "operationId": "tag/Creating-Product-Cards/paths/~1content~1v2~1cards~1limits/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Creating Product Cards"
+      }
+    },
+    "/content/v2/barcodes": {
+      "post": {
+        "summary": "Generation of SKUs",
+        "tags": [
+          "Creating Product Cards"
+        ],
+        "operationId": "tag/Creating-Product-Cards/paths/~1content~1v2~1barcodes/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Creating Product Cards"
+      }
+    },
+    "/content/v2/cards/upload": {
+      "post": {
+        "summary": "Create Product Cards",
+        "tags": [
+          "Creating Product Cards"
+        ],
+        "operationId": "tag/Creating-Product-Cards/paths/~1content~1v2~1cards~1upload/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Creating Product Cards"
+      }
+    },
+    "/content/v2/cards/upload/add": {
+      "post": {
+        "summary": "Create Product Cards with Merge",
+        "tags": [
+          "Creating Product Cards"
+        ],
+        "operationId": "tag/Creating-Product-Cards/paths/~1content~1v2~1cards~1upload~1add/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Creating Product Cards"
+      }
+    },
+    "/content/v2/get/cards/list": {
+      "post": {
+        "summary": "Product Cards List",
+        "tags": [
+          "Product Cards"
+        ],
+        "operationId": "tag/Product-Cards/paths/~1content~1v2~1get~1cards~1list/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Product Cards"
+      }
+    },
+    "/content/v2/cards/error/list": {
+      "post": {
+        "summary": "List of Failed Product Cards with Errors",
+        "tags": [
+          "Product Cards"
+        ],
+        "operationId": "tag/Product-Cards/paths/~1content~1v2~1cards~1error~1list/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Product Cards"
+      }
+    },
+    "/content/v2/cards/update": {
+      "post": {
+        "summary": "Update Product Cards",
+        "tags": [
+          "Product Cards"
+        ],
+        "operationId": "tag/Product-Cards/paths/~1content~1v2~1cards~1update/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Product Cards"
+      }
+    },
+    "/content/v2/cards/moveNm": {
+      "post": {
+        "summary": "Merging or Separating of Product Cards",
+        "tags": [
+          "Product Cards"
+        ],
+        "operationId": "tag/Product-Cards/paths/~1content~1v2~1cards~1moveNm/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Product Cards"
+      }
+    },
+    "/content/v2/cards/delete/trash": {
+      "post": {
+        "summary": "Transfer Product Card to Trash",
+        "tags": [
+          "Product Cards"
+        ],
+        "operationId": "tag/Product-Cards/paths/~1content~1v2~1cards~1delete~1trash/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Product Cards"
+      }
+    },
+    "/content/v2/cards/recover": {
+      "post": {
+        "summary": "Recover Product Card from Trash",
+        "tags": [
+          "Product Cards"
+        ],
+        "operationId": "tag/Product-Cards/paths/~1content~1v2~1cards~1recover/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Product Cards"
+      }
+    },
+    "/content/v2/get/cards/trash": {
+      "post": {
+        "summary": "Product Cards in Trash List",
+        "tags": [
+          "Product Cards"
+        ],
+        "operationId": "tag/Product-Cards/paths/~1content~1v2~1get~1cards~1trash/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Product Cards"
+      }
+    },
+    "/content/v3/media/file": {
+      "post": {
+        "summary": "Upload Media File",
+        "tags": [
+          "Media Files"
+        ],
+        "operationId": "tag/Media-Files/paths/~1content~1v3~1media~1file/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Media Files"
+      }
+    },
+    "/content/v3/media/save": {
+      "post": {
+        "summary": "Upload Media Files via Links",
+        "tags": [
+          "Media Files"
+        ],
+        "operationId": "tag/Media-Files/paths/~1content~1v3~1media~1save/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Media Files"
+      }
+    },
+    "/content/v2/tags": {
+      "get": {
+        "summary": "Tags List",
+        "tags": [
+          "Tags"
+        ],
+        "operationId": "tag/Tags/paths/~1content~1v2~1tags/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Tags"
+      }
+    },
+    "/content/v2/tag": {
+      "post": {
+        "summary": "Create a Tag",
+        "tags": [
+          "Tags"
+        ],
+        "operationId": "tag/Tags/paths/~1content~1v2~1tag/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Tags"
+      }
+    },
+    "/content/v2/tag/{id}": {
+      "patch": {
+        "summary": "Update the Tag",
+        "tags": [
+          "Tags"
+        ],
+        "operationId": "tag/Tags/paths/~1content~1v2~1tag~1{id}/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Tags"
+      },
+      "delete": {
+        "summary": "Delete the Tag",
+        "tags": [
+          "Tags"
+        ],
+        "operationId": "tag/Tags/paths/~1content~1v2~1tag~1{id}/delete",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Tags"
+      }
+    },
+    "/content/v2/tag/nomenclature/link": {
+      "post": {
+        "summary": "Tag Management in the Product Card",
+        "tags": [
+          "Tags"
+        ],
+        "operationId": "tag/Tags/paths/~1content~1v2~1tag~1nomenclature~1link/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Tags"
+      }
+    },
+    "/api/v2/upload/task": {
+      "post": {
+        "summary": "Set Prices and Discounts",
+        "tags": [
+          "Prices and Discounts"
+        ],
+        "operationId": "tag/Prices-and-Discounts/paths/~1api~1v2~1upload~1task/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Prices and Discounts"
+      }
+    },
+    "/api/v2/upload/task/size": {
+      "post": {
+        "summary": "Set Size Prices",
+        "tags": [
+          "Prices and Discounts"
+        ],
+        "operationId": "tag/Prices-and-Discounts/paths/~1api~1v2~1upload~1task~1size/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Prices and Discounts"
+      }
+    },
+    "/api/v2/upload/task/club-discount": {
+      "post": {
+        "summary": "Set WB Club Discounts",
+        "tags": [
+          "Prices and Discounts"
+        ],
+        "operationId": "tag/Prices-and-Discounts/paths/~1api~1v2~1upload~1task~1club-discount/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Prices and Discounts"
+      }
+    },
+    "/api/v2/history/tasks": {
+      "get": {
+        "summary": "Processed Upload State",
+        "tags": [
+          "Prices and Discounts"
+        ],
+        "operationId": "tag/Prices-and-Discounts/paths/~1api~1v2~1history~1tasks/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Prices and Discounts"
+      }
+    },
+    "/api/v2/history/goods/task": {
+      "get": {
+        "summary": "Processed Upload Details",
+        "tags": [
+          "Prices and Discounts"
+        ],
+        "operationId": "tag/Prices-and-Discounts/paths/~1api~1v2~1history~1goods~1task/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Prices and Discounts"
+      }
+    },
+    "/api/v2/buffer/tasks": {
+      "get": {
+        "summary": "Unprocessed Upload State",
+        "tags": [
+          "Prices and Discounts"
+        ],
+        "operationId": "tag/Prices-and-Discounts/paths/~1api~1v2~1buffer~1tasks/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Prices and Discounts"
+      }
+    },
+    "/api/v2/buffer/goods/task": {
+      "get": {
+        "summary": "Unprocessed Upload Details",
+        "tags": [
+          "Prices and Discounts"
+        ],
+        "operationId": "tag/Prices-and-Discounts/paths/~1api~1v2~1buffer~1goods~1task/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Prices and Discounts"
+      }
+    },
+    "/api/v2/list/goods/filter": {
+      "get": {
+        "summary": "Get Products with Prices",
+        "tags": [
+          "Prices and Discounts"
+        ],
+        "operationId": "tag/Prices-and-Discounts/paths/~1api~1v2~1list~1goods~1filter/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Prices and Discounts"
+      },
+      "post": {
+        "summary": "Get Products with Prices by Articles",
+        "tags": [
+          "Prices and Discounts"
+        ],
+        "operationId": "tag/Prices-and-Discounts/paths/~1api~1v2~1list~1goods~1filter/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Prices and Discounts"
+      }
+    },
+    "/api/v2/list/goods/size/nm": {
+      "get": {
+        "summary": "Get Product Sizes with Prices",
+        "tags": [
+          "Prices and Discounts"
+        ],
+        "operationId": "tag/Prices-and-Discounts/paths/~1api~1v2~1list~1goods~1size~1nm/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Prices and Discounts"
+      }
+    },
+    "/api/v2/quarantine/goods": {
+      "get": {
+        "summary": "Get Products in Quarantine",
+        "tags": [
+          "Prices and Discounts"
+        ],
+        "operationId": "tag/Prices-and-Discounts/paths/~1api~1v2~1quarantine~1goods/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Prices and Discounts"
+      }
+    },
+    "/api/v3/offices": {
+      "get": {
+        "summary": "Get Offices",
+        "tags": [
+          "Seller Warehouses"
+        ],
+        "operationId": "tag/Seller-Warehouses/paths/~1api~1v3~1offices/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Warehouses"
+      }
+    },
+    "/api/v3/warehouses": {
+      "get": {
+        "summary": "Get Warehouses",
+        "tags": [
+          "Seller Warehouses"
+        ],
+        "operationId": "tag/Seller-Warehouses/paths/~1api~1v3~1warehouses/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Warehouses"
+      },
+      "post": {
+        "summary": "Create Warehouse",
+        "tags": [
+          "Seller Warehouses"
+        ],
+        "operationId": "tag/Seller-Warehouses/paths/~1api~1v3~1warehouses/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Warehouses"
+      }
+    },
+    "/api/v3/warehouses/{warehouseId}": {
+      "put": {
+        "summary": "Update Warehouse",
+        "tags": [
+          "Seller Warehouses"
+        ],
+        "operationId": "tag/Seller-Warehouses/paths/~1api~1v3~1warehouses~1{warehouseId}/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Warehouses"
+      },
+      "delete": {
+        "summary": "Delete Warehouse",
+        "tags": [
+          "Seller Warehouses"
+        ],
+        "operationId": "tag/Seller-Warehouses/paths/~1api~1v3~1warehouses~1{warehouseId}/delete",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Warehouses"
+      }
+    },
+    "/api/v3/dbw/warehouses/{warehouseId}/contacts": {
+      "get": {
+        "summary": "Contacts List",
+        "tags": [
+          "Seller Warehouses"
+        ],
+        "operationId": "tag/Seller-Warehouses/paths/~1api~1v3~1dbw~1warehouses~1{warehouseId}~1contacts/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Warehouses"
+      },
+      "put": {
+        "summary": "Update Contacts List",
+        "tags": [
+          "Seller Warehouses"
+        ],
+        "operationId": "tag/Seller-Warehouses/paths/~1api~1v3~1dbw~1warehouses~1{warehouseId}~1contacts/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Warehouses"
+      }
+    },
+    "/api/v3/stocks/{warehouseId}": {
+      "put": {
+        "summary": "Update Inventory",
+        "tags": [
+          "Seller Warehouses Inventory"
+        ],
+        "operationId": "tag/Seller-Warehouses-Inventory/paths/~1api~1v3~1stocks~1{warehouseId}/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Warehouses Inventory"
+      },
+      "delete": {
+        "summary": "Delete Inventory",
+        "tags": [
+          "Seller Warehouses Inventory"
+        ],
+        "operationId": "tag/Seller-Warehouses-Inventory/paths/~1api~1v3~1stocks~1{warehouseId}/delete",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Warehouses Inventory"
+      },
+      "post": {
+        "summary": "Get Inventory",
+        "tags": [
+          "Seller Warehouses Inventory"
+        ],
+        "operationId": "tag/Seller-Warehouses-Inventory/paths/~1api~1v3~1stocks~1{warehouseId}/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Seller Warehouses Inventory"
+      }
+    }
+  },
+  "x-wb-extraction": {
+    "mode": "docs-html-snapshot",
+    "doc_url": "https://dev.wildberries.ru/en/docs/openapi/work-with-products",
+    "swagger_url": "https://dev.wildberries.ru/en/swagger/products",
+    "chapter_path": "work-with-products",
+    "group_count": 9,
+    "operation_count": 49
+  }
+}

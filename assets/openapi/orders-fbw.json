@@ -1,0 +1,146 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FBW Supplies",
+    "version": "html-snapshot",
+    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw."
+  },
+  "servers": [
+    {
+      "url": "https://supplies-api.wildberries.ru"
+    }
+  ],
+  "tags": [
+    {
+      "name": "FBW Supplies"
+    },
+    {
+      "name": "Information for Forming Supplies"
+    },
+    {
+      "name": "Supplies Information"
+    }
+  ],
+  "paths": {
+    "/api/v1/acceptance/options": {
+      "post": {
+        "summary": "Acceptance Options",
+        "tags": [
+          "Information for Forming Supplies"
+        ],
+        "operationId": "tag/Information-for-Forming-Supplies/paths/~1api~1v1~1acceptance~1options/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Information for Forming Supplies"
+      }
+    },
+    "/api/v1/warehouses": {
+      "get": {
+        "summary": "Warehouses List",
+        "tags": [
+          "Information for Forming Supplies"
+        ],
+        "operationId": "tag/Information-for-Forming-Supplies/paths/~1api~1v1~1warehouses/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Information for Forming Supplies"
+      }
+    },
+    "/api/v1/transit-tariffs": {
+      "get": {
+        "summary": "Transit Directions",
+        "tags": [
+          "Information for Forming Supplies"
+        ],
+        "operationId": "tag/Information-for-Forming-Supplies/paths/~1api~1v1~1transit-tariffs/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Information for Forming Supplies"
+      }
+    },
+    "/api/v1/supplies": {
+      "post": {
+        "summary": "Supplies List",
+        "tags": [
+          "Supplies Information"
+        ],
+        "operationId": "tag/Supplies-Information/paths/~1api~1v1~1supplies/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Supplies Information"
+      }
+    },
+    "/api/v1/supplies/{ID}": {
+      "get": {
+        "summary": "Supply Details",
+        "tags": [
+          "Supplies Information"
+        ],
+        "operationId": "tag/Supplies-Information/paths/~1api~1v1~1supplies~1{ID}/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Supplies Information"
+      }
+    },
+    "/api/v1/supplies/{ID}/goods": {
+      "get": {
+        "summary": "Supply Products",
+        "tags": [
+          "Supplies Information"
+        ],
+        "operationId": "tag/Supplies-Information/paths/~1api~1v1~1supplies~1{ID}~1goods/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Supplies Information"
+      }
+    },
+    "/api/v1/supplies/{ID}/package": {
+      "get": {
+        "summary": "Supply Package",
+        "tags": [
+          "Supplies Information"
+        ],
+        "operationId": "tag/Supplies-Information/paths/~1api~1v1~1supplies~1{ID}~1package/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Supplies Information"
+      }
+    }
+  },
+  "x-wb-extraction": {
+    "mode": "docs-html-snapshot",
+    "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-fbw",
+    "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-fbw",
+    "chapter_path": "orders-fbw",
+    "group_count": 3,
+    "operation_count": 7
+  }
+}

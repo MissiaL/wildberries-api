@@ -1,0 +1,492 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "In-Store Pickup Orders",
+    "version": "html-snapshot",
+    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup."
+  },
+  "servers": [
+    {
+      "url": "https://marketplace-api.wildberries.ru"
+    }
+  ],
+  "tags": [
+    {
+      "name": "In-Store Pickup Orders"
+    },
+    {
+      "name": "In-Store Pickup Assembly Orders"
+    },
+    {
+      "name": "In-Store Pickup Metadata"
+    }
+  ],
+  "paths": {
+    "/api/v3/click-collect/orders/new": {
+      "get": {
+        "summary": "Get New Assembly Orders List",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1v3~1click-collect~1orders~1new/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders"
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/status/confirm": {
+      "post": {
+        "summary": "Transfer to Assembly",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1marketplace~1v3~1click-collect~1orders~1status~1confirm/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders"
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/status/prepare": {
+      "post": {
+        "summary": "Notify That the Assembly Orders Are Ready for Pickup",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1marketplace~1v3~1click-collect~1orders~1status~1prepare/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders"
+      }
+    },
+    "/api/v3/click-collect/orders/{orderId}/confirm": {
+      "patch": {
+        "summary": "Transfer to Assembly",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1v3~1click-collect~1orders~1{orderId}~1confirm/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "deprecated": true
+      }
+    },
+    "/api/v3/click-collect/orders/{orderId}/prepare": {
+      "patch": {
+        "summary": "Notify That the Assembly Order Is Ready for Pickup",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1v3~1click-collect~1orders~1{orderId}~1prepare/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "deprecated": true
+      }
+    },
+    "/api/v3/click-collect/orders/client": {
+      "post": {
+        "summary": "Buyer Information",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1v3~1click-collect~1orders~1client/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders"
+      }
+    },
+    "/api/v3/click-collect/orders/client/identity": {
+      "post": {
+        "summary": "Check If the Order Belongs to the Buyer",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1v3~1click-collect~1orders~1client~1identity/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders"
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/status/receive": {
+      "post": {
+        "summary": "Notify That the Orders Were Received by the Buyers",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1marketplace~1v3~1click-collect~1orders~1status~1receive/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders"
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/status/reject": {
+      "post": {
+        "summary": "Notify that the Orders Are Declined",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1marketplace~1v3~1click-collect~1orders~1status~1reject/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders"
+      }
+    },
+    "/api/v3/click-collect/orders/{orderId}/receive": {
+      "patch": {
+        "summary": "Notify That the Order Has Been Accepted by the Buyer",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1v3~1click-collect~1orders~1{orderId}~1receive/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "deprecated": true
+      }
+    },
+    "/api/v3/click-collect/orders/{orderId}/reject": {
+      "patch": {
+        "summary": "Notify That the Buyer Refused the Order",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1v3~1click-collect~1orders~1{orderId}~1reject/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "deprecated": true
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/status/info": {
+      "post": {
+        "summary": "Get Assembly Order Statuses",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1marketplace~1v3~1click-collect~1orders~1status~1info/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders"
+      }
+    },
+    "/api/v3/click-collect/orders/status": {
+      "post": {
+        "summary": "Get Assembly Order Statuses",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1v3~1click-collect~1orders~1status/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "deprecated": true
+      }
+    },
+    "/api/v3/click-collect/orders": {
+      "get": {
+        "summary": "Retrieve Information on Completed Assembly Orders",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1v3~1click-collect~1orders/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders"
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/status/cancel": {
+      "post": {
+        "summary": "Cancel the Assembly Orders",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1marketplace~1v3~1click-collect~1orders~1status~1cancel/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders"
+      }
+    },
+    "/api/v3/click-collect/orders/{orderId}/cancel": {
+      "patch": {
+        "summary": "Cancel the Assembly Order",
+        "tags": [
+          "In-Store Pickup Assembly Orders"
+        ],
+        "operationId": "tag/In-Store-Pickup-Assembly-Orders/paths/~1api~1v3~1click-collect~1orders~1{orderId}~1cancel/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "deprecated": true
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/meta/info": {
+      "post": {
+        "summary": "Get Assembly Orders Metadata",
+        "tags": [
+          "In-Store Pickup Metadata"
+        ],
+        "operationId": "tag/In-Store-Pickup-Metadata/paths/~1api~1marketplace~1v3~1click-collect~1orders~1meta~1info/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Metadata"
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/meta/delete": {
+      "post": {
+        "summary": "Delete Assembly Order Metadata",
+        "tags": [
+          "In-Store Pickup Metadata"
+        ],
+        "operationId": "tag/In-Store-Pickup-Metadata/paths/~1api~1marketplace~1v3~1click-collect~1orders~1meta~1delete/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Metadata"
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/meta/sgtin": {
+      "post": {
+        "summary": "Add Data Matrix Codes to the Assembly Orders (Chestny ZNAK)",
+        "tags": [
+          "In-Store Pickup Metadata"
+        ],
+        "operationId": "tag/In-Store-Pickup-Metadata/paths/~1api~1marketplace~1v3~1click-collect~1orders~1meta~1sgtin/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Metadata"
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/meta/uin": {
+      "post": {
+        "summary": "Add UIN (Unique Identification Numbers) to the Assembly Orders",
+        "tags": [
+          "In-Store Pickup Metadata"
+        ],
+        "operationId": "tag/In-Store-Pickup-Metadata/paths/~1api~1marketplace~1v3~1click-collect~1orders~1meta~1uin/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Metadata"
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/meta/imei": {
+      "post": {
+        "summary": "Add IMEI to the Assembly Orders",
+        "tags": [
+          "In-Store Pickup Metadata"
+        ],
+        "operationId": "tag/In-Store-Pickup-Metadata/paths/~1api~1marketplace~1v3~1click-collect~1orders~1meta~1imei/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Metadata"
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/meta/gtin": {
+      "post": {
+        "summary": "Add GTIN to the Assembly Orders",
+        "tags": [
+          "In-Store Pickup Metadata"
+        ],
+        "operationId": "tag/In-Store-Pickup-Metadata/paths/~1api~1marketplace~1v3~1click-collect~1orders~1meta~1gtin/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Metadata"
+      }
+    },
+    "/api/v3/click-collect/orders/{orderId}/meta": {
+      "get": {
+        "summary": "Get Assembly Order Metadata",
+        "tags": [
+          "In-Store Pickup Metadata"
+        ],
+        "operationId": "tag/In-Store-Pickup-Metadata/paths/~1api~1v3~1click-collect~1orders~1{orderId}~1meta/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Metadata",
+        "deprecated": true
+      },
+      "delete": {
+        "summary": "Delete Assembly Order Metadata",
+        "tags": [
+          "In-Store Pickup Metadata"
+        ],
+        "operationId": "tag/In-Store-Pickup-Metadata/paths/~1api~1v3~1click-collect~1orders~1{orderId}~1meta/delete",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Metadata",
+        "deprecated": true
+      }
+    },
+    "/api/v3/click-collect/orders/{orderId}/meta/sgtin": {
+      "put": {
+        "summary": "Assign a Data Matrix Code to the Assembly Order",
+        "tags": [
+          "In-Store Pickup Metadata"
+        ],
+        "operationId": "tag/In-Store-Pickup-Metadata/paths/~1api~1v3~1click-collect~1orders~1{orderId}~1meta~1sgtin/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Metadata",
+        "deprecated": true
+      }
+    },
+    "/api/v3/click-collect/orders/{orderId}/meta/uin": {
+      "put": {
+        "summary": "Add UIN (Unique Identification Number) to the Assembly Order",
+        "tags": [
+          "In-Store Pickup Metadata"
+        ],
+        "operationId": "tag/In-Store-Pickup-Metadata/paths/~1api~1v3~1click-collect~1orders~1{orderId}~1meta~1uin/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Metadata",
+        "deprecated": true
+      }
+    },
+    "/api/v3/click-collect/orders/{orderId}/meta/imei": {
+      "put": {
+        "summary": "Add IMEI to the Assembly Order",
+        "tags": [
+          "In-Store Pickup Metadata"
+        ],
+        "operationId": "tag/In-Store-Pickup-Metadata/paths/~1api~1v3~1click-collect~1orders~1{orderId}~1meta~1imei/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Metadata",
+        "deprecated": true
+      }
+    },
+    "/api/v3/click-collect/orders/{orderId}/meta/gtin": {
+      "put": {
+        "summary": "Add GTIN to the Assembly Order",
+        "tags": [
+          "In-Store Pickup Metadata"
+        ],
+        "operationId": "tag/In-Store-Pickup-Metadata/paths/~1api~1v3~1click-collect~1orders~1{orderId}~1meta~1gtin/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/in-store-pickup and https://dev.wildberries.ru/en/swagger/in-store-pickup for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "In-Store Pickup Metadata",
+        "deprecated": true
+      }
+    }
+  },
+  "x-wb-extraction": {
+    "mode": "docs-html-snapshot",
+    "doc_url": "https://dev.wildberries.ru/en/docs/openapi/in-store-pickup",
+    "swagger_url": "https://dev.wildberries.ru/en/swagger/in-store-pickup",
+    "chapter_path": "in-store-pickup",
+    "group_count": 3,
+    "operation_count": 28
+  }
+}

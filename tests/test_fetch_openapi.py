@@ -56,6 +56,126 @@ def test_parse_schema_document_supports_yaml():
     assert payload["info"]["title"] == "Content"
 
 
+def test_extract_openapi_pages_from_sitemap():
+    xml = """<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      <url>
+        <loc>https://dev.wildberries.ru/docs/openapi/api-information</loc>
+        <lastmod>2026-04-20T13:02:56.000Z</lastmod>
+      </url>
+      <url>
+        <loc>https://dev.wildberries.ru/swagger/api-information</loc>
+        <lastmod>2026-04-20T13:02:56.000Z</lastmod>
+      </url>
+      <url>
+        <loc>https://dev.wildberries.ru/docs/openapi/work-with-products</loc>
+        <lastmod>2026-04-20T13:02:56.000Z</lastmod>
+      </url>
+    </urlset>
+    """
+
+    pages = fetch_openapi.extract_openapi_pages_from_sitemap(xml)
+
+    assert pages == [
+        {
+            "slug": "api-information",
+            "doc_url": "https://dev.wildberries.ru/en/docs/openapi/api-information",
+            "swagger_url": "https://dev.wildberries.ru/en/swagger/general",
+            "lastmod": "2026-04-20T13:02:56.000Z",
+        },
+        {
+            "slug": "work-with-products",
+            "doc_url": "https://dev.wildberries.ru/en/docs/openapi/work-with-products",
+            "swagger_url": "https://dev.wildberries.ru/en/swagger/products",
+            "lastmod": "2026-04-20T13:02:56.000Z",
+        },
+    ]
+
+
+def test_extract_chapter_payload_from_swagger_html():
+    html = r"""
+    <script>
+    self.__next_f.push([1,"{\"chapter\":\"Analytics\",\"path\":\"analytics\",\"groups\":[{\"title\":\"Reports\",\"tags\":[{\"title\":\"Get report\",\"path\":\"/api/v1/report\",\"method\":\"get\",\"tag\":\"Reports\"}]}]}"]);
+    self.__next_f.push([1,"{\"chapter\":\"Documents\",\"path\":\"financial-reports-and-accounting\",\"groups\":[{\"title\":\"Documents\",\"tags\":[]}]}"]);
+    </script>
+    """
+
+    payload = fetch_openapi.extract_chapter_payload(html, "analytics")
+
+    assert payload["chapter"] == "Analytics"
+    assert payload["path"] == "analytics"
+    assert payload["groups"][0]["tags"][0]["path"] == "/api/v1/report"
+
+
+def test_extract_operations_from_serialized_swagger_payload():
+    html = r'''
+    self.__next_f.push([1,"{\"title\":\"Create Product Cards\",\"path\":\"/content/v2/cards/upload\",\"method\":\"post\",\"tag\":\"Creating Product Cards\",\"key\":\"tag/Creating/paths/~1content~1v2~1cards~1upload/post\"}"]);
+    '''
+
+    operations = fetch_openapi.extract_operations_from_html(html)
+
+    assert operations == [
+        {
+            "title": "Create Product Cards",
+            "path": "/content/v2/cards/upload",
+            "method": "post",
+            "tag": "Creating Product Cards",
+        }
+    ]
+
+
+def test_extract_operations_from_redoc_menu_html():
+    html = """
+    <span type="get" class="operation-type get">get</span>
+    <span tabindex="0">Product Cards List{{ /content/v2/get/cards/list }}</span>
+    """
+
+    operations = fetch_openapi.extract_operations_from_html(html)
+
+    assert operations == [
+        {
+            "title": "Product Cards List",
+            "path": "/content/v2/get/cards/list",
+            "method": "get",
+            "tag": "Operations",
+        }
+    ]
+
+
+def test_build_snapshot_schema_from_chapter_payload():
+    chapter = {
+        "chapter": "Analytics",
+        "path": "analytics",
+        "groups": [
+            {
+                "title": "Reports",
+                "tags": [
+                    {
+                        "title": "Get report",
+                        "path": "/api/v1/report",
+                        "method": "get",
+                        "tag": "Reports",
+                    }
+                ],
+            }
+        ],
+    }
+
+    schema = fetch_openapi.build_snapshot_schema(
+        slug="analytics",
+        doc_url="https://dev.wildberries.ru/en/docs/openapi/analytics",
+        swagger_url="https://dev.wildberries.ru/en/swagger/analytics",
+        chapter=chapter,
+        hosts=["seller-analytics-api.wildberries.ru"],
+    )
+
+    assert schema["openapi"] == "3.0.0"
+    assert schema["info"]["title"] == "Analytics"
+    assert schema["servers"] == [{"url": "https://seller-analytics-api.wildberries.ru"}]
+    assert schema["paths"]["/api/v1/report"]["get"]["summary"] == "Get report"
+    assert schema["paths"]["/api/v1/report"]["get"]["tags"] == ["Reports"]
+
+
 def test_build_manifest_records_servers_and_source(tmp_path):
     schema = {
         "openapi": "3.0.0",
@@ -82,11 +202,13 @@ def test_write_outputs_manifest_and_allowlist(tmp_path):
             "slug": "general",
             "hosts": ["common-api.wildberries.ru"],
             "schema_filename": "general.json",
+            "schema": {"openapi": "3.0.0", "info": {"title": "General"}, "servers": []},
         },
         {
             "slug": "content",
             "hosts": ["content-api.wildberries.ru"],
             "schema_filename": "content.json",
+            "schema": {"openapi": "3.0.0", "info": {"title": "Content"}, "servers": []},
         },
     ]
     fetch_openapi.write_outputs(tmp_path, records)
@@ -101,6 +223,14 @@ def test_write_outputs_manifest_and_allowlist(tmp_path):
         "common-api.wildberries.ru",
         "content-api.wildberries.ru",
     ]
+    assert (
+        json.loads((tmp_path / "general.json").read_text(encoding="utf-8"))["info"]["title"]
+        == "General"
+    )
+    assert (
+        json.loads((tmp_path / "content.json").read_text(encoding="utf-8"))["info"]["title"]
+        == "Content"
+    )
 
 
 def test_write_outputs_handles_empty_records(tmp_path):

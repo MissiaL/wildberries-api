@@ -1,0 +1,572 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FBS Orders",
+    "version": "html-snapshot",
+    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs."
+  },
+  "servers": [
+    {
+      "url": "https://marketplace-api.wildberries.ru"
+    }
+  ],
+  "tags": [
+    {
+      "name": "FBS Orders"
+    },
+    {
+      "name": "FBS Assembly Orders"
+    },
+    {
+      "name": "FBS Metadata"
+    },
+    {
+      "name": "FBS Supplies"
+    },
+    {
+      "name": "FBS Passes"
+    }
+  ],
+  "paths": {
+    "/api/v3/orders/new": {
+      "get": {
+        "summary": "Get New Assembly Orders",
+        "tags": [
+          "FBS Assembly Orders"
+        ],
+        "operationId": "tag/FBS-Assembly-Orders/paths/~1api~1v3~1orders~1new/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Assembly Orders"
+      }
+    },
+    "/api/v3/orders": {
+      "get": {
+        "summary": "Get Assembly Orders",
+        "tags": [
+          "FBS Assembly Orders"
+        ],
+        "operationId": "tag/FBS-Assembly-Orders/paths/~1api~1v3~1orders/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Assembly Orders"
+      }
+    },
+    "/api/v3/orders/status": {
+      "post": {
+        "summary": "Get Assembly Orders Statuses",
+        "tags": [
+          "FBS Assembly Orders"
+        ],
+        "operationId": "tag/FBS-Assembly-Orders/paths/~1api~1v3~1orders~1status/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Assembly Orders"
+      }
+    },
+    "/api/v3/supplies/orders/reshipment": {
+      "get": {
+        "summary": "Get All Assembly Orders for Re-shipment",
+        "tags": [
+          "FBS Assembly Orders"
+        ],
+        "operationId": "tag/FBS-Assembly-Orders/paths/~1api~1v3~1supplies~1orders~1reshipment/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Assembly Orders"
+      }
+    },
+    "/api/v3/orders/{orderId}/cancel": {
+      "patch": {
+        "summary": "Cancel the Assembly Order",
+        "tags": [
+          "FBS Assembly Orders"
+        ],
+        "operationId": "tag/FBS-Assembly-Orders/paths/~1api~1v3~1orders~1{orderId}~1cancel/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Assembly Orders"
+      }
+    },
+    "/api/v3/orders/stickers": {
+      "post": {
+        "summary": "Get Assembly Orders Stickers",
+        "tags": [
+          "FBS Assembly Orders"
+        ],
+        "operationId": "tag/FBS-Assembly-Orders/paths/~1api~1v3~1orders~1stickers/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Assembly Orders"
+      }
+    },
+    "/api/v3/orders/stickers/cross-border": {
+      "post": {
+        "summary": "Get Stickers for Cross-Border Assembly Orders",
+        "tags": [
+          "FBS Assembly Orders"
+        ],
+        "operationId": "tag/FBS-Assembly-Orders/paths/~1api~1v3~1orders~1stickers~1cross-border/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Assembly Orders"
+      }
+    },
+    "/api/v3/orders/status/history": {
+      "post": {
+        "summary": "Status History for Cross-Border Orders",
+        "tags": [
+          "FBS Assembly Orders"
+        ],
+        "operationId": "tag/FBS-Assembly-Orders/paths/~1api~1v3~1orders~1status~1history/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Assembly Orders"
+      }
+    },
+    "/api/v3/orders/client": {
+      "post": {
+        "summary": "Orders with Client Information",
+        "tags": [
+          "FBS Assembly Orders"
+        ],
+        "operationId": "tag/FBS-Assembly-Orders/paths/~1api~1v3~1orders~1client/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Assembly Orders"
+      }
+    },
+    "/api/marketplace/v3/orders/meta": {
+      "post": {
+        "summary": "Get Assembly Orders Metadata",
+        "tags": [
+          "FBS Metadata"
+        ],
+        "operationId": "tag/FBS-Metadata/paths/~1api~1marketplace~1v3~1orders~1meta/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Metadata"
+      }
+    },
+    "/api/v3/orders/{orderId}/meta": {
+      "delete": {
+        "summary": "Delete Assembly Order Metadata",
+        "tags": [
+          "FBS Metadata"
+        ],
+        "operationId": "tag/FBS-Metadata/paths/~1api~1v3~1orders~1{orderId}~1meta/delete",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Metadata"
+      }
+    },
+    "/api/v3/orders/{orderId}/meta/sgtin": {
+      "put": {
+        "summary": "Add Data Matrix Code to the Assembly Order",
+        "tags": [
+          "FBS Metadata"
+        ],
+        "operationId": "tag/FBS-Metadata/paths/~1api~1v3~1orders~1{orderId}~1meta~1sgtin/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Metadata"
+      }
+    },
+    "/api/v3/orders/{orderId}/meta/uin": {
+      "put": {
+        "summary": "Add UIN (Unique Identification Number) to the Assembly Order",
+        "tags": [
+          "FBS Metadata"
+        ],
+        "operationId": "tag/FBS-Metadata/paths/~1api~1v3~1orders~1{orderId}~1meta~1uin/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Metadata"
+      }
+    },
+    "/api/v3/orders/{orderId}/meta/imei": {
+      "put": {
+        "summary": "Add IMEI to the Assembly Order",
+        "tags": [
+          "FBS Metadata"
+        ],
+        "operationId": "tag/FBS-Metadata/paths/~1api~1v3~1orders~1{orderId}~1meta~1imei/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Metadata"
+      }
+    },
+    "/api/v3/orders/{orderId}/meta/gtin": {
+      "put": {
+        "summary": "Add GTIN to the Assembly Order",
+        "tags": [
+          "FBS Metadata"
+        ],
+        "operationId": "tag/FBS-Metadata/paths/~1api~1v3~1orders~1{orderId}~1meta~1gtin/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Metadata"
+      }
+    },
+    "/api/v3/orders/{orderId}/meta/expiration": {
+      "put": {
+        "summary": "Add Expiration Date to the Assembly Order",
+        "tags": [
+          "FBS Metadata"
+        ],
+        "operationId": "tag/FBS-Metadata/paths/~1api~1v3~1orders~1{orderId}~1meta~1expiration/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Metadata"
+      }
+    },
+    "/api/marketplace/v3/orders/{orderId}/meta/customs-declaration": {
+      "put": {
+        "summary": "Add Custom Declaration number to the Order",
+        "tags": [
+          "FBS Metadata"
+        ],
+        "operationId": "tag/FBS-Metadata/paths/~1api~1marketplace~1v3~1orders~1{orderId}~1meta~1customs-declaration/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Metadata"
+      }
+    },
+    "/api/v3/supplies": {
+      "post": {
+        "summary": "Create a New Supply",
+        "tags": [
+          "FBS Supplies"
+        ],
+        "operationId": "tag/FBS-Supplies/paths/~1api~1v3~1supplies/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Supplies"
+      },
+      "get": {
+        "summary": "Get a Supplies List",
+        "tags": [
+          "FBS Supplies"
+        ],
+        "operationId": "tag/FBS-Supplies/paths/~1api~1v3~1supplies/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Supplies"
+      }
+    },
+    "/api/marketplace/v3/supplies/{supplyId}/orders": {
+      "patch": {
+        "summary": "Add Assembly Orders to the Supply",
+        "tags": [
+          "FBS Supplies"
+        ],
+        "operationId": "tag/FBS-Supplies/paths/~1api~1marketplace~1v3~1supplies~1{supplyId}~1orders/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Supplies"
+      }
+    },
+    "/api/v3/supplies/{supplyId}": {
+      "get": {
+        "summary": "Get Supply Details",
+        "tags": [
+          "FBS Supplies"
+        ],
+        "operationId": "tag/FBS-Supplies/paths/~1api~1v3~1supplies~1{supplyId}/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Supplies"
+      },
+      "delete": {
+        "summary": "Delete the Supply",
+        "tags": [
+          "FBS Supplies"
+        ],
+        "operationId": "tag/FBS-Supplies/paths/~1api~1v3~1supplies~1{supplyId}/delete",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Supplies"
+      }
+    },
+    "/api/marketplace/v3/supplies/{supplyId}/order-ids": {
+      "get": {
+        "summary": "Get Supply Assembly Order IDs",
+        "tags": [
+          "FBS Supplies"
+        ],
+        "operationId": "tag/FBS-Supplies/paths/~1api~1marketplace~1v3~1supplies~1{supplyId}~1order-ids/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Supplies"
+      }
+    },
+    "/api/v3/supplies/{supplyId}/deliver": {
+      "patch": {
+        "summary": "Move the Supply to the Delivery",
+        "tags": [
+          "FBS Supplies"
+        ],
+        "operationId": "tag/FBS-Supplies/paths/~1api~1v3~1supplies~1{supplyId}~1deliver/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Supplies"
+      }
+    },
+    "/api/v3/supplies/{supplyId}/barcode": {
+      "get": {
+        "summary": "Get the Supply QR Code",
+        "tags": [
+          "FBS Supplies"
+        ],
+        "operationId": "tag/FBS-Supplies/paths/~1api~1v3~1supplies~1{supplyId}~1barcode/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Supplies"
+      }
+    },
+    "/api/v3/supplies/{supplyId}/trbx": {
+      "get": {
+        "summary": "Get Supply Boxes List",
+        "tags": [
+          "FBS Supplies"
+        ],
+        "operationId": "tag/FBS-Supplies/paths/~1api~1v3~1supplies~1{supplyId}~1trbx/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Supplies"
+      },
+      "post": {
+        "summary": "Add Boxes to the Supply",
+        "tags": [
+          "FBS Supplies"
+        ],
+        "operationId": "tag/FBS-Supplies/paths/~1api~1v3~1supplies~1{supplyId}~1trbx/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Supplies"
+      },
+      "delete": {
+        "summary": "Delete Boxes from the Supply",
+        "tags": [
+          "FBS Supplies"
+        ],
+        "operationId": "tag/FBS-Supplies/paths/~1api~1v3~1supplies~1{supplyId}~1trbx/delete",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Supplies"
+      }
+    },
+    "/api/v3/supplies/{supplyId}/trbx/stickers": {
+      "post": {
+        "summary": "Get the Supply Box QR Code Stickers",
+        "tags": [
+          "FBS Supplies"
+        ],
+        "operationId": "tag/FBS-Supplies/paths/~1api~1v3~1supplies~1{supplyId}~1trbx~1stickers/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Supplies"
+      }
+    },
+    "/api/v3/passes/offices": {
+      "get": {
+        "summary": "Get Offices for Pass",
+        "tags": [
+          "FBS Passes"
+        ],
+        "operationId": "tag/FBS-Passes/paths/~1api~1v3~1passes~1offices/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Passes"
+      }
+    },
+    "/api/v3/passes": {
+      "get": {
+        "summary": "Get Passes",
+        "tags": [
+          "FBS Passes"
+        ],
+        "operationId": "tag/FBS-Passes/paths/~1api~1v3~1passes/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Passes"
+      },
+      "post": {
+        "summary": "Create Pass",
+        "tags": [
+          "FBS Passes"
+        ],
+        "operationId": "tag/FBS-Passes/paths/~1api~1v3~1passes/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Passes"
+      }
+    },
+    "/api/v3/passes/{passId}": {
+      "put": {
+        "summary": "Update Pass",
+        "tags": [
+          "FBS Passes"
+        ],
+        "operationId": "tag/FBS-Passes/paths/~1api~1v3~1passes~1{passId}/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Passes"
+      },
+      "delete": {
+        "summary": "Delete the Pass",
+        "tags": [
+          "FBS Passes"
+        ],
+        "operationId": "tag/FBS-Passes/paths/~1api~1v3~1passes~1{passId}/delete",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Passes"
+      }
+    }
+  },
+  "x-wb-extraction": {
+    "mode": "docs-html-snapshot",
+    "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-fbs",
+    "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-fbs",
+    "chapter_path": "orders-fbs",
+    "group_count": 5,
+    "operation_count": 34
+  }
+}

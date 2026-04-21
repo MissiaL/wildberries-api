@@ -1,0 +1,236 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Documents and Accounting",
+    "version": "html-snapshot",
+    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances."
+  },
+  "servers": [
+    {
+      "url": "https://finance-api.wildberries.ru"
+    },
+    {
+      "url": "https://statistics-api.wildberries.ru"
+    },
+    {
+      "url": "https://documents-api.wildberries.ru"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Documents and Accounting"
+    },
+    {
+      "name": "Balance"
+    },
+    {
+      "name": "Financial Reports"
+    },
+    {
+      "name": "Documents"
+    }
+  ],
+  "paths": {
+    "/api/v1/account/balance": {
+      "get": {
+        "summary": "Get Seller's Balance",
+        "tags": [
+          "Balance"
+        ],
+        "operationId": "tag/Balance/paths/~1api~1v1~1account~1balance/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Balance"
+      }
+    },
+    "/api/finance/v1/sales-reports/list": {
+      "post": {
+        "summary": "Sales Report List",
+        "tags": [
+          "Financial Reports"
+        ],
+        "operationId": "tag/Financial-Reports/operation/postV1SalesReportsList",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Financial Reports"
+      }
+    },
+    "/api/finance/v1/sales-reports/detailed/{reportId}": {
+      "post": {
+        "summary": "Details for the Sales Reports by Report ID",
+        "tags": [
+          "Financial Reports"
+        ],
+        "operationId": "tag/Financial-Reports/operation/postV1SalesReportsDetailedReportId",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Financial Reports"
+      }
+    },
+    "/api/finance/v1/sales-reports/detailed": {
+      "post": {
+        "summary": "Details for the Sales Reports by Period",
+        "tags": [
+          "Financial Reports"
+        ],
+        "operationId": "tag/Financial-Reports/operation/postV1SalesReportsDetailed",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Financial Reports"
+      }
+    },
+    "/api/v5/supplier/reportDetailByPeriod": {
+      "get": {
+        "summary": "Realization Sales Report",
+        "tags": [
+          "Financial Reports"
+        ],
+        "operationId": "tag/Financial-Reports/paths/~1api~1v5~1supplier~1reportDetailByPeriod/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Financial Reports",
+        "deprecated": true
+      }
+    },
+    "/api/finance/v1/acquiring/list": {
+      "post": {
+        "summary": "Acquiring Expenses Report List",
+        "tags": [
+          "Financial Reports"
+        ],
+        "operationId": "tag/Financial-Reports/operation/postV1AcquiringList",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Financial Reports"
+      }
+    },
+    "/api/finance/v1/acquiring/detailed/{reportId}": {
+      "post": {
+        "summary": "Details for the Acquiring Expenses Reports by Report ID",
+        "tags": [
+          "Financial Reports"
+        ],
+        "operationId": "tag/Financial-Reports/operation/postV1AcquiringDetailedReportId",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Financial Reports"
+      }
+    },
+    "/api/finance/v1/acquiring/detailed": {
+      "post": {
+        "summary": "Details for the Acquiring Expenses Reports by Period",
+        "tags": [
+          "Financial Reports"
+        ],
+        "operationId": "tag/Financial-Reports/operation/postV1AcquiringDetailed",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Financial Reports"
+      }
+    },
+    "/api/v1/documents/categories": {
+      "get": {
+        "summary": "Documents Categories",
+        "tags": [
+          "Documents"
+        ],
+        "operationId": "tag/Documents/paths/~1api~1v1~1documents~1categories/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Documents"
+      }
+    },
+    "/api/v1/documents/list": {
+      "get": {
+        "summary": "Documents List",
+        "tags": [
+          "Documents"
+        ],
+        "operationId": "tag/Documents/paths/~1api~1v1~1documents~1list/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Documents"
+      }
+    },
+    "/api/v1/documents/download": {
+      "get": {
+        "summary": "Get Document",
+        "tags": [
+          "Documents"
+        ],
+        "operationId": "tag/Documents/paths/~1api~1v1~1documents~1download/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Documents"
+      }
+    },
+    "/api/v1/documents/download/all": {
+      "post": {
+        "summary": "Get Documents",
+        "tags": [
+          "Documents"
+        ],
+        "operationId": "tag/Documents/paths/~1api~1v1~1documents~1download~1all/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Documents"
+      }
+    }
+  },
+  "x-wb-extraction": {
+    "mode": "docs-html-snapshot",
+    "doc_url": "https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting",
+    "swagger_url": "https://dev.wildberries.ru/en/swagger/finances",
+    "chapter_path": "financial-reports-and-accounting",
+    "group_count": 4,
+    "operation_count": 12
+  }
+}

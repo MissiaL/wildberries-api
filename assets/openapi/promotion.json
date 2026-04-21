@@ -1,0 +1,642 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Marketing and Promotions",
+    "version": "html-snapshot",
+    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion."
+  },
+  "servers": [
+    {
+      "url": "https://advert-api.wildberries.ru"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Marketing and Promotions"
+    },
+    {
+      "name": "Campaigns"
+    },
+    {
+      "name": "Campaigns Creation"
+    },
+    {
+      "name": "Campaigns Management"
+    },
+    {
+      "name": "Search Clusters"
+    },
+    {
+      "name": "Finances"
+    },
+    {
+      "name": "Media"
+    },
+    {
+      "name": "Statistics"
+    },
+    {
+      "name": "Promotions Calendar"
+    }
+  ],
+  "paths": {
+    "/adv/v1/promotion/count": {
+      "get": {
+        "summary": "Campaigns Lists",
+        "tags": [
+          "Campaigns"
+        ],
+        "operationId": "tag/Campaigns/paths/~1adv~1v1~1promotion~1count/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns"
+      }
+    },
+    "/api/advert/v2/adverts": {
+      "get": {
+        "summary": "Campaigns Information",
+        "tags": [
+          "Campaigns"
+        ],
+        "operationId": "tag/Campaigns/paths/~1api~1advert~1v2~1adverts/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns"
+      }
+    },
+    "/api/advert/v1/bids/min": {
+      "post": {
+        "summary": "Minimum Bids for Product Cards",
+        "tags": [
+          "Campaigns Creation"
+        ],
+        "operationId": "tag/Campaigns-Creation/paths/~1api~1advert~1v1~1bids~1min/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Creation"
+      }
+    },
+    "/adv/v2/seacat/save-ad": {
+      "post": {
+        "summary": "Create Campaign",
+        "tags": [
+          "Campaigns Creation"
+        ],
+        "operationId": "tag/Campaigns-Creation/paths/~1adv~1v2~1seacat~1save-ad/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Creation"
+      }
+    },
+    "/adv/v1/supplier/subjects": {
+      "get": {
+        "summary": "Subjects for Campaigns",
+        "tags": [
+          "Campaigns Creation"
+        ],
+        "operationId": "tag/Campaigns-Creation/paths/~1adv~1v1~1supplier~1subjects/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Creation"
+      }
+    },
+    "/adv/v2/supplier/nms": {
+      "post": {
+        "summary": "Product Cards for Campaigns",
+        "tags": [
+          "Campaigns Creation"
+        ],
+        "operationId": "tag/Campaigns-Creation/paths/~1adv~1v2~1supplier~1nms/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Creation"
+      }
+    },
+    "/adv/v0/delete": {
+      "get": {
+        "summary": "Delete Campaign",
+        "tags": [
+          "Campaigns Management"
+        ],
+        "operationId": "tag/Campaigns-Management/paths/~1adv~1v0~1delete/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Management"
+      }
+    },
+    "/adv/v0/rename": {
+      "post": {
+        "summary": "Rename Campaign",
+        "tags": [
+          "Campaigns Management"
+        ],
+        "operationId": "tag/Campaigns-Management/paths/~1adv~1v0~1rename/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Management"
+      }
+    },
+    "/adv/v0/start": {
+      "get": {
+        "summary": "Launch Campaign",
+        "tags": [
+          "Campaigns Management"
+        ],
+        "operationId": "tag/Campaigns-Management/paths/~1adv~1v0~1start/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Management"
+      }
+    },
+    "/adv/v0/pause": {
+      "get": {
+        "summary": "Pause Campaign",
+        "tags": [
+          "Campaigns Management"
+        ],
+        "operationId": "tag/Campaigns-Management/paths/~1adv~1v0~1pause/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Management"
+      }
+    },
+    "/adv/v0/stop": {
+      "get": {
+        "summary": "Stop Campaign",
+        "tags": [
+          "Campaigns Management"
+        ],
+        "operationId": "tag/Campaigns-Management/paths/~1adv~1v0~1stop/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Management"
+      }
+    },
+    "/adv/v0/auction/placements": {
+      "put": {
+        "summary": "Changing Placements in Campaigns with Custom Bid",
+        "tags": [
+          "Campaigns Management"
+        ],
+        "operationId": "tag/Campaigns-Management/paths/~1adv~1v0~1auction~1placements/put",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Management"
+      }
+    },
+    "/api/advert/v1/bids": {
+      "patch": {
+        "summary": "Changing Campaigns Bids",
+        "tags": [
+          "Campaigns Management"
+        ],
+        "operationId": "tag/Campaigns-Management/paths/~1api~1advert~1v1~1bids/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Management"
+      }
+    },
+    "/adv/v0/auction/nms": {
+      "patch": {
+        "summary": "Changing the List of Product Cards in Campaigns",
+        "tags": [
+          "Campaigns Management"
+        ],
+        "operationId": "tag/Campaigns-Management/paths/~1adv~1v0~1auction~1nms/patch",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Management"
+      }
+    },
+    "/api/advert/v0/bids/recommendations": {
+      "get": {
+        "summary": "Recommended bids for items and search clusters",
+        "tags": [
+          "Campaigns Management"
+        ],
+        "operationId": "tag/Campaigns-Management/paths/~1api~1advert~1v0~1bids~1recommendations/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Campaigns Management"
+      }
+    },
+    "/adv/v0/normquery/get-bids": {
+      "post": {
+        "summary": "List of Search Clusters Bids",
+        "tags": [
+          "Search Clusters"
+        ],
+        "operationId": "tag/Search-Clusters/paths/~1adv~1v0~1normquery~1get-bids/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Search Clusters"
+      }
+    },
+    "/adv/v0/normquery/bids": {
+      "post": {
+        "summary": "Set Bids for Search Clusters",
+        "tags": [
+          "Search Clusters"
+        ],
+        "operationId": "tag/Search-Clusters/paths/~1adv~1v0~1normquery~1bids/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Search Clusters"
+      },
+      "delete": {
+        "summary": "Delete Bids from Search Clusters",
+        "tags": [
+          "Search Clusters"
+        ],
+        "operationId": "tag/Search-Clusters/paths/~1adv~1v0~1normquery~1bids/delete",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Search Clusters"
+      }
+    },
+    "/adv/v0/normquery/get-minus": {
+      "post": {
+        "summary": "List of Campaign Minus Phrases",
+        "tags": [
+          "Search Clusters"
+        ],
+        "operationId": "tag/Search-Clusters/paths/~1adv~1v0~1normquery~1get-minus/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Search Clusters"
+      }
+    },
+    "/adv/v0/normquery/set-minus": {
+      "post": {
+        "summary": "Setting and Deleting Minus Phrases",
+        "tags": [
+          "Search Clusters"
+        ],
+        "operationId": "tag/Search-Clusters/paths/~1adv~1v0~1normquery~1set-minus/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Search Clusters"
+      }
+    },
+    "/adv/v0/normquery/list": {
+      "post": {
+        "summary": "Active and Inactive Search Cluster Lists",
+        "tags": [
+          "Search Clusters"
+        ],
+        "operationId": "tag/Search-Clusters/paths/~1adv~1v0~1normquery~1list/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Search Clusters"
+      }
+    },
+    "/adv/v1/balance": {
+      "get": {
+        "summary": "Balance",
+        "tags": [
+          "Finances"
+        ],
+        "operationId": "tag/Finances/paths/~1adv~1v1~1balance/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Finances"
+      }
+    },
+    "/adv/v1/budget": {
+      "get": {
+        "summary": "Campaign Budget",
+        "tags": [
+          "Finances"
+        ],
+        "operationId": "tag/Finances/paths/~1adv~1v1~1budget/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Finances"
+      }
+    },
+    "/adv/v1/budget/deposit": {
+      "post": {
+        "summary": "Top-up of the Campaign Budget",
+        "tags": [
+          "Finances"
+        ],
+        "operationId": "tag/Finances/paths/~1adv~1v1~1budget~1deposit/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Finances"
+      }
+    },
+    "/adv/v1/upd": {
+      "get": {
+        "summary": "Receiving Costs History",
+        "tags": [
+          "Finances"
+        ],
+        "operationId": "tag/Finances/paths/~1adv~1v1~1upd/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Finances"
+      }
+    },
+    "/adv/v1/payments": {
+      "get": {
+        "summary": "Receiving the History of Account Top-ups",
+        "tags": [
+          "Finances"
+        ],
+        "operationId": "tag/Finances/paths/~1adv~1v1~1payments/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Finances"
+      }
+    },
+    "/adv/v1/count": {
+      "get": {
+        "summary": "Media Campaigns Number",
+        "tags": [
+          "Media"
+        ],
+        "operationId": "tag/Media/paths/~1adv~1v1~1count/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Media"
+      }
+    },
+    "/adv/v1/adverts": {
+      "get": {
+        "summary": "List of Media Campaigns",
+        "tags": [
+          "Media"
+        ],
+        "operationId": "tag/Media/paths/~1adv~1v1~1adverts/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Media"
+      }
+    },
+    "/adv/v1/advert": {
+      "get": {
+        "summary": "Information About Media Campaign",
+        "tags": [
+          "Media"
+        ],
+        "operationId": "tag/Media/paths/~1adv~1v1~1advert/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Media"
+      }
+    },
+    "/adv/v0/normquery/stats": {
+      "post": {
+        "summary": "Search Clusters Statistics",
+        "tags": [
+          "Statistics"
+        ],
+        "operationId": "tag/Statistics/paths/~1adv~1v0~1normquery~1stats/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Statistics"
+      }
+    },
+    "/adv/v3/fullstats": {
+      "get": {
+        "summary": "Campaigns Statistics",
+        "tags": [
+          "Statistics"
+        ],
+        "operationId": "tag/Statistics/paths/~1adv~1v3~1fullstats/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Statistics"
+      }
+    },
+    "/adv/v1/stats": {
+      "post": {
+        "summary": "Media Campaign Statistics",
+        "tags": [
+          "Statistics"
+        ],
+        "operationId": "tag/Statistics/paths/~1adv~1v1~1stats/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Statistics"
+      }
+    },
+    "/adv/v1/normquery/stats": {
+      "post": {
+        "summary": "Daily Search Clusters Statistics",
+        "tags": [
+          "Statistics"
+        ],
+        "operationId": "tag/Statistics/paths/~1adv~1v1~1normquery~1stats/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Statistics"
+      }
+    },
+    "/api/v1/calendar/promotions": {
+      "get": {
+        "summary": "Promotions List",
+        "tags": [
+          "Promotions Calendar"
+        ],
+        "operationId": "tag/Promotions-Calendar/paths/~1api~1v1~1calendar~1promotions/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Promotions Calendar"
+      }
+    },
+    "/api/v1/calendar/promotions/details": {
+      "get": {
+        "summary": "Promotions Details",
+        "tags": [
+          "Promotions Calendar"
+        ],
+        "operationId": "tag/Promotions-Calendar/paths/~1api~1v1~1calendar~1promotions~1details/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Promotions Calendar"
+      }
+    },
+    "/api/v1/calendar/promotions/nomenclatures": {
+      "get": {
+        "summary": "List of Products for Participating in the Promotion",
+        "tags": [
+          "Promotions Calendar"
+        ],
+        "operationId": "tag/Promotions-Calendar/paths/~1api~1v1~1calendar~1promotions~1nomenclatures/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Promotions Calendar"
+      }
+    },
+    "/api/v1/calendar/promotions/upload": {
+      "post": {
+        "summary": "Add Product to the Promotion",
+        "tags": [
+          "Promotions Calendar"
+        ],
+        "operationId": "tag/Promotions-Calendar/paths/~1api~1v1~1calendar~1promotions~1upload/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Promotions Calendar"
+      }
+    }
+  },
+  "x-wb-extraction": {
+    "mode": "docs-html-snapshot",
+    "doc_url": "https://dev.wildberries.ru/en/docs/openapi/promotion",
+    "swagger_url": "https://dev.wildberries.ru/en/swagger/promotion",
+    "chapter_path": "promotion",
+    "group_count": 9,
+    "operation_count": 37
+  }
+}

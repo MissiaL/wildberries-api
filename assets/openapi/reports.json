@@ -1,0 +1,462 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Reports",
+    "version": "html-snapshot",
+    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports."
+  },
+  "servers": [
+    {
+      "url": "https://statistics-api.wildberries.ru"
+    },
+    {
+      "url": "https://seller-analytics-api.wildberries.ru"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Reports"
+    },
+    {
+      "name": "Main Reports"
+    },
+    {
+      "name": "Warehouses Inventory Report"
+    },
+    {
+      "name": "Report on Products with Mandatory Labeling"
+    },
+    {
+      "name": "Retention Reports"
+    },
+    {
+      "name": "Acceptance Expenses"
+    },
+    {
+      "name": "Paid Storage"
+    },
+    {
+      "name": "Sales by Regions"
+    },
+    {
+      "name": "Share of Brand in Sales"
+    },
+    {
+      "name": "Hidden Products"
+    },
+    {
+      "name": "Returns and Product Movement Report"
+    }
+  ],
+  "paths": {
+    "/api/v1/supplier/stocks": {
+      "get": {
+        "summary": "Warehouse",
+        "tags": [
+          "Main Reports"
+        ],
+        "operationId": "tag/Main-Reports/paths/~1api~1v1~1supplier~1stocks/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Main Reports",
+        "deprecated": true
+      }
+    },
+    "/api/v1/supplier/orders": {
+      "get": {
+        "summary": "Orders",
+        "tags": [
+          "Main Reports"
+        ],
+        "operationId": "tag/Main-Reports/paths/~1api~1v1~1supplier~1orders/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Main Reports"
+      }
+    },
+    "/api/v1/supplier/sales": {
+      "get": {
+        "summary": "Sales",
+        "tags": [
+          "Main Reports"
+        ],
+        "operationId": "tag/Main-Reports/paths/~1api~1v1~1supplier~1sales/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Main Reports"
+      }
+    },
+    "/api/v1/warehouse_remains": {
+      "get": {
+        "summary": "Create the Report",
+        "tags": [
+          "Warehouses Inventory Report"
+        ],
+        "operationId": "tag/Warehouses-Inventory-Report/paths/~1api~1v1~1warehouse_remains/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Warehouses Inventory Report"
+      }
+    },
+    "/api/v1/warehouse_remains/tasks/{task_id}/status": {
+      "get": {
+        "summary": "Check the Status",
+        "tags": [
+          "Warehouses Inventory Report"
+        ],
+        "operationId": "tag/Warehouses-Inventory-Report/paths/~1api~1v1~1warehouse_remains~1tasks~1{task_id}~1status/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Warehouses Inventory Report"
+      }
+    },
+    "/api/v1/warehouse_remains/tasks/{task_id}/download": {
+      "get": {
+        "summary": "Get the Report",
+        "tags": [
+          "Warehouses Inventory Report"
+        ],
+        "operationId": "tag/Warehouses-Inventory-Report/paths/~1api~1v1~1warehouse_remains~1tasks~1{task_id}~1download/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Warehouses Inventory Report"
+      }
+    },
+    "/api/v1/analytics/excise-report": {
+      "post": {
+        "summary": "Report on Products with Mandatory Labeling",
+        "tags": [
+          "Report on Products with Mandatory Labeling"
+        ],
+        "operationId": "tag/Report-on-Products-with-Mandatory-Labeling/paths/~1api~1v1~1analytics~1excise-report/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Report on Products with Mandatory Labeling"
+      }
+    },
+    "/api/analytics/v1/measurement-penalties": {
+      "get": {
+        "summary": "Logistics and Storage Costs Multiplier",
+        "tags": [
+          "Retention Reports"
+        ],
+        "operationId": "tag/Retention-Reports/operation/getMeasurementPenalties",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Retention Reports"
+      }
+    },
+    "/api/analytics/v1/warehouse-measurements": {
+      "get": {
+        "summary": "Warehouse Measurements",
+        "tags": [
+          "Retention Reports"
+        ],
+        "operationId": "tag/Retention-Reports/operation/getWarehouseMeasurements",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Retention Reports"
+      }
+    },
+    "/api/analytics/v1/deductions": {
+      "get": {
+        "summary": "Substitutions and Incorrect Attachments",
+        "tags": [
+          "Retention Reports"
+        ],
+        "operationId": "tag/Retention-Reports/operation/getDeductions",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Retention Reports"
+      }
+    },
+    "/api/v1/analytics/antifraud-details": {
+      "get": {
+        "summary": "Self-purchases",
+        "tags": [
+          "Retention Reports"
+        ],
+        "operationId": "tag/Retention-Reports/paths/~1api~1v1~1analytics~1antifraud-details/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Retention Reports"
+      }
+    },
+    "/api/v1/analytics/goods-labeling": {
+      "get": {
+        "summary": "Product Labeling",
+        "tags": [
+          "Retention Reports"
+        ],
+        "operationId": "tag/Retention-Reports/paths/~1api~1v1~1analytics~1goods-labeling/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Retention Reports"
+      }
+    },
+    "/api/v1/acceptance_report": {
+      "get": {
+        "summary": "Create the Report",
+        "tags": [
+          "Acceptance Expenses"
+        ],
+        "operationId": "tag/Acceptance-Expenses/paths/~1api~1v1~1acceptance_report/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Acceptance Expenses"
+      }
+    },
+    "/api/v1/acceptance_report/tasks/{task_id}/status": {
+      "get": {
+        "summary": "Check the Status",
+        "tags": [
+          "Acceptance Expenses"
+        ],
+        "operationId": "tag/Acceptance-Expenses/paths/~1api~1v1~1acceptance_report~1tasks~1{task_id}~1status/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Acceptance Expenses"
+      }
+    },
+    "/api/v1/acceptance_report/tasks/{task_id}/download": {
+      "get": {
+        "summary": "Get the Report",
+        "tags": [
+          "Acceptance Expenses"
+        ],
+        "operationId": "tag/Acceptance-Expenses/paths/~1api~1v1~1acceptance_report~1tasks~1{task_id}~1download/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Acceptance Expenses"
+      }
+    },
+    "/api/v1/paid_storage": {
+      "get": {
+        "summary": "Generate the Report",
+        "tags": [
+          "Paid Storage"
+        ],
+        "operationId": "tag/Paid-Storage/paths/~1api~1v1~1paid_storage/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Paid Storage"
+      }
+    },
+    "/api/v1/paid_storage/tasks/{task_id}/status": {
+      "get": {
+        "summary": "Check the Status",
+        "tags": [
+          "Paid Storage"
+        ],
+        "operationId": "tag/Paid-Storage/paths/~1api~1v1~1paid_storage~1tasks~1{task_id}~1status/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Paid Storage"
+      }
+    },
+    "/api/v1/paid_storage/tasks/{task_id}/download": {
+      "get": {
+        "summary": "Get the Report",
+        "tags": [
+          "Paid Storage"
+        ],
+        "operationId": "tag/Paid-Storage/paths/~1api~1v1~1paid_storage~1tasks~1{task_id}~1download/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Paid Storage"
+      }
+    },
+    "/api/v1/analytics/region-sale": {
+      "get": {
+        "summary": "Get Report",
+        "tags": [
+          "Sales by Regions"
+        ],
+        "operationId": "tag/Sales-by-Regions/paths/~1api~1v1~1analytics~1region-sale/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Sales by Regions"
+      }
+    },
+    "/api/v1/analytics/brand-share/brands": {
+      "get": {
+        "summary": "Seller Brands",
+        "tags": [
+          "Share of Brand in Sales"
+        ],
+        "operationId": "tag/Share-of-Brand-in-Sales/paths/~1api~1v1~1analytics~1brand-share~1brands/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Share of Brand in Sales"
+      }
+    },
+    "/api/v1/analytics/brand-share/parent-subjects": {
+      "get": {
+        "summary": "Parent Categories of the Brand",
+        "tags": [
+          "Share of Brand in Sales"
+        ],
+        "operationId": "tag/Share-of-Brand-in-Sales/paths/~1api~1v1~1analytics~1brand-share~1parent-subjects/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Share of Brand in Sales"
+      }
+    },
+    "/api/v1/analytics/brand-share": {
+      "get": {
+        "summary": "Get Report",
+        "tags": [
+          "Share of Brand in Sales"
+        ],
+        "operationId": "tag/Share-of-Brand-in-Sales/paths/~1api~1v1~1analytics~1brand-share/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Share of Brand in Sales"
+      }
+    },
+    "/api/v1/analytics/banned-products/blocked": {
+      "get": {
+        "summary": "Blocked Product Cards",
+        "tags": [
+          "Hidden Products"
+        ],
+        "operationId": "tag/Hidden-Products/paths/~1api~1v1~1analytics~1banned-products~1blocked/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Hidden Products"
+      }
+    },
+    "/api/v1/analytics/banned-products/shadowed": {
+      "get": {
+        "summary": "Hidden from the Catalog",
+        "tags": [
+          "Hidden Products"
+        ],
+        "operationId": "tag/Hidden-Products/paths/~1api~1v1~1analytics~1banned-products~1shadowed/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Hidden Products"
+      }
+    },
+    "/api/v1/analytics/goods-return": {
+      "get": {
+        "summary": "Get Report",
+        "tags": [
+          "Returns and Product Movement Report"
+        ],
+        "operationId": "tag/Returns-and-Product-Movement-Report/paths/~1api~1v1~1analytics~1goods-return/get",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/reports and https://dev.wildberries.ru/en/swagger/reports for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Returns and Product Movement Report"
+      }
+    }
+  },
+  "x-wb-extraction": {
+    "mode": "docs-html-snapshot",
+    "doc_url": "https://dev.wildberries.ru/en/docs/openapi/reports",
+    "swagger_url": "https://dev.wildberries.ru/en/swagger/reports",
+    "chapter_path": "reports",
+    "group_count": 11,
+    "operation_count": 25
+  }
+}
