@@ -1,7 +1,7 @@
 ---
 name: wildberries-api
 description: Use when the user needs to read or change Wildberries seller data through the official production API, including product cards, prices, orders, supplies, analytics, promotions, reviews, reports, finance, returns, documents, tariffs, and seller operations.
-metadata: {"author":"MissiaL","version":"0.1.0","keywords":["wildberries","seller-api","marketplace","product-cards","prices","orders","analytics","promotions","reports","finance"]}
+metadata: {"author":"MissiaL","version":"0.2.0","keywords":["wildberries","seller-api","marketplace","product-cards","prices","orders","analytics","promotions","reports","finance"]}
 ---
 
 # Wildberries API

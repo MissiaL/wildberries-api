@@ -26,15 +26,15 @@
       "extraction_mode": "docs-html-snapshot",
       "path_count": 9,
       "operation_count": 9,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/api-information",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/general",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:32.526662+00:00"
+      "fetched_at": "2026-06-11T15:26:12.481869+00:00"
     },
     {
       "slug": "work-with-products",
@@ -49,17 +49,17 @@
         "marketplace-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 42,
-      "operation_count": 49,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "path_count": 43,
+      "operation_count": 50,
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/work-with-products",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/products",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:39.661302+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482017+00:00"
     },
     {
       "slug": "orders-fbs",
@@ -72,17 +72,17 @@
         "marketplace-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 28,
-      "operation_count": 34,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "path_count": 29,
+      "operation_count": 35,
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-fbs",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-fbs",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:41.190220+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482046+00:00"
     },
     {
       "slug": "orders-dbw",
@@ -95,17 +95,17 @@
         "marketplace-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 15,
-      "operation_count": 16,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "path_count": 17,
+      "operation_count": 17,
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-dbw",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-dbw",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:45.183842+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482061+00:00"
     },
     {
       "slug": "orders-dbs",
@@ -118,17 +118,17 @@
         "marketplace-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 31,
-      "operation_count": 32,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "path_count": 21,
+      "operation_count": 21,
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-dbs",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-dbs",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:47.151661+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482077+00:00"
     },
     {
       "slug": "promotion",
@@ -141,17 +141,17 @@
         "advert-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 36,
-      "operation_count": 37,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "path_count": 38,
+      "operation_count": 39,
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/promotion",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/promotion",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:48.879288+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482104+00:00"
     },
     {
       "slug": "user-communication",
@@ -168,15 +168,15 @@
       "extraction_mode": "docs-html-snapshot",
       "path_count": 21,
       "operation_count": 25,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/user-communication",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/communications",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:51.496400+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482127+00:00"
     },
     {
       "slug": "wb-tariffs",
@@ -191,15 +191,15 @@
       "extraction_mode": "docs-html-snapshot",
       "path_count": 5,
       "operation_count": 5,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/wb-tariffs",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/tariffs",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:52.644152+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482137+00:00"
     },
     {
       "slug": "in-store-pickup",
@@ -212,17 +212,17 @@
         "marketplace-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 27,
-      "operation_count": 28,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "path_count": 16,
+      "operation_count": 16,
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/in-store-pickup",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/in-store-pickup",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:54.095395+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482149+00:00"
     },
     {
       "slug": "orders-fbw",
@@ -237,15 +237,15 @@
       "extraction_mode": "docs-html-snapshot",
       "path_count": 7,
       "operation_count": 7,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-fbw",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-fbw",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:55.293892+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482160+00:00"
     },
     {
       "slug": "analytics",
@@ -258,17 +258,17 @@
         "seller-analytics-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 16,
-      "operation_count": 17,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "path_count": 17,
+      "operation_count": 18,
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/analytics",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/analytics",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:56.809095+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482174+00:00"
     },
     {
       "slug": "reports",
@@ -284,15 +284,15 @@
       "extraction_mode": "docs-html-snapshot",
       "path_count": 25,
       "operation_count": 25,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/reports",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/reports",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:58.487872+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482198+00:00"
     },
     {
       "slug": "financial-reports-and-accounting",
@@ -309,15 +309,15 @@
       "extraction_mode": "docs-html-snapshot",
       "path_count": 12,
       "operation_count": 12,
-      "source_lastmod": "2026-04-20T13:02:56.000Z",
+      "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/finances",
         "schema_source_url": null,
-        "source_lastmod": "2026-04-20T13:02:56.000Z"
+        "source_lastmod": null
       },
-      "fetched_at": "2026-04-21T06:18:59.997859+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482213+00:00"
     }
   ]
 }

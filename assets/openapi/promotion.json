@@ -37,6 +37,12 @@
     },
     {
       "name": "Promotions Calendar"
+    },
+    {
+      "name": "Recommendations"
+    },
+    {
+      "name": "recommendations"
     }
   ],
   "paths": {
@@ -629,6 +635,38 @@
         },
         "x-wb-group": "Promotions Calendar"
       }
+    },
+    "/api/content/v1/recommendations/list": {
+      "post": {
+        "summary": "Item Recommendation List",
+        "tags": [
+          "recommendations"
+        ],
+        "operationId": "tag/recommendations/operation/postV1RecommendationsList",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Recommendations"
+      }
+    },
+    "/api/content/v1/recommendations/set": {
+      "post": {
+        "summary": "Set Item Recommendations",
+        "tags": [
+          "recommendations"
+        ],
+        "operationId": "tag/recommendations/operation/postV1RecommendationsSet",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Recommendations"
+      }
     }
   },
   "x-wb-extraction": {
@@ -636,7 +674,7 @@
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/promotion",
     "swagger_url": "https://dev.wildberries.ru/en/swagger/promotion",
     "chapter_path": "promotion",
-    "group_count": 9,
-    "operation_count": 37
+    "group_count": 10,
+    "operation_count": 39
   }
 }

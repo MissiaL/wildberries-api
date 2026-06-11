@@ -18,7 +18,10 @@
       "name": "FBS Assembly Orders"
     },
     {
-      "name": "FBS Metadata"
+      "name": "FBS Label Identifiers"
+    },
+    {
+      "name": "fbsLabelIdentifiers"
     },
     {
       "name": "FBS Supplies"
@@ -172,132 +175,148 @@
         "x-wb-group": "FBS Assembly Orders"
       }
     },
-    "/api/marketplace/v3/orders/meta": {
-      "post": {
-        "summary": "Get Assembly Orders Metadata",
+    "/api/marketplace/v3/fbs/orders/archive": {
+      "get": {
+        "summary": "Get the List of Archived Assembly Orders",
         "tags": [
-          "FBS Metadata"
+          "FBS Assembly Orders"
         ],
-        "operationId": "tag/FBS-Metadata/paths/~1api~1marketplace~1v3~1orders~1meta/post",
+        "operationId": "tag/FBS-Assembly-Orders/paths/~1api~1marketplace~1v3~1fbs~1orders~1archive/get",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Metadata"
+        "x-wb-group": "FBS Assembly Orders"
+      }
+    },
+    "/api/marketplace/v3/orders/meta": {
+      "post": {
+        "summary": "Get Assembly Orders Label Identifiers",
+        "tags": [
+          "fbsLabelIdentifiers"
+        ],
+        "operationId": "tag/fbsLabelIdentifiers/paths/~1api~1marketplace~1v3~1orders~1meta/post",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "FBS Label Identifiers"
       }
     },
     "/api/v3/orders/{orderId}/meta": {
       "delete": {
-        "summary": "Delete Assembly Order Metadata",
+        "summary": "Delete Assembly Order Label Identifiers",
         "tags": [
-          "FBS Metadata"
+          "fbsLabelIdentifiers"
         ],
-        "operationId": "tag/FBS-Metadata/paths/~1api~1v3~1orders~1{orderId}~1meta/delete",
+        "operationId": "tag/fbsLabelIdentifiers/paths/~1api~1v3~1orders~1{orderId}~1meta/delete",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Metadata"
+        "x-wb-group": "FBS Label Identifiers"
       }
     },
     "/api/v3/orders/{orderId}/meta/sgtin": {
       "put": {
-        "summary": "Add Data Matrix Code to the Assembly Order",
+        "summary": "Add Labeling Code Chestny ZNAK to the Assembly Order",
         "tags": [
-          "FBS Metadata"
+          "fbsLabelIdentifiers"
         ],
-        "operationId": "tag/FBS-Metadata/paths/~1api~1v3~1orders~1{orderId}~1meta~1sgtin/put",
+        "operationId": "tag/fbsLabelIdentifiers/paths/~1api~1v3~1orders~1{orderId}~1meta~1sgtin/put",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Metadata"
+        "x-wb-group": "FBS Label Identifiers"
       }
     },
     "/api/v3/orders/{orderId}/meta/uin": {
       "put": {
         "summary": "Add UIN (Unique Identification Number) to the Assembly Order",
         "tags": [
-          "FBS Metadata"
+          "fbsLabelIdentifiers"
         ],
-        "operationId": "tag/FBS-Metadata/paths/~1api~1v3~1orders~1{orderId}~1meta~1uin/put",
+        "operationId": "tag/fbsLabelIdentifiers/paths/~1api~1v3~1orders~1{orderId}~1meta~1uin/put",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Metadata"
+        "x-wb-group": "FBS Label Identifiers"
       }
     },
     "/api/v3/orders/{orderId}/meta/imei": {
       "put": {
         "summary": "Add IMEI to the Assembly Order",
         "tags": [
-          "FBS Metadata"
+          "fbsLabelIdentifiers"
         ],
-        "operationId": "tag/FBS-Metadata/paths/~1api~1v3~1orders~1{orderId}~1meta~1imei/put",
+        "operationId": "tag/fbsLabelIdentifiers/paths/~1api~1v3~1orders~1{orderId}~1meta~1imei/put",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Metadata"
+        "x-wb-group": "FBS Label Identifiers"
       }
     },
     "/api/v3/orders/{orderId}/meta/gtin": {
       "put": {
         "summary": "Add GTIN to the Assembly Order",
         "tags": [
-          "FBS Metadata"
+          "fbsLabelIdentifiers"
         ],
-        "operationId": "tag/FBS-Metadata/paths/~1api~1v3~1orders~1{orderId}~1meta~1gtin/put",
+        "operationId": "tag/fbsLabelIdentifiers/paths/~1api~1v3~1orders~1{orderId}~1meta~1gtin/put",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Metadata"
+        "x-wb-group": "FBS Label Identifiers"
       }
     },
     "/api/v3/orders/{orderId}/meta/expiration": {
       "put": {
         "summary": "Add Expiration Date to the Assembly Order",
         "tags": [
-          "FBS Metadata"
+          "fbsLabelIdentifiers"
         ],
-        "operationId": "tag/FBS-Metadata/paths/~1api~1v3~1orders~1{orderId}~1meta~1expiration/put",
+        "operationId": "tag/fbsLabelIdentifiers/paths/~1api~1v3~1orders~1{orderId}~1meta~1expiration/put",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Metadata"
+        "x-wb-group": "FBS Label Identifiers"
       }
     },
     "/api/marketplace/v3/orders/{orderId}/meta/customs-declaration": {
       "put": {
         "summary": "Add Custom Declaration number to the Order",
         "tags": [
-          "FBS Metadata"
+          "fbsLabelIdentifiers"
         ],
-        "operationId": "tag/FBS-Metadata/paths/~1api~1marketplace~1v3~1orders~1{orderId}~1meta~1customs-declaration/put",
+        "operationId": "tag/fbsLabelIdentifiers/paths/~1api~1marketplace~1v3~1orders~1{orderId}~1meta~1customs-declaration/put",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbs and https://dev.wildberries.ru/en/swagger/orders-fbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Metadata"
+        "x-wb-group": "FBS Label Identifiers"
       }
     },
     "/api/v3/supplies": {
@@ -426,7 +445,7 @@
     },
     "/api/v3/supplies/{supplyId}/trbx": {
       "get": {
-        "summary": "Get Supply Boxes List",
+        "summary": "Get Supply Shipping Units List",
         "tags": [
           "FBS Supplies"
         ],
@@ -440,7 +459,7 @@
         "x-wb-group": "FBS Supplies"
       },
       "post": {
-        "summary": "Add Boxes to the Supply",
+        "summary": "Add Shipping Units to the Supply",
         "tags": [
           "FBS Supplies"
         ],
@@ -454,7 +473,7 @@
         "x-wb-group": "FBS Supplies"
       },
       "delete": {
-        "summary": "Delete Boxes from the Supply",
+        "summary": "Delete Shipping Units from the Supply",
         "tags": [
           "FBS Supplies"
         ],
@@ -470,7 +489,7 @@
     },
     "/api/v3/supplies/{supplyId}/trbx/stickers": {
       "post": {
-        "summary": "Get the Supply Box QR Code Stickers",
+        "summary": "Get the Supply Shipping Unit QR Code Stickers",
         "tags": [
           "FBS Supplies"
         ],
@@ -567,6 +586,6 @@
     "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-fbs",
     "chapter_path": "orders-fbs",
     "group_count": 5,
-    "operation_count": 34
+    "operation_count": 35
   }
 }

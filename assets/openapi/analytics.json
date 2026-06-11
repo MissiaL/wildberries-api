@@ -24,6 +24,9 @@
       "name": "Stocks Report"
     },
     {
+      "name": "Item Rating"
+    },
+    {
       "name": "Seller Analytics CSV"
     }
   ],
@@ -236,6 +239,22 @@
         "x-wb-group": "Stocks Report"
       }
     },
+    "/api/analytics/v1/item-rating": {
+      "post": {
+        "summary": "Get Report",
+        "tags": [
+          "Item Rating"
+        ],
+        "operationId": "tag/Item-Rating/operation/postV1ItemRating",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/analytics and https://dev.wildberries.ru/en/swagger/analytics for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Item Rating"
+      }
+    },
     "/api/v2/nm-report/downloads": {
       "post": {
         "summary": "Create the Report",
@@ -304,7 +323,7 @@
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/analytics",
     "swagger_url": "https://dev.wildberries.ru/en/swagger/analytics",
     "chapter_path": "analytics",
-    "group_count": 5,
-    "operation_count": 17
+    "group_count": 6,
+    "operation_count": 18
   }
 }

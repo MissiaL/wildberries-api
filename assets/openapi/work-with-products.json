@@ -540,6 +540,22 @@
         "x-wb-group": "Prices and Discounts"
       }
     },
+    "/api/discounts-prices/v1/upload/task/b2b/wholesale": {
+      "post": {
+        "summary": "Set Wholesale Discounts for B2B",
+        "tags": [
+          "Prices and Discounts"
+        ],
+        "operationId": "tag/Prices-and-Discounts/operation/postV1UploadTaskB2bWholesale",
+        "description": "See https://dev.wildberries.ru/en/docs/openapi/work-with-products and https://dev.wildberries.ru/en/swagger/products for request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Prices and Discounts"
+      }
+    },
     "/api/v2/history/tasks": {
       "get": {
         "summary": "Processed Upload State",
@@ -823,6 +839,6 @@
     "swagger_url": "https://dev.wildberries.ru/en/swagger/products",
     "chapter_path": "work-with-products",
     "group_count": 9,
-    "operation_count": 49
+    "operation_count": 50
   }
 }

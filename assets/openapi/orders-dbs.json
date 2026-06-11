@@ -18,7 +18,10 @@
       "name": "DBS Assembly Orders"
     },
     {
-      "name": "DBS Metadata"
+      "name": "DBS Label Identifiers"
+    },
+    {
+      "name": "dbsLabelIdentifiers"
     }
   ],
   "paths": {
@@ -104,7 +107,7 @@
     },
     "/api/v3/dbs/orders/delivery-date": {
       "post": {
-        "summary": "Delivery Date and Time",
+        "summary": "Get Delivery Date and Time",
         "tags": [
           "DBS Assembly Orders"
         ],
@@ -230,318 +233,133 @@
         "x-wb-group": "DBS Assembly Orders"
       }
     },
-    "/api/v3/dbs/orders/status": {
+    "/api/marketplace/v3/dbs/orders/meta/details": {
       "post": {
-        "summary": "Get orders statuses",
+        "summary": "Get Assembly Orders Label Identifiers",
         "tags": [
-          "DBS Assembly Orders"
+          "dbsLabelIdentifiers"
         ],
-        "operationId": "tag/DBS-Assembly-Orders/paths/~1api~1v3~1dbs~1orders~1status/post",
+        "operationId": "tag/dbsLabelIdentifiers/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1details/post",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBS Assembly Orders",
-        "deprecated": true
-      }
-    },
-    "/api/v3/dbs/orders/{orderId}/cancel": {
-      "patch": {
-        "summary": "Cancel the Order",
-        "tags": [
-          "DBS Assembly Orders"
-        ],
-        "operationId": "tag/DBS-Assembly-Orders/paths/~1api~1v3~1dbs~1orders~1{orderId}~1cancel/patch",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBS Assembly Orders",
-        "deprecated": true
-      }
-    },
-    "/api/v3/dbs/orders/{orderId}/confirm": {
-      "patch": {
-        "summary": "Transfer to Assembly",
-        "tags": [
-          "DBS Assembly Orders"
-        ],
-        "operationId": "tag/DBS-Assembly-Orders/paths/~1api~1v3~1dbs~1orders~1{orderId}~1confirm/patch",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBS Assembly Orders",
-        "deprecated": true
-      }
-    },
-    "/api/v3/dbs/orders/{orderId}/deliver": {
-      "patch": {
-        "summary": "Transfer to Delivery",
-        "tags": [
-          "DBS Assembly Orders"
-        ],
-        "operationId": "tag/DBS-Assembly-Orders/paths/~1api~1v3~1dbs~1orders~1{orderId}~1deliver/patch",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBS Assembly Orders",
-        "deprecated": true
-      }
-    },
-    "/api/v3/dbs/orders/{orderId}/receive": {
-      "patch": {
-        "summary": "Notify That the Order Has Been Accepted by the Buyer",
-        "tags": [
-          "DBS Assembly Orders"
-        ],
-        "operationId": "tag/DBS-Assembly-Orders/paths/~1api~1v3~1dbs~1orders~1{orderId}~1receive/patch",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBS Assembly Orders",
-        "deprecated": true
-      }
-    },
-    "/api/v3/dbs/orders/{orderId}/reject": {
-      "patch": {
-        "summary": "Notify That the Buyer Has Declined the Order",
-        "tags": [
-          "DBS Assembly Orders"
-        ],
-        "operationId": "tag/DBS-Assembly-Orders/paths/~1api~1v3~1dbs~1orders~1{orderId}~1reject/patch",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBS Assembly Orders",
-        "deprecated": true
+        "x-wb-group": "DBS Label Identifiers"
       }
     },
     "/api/marketplace/v3/dbs/orders/meta/info": {
       "post": {
-        "summary": "Get Assembly Orders Metadata",
+        "summary": "Get Assembly Orders Label Identifiers",
         "tags": [
-          "DBS Metadata"
+          "dbsLabelIdentifiers"
         ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1info/post",
+        "operationId": "tag/dbsLabelIdentifiers/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1info/post",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBS Metadata"
+        "x-wb-group": "DBS Label Identifiers",
+        "deprecated": true
       }
     },
     "/api/marketplace/v3/dbs/orders/meta/delete": {
       "post": {
-        "summary": "Delete Assembly Orders Metadata",
+        "summary": "Delete Assembly Orders Label Identifiers",
         "tags": [
-          "DBS Metadata"
+          "dbsLabelIdentifiers"
         ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1delete/post",
+        "operationId": "tag/dbsLabelIdentifiers/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1delete/post",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBS Metadata"
+        "x-wb-group": "DBS Label Identifiers"
       }
     },
     "/api/marketplace/v3/dbs/orders/meta/sgtin": {
       "post": {
         "summary": "Add Data Matrix Codes to Assembly Orders (Chestny ZNAK)",
         "tags": [
-          "DBS Metadata"
+          "dbsLabelIdentifiers"
         ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1sgtin/post",
+        "operationId": "tag/dbsLabelIdentifiers/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1sgtin/post",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBS Metadata"
+        "x-wb-group": "DBS Label Identifiers"
       }
     },
     "/api/marketplace/v3/dbs/orders/meta/uin": {
       "post": {
         "summary": "Add UIN (Unique Identification Number) to Assembly Orders",
         "tags": [
-          "DBS Metadata"
+          "dbsLabelIdentifiers"
         ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1uin/post",
+        "operationId": "tag/dbsLabelIdentifiers/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1uin/post",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBS Metadata"
+        "x-wb-group": "DBS Label Identifiers"
       }
     },
     "/api/marketplace/v3/dbs/orders/meta/imei": {
       "post": {
         "summary": "Add IMEI to Assembly Orders",
         "tags": [
-          "DBS Metadata"
+          "dbsLabelIdentifiers"
         ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1imei/post",
+        "operationId": "tag/dbsLabelIdentifiers/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1imei/post",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBS Metadata"
+        "x-wb-group": "DBS Label Identifiers"
       }
     },
     "/api/marketplace/v3/dbs/orders/meta/gtin": {
       "post": {
         "summary": "Add GTIN to Assembly Orders",
         "tags": [
-          "DBS Metadata"
+          "dbsLabelIdentifiers"
         ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1gtin/post",
+        "operationId": "tag/dbsLabelIdentifiers/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1gtin/post",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBS Metadata"
+        "x-wb-group": "DBS Label Identifiers"
       }
     },
     "/api/marketplace/v3/dbs/orders/meta/customs-declaration": {
       "post": {
         "summary": "Add Custom Declaration to the Orders",
         "tags": [
-          "DBS Metadata"
+          "dbsLabelIdentifiers"
         ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1customs-declaration/post",
+        "operationId": "tag/dbsLabelIdentifiers/paths/~1api~1marketplace~1v3~1dbs~1orders~1meta~1customs-declaration/post",
         "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBS Metadata"
-      }
-    },
-    "/api/v3/dbs/orders/{orderId}/meta": {
-      "get": {
-        "summary": "Get order metadata",
-        "tags": [
-          "DBS Metadata"
-        ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1v3~1dbs~1orders~1{orderId}~1meta/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBS Metadata",
-        "deprecated": true
-      },
-      "delete": {
-        "summary": "Delete Order Metadata",
-        "tags": [
-          "DBS Metadata"
-        ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1v3~1dbs~1orders~1{orderId}~1meta/delete",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBS Metadata",
-        "deprecated": true
-      }
-    },
-    "/api/v3/dbs/orders/{orderId}/meta/sgtin": {
-      "put": {
-        "summary": "Add Data Matrix Code to the Order",
-        "tags": [
-          "DBS Metadata"
-        ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1v3~1dbs~1orders~1{orderId}~1meta~1sgtin/put",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBS Metadata",
-        "deprecated": true
-      }
-    },
-    "/api/v3/dbs/orders/{orderId}/meta/uin": {
-      "put": {
-        "summary": "Add UIN (Unique Identification Number) to the Order",
-        "tags": [
-          "DBS Metadata"
-        ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1v3~1dbs~1orders~1{orderId}~1meta~1uin/put",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBS Metadata",
-        "deprecated": true
-      }
-    },
-    "/api/v3/dbs/orders/{orderId}/meta/imei": {
-      "put": {
-        "summary": "Add IMEI to the Order",
-        "tags": [
-          "DBS Metadata"
-        ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1v3~1dbs~1orders~1{orderId}~1meta~1imei/put",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBS Metadata",
-        "deprecated": true
-      }
-    },
-    "/api/v3/dbs/orders/{orderId}/meta/gtin": {
-      "put": {
-        "summary": "Add GTIN to the Order",
-        "tags": [
-          "DBS Metadata"
-        ],
-        "operationId": "tag/DBS-Metadata/paths/~1api~1v3~1dbs~1orders~1{orderId}~1meta~1gtin/put",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbs and https://dev.wildberries.ru/en/swagger/orders-dbs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBS Metadata",
-        "deprecated": true
+        "x-wb-group": "DBS Label Identifiers"
       }
     }
   },
@@ -551,6 +369,6 @@
     "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-dbs",
     "chapter_path": "orders-dbs",
     "group_count": 3,
-    "operation_count": 32
+    "operation_count": 21
   }
 }
