@@ -44,7 +44,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Assembly Orders"
+        "x-wb-group": "FBS Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Sborochnye-zadaniya-FBS/paths/~1api~1v3~1orders~1new/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders": {
@@ -60,7 +74,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Assembly Orders"
+        "x-wb-group": "FBS Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Sborochnye-zadaniya-FBS/paths/~1api~1v3~1orders/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders/status": {
@@ -76,7 +104,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Assembly Orders"
+        "x-wb-group": "FBS Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Sborochnye-zadaniya-FBS/paths/~1api~1v3~1orders~1status/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/supplies/orders/reshipment": {
@@ -92,7 +134,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Assembly Orders"
+        "x-wb-group": "FBS Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Sborochnye-zadaniya-FBS/paths/~1api~1v3~1supplies~1orders~1reshipment/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders/{orderId}/cancel": {
@@ -108,7 +164,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Assembly Orders"
+        "x-wb-group": "FBS Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "100 запросов",
+              "Интервал": "600 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Sborochnye-zadaniya-FBS/paths/~1api~1v3~1orders~1{orderId}~1cancel/patch",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders/stickers": {
@@ -124,7 +194,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Assembly Orders"
+        "x-wb-group": "FBS Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Sborochnye-zadaniya-FBS/paths/~1api~1v3~1orders~1stickers/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders/stickers/cross-border": {
@@ -140,7 +224,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Assembly Orders"
+        "x-wb-group": "FBS Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Sborochnye-zadaniya-FBS/paths/~1api~1v3~1orders~1stickers~1cross-border/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders/status/history": {
@@ -156,7 +254,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Assembly Orders"
+        "x-wb-group": "FBS Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Sborochnye-zadaniya-FBS/paths/~1api~1v3~1orders~1status~1history/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders/client": {
@@ -172,7 +284,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Assembly Orders"
+        "x-wb-group": "FBS Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Sborochnye-zadaniya-FBS/paths/~1api~1v3~1orders~1client/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/fbs/orders/archive": {
@@ -188,7 +314,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Assembly Orders"
+        "x-wb-group": "FBS Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Sborochnye-zadaniya-FBS/paths/~1api~1marketplace~1v3~1fbs~1orders~1archive/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/orders/meta": {
@@ -204,7 +344,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Label Identifiers"
+        "x-wb-group": "FBS Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов получения и удаления идентификаторов маркировки FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/fbsLabelIdentifiers/paths/~1api~1marketplace~1v3~1orders~1meta/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders/{orderId}/meta": {
@@ -220,7 +374,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Label Identifiers"
+        "x-wb-group": "FBS Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов получения и удаления идентификаторов маркировки FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/fbsLabelIdentifiers/paths/~1api~1v3~1orders~1{orderId}~1meta/delete",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders/{orderId}/meta/sgtin": {
@@ -236,7 +404,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Label Identifiers"
+        "x-wb-group": "FBS Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1000 запросов",
+              "Интервал": "60 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/fbsLabelIdentifiers/paths/~1api~1v3~1orders~1{orderId}~1meta~1sgtin/put",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders/{orderId}/meta/uin": {
@@ -252,7 +434,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Label Identifiers"
+        "x-wb-group": "FBS Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1000 запросов",
+              "Интервал": "60 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/fbsLabelIdentifiers/paths/~1api~1v3~1orders~1{orderId}~1meta~1uin/put",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders/{orderId}/meta/imei": {
@@ -268,7 +464,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Label Identifiers"
+        "x-wb-group": "FBS Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1000 запросов",
+              "Интервал": "60 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/fbsLabelIdentifiers/paths/~1api~1v3~1orders~1{orderId}~1meta~1imei/put",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders/{orderId}/meta/gtin": {
@@ -284,7 +494,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Label Identifiers"
+        "x-wb-group": "FBS Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1000 запросов",
+              "Интервал": "60 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/fbsLabelIdentifiers/paths/~1api~1v3~1orders~1{orderId}~1meta~1gtin/put",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/orders/{orderId}/meta/expiration": {
@@ -300,7 +524,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Label Identifiers"
+        "x-wb-group": "FBS Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1000 запросов",
+              "Интервал": "60 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/fbsLabelIdentifiers/paths/~1api~1v3~1orders~1{orderId}~1meta~1expiration/put",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/orders/{orderId}/meta/customs-declaration": {
@@ -316,7 +554,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Label Identifiers"
+        "x-wb-group": "FBS Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1000 запросов",
+              "Интервал": "60 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/fbsLabelIdentifiers/paths/~1api~1marketplace~1v3~1orders~1{orderId}~1meta~1customs-declaration/put",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/supplies": {
@@ -332,7 +584,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Supplies"
+        "x-wb-group": "FBS Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Postavki-FBS/paths/~1api~1v3~1supplies/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       },
       "get": {
         "summary": "Get a Supplies List",
@@ -346,7 +612,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Supplies"
+        "x-wb-group": "FBS Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Postavki-FBS/paths/~1api~1v3~1supplies/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/supplies/{supplyId}/orders": {
@@ -362,7 +642,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Supplies"
+        "x-wb-group": "FBS Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Postavki-FBS/paths/~1api~1marketplace~1v3~1supplies~1{supplyId}~1orders/patch",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/supplies/{supplyId}": {
@@ -378,7 +672,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Supplies"
+        "x-wb-group": "FBS Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Postavki-FBS/paths/~1api~1v3~1supplies~1{supplyId}/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       },
       "delete": {
         "summary": "Delete the Supply",
@@ -392,7 +700,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Supplies"
+        "x-wb-group": "FBS Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Postavki-FBS/paths/~1api~1v3~1supplies~1{supplyId}/delete",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/supplies/{supplyId}/order-ids": {
@@ -408,7 +730,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Supplies"
+        "x-wb-group": "FBS Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Postavki-FBS/paths/~1api~1marketplace~1v3~1supplies~1{supplyId}~1order-ids/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/supplies/{supplyId}/deliver": {
@@ -424,7 +760,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Supplies"
+        "x-wb-group": "FBS Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Postavki-FBS/paths/~1api~1v3~1supplies~1{supplyId}~1deliver/patch",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/supplies/{supplyId}/barcode": {
@@ -440,7 +790,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Supplies"
+        "x-wb-group": "FBS Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Postavki-FBS/paths/~1api~1v3~1supplies~1{supplyId}~1barcode/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/supplies/{supplyId}/trbx": {
@@ -456,7 +820,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Supplies"
+        "x-wb-group": "FBS Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Postavki-FBS/paths/~1api~1v3~1supplies~1{supplyId}~1trbx/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       },
       "post": {
         "summary": "Add Shipping Units to the Supply",
@@ -470,7 +848,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Supplies"
+        "x-wb-group": "FBS Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Postavki-FBS/paths/~1api~1v3~1supplies~1{supplyId}~1trbx/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       },
       "delete": {
         "summary": "Delete Shipping Units from the Supply",
@@ -484,7 +876,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Supplies"
+        "x-wb-group": "FBS Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Postavki-FBS/paths/~1api~1v3~1supplies~1{supplyId}~1trbx/delete",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/supplies/{supplyId}/trbx/stickers": {
@@ -500,7 +906,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Supplies"
+        "x-wb-group": "FBS Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Postavki-FBS/paths/~1api~1v3~1supplies~1{supplyId}~1trbx~1stickers/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/passes/offices": {
@@ -516,7 +936,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Passes"
+        "x-wb-group": "FBS Passes",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Propuska-FBS/paths/~1api~1v3~1passes~1offices/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/passes": {
@@ -532,7 +966,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Passes"
+        "x-wb-group": "FBS Passes",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Propuska-FBS/paths/~1api~1v3~1passes/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       },
       "post": {
         "summary": "Create Pass",
@@ -546,7 +994,13 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Passes"
+        "x-wb-group": "FBS Passes",
+        "x-wb-rate-limits": {
+          "scope": "Non-tabular limit from the official operation description",
+          "raw": "Максимум 1 запрос в 10 минут на один аккаунт продавца.\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Propuska-FBS/paths/~1api~1v3~1passes/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v3/passes/{passId}": {
@@ -562,7 +1016,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Passes"
+        "x-wb-group": "FBS Passes",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Propuska-FBS/paths/~1api~1v3~1passes~1{passId}/put",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       },
       "delete": {
         "summary": "Delete the Pass",
@@ -576,7 +1044,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "FBS Passes"
+        "x-wb-group": "FBS Passes",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий, поставок и пропусков FBS:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Propuska-FBS/paths/~1api~1v3~1passes~1{passId}/delete",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     }
   },
@@ -587,5 +1069,10 @@
     "chapter_path": "orders-fbs",
     "group_count": 5,
     "operation_count": 35
+  },
+  "x-wb-rate-limits": {
+    "verifiedAt": "2026-07-29T13:07:26.863Z",
+    "source": "https://dev.wildberries.ru/en/docs/openapi/orders-fbs",
+    "operationCount": 35
   }
 }

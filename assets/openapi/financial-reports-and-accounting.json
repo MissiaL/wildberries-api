@@ -44,7 +44,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Balance"
+        "x-wb-group": "Balance",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "24 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "24 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/balance/operation/getV1AccountBalance",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/finance/v1/sales-reports/list": {
@@ -60,7 +95,20 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Financial Reports"
+        "x-wb-group": "Financial Reports",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsList",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/finance/v1/sales-reports/detailed/{reportId}": {
@@ -76,7 +124,20 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Financial Reports"
+        "x-wb-group": "Financial Reports",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/finance/v1/sales-reports/detailed": {
@@ -92,24 +153,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Financial Reports"
-      }
-    },
-    "/api/v5/supplier/reportDetailByPeriod": {
-      "get": {
-        "summary": "Realization Sales Report",
-        "tags": [
-          "Financial Reports"
-        ],
-        "operationId": "tag/Financial-Reports/paths/~1api~1v5~1supplier~1reportDetailByPeriod/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
         "x-wb-group": "Financial Reports",
-        "deprecated": true
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "24 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "12 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/finance/v1/acquiring/list": {
@@ -125,7 +204,20 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Financial Reports"
+        "x-wb-group": "Financial Reports",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringList",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/finance/v1/acquiring/detailed/{reportId}": {
@@ -141,7 +233,20 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Financial Reports"
+        "x-wb-group": "Financial Reports",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/finance/v1/acquiring/detailed": {
@@ -157,7 +262,20 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Financial Reports"
+        "x-wb-group": "Financial Reports",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/documents/categories": {
@@ -173,7 +291,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Documents"
+        "x-wb-group": "Documents",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "10 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "10 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "10 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "10 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "10 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "10 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "24 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "24 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/getV1DocumentsCategories",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/documents/list": {
@@ -189,7 +342,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Documents"
+        "x-wb-group": "Documents",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "10 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "10 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "10 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "10 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "10 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "10 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "24 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "24 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/getV1DocumentsList",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/documents/download": {
@@ -205,7 +393,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Documents"
+        "x-wb-group": "Documents",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "10 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "10 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "10 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "10 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "10 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "10 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "24 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "24 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/getV1DocumentsDownload",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/documents/download/all": {
@@ -221,7 +444,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Documents"
+        "x-wb-group": "Documents",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "5 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "5 мин",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "5 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "5 мин",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "5 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "5 мин",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "24 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "24 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/postV1DocumentsDownloadAll",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     }
   },
@@ -232,5 +490,10 @@
     "chapter_path": "financial-reports-and-accounting",
     "group_count": 4,
     "operation_count": 12
+  },
+  "x-wb-rate-limits": {
+    "verifiedAt": "2026-07-29T13:07:26.863Z",
+    "source": "https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting",
+    "operationCount": 11
   }
 }

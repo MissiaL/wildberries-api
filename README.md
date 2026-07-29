@@ -3,7 +3,7 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-Production-only agent skill for the official Wildberries seller API. It bundles local OpenAPI snapshots, category references, and a safe Python helper that injects `WB_API_TOKEN` and blocks non-production hosts.
+Production-only agent skill for the official Wildberries seller API. It bundles local OpenAPI snapshots, category references, and a safe Python helper that injects `WB_API_TOKEN`, blocks non-production hosts, and handles HTTP 429 according to WB rate-limit headers.
 
 ## Compatible Agents
 
@@ -31,6 +31,8 @@ python scripts/api_call.py --method GET --url "https://common-api.wildberries.ru
 ```
 
 This skill is production-only. Sandbox hosts and test-token workflows are intentionally excluded.
+
+For repeated calls, read [`references/rate-limits.md`](references/rate-limits.md). All 283 saved operations carry a verified `x-wb-rate-limits` block. The helper can show the exact token-type profile with `--show-rate-limit`, retries `429` up to three times, honors `X-Ratelimit-Retry`, and caps a single wait at 60 seconds.
 
 ## How It Works
 
@@ -62,6 +64,7 @@ The authoritative coverage list is `assets/openapi/manifest.json`; allowed produ
 
 - All fetched production schemas listed in `assets/openapi/manifest.json`
 - Category routing in `references/overview.md`
+- Current rate-limit workflow in `references/rate-limits.md`
 - Production-only hosts from `assets/openapi/host-allowlist.json`
 
 ## Development

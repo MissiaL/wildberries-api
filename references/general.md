@@ -11,6 +11,9 @@
 - Export `WB_API_TOKEN` before calling the API.
 - Do not pass an `Authorization` header manually; `scripts/api_call.py` injects it.
 - Token scopes must match the operation in WB seller settings. If WB returns a permission error, ask the user for a token with the matching scope.
+- Token type affects limits. Personal, Service, and Basic production tokens have separate budgets. The helper selects the correct table row by decoding the token's JWT payload locally; never paste a token into an online decoder.
+
+See [rate-limits.md](rate-limits.md) before repeated calls.
 
 ## Typical Calls
 
@@ -22,4 +25,3 @@ python scripts/api_call.py --method GET --url "https://user-management-api.wildb
 ```
 
 For write operations such as inviting users or updating access, state the intended change before sending the request.
-

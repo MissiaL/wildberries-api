@@ -44,7 +44,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Sales Funnel"
+        "x-wb-group": "Sales Funnel",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Voronka-prodazh/operation/postV3SalesFunnelProducts",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/analytics/v3/sales-funnel/products/history": {
@@ -60,7 +95,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Sales Funnel"
+        "x-wb-group": "Sales Funnel",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Voronka-prodazh/operation/postV3SalesFunnelProductsHistory",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/analytics/v3/sales-funnel/grouped/history": {
@@ -76,7 +146,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Sales Funnel"
+        "x-wb-group": "Sales Funnel",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Voronka-prodazh/operation/postV3SalesFunnelGroupedHistory",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v2/search-report/report": {
@@ -92,7 +197,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Search Queries for Your Items"
+        "x-wb-group": "Search Queries for Your Items",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Poiskovye-zaprosy-po-vashim-tovaram/paths/~1api~1v2~1search-report~1report/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v2/search-report/table/groups": {
@@ -108,7 +248,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Search Queries for Your Items"
+        "x-wb-group": "Search Queries for Your Items",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Poiskovye-zaprosy-po-vashim-tovaram/paths/~1api~1v2~1search-report~1table~1groups/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v2/search-report/table/details": {
@@ -124,7 +299,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Search Queries for Your Items"
+        "x-wb-group": "Search Queries for Your Items",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Poiskovye-zaprosy-po-vashim-tovaram/paths/~1api~1v2~1search-report~1table~1details/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v2/search-report/product/search-texts": {
@@ -140,7 +350,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Search Queries for Your Items"
+        "x-wb-group": "Search Queries for Your Items",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Poiskovye-zaprosy-po-vashim-tovaram/paths/~1api~1v2~1search-report~1product~1search-texts/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v2/search-report/product/orders": {
@@ -156,7 +401,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Search Queries for Your Items"
+        "x-wb-group": "Search Queries for Your Items",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Poiskovye-zaprosy-po-vashim-tovaram/paths/~1api~1v2~1search-report~1product~1orders/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/analytics/v1/stocks-report/wb-warehouses": {
@@ -172,7 +452,20 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Stocks Report"
+        "x-wb-group": "Stocks Report",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Istoriya-ostatkov/operation/postV1StocksReportWbWarehouses",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v2/stocks-report/products/groups": {
@@ -188,7 +481,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Stocks Report"
+        "x-wb-group": "Stocks Report",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Istoriya-ostatkov/paths/~1api~1v2~1stocks-report~1products~1groups/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v2/stocks-report/products/products": {
@@ -204,7 +532,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Stocks Report"
+        "x-wb-group": "Stocks Report",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Istoriya-ostatkov/paths/~1api~1v2~1stocks-report~1products~1products/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v2/stocks-report/products/sizes": {
@@ -220,7 +583,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Stocks Report"
+        "x-wb-group": "Stocks Report",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Istoriya-ostatkov/paths/~1api~1v2~1stocks-report~1products~1sizes/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v2/stocks-report/offices": {
@@ -236,7 +634,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Stocks Report"
+        "x-wb-group": "Stocks Report",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Istoriya-ostatkov/paths/~1api~1v2~1stocks-report~1offices/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/analytics/v1/item-rating": {
@@ -252,7 +685,20 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Item Rating"
+        "x-wb-group": "Item Rating",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Ocenka-tovara/operation/postV1ItemRating",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v2/nm-report/downloads": {
@@ -268,7 +714,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Seller Analytics CSV"
+        "x-wb-group": "Seller Analytics CSV",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Analitika-prodavca-CSV/paths/~1api~1v2~1nm-report~1downloads/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       },
       "get": {
         "summary": "Get the Reports List",
@@ -282,7 +763,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Seller Analytics CSV"
+        "x-wb-group": "Seller Analytics CSV",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Analitika-prodavca-CSV/paths/~1api~1v2~1nm-report~1downloads/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v2/nm-report/downloads/retry": {
@@ -298,7 +814,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Seller Analytics CSV"
+        "x-wb-group": "Seller Analytics CSV",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Analitika-prodavca-CSV/paths/~1api~1v2~1nm-report~1downloads~1retry/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v2/nm-report/downloads/file/{downloadId}": {
@@ -314,7 +865,72 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Seller Analytics CSV"
+        "x-wb-group": "Seller Analytics CSV",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Analitika-prodavca-CSV/paths/~1api~1v2~1nm-report~1downloads~1file~1{downloadId}/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
+      }
+    },
+    "/api/analytics/v2/item-rating": {
+      "post": {
+        "summary": "Получить отчёт",
+        "tags": [
+          "Live documentation"
+        ],
+        "operationId": "tag/Ocenka-tovara/operation/postV2ItemRating",
+        "description": "See https://dev.wildberries.ru/docs/openapi/analytics#tag/Ocenka-tovara/operation/postV2ItemRating for current request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Live documentation",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "3 запроса"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Ocenka-tovara/operation/postV2ItemRating",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        },
+        "x-wb-host": "seller-analytics-api.wildberries.ru"
       }
     }
   },
@@ -325,5 +941,10 @@
     "chapter_path": "analytics",
     "group_count": 6,
     "operation_count": 18
+  },
+  "x-wb-rate-limits": {
+    "verifiedAt": "2026-07-29T13:07:26.863Z",
+    "source": "https://dev.wildberries.ru/en/docs/openapi/analytics",
+    "operationCount": 19
   }
 }

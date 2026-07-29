@@ -8,6 +8,7 @@ REFERENCES_DIR = ROOT / "references"
 REFERENCE_FILES = [
     "overview.md",
     "general.md",
+    "rate-limits.md",
     "content.md",
     "analytics.md",
     "prices-and-discounts.md",
@@ -45,3 +46,29 @@ def test_overview_routes_every_manifest_slug_and_schema_filename():
         assert record["schema_filename"] in overview, (
             f"missing schema filename in overview routing: {record['schema_filename']}"
         )
+
+
+def test_every_operation_has_verified_rate_limits():
+    manifest = json.loads((OPENAPI_DIR / "manifest.json").read_text(encoding="utf-8"))
+    rate_manifest = json.loads(
+        (OPENAPI_DIR / "rate-limit-manifest.json").read_text(encoding="utf-8")
+    )
+    covered = 0
+
+    for record in manifest["schemas"]:
+        schema = json.loads(
+            (OPENAPI_DIR / record["schema_filename"]).read_text(encoding="utf-8")
+        )
+        for path, path_item in schema["paths"].items():
+            for method, operation in path_item.items():
+                if method not in {"get", "post", "put", "patch", "delete"}:
+                    continue
+                assert "x-wb-rate-limits" in operation, (
+                    f"missing live rate limits: {method.upper()} {path}"
+                )
+                assert operation["x-wb-rate-limits"]["source"].startswith(
+                    "https://dev.wildberries.ru/docs/openapi/"
+                )
+                covered += 1
+
+    assert covered == rate_manifest["operationCount"] == 283

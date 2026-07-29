@@ -38,7 +38,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Assembly Orders"
+        "x-wb-group": "DBW Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/getV3DbwOrdersNew",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/dbw/orders": {
@@ -54,7 +68,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Assembly Orders"
+        "x-wb-group": "DBW Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/getV3DbwOrders",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/dbw/orders/delivery-date": {
@@ -70,7 +98,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Assembly Orders"
+        "x-wb-group": "DBW Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersDeliveryDate",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/dbw/orders/client": {
@@ -86,7 +128,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Assembly Orders"
+        "x-wb-group": "DBW Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersClient",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/dbw/orders/status": {
@@ -102,7 +158,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Assembly Orders"
+        "x-wb-group": "DBW Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStatus",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/dbw/orders/{orderId}/confirm": {
@@ -118,7 +188,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Assembly Orders"
+        "x-wb-group": "DBW Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/patchV3DbwOrdersOrderIdConfirm",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/dbw/orders/stickers": {
@@ -134,7 +218,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Assembly Orders"
+        "x-wb-group": "DBW Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStickers",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/dbw/orders/status/deliver": {
@@ -150,7 +248,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Assembly Orders"
+        "x-wb-group": "DBW Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStatusDeliver",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/dbw/orders/courier": {
@@ -166,7 +278,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Assembly Orders"
+        "x-wb-group": "DBW Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersCourier",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/dbw/orders/{orderId}/cancel": {
@@ -182,7 +308,43 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Assembly Orders"
+        "x-wb-group": "DBW Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов DBW:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "10 запросов",
+              "Интервал": "6 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/patchV3DbwOrdersOrderIdCancel",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nуправление сборочными заданиями\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/dbw/orders/meta/details": {
@@ -198,7 +360,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Label Identifiers"
+        "x-wb-group": "DBW Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDetails",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/dbw/orders/meta/delete": {
@@ -214,7 +390,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Label Identifiers"
+        "x-wb-group": "DBW Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDelete",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/dbw/orders/{orderId}/meta": {
@@ -231,7 +421,21 @@
           }
         },
         "x-wb-group": "DBW Label Identifiers",
-        "deprecated": true
+        "deprecated": true,
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/getV3DbwOrdersOrderIdMeta",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/dbw/orders/meta/sgtin": {
@@ -247,7 +451,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Label Identifiers"
+        "x-wb-group": "DBW Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaSgtin",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/dbw/orders/{orderId}/meta/uin": {
@@ -263,7 +481,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Label Identifiers"
+        "x-wb-group": "DBW Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1000 запросов",
+              "Интервал": "60 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaUin",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/dbw/orders/{orderId}/meta/imei": {
@@ -279,7 +511,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Label Identifiers"
+        "x-wb-group": "DBW Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1000 запросов",
+              "Интервал": "60 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaImei",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/dbw/orders/{orderId}/meta/gtin": {
@@ -295,7 +541,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "DBW Label Identifiers"
+        "x-wb-group": "DBW Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки DBW:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1000 запросов",
+              "Интервал": "60 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaGtin",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     }
   },
@@ -306,5 +566,10 @@
     "chapter_path": "orders-dbw",
     "group_count": 3,
     "operation_count": 17
+  },
+  "x-wb-rate-limits": {
+    "verifiedAt": "2026-07-29T13:07:26.863Z",
+    "source": "https://dev.wildberries.ru/en/docs/openapi/orders-dbw",
+    "operationCount": 17
   }
 }

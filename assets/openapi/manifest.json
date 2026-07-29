@@ -24,8 +24,8 @@
         "user-management-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 9,
-      "operation_count": 9,
+      "path_count": 10,
+      "operation_count": 10,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
@@ -34,7 +34,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.481869+00:00"
+      "fetched_at": "2026-06-11T15:26:12.481869+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     },
     {
       "slug": "work-with-products",
@@ -49,8 +50,8 @@
         "marketplace-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 43,
-      "operation_count": 50,
+      "path_count": 45,
+      "operation_count": 52,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
@@ -59,7 +60,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482017+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482017+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     },
     {
       "slug": "orders-fbs",
@@ -82,7 +84,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482046+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482046+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     },
     {
       "slug": "orders-dbw",
@@ -105,7 +108,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482061+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482061+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     },
     {
       "slug": "orders-dbs",
@@ -128,7 +132,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482077+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482077+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     },
     {
       "slug": "promotion",
@@ -151,7 +156,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482104+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482104+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     },
     {
       "slug": "user-communication",
@@ -176,7 +182,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482127+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482127+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     },
     {
       "slug": "wb-tariffs",
@@ -199,7 +206,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482137+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482137+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     },
     {
       "slug": "in-store-pickup",
@@ -212,8 +220,8 @@
         "marketplace-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 16,
-      "operation_count": 16,
+      "path_count": 18,
+      "operation_count": 18,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
@@ -222,7 +230,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482149+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482149+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     },
     {
       "slug": "orders-fbw",
@@ -245,7 +254,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482160+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482160+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     },
     {
       "slug": "analytics",
@@ -258,8 +268,8 @@
         "seller-analytics-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 17,
-      "operation_count": 18,
+      "path_count": 18,
+      "operation_count": 19,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
@@ -268,7 +278,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482174+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482174+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     },
     {
       "slug": "reports",
@@ -282,8 +293,8 @@
         "seller-analytics-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 25,
-      "operation_count": 25,
+      "path_count": 24,
+      "operation_count": 24,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
@@ -292,7 +303,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482198+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482198+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     },
     {
       "slug": "financial-reports-and-accounting",
@@ -307,8 +319,8 @@
         "documents-api.wildberries.ru"
       ],
       "extraction_mode": "docs-html-snapshot",
-      "path_count": 12,
-      "operation_count": 12,
+      "path_count": 11,
+      "operation_count": 11,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
@@ -317,7 +329,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482213+00:00"
+      "fetched_at": "2026-06-11T15:26:12.482213+00:00",
+      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
     }
   ]
 }

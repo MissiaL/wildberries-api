@@ -38,7 +38,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Assembly Orders"
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий Самовывоз:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrdersNew",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/click-collect/orders/status/confirm": {
@@ -54,7 +68,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Assembly Orders"
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "10 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusConfirm",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/click-collect/orders/status/prepare": {
@@ -70,7 +98,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Assembly Orders"
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "10 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusPrepare",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/click-collect/orders/client": {
@@ -86,7 +128,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Assembly Orders"
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий Самовывоз:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersClient",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/click-collect/orders/client/identity": {
@@ -102,7 +158,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Assembly Orders"
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersClientIdentity",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/click-collect/orders/status/receive": {
@@ -118,7 +188,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Assembly Orders"
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "10 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusReceive",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/click-collect/orders/status/reject": {
@@ -134,7 +218,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Assembly Orders"
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "10 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusReject",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/click-collect/orders/status/info": {
@@ -150,7 +248,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Assembly Orders"
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "10 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/v3/click-collect/orders": {
@@ -166,7 +278,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Assembly Orders"
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для методов сборочных заданий Самовывоз:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "300 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrders",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/click-collect/orders/status/cancel": {
@@ -182,7 +308,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Assembly Orders"
+        "x-wb-group": "In-Store Pickup Assembly Orders",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "10 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusCancel",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/click-collect/orders/meta/info": {
@@ -198,7 +338,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Label Identifiers"
+        "x-wb-group": "In-Store Pickup Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов получения и удаления идентификаторов маркировки Самовывоз:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "150 запросов",
+              "Интервал": "400 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaInfo",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/click-collect/orders/meta/delete": {
@@ -214,7 +368,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Label Identifiers"
+        "x-wb-group": "In-Store Pickup Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов получения и удаления идентификаторов маркировки Самовывоз:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "150 запросов",
+              "Интервал": "400 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDelete",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/click-collect/orders/meta/sgtin": {
@@ -230,7 +398,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Label Identifiers"
+        "x-wb-group": "In-Store Pickup Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки Самовывоз:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "20 запросов",
+              "Интервал": "3 сек",
+              "Всплеск": "500 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaSgtin",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/click-collect/orders/meta/uin": {
@@ -246,7 +428,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Label Identifiers"
+        "x-wb-group": "In-Store Pickup Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки Самовывоз:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "20 запросов",
+              "Интервал": "3 сек",
+              "Всплеск": "500 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaUin",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/click-collect/orders/meta/imei": {
@@ -262,7 +458,21 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Label Identifiers"
+        "x-wb-group": "In-Store Pickup Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки Самовывоз:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "20 запросов",
+              "Интервал": "3 сек",
+              "Всплеск": "500 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaImei",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
       }
     },
     "/api/marketplace/v3/click-collect/orders/meta/gtin": {
@@ -278,7 +488,83 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "In-Store Pickup Label Identifiers"
+        "x-wb-group": "In-Store Pickup Label Identifiers",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки Самовывоз:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "20 запросов",
+              "Интервал": "3 сек",
+              "Всплеск": "500 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaGtin",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        }
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/meta/details": {
+      "post": {
+        "summary": "Получить идентификаторы маркировки сборочных заданий",
+        "tags": [
+          "Live documentation"
+        ],
+        "operationId": "tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails",
+        "description": "See https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails for current request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Live documentation",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов получения и удаления идентификаторов маркировки Самовывоз:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "150 запросов",
+              "Интервал": "400 мс",
+              "Всплеск": "20 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        },
+        "x-wb-host": "marketplace-api.wildberries.ru"
+      }
+    },
+    "/api/marketplace/v3/click-collect/orders/meta/customs-declaration": {
+      "post": {
+        "summary": "Закрепить номера ДТ за сборочными заданиями",
+        "tags": [
+          "Live documentation"
+        ],
+        "operationId": "tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration",
+        "description": "See https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration for current request and response details.",
+        "responses": {
+          "200": {
+            "description": "Operation details are documented on the official Wildberries page."
+          }
+        },
+        "x-wb-group": "Live documentation",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки Самовывоз:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "20 запросов",
+              "Интервал": "3 сек",
+              "Всплеск": "500 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration",
+          "verifiedAt": "2026-07-29T13:07:26.863Z",
+          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
+        },
+        "x-wb-host": "marketplace-api.wildberries.ru"
       }
     }
   },
@@ -289,5 +575,10 @@
     "chapter_path": "in-store-pickup",
     "group_count": 3,
     "operation_count": 16
+  },
+  "x-wb-rate-limits": {
+    "verifiedAt": "2026-07-29T13:07:26.863Z",
+    "source": "https://dev.wildberries.ru/en/docs/openapi/in-store-pickup",
+    "operationCount": 18
   }
 }

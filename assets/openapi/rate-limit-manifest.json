@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-29T13:07:26.863Z",
+  "source": "Live Wildberries OpenAPI documentation rendered in a browser",
+  "operationCount": 283,
+  "pages": [
+    {
+      "slug": "api-information",
+      "operationCount": 10
+    },
+    {
+      "slug": "work-with-products",
+      "operationCount": 52
+    },
+    {
+      "slug": "orders-fbs",
+      "operationCount": 35
+    },
+    {
+      "slug": "orders-dbw",
+      "operationCount": 17
+    },
+    {
+      "slug": "orders-dbs",
+      "operationCount": 21
+    },
+    {
+      "slug": "promotion",
+      "operationCount": 39
+    },
+    {
+      "slug": "user-communication",
+      "operationCount": 25
+    },
+    {
+      "slug": "wb-tariffs",
+      "operationCount": 5
+    },
+    {
+      "slug": "in-store-pickup",
+      "operationCount": 18
+    },
+    {
+      "slug": "orders-fbw",
+      "operationCount": 7
+    },
+    {
+      "slug": "analytics",
+      "operationCount": 19
+    },
+    {
+      "slug": "reports",
+      "operationCount": 24
+    },
+    {
+      "slug": "financial-reports-and-accounting",
+      "operationCount": 11
+    }
+  ]
+}

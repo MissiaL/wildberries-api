@@ -4,6 +4,8 @@ Use this file first to route a seller API request to the right local schema and 
 
 All calls are production-only. Use `scripts/api_call.py`; it reads `WB_API_TOKEN`, injects `Authorization`, and blocks hosts not listed in `assets/openapi/host-allowlist.json`.
 
+Before repeated, parallel, paginated, or polling calls, read [rate-limits.md](rate-limits.md). Use the verified `x-wb-rate-limits` snapshot on the exact operation and re-check the live table when freshness matters.
+
 ## Schema Routing
 
 | Slug | Title | Hosts | Schema | Guide |
@@ -27,5 +29,5 @@ All calls are production-only. Use `scripts/api_call.py`; it reads `WB_API_TOKEN
 1. Pick the relevant row above.
 2. Open the guide named in the `Guide` column for domain caveats.
 3. Inspect the schema in `assets/openapi/<schema>` for exact paths, methods, and operation summaries.
-4. Send the request through `python scripts/api_call.py --method ... --url ...`.
-
+4. Check the exact method's current limit and token-type row in the official documentation.
+5. Send the request through `python scripts/api_call.py --method ... --url ...`.

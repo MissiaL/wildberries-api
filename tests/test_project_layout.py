@@ -22,5 +22,8 @@ def test_skill_and_readme_explain_runtime_contract():
     assert "name: wildberries-api" in skill
     assert "WB_API_TOKEN" in skill
     assert "python scripts/api_call.py" in skill
+    assert "references/rate-limits.md" in skill
+    assert "X-Ratelimit-Retry" in skill
     assert "production-only" in readme.lower()
     assert "WB_API_TOKEN" in readme
+    assert (ROOT / "references" / "rate-limits.md").is_file()

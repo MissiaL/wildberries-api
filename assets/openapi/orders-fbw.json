@@ -35,7 +35,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Information for Forming Supplies"
+        "x-wb-group": "Information for Forming Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "6 запросов",
+              "Интервал": "10 сек",
+              "Всплеск": "6 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "6 запросов",
+              "Интервал": "10 сек",
+              "Всплеск": "6 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "6 запросов",
+              "Интервал": "10 сек",
+              "Всплеск": "6 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/informationForFormingSupplies/operation/postV1AcceptanceOptions",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/warehouses": {
@@ -51,7 +86,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Information for Forming Supplies"
+        "x-wb-group": "Information for Forming Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "6 запросов",
+              "Интервал": "10 сек",
+              "Всплеск": "6 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "6 запросов",
+              "Интервал": "10 сек",
+              "Всплеск": "6 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "6 запросов",
+              "Интервал": "10 сек",
+              "Всплеск": "6 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "12 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "12 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/informationForFormingSupplies/operation/getV1Warehouses",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/transit-tariffs": {
@@ -67,7 +137,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Information for Forming Supplies"
+        "x-wb-group": "Information for Forming Supplies",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "6 запросов",
+              "Интервал": "10 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "6 запросов",
+              "Интервал": "10 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "6 запросов",
+              "Интервал": "10 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "12 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "12 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/informationForFormingSupplies/operation/getV1TransitTariffs",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/supplies": {
@@ -83,7 +188,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Supplies Information"
+        "x-wb-group": "Supplies Information",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/suppliesInformation/operation/postV1Supplies",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/supplies/{ID}": {
@@ -99,7 +239,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Supplies Information"
+        "x-wb-group": "Supplies Information",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/suppliesInformation/operation/getV1SuppliesId",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/supplies/{ID}/goods": {
@@ -115,7 +290,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Supplies Information"
+        "x-wb-group": "Supplies Information",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/suppliesInformation/operation/getV1SuppliesIdGoods",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/supplies/{ID}/package": {
@@ -131,7 +341,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Supplies Information"
+        "x-wb-group": "Supplies Information",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "30 запросов",
+              "Интервал": "2 сек",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/suppliesInformation/operation/getV1SuppliesIdPackage",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     }
   },
@@ -142,5 +387,10 @@
     "chapter_path": "orders-fbw",
     "group_count": 3,
     "operation_count": 7
+  },
+  "x-wb-rate-limits": {
+    "verifiedAt": "2026-07-29T13:07:26.863Z",
+    "source": "https://dev.wildberries.ru/en/docs/openapi/orders-fbw",
+    "operationCount": 7
   }
 }

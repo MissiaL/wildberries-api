@@ -59,7 +59,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns"
+        "x-wb-group": "Campaigns",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "4 запроса",
+              "Интервал": "15 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Kampanii/paths/~1adv~1v1~1promotion~1count/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/advert/v2/adverts": {
@@ -75,7 +110,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns"
+        "x-wb-group": "Campaigns",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Kampanii/paths/~1api~1advert~1v2~1adverts/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/advert/v1/bids/min": {
@@ -91,7 +161,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Creation"
+        "x-wb-group": "Campaigns Creation",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "20 запросов",
+              "Интервал": "3 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "20 запросов",
+              "Интервал": "3 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "20 запросов",
+              "Интервал": "3 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Sozdanie-kampanij/paths/~1api~1advert~1v1~1bids~1min/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v2/seacat/save-ad": {
@@ -107,7 +212,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Creation"
+        "x-wb-group": "Campaigns Creation",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "5 запросов",
+              "Интервал": "12 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "5 запросов",
+              "Интервал": "12 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "5 запросов",
+              "Интервал": "12 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Sozdanie-kampanij/paths/~1adv~1v2~1seacat~1save-ad/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v1/supplier/subjects": {
@@ -123,7 +263,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Creation"
+        "x-wb-group": "Campaigns Creation",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "12 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "12 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "12 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "12 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "12 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "12 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Sozdanie-kampanij/paths/~1adv~1v1~1supplier~1subjects/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v2/supplier/nms": {
@@ -139,7 +314,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Creation"
+        "x-wb-group": "Campaigns Creation",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "5 запросов",
+              "Интервал": "12 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "5 запросов",
+              "Интервал": "12 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "5 запросов",
+              "Интервал": "12 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Sozdanie-kampanij/paths/~1adv~1v2~1supplier~1nms/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/delete": {
@@ -155,7 +365,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Management"
+        "x-wb-group": "Campaigns Management",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Upravlenie-kampaniyami/paths/~1adv~1v0~1delete/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/rename": {
@@ -171,7 +416,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Management"
+        "x-wb-group": "Campaigns Management",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Upravlenie-kampaniyami/paths/~1adv~1v0~1rename/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/start": {
@@ -187,7 +467,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Management"
+        "x-wb-group": "Campaigns Management",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Upravlenie-kampaniyami/paths/~1adv~1v0~1start/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/pause": {
@@ -203,7 +518,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Management"
+        "x-wb-group": "Campaigns Management",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Upravlenie-kampaniyami/paths/~1adv~1v0~1pause/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/stop": {
@@ -219,7 +569,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Management"
+        "x-wb-group": "Campaigns Management",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Upravlenie-kampaniyami/paths/~1adv~1v0~1stop/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/auction/placements": {
@@ -235,7 +620,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Management"
+        "x-wb-group": "Campaigns Management",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Upravlenie-kampaniyami/paths/~1adv~1v0~1auction~1placements/put",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/advert/v1/bids": {
@@ -251,7 +671,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Management"
+        "x-wb-group": "Campaigns Management",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Upravlenie-kampaniyami/paths/~1api~1advert~1v1~1bids/patch",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/auction/nms": {
@@ -267,7 +722,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Management"
+        "x-wb-group": "Campaigns Management",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Upravlenie-kampaniyami/paths/~1adv~1v0~1auction~1nms/patch",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/advert/v0/bids/recommendations": {
@@ -283,7 +773,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Campaigns Management"
+        "x-wb-group": "Campaigns Management",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "5 запросов",
+              "Интервал": "12 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "5 запросов",
+              "Интервал": "12 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "5 запросов",
+              "Интервал": "12 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "20 запросов",
+              "Интервал": "3 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Upravlenie-kampaniyami/paths/~1api~1advert~1v0~1bids~1recommendations/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/normquery/get-bids": {
@@ -299,7 +824,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Search Clusters"
+        "x-wb-group": "Search Clusters",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Poiskovye-klastery/paths/~1adv~1v0~1normquery~1get-bids/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/normquery/bids": {
@@ -315,7 +875,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Search Clusters"
+        "x-wb-group": "Search Clusters",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "2 запроса",
+              "Интервал": "500 мс",
+              "Всплеск": "4 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "2 запроса",
+              "Интервал": "500 мс",
+              "Всплеск": "4 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "2 запроса",
+              "Интервал": "500 мс",
+              "Всплеск": "4 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Poiskovye-klastery/paths/~1adv~1v0~1normquery~1bids/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       },
       "delete": {
         "summary": "Delete Bids from Search Clusters",
@@ -329,7 +924,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Search Clusters"
+        "x-wb-group": "Search Clusters",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Poiskovye-klastery/paths/~1adv~1v0~1normquery~1bids/delete",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/normquery/get-minus": {
@@ -345,7 +975,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Search Clusters"
+        "x-wb-group": "Search Clusters",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Poiskovye-klastery/paths/~1adv~1v0~1normquery~1get-minus/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/normquery/set-minus": {
@@ -361,7 +1026,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Search Clusters"
+        "x-wb-group": "Search Clusters",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Poiskovye-klastery/paths/~1adv~1v0~1normquery~1set-minus/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/normquery/list": {
@@ -377,7 +1077,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Search Clusters"
+        "x-wb-group": "Search Clusters",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "5 запросов",
+              "Интервал": "200 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Poiskovye-klastery/paths/~1adv~1v0~1normquery~1list/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v1/balance": {
@@ -393,7 +1128,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Finances"
+        "x-wb-group": "Finances",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Finansy/paths/~1adv~1v1~1balance/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v1/budget": {
@@ -409,7 +1179,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Finances"
+        "x-wb-group": "Finances",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "4 запроса",
+              "Интервал": "250 мс",
+              "Всплеск": "4 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "4 запроса",
+              "Интервал": "250 мс",
+              "Всплеск": "4 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "4 запроса",
+              "Интервал": "250 мс",
+              "Всплеск": "4 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "4 запроса",
+              "Интервал": "15 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Finansy/paths/~1adv~1v1~1budget/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v1/budget/deposit": {
@@ -425,7 +1230,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Finances"
+        "x-wb-group": "Finances",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Finansy/paths/~1adv~1v1~1budget~1deposit/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v1/upd": {
@@ -441,7 +1281,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Finances"
+        "x-wb-group": "Finances",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Finansy/paths/~1adv~1v1~1upd/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v1/payments": {
@@ -457,7 +1332,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Finances"
+        "x-wb-group": "Finances",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "1 запрос",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Finansy/paths/~1adv~1v1~1payments/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v1/count": {
@@ -473,7 +1383,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Media"
+        "x-wb-group": "Media",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "100 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "100 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "100 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Media/paths/~1adv~1v1~1count/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v1/adverts": {
@@ -489,7 +1434,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Media"
+        "x-wb-group": "Media",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "100 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "100 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "100 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Media/paths/~1adv~1v1~1adverts/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v1/advert": {
@@ -505,7 +1485,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Media"
+        "x-wb-group": "Media",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "100 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "100 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "100 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Media/paths/~1adv~1v1~1advert/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v0/normquery/stats": {
@@ -521,7 +1536,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Statistics"
+        "x-wb-group": "Statistics",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "10 запросов",
+              "Интервал": "6 сек",
+              "Всплеск": "20 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "10 запросов",
+              "Интервал": "6 сек",
+              "Всплеск": "20 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "10 запросов",
+              "Интервал": "6 сек",
+              "Всплеск": "20 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Statistika/paths/~1adv~1v0~1normquery~1stats/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v3/fullstats": {
@@ -537,7 +1587,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Statistics"
+        "x-wb-group": "Statistics",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "3 запроса",
+              "Интервал": "20 сек",
+              "Всплеск": "1 запрос"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Statistika/paths/~1adv~1v3~1fullstats/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v1/stats": {
@@ -553,7 +1638,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Statistics"
+        "x-wb-group": "Statistics",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "100 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "100 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "100 мс",
+              "Всплеск": "10 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Statistika/paths/~1adv~1v1~1stats/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/adv/v1/normquery/stats": {
@@ -569,7 +1689,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Statistics"
+        "x-wb-group": "Statistics",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "10 запросов",
+              "Интервал": "6 сек",
+              "Всплеск": "20 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "10 запросов",
+              "Интервал": "6 сек",
+              "Всплеск": "20 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "10 запросов",
+              "Интервал": "6 сек",
+              "Всплеск": "20 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "2 запроса",
+              "Интервал": "30 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Statistika/paths/~1adv~1v1~1normquery~1stats/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/calendar/promotions": {
@@ -585,7 +1740,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Promotions Calendar"
+        "x-wb-group": "Promotions Calendar",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов категории Календарь акций:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "6 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "600 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "6 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "600 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "6 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "600 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/promoCalendar/paths/~1api~1v1~1calendar~1promotions/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/calendar/promotions/details": {
@@ -601,7 +1791,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Promotions Calendar"
+        "x-wb-group": "Promotions Calendar",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов категории Календарь акций:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "6 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "600 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "6 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "600 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "6 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "600 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/promoCalendar/paths/~1api~1v1~1calendar~1promotions~1details/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/calendar/promotions/nomenclatures": {
@@ -617,7 +1842,20 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Promotions Calendar"
+        "x-wb-group": "Promotions Calendar",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов категории Календарь акций:",
+          "limits": [
+            {
+              "Период": "6 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "600 мс",
+              "Всплеск": "5 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/promoCalendar/paths/~1api~1v1~1calendar~1promotions~1nomenclatures/get",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/calendar/promotions/upload": {
@@ -633,39 +1871,110 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Promotions Calendar"
+        "x-wb-group": "Promotions Calendar",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца для всех методов категории Календарь акций:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "6 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "600 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "6 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "600 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "6 сек",
+              "Лимит": "10 запросов",
+              "Интервал": "600 мс",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/promoCalendar/paths/~1api~1v1~1calendar~1promotions~1upload/post",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
-    "/api/content/v1/recommendations/list": {
-      "post": {
-        "summary": "Item Recommendation List",
+    "/api/advert/v1/config": {
+      "get": {
+        "summary": "Конфигурационные значения продвижения",
         "tags": [
-          "recommendations"
+          "Live documentation"
         ],
-        "operationId": "tag/recommendations/operation/postV1RecommendationsList",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "operationId": "tag/Upravlenie-kampaniyami/operation/getV1Config",
+        "description": "See https://dev.wildberries.ru/docs/openapi/promotion#tag/Upravlenie-kampaniyami/operation/getV1Config for current request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Recommendations"
+        "x-wb-group": "Live documentation",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "10 запросов"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Upravlenie-kampaniyami/operation/getV1Config",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        },
+        "x-wb-host": "advert-api.wildberries.ru"
       }
     },
-    "/api/content/v1/recommendations/set": {
+    "/api/advert/v1/normquery/bids": {
       "post": {
-        "summary": "Set Item Recommendations",
+        "summary": "Установить ставки для поисковых кластеров в валюте аккаунта продавца",
         "tags": [
-          "recommendations"
+          "Live documentation"
         ],
-        "operationId": "tag/recommendations/operation/postV1RecommendationsSet",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/promotion and https://dev.wildberries.ru/en/swagger/promotion for request and response details.",
+        "operationId": "tag/Poiskovye-klastery/operation/postV1NormqueryBids",
+        "description": "See https://dev.wildberries.ru/docs/openapi/promotion#tag/Poiskovye-klastery/operation/postV1NormqueryBids for current request and response details.",
         "responses": {
           "200": {
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Recommendations"
+        "x-wb-group": "Live documentation",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 сек",
+              "Лимит": "2 запроса",
+              "Интервал": "500 мс",
+              "Всплеск": "4 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 сек",
+              "Лимит": "2 запроса",
+              "Интервал": "500 мс",
+              "Всплеск": "4 запроса"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Poiskovye-klastery/operation/postV1NormqueryBids",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        },
+        "x-wb-host": "advert-api.wildberries.ru"
       }
     }
   },
@@ -676,5 +1985,10 @@
     "chapter_path": "promotion",
     "group_count": 10,
     "operation_count": 39
+  },
+  "x-wb-rate-limits": {
+    "verifiedAt": "2026-07-29T13:07:26.863Z",
+    "source": "https://dev.wildberries.ru/en/docs/openapi/promotion",
+    "operationCount": 39
   }
 }

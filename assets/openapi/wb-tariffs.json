@@ -41,7 +41,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Commissions"
+        "x-wb-group": "Commissions",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "2 запроса"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "2 запроса"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "1 запрос",
+              "Интервал": "1 мин",
+              "Всплеск": "2 запроса"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "5 запросов",
+              "Интервал": "12 мин",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/fees/operation/getV1TariffsCommission",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/tariffs/box": {
@@ -57,7 +92,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Stock Tariffs"
+        "x-wb-group": "Stock Tariffs",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "60 запросов",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "60 запросов",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "60 запросов",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/stockRates/operation/getV1TariffsBox",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/tariffs/pallet": {
@@ -73,7 +143,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Stock Tariffs"
+        "x-wb-group": "Stock Tariffs",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "60 запросов",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "60 запросов",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "60 запросов",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/stockRates/operation/getV1TariffsPallet",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/tariffs/v1/acceptance/coefficients": {
@@ -89,7 +194,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Supply Tariffs"
+        "x-wb-group": "Supply Tariffs",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "6 запросов",
+              "Интервал": "10 сек",
+              "Всплеск": "6 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "6 запросов",
+              "Интервал": "10 сек",
+              "Всплеск": "6 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "6 запросов",
+              "Интервал": "10 сек",
+              "Всплеск": "6 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/supplyRates/operation/getV1AcceptanceCoefficients",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     },
     "/api/v1/tariffs/return": {
@@ -105,7 +245,42 @@
             "description": "Operation details are documented on the official Wildberries page."
           }
         },
-        "x-wb-group": "Return Cost to Seller"
+        "x-wb-group": "Return Cost to Seller",
+        "x-wb-rate-limits": {
+          "scope": "Лимит запросов на один аккаунт продавца:",
+          "limits": [
+            {
+              "Тип": "Персональный",
+              "Период": "1 мин",
+              "Лимит": "60 запросов",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Сервисный",
+              "Период": "1 мин",
+              "Лимит": "60 запросов",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый с секретом",
+              "Период": "1 мин",
+              "Лимит": "60 запросов",
+              "Интервал": "1 сек",
+              "Всплеск": "5 запросов"
+            },
+            {
+              "Тип": "Базовый",
+              "Период": "1 ч",
+              "Лимит": "1 запрос",
+              "Интервал": "1 ч",
+              "Всплеск": "1 запрос"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/returnCostToSeller/operation/getV1TariffsReturn",
+          "verifiedAt": "2026-07-29T13:07:26.863Z"
+        }
       }
     }
   },
@@ -116,5 +291,10 @@
     "chapter_path": "wb-tariffs",
     "group_count": 5,
     "operation_count": 5
+  },
+  "x-wb-rate-limits": {
+    "verifiedAt": "2026-07-29T13:07:26.863Z",
+    "source": "https://dev.wildberries.ru/en/docs/openapi/wb-tariffs",
+    "operationCount": 5
   }
 }
