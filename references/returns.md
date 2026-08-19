@@ -13,8 +13,8 @@
 3. Confirm return IDs and intended seller action before write requests.
 
 ```bash
-python scripts/api_call.py --method GET --url "https://returns-api.wildberries.ru/api/v1/claims"
-python scripts/api_call.py --method PATCH --url "https://returns-api.wildberries.ru/api/v1/claim" --body '{}'
+python3 scripts/api_call.py --method GET --url "https://returns-api.wildberries.ru/api/v1/claims"
+python3 scripts/api_call.py --method PATCH --url "https://returns-api.wildberries.ru/api/v1/claim" --body '{}'
 ```
 
-If an endpoint is absent from the current snapshot, refresh schemas with `python scripts/fetch_openapi.py` and re-check `manifest.json`.
+If an endpoint is absent from the current snapshot, refresh the browser export with `python3 scripts/sync_openapi.py <export.json>` and re-check `manifest.json`.

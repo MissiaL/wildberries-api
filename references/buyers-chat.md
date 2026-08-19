@@ -13,7 +13,7 @@
 3. Confirm message text, chat ID, and attachments before write requests.
 
 ```bash
-python scripts/api_call.py --method GET --url "https://buyer-chat-api.wildberries.ru/api/v1/seller/chats"
+python3 scripts/api_call.py --method GET --url "https://buyer-chat-api.wildberries.ru/api/v1/seller/chats"
 ```
 
 Chat messages are externally visible. Do not draft or send final text without user confirmation when the user did not provide exact wording.

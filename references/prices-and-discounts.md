@@ -13,8 +13,8 @@
 3. Send write requests only after stating the intended effect.
 
 ```bash
-python scripts/api_call.py --method GET --url "https://discounts-prices-api.wildberries.ru/api/v2/list/goods/filter"
-python scripts/api_call.py --method POST --url "https://discounts-prices-api.wildberries.ru/api/v2/upload/task" --body '{"data":[]}'
+python3 scripts/api_call.py --method GET --url "https://discounts-prices-api.wildberries.ru/api/v2/list/goods/filter"
+python3 scripts/api_call.py --method POST --url "https://discounts-prices-api.wildberries.ru/api/v2/upload/task" --body '{"data":[]}'
 ```
 
 Price changes are write operations with direct seller impact; never infer quantities, SKUs, or discount values.

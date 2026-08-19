@@ -18,10 +18,10 @@ See [rate-limits.md](rate-limits.md) before repeated calls.
 ## Typical Calls
 
 ```bash
-python scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/ping"
-python scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/v1/seller-info"
-python scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/common/v1/rating"
-python scripts/api_call.py --method GET --url "https://user-management-api.wildberries.ru/api/v1/users"
+python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/ping"
+python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/v1/seller-info"
+python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/common/v1/rating"
+python3 scripts/api_call.py --method GET --url "https://user-management-api.wildberries.ru/api/v1/users"
 ```
 
 For write operations such as inviting users or updating access, state the intended change before sending the request.

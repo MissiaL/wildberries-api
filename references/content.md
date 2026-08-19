@@ -9,10 +9,10 @@
 ## Typical Calls
 
 ```bash
-python scripts/api_call.py --method GET --url "https://content-api.wildberries.ru/content/v2/object/parent/all"
-python scripts/api_call.py --method GET --url "https://content-api.wildberries.ru/content/v2/object/all" --params '{"locale":"en"}'
-python scripts/api_call.py --method GET --url "https://content-api.wildberries.ru/content/v2/object/charcs/1234"
-python scripts/api_call.py --method POST --url "https://content-api.wildberries.ru/content/v2/cards/upload" --body '{"cards":[]}'
+python3 scripts/api_call.py --method GET --url "https://content-api.wildberries.ru/content/v2/object/parent/all"
+python3 scripts/api_call.py --method GET --url "https://content-api.wildberries.ru/content/v2/object/all" --params '{"locale":"en"}'
+python3 scripts/api_call.py --method GET --url "https://content-api.wildberries.ru/content/v2/object/charcs/1234"
+python3 scripts/api_call.py --method POST --url "https://content-api.wildberries.ru/content/v2/cards/upload" --body '{"cards":[]}'
 ```
 
 ## Notes

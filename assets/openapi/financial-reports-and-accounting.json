@@ -1,498 +1,2708 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "Documents and Accounting",
-    "version": "html-snapshot",
-    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances."
+  "components": {
+    "parameters": {
+      "LocaleCat": {
+        "description": "`title` field language:\n  - `ru` — Russian\n  - `en` — English\n  - `zh` — Chinese\n",
+        "in": "query",
+        "name": "locale",
+        "schema": {
+          "default": "en",
+          "example": "ru",
+          "type": "string"
+        }
+      },
+      "LocaleList": {
+        "description": "`category` field language:\n  - `ru` — Russian\n  - `en` — English\n  - `zh` — Chinese\n",
+        "in": "query",
+        "name": "locale",
+        "schema": {
+          "default": "en",
+          "example": "ru",
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "401": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "code": "07e4668e--a53a3d31f8b0-[UK-oWaVDUqNrKG]; 03bce=277; 84bd353bf-75",
+              "detail": "token problem; token is malformed: could not base64 decode signature: illegal base64 data at input byte 84",
+              "origin": "s2s-api-auth-catalog",
+              "requestId": "7b80742415072fe8b6b7f7761f1d1211",
+              "status": 401,
+              "statusText": "Unauthorized",
+              "timestamp": "2024-09-30T06:52:38Z",
+              "title": "unauthorized"
+            },
+            "schema": {
+              "properties": {
+                "code": {
+                  "description": "Internal error code",
+                  "type": "string"
+                },
+                "detail": {
+                  "description": "Error details",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Unique request ID",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "type": "number"
+                },
+                "statusText": {
+                  "description": "Text of the HTTP status code",
+                  "type": "string"
+                },
+                "timestamp": {
+                  "description": "Request date and time",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Unauthorized</span>"
+      },
+      "402": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "detail": "wb solution for business has insufficient funds on its balance. please top up the balance in the company's personal account https://dev.wildberries.ru/company",
+              "title": "payment required"
+            },
+            "schema": {
+              "properties": {
+                "detail": {
+                  "description": "Error details. The error is only returned to services from the [Solutions for business Catalog](/business-solutions)",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Payment required</span>"
+      },
+      "403": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "code": "base token is not allowed for this path",
+              "detail": "base token is not allowed",
+              "origin": "s2s-finance",
+              "requestId": "722199b2e15bbca48cc1d488a7989976",
+              "status": 403,
+              "statusText": "Forbidden",
+              "timestamp": "2026-05-25T02:47:09Z",
+              "title": "forbidden"
+            },
+            "schema": {
+              "properties": {
+                "code": {
+                  "description": "Internal error code",
+                  "type": "string"
+                },
+                "detail": {
+                  "description": "Error details",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Request ID",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "type": "number"
+                },
+                "statusText": {
+                  "description": "Text of the HTTP status code",
+                  "type": "string"
+                },
+                "timestamp": {
+                  "description": "Request date and time",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Access denied</span>"
+      },
+      "429": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "code": "07e4668e-ac2242c5c8c5-[UK-4dx7JUdskGZ]",
+              "detail": "limited by c122a060-a7fb-4bb4-abb0-32fd4e18d489",
+              "origin": "s2s-api-auth-catalog",
+              "requestId": "9d3c02cc698f8b041c661a7c28bed293",
+              "status": 429,
+              "statusText": "Too Many Requests",
+              "timestamp": "2024-09-30T06:52:38Z",
+              "title": "too many requests"
+            },
+            "schema": {
+              "properties": {
+                "code": {
+                  "description": "Internal error code",
+                  "type": "string"
+                },
+                "detail": {
+                  "description": "Error details",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Unique request ID",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "type": "number"
+                },
+                "statusText": {
+                  "description": "Text of the HTTP status code",
+                  "type": "string"
+                },
+                "timestamp": {
+                  "description": "Request date and time",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Too many requests</span>"
+      },
+      "Responses400Download": {
+        "content": {
+          "application/json": {
+            "example": {
+              "detail": "serviceName and extension are required",
+              "origin": "docs-public-api",
+              "requestId": "7c500a19-f531-4639-b0a4-53d6d296c349",
+              "status": 400,
+              "title": "Bad Request"
+            },
+            "schema": {
+              "properties": {
+                "detail": {
+                  "description": "Error details",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Unique request ID",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "type": "number"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Bad request</span>"
+      },
+      "Responses400DownloadAll": {
+        "content": {
+          "application/json": {
+            "examples": {
+              "badRequestBodyElement": {
+                "description": "Incorrect request body",
+                "value": {
+                  "detail": "request body must contain at least one element with serviceName and extension",
+                  "origin": "docs-public-api",
+                  "requestId": "6c364410-625c-4493-a434-8cbe79dfbf18",
+                  "status": 400,
+                  "title": "Bad Request"
+                }
+              },
+              "badRequestBodyElementCount": {
+                "description": "Exceeded the number of requested documents",
+                "value": {
+                  "detail": "documents count must be less than or equal to 50",
+                  "origin": "docs-public-api",
+                  "requestId": "0cf25b67-865e-4126-b971-1ff2e17fe84a",
+                  "status": 400,
+                  "title": "Bad Request"
+                }
+              }
+            },
+            "schema": {
+              "properties": {
+                "detail": {
+                  "description": "Error details",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Unique request ID",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "type": "number"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Bad request</span>"
+      },
+      "Responses400List": {
+        "content": {
+          "application/json": {
+            "examples": {
+              "BadLimit": {
+                "description": "Exceeded the allowed value for the limit parameter",
+                "value": {
+                  "detail": "limit must be less than or equal to 50",
+                  "origin": "docs-public-api",
+                  "requestId": "46ce9c17-4b74-46ed-abb1-e40d2b0d52ce",
+                  "status": 400,
+                  "title": "Bad Request"
+                }
+              },
+              "BadSort&Orders": {
+                "description": "Parameters sort and order cannot be specified separately",
+                "value": {
+                  "detail": "sort and order must be both set or both not set",
+                  "origin": "docs-public-api",
+                  "requestId": "41fc3b08-051d-4871-9991-6502977912ad",
+                  "status": 400,
+                  "title": "Bad Request"
+                }
+              }
+            },
+            "schema": {
+              "properties": {
+                "detail": {
+                  "description": "Error details",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Unique request ID",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "type": "number"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Bad request</span>"
+      },
+      "response400FinancialReports": {
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "properties": {
+                "detail": {
+                  "description": "Error details",
+                  "example": "GetReportDetailByPeriodNB decode error: missing dateTo params",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "example": "open-api-finreports",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Request ID",
+                  "example": "b065c204-c5f7-431b-b12c-d4c2cc6347ec",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "example": 400,
+                  "type": "integer"
+                },
+                "title": {
+                  "description": "Error title",
+                  "example": "GetReportDetailByPeriodNB decode error",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Bad request</span>"
+      }
+    },
+    "schemas": {
+      "AcquiringReportListReq": {
+        "description": "Request parameters",
+        "properties": {
+          "dateFrom": {
+            "description": "Report start date.<br>Date in the [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339) format. You may send date or date with time. Time could be specified in seconds or milliseconds.<br> The time stands in Moscow time zone `UTC+3`.<br>Examples:\n  - `2025-06-20`\n  - `2025-06-20T23:59:59`\n  - `2025-06-20T00:00:00.12345`\n  - `2025-06-25T00:00:00`\n",
+            "example": "2026-03-17",
+            "type": "string"
+          },
+          "dateTo": {
+            "description": "Report end date.<br>Date in the [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339) format. You may send date or date with time. Time could be specified in seconds or milliseconds.<br> The time stands in Moscow time zone `UTC+3`.<br>Examples:\n  - `2025-06-20`\n  - `2025-06-20T23:59:59`\n  - `2025-06-20T00:00:00.12345`\n  - `2025-06-20T00:00:00`\n",
+            "example": "2026-03-20",
+            "type": "string"
+          },
+          "limit": {
+            "default": 1000,
+            "description": "Number of reports in the response",
+            "example": 211,
+            "maximum": 1000,
+            "type": "integer"
+          },
+          "offset": {
+            "default": 0,
+            "description": "How many results to skip. For example, with value `10`, the response will start with the 11 element",
+            "example": 345,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "dateFrom",
+          "dateTo"
+        ],
+        "type": "object"
+      },
+      "AcquiringReportListRes": {
+        "description": "Acquiring expenses reports list",
+        "properties": {
+          "acquiringFeeSum": {
+            "description": "Acquiring expenses",
+            "example": "258",
+            "type": "string"
+          },
+          "acquiringFeeVatSum": {
+            "description": "VAT included",
+            "example": "83.79",
+            "type": "string"
+          },
+          "createDate": {
+            "description": "Report date",
+            "example": "2026-03-31",
+            "format": "date",
+            "type": "string"
+          },
+          "currency": {
+            "description": "Report currency",
+            "example": "RUB",
+            "type": "string"
+          },
+          "dateFrom": {
+            "description": "Reporting period start date",
+            "example": "2026-03-16",
+            "format": "date",
+            "type": "string"
+          },
+          "dateTo": {
+            "description": "Reporting period end date",
+            "example": "2026-03-22",
+            "format": "date",
+            "type": "string"
+          },
+          "reportId": {
+            "description": "Report ID",
+            "example": 307401554,
+            "format": "int64",
+            "type": "integer"
+          },
+          "sellerFinanceName": {
+            "description": "Seller name",
+            "example": "ИП Кружинин В. Р.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "reportId",
+          "sellerFinanceName",
+          "dateFrom",
+          "dateTo",
+          "createDate",
+          "currency",
+          "acquiringFeeSum",
+          "acquiringFeeVatSum"
+        ],
+        "type": "object"
+      },
+      "AcquiringReportsDetailedReq": {
+        "description": "Request parameters",
+        "properties": {
+          "dateFrom": {
+            "description": "Report start date.<br>Date in the [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339) format. You may send date or date with time. Time could be specified in seconds or milliseconds.<br> The time stands in Moscow time zone `UTC+3`.<br>Examples:\n  - `2025-06-20`\n  - `2025-06-20T23:59:59`\n  - `2025-06-20T00:00:00.12345`\n  - `2025-06-25T00:00:00`\n",
+            "example": "2026-03-17",
+            "type": "string"
+          },
+          "dateTo": {
+            "description": "Report end date.<br>Date in the [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339) format. You may send date or date with time. Time could be specified in seconds or milliseconds.<br> The time stands in Moscow time zone `UTC+3`.<br>Examples:\n  - `2025-06-20`\n  - `2025-06-20T23:59:59`\n  - `2025-06-20T00:00:00.12345`\n  - `2025-06-20T00:00:00`\n",
+            "example": "2026-03-20",
+            "type": "string"
+          },
+          "fields": {
+            "description": "List of fields that will be returned in response. If the parameter is not specified, all fields are returned",
+            "example": [
+              "rrdId",
+              "nmId",
+              "docTypeName",
+              "retailAmount",
+              "acquiringFee",
+              "srid"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "default": 100000,
+            "description": "Number of rows in the response",
+            "example": 21100,
+            "maximum": 100000,
+            "type": "integer"
+          },
+          "rrdId": {
+            "default": 0,
+            "description": "Response row ID. Required to get the report in parts.<br>Start report uploading with `\"rrdid\":0`. In subsequent requests, specify the `rrdId` value from the last row of the previous response.<br>Repeat the request until you get `204` response\n",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "dateFrom",
+          "dateTo"
+        ],
+        "type": "object"
+      },
+      "AcquiringReportsDetailedRes": {
+        "description": "Details for acquiring expenses reports",
+        "properties": {
+          "acqDate": {
+            "description": "Operation date",
+            "example": "2026-03-21",
+            "type": "string"
+          },
+          "acquiringBank": {
+            "description": "Acquiring bank",
+            "example": "Тинькофф",
+            "type": "string"
+          },
+          "acquiringFee": {
+            "description": "Acquiring fee including VAT",
+            "example": "14.89",
+            "type": "string"
+          },
+          "acquiringFeeVat": {
+            "description": "VAT amount",
+            "example": "4.06",
+            "type": "string"
+          },
+          "currency": {
+            "description": "Report currency",
+            "example": "RUB",
+            "type": "string"
+          },
+          "docTypeName": {
+            "description": "Purchased or returned",
+            "example": "Продажа",
+            "type": "string"
+          },
+          "invoiceDate": {
+            "description": "Invoice date",
+            "example": "2026-03-20",
+            "type": "string"
+          },
+          "invoiceNumber": {
+            "description": "Invoice No.",
+            "example": "С/Ф 123",
+            "type": "string"
+          },
+          "nmId": {
+            "description": "WB item number",
+            "example": 1234567,
+            "type": "integer"
+          },
+          "reportId": {
+            "description": "Report ID",
+            "example": 1234567,
+            "format": "int64",
+            "type": "integer"
+          },
+          "retailAmount": {
+            "description": "Sales on WB",
+            "example": "367",
+            "type": "string"
+          },
+          "rrdId": {
+            "description": "Row ID",
+            "example": 1232610467,
+            "type": "integer"
+          },
+          "saleDate": {
+            "description": "Purchased on",
+            "example": "2026-03-21",
+            "type": "string"
+          },
+          "shkId": {
+            "description": "Item No.",
+            "example": 1239159661,
+            "type": "integer"
+          },
+          "srid": {
+            "description": "Order ID.<br>In the responses of the [FBS](./orders-fbs#tag/FBS-Assembly-Orders), [DBW](./orders-dbw#tag/dbwAssemblyOrders), [DBS](./orders-dbs#tag/dbsAssemblyOrders), and [In-Store Pickup](./in-store-pickup#tag/inStorePickupAssemblyOrders) assembly order methods, `srid` is `rid`\n",
+            "example": "D0.r3f80c3eec6f845c6840128b4c19986f9.0.0",
+            "type": "string"
+          },
+          "taxRegistrationReasonCode": {
+            "description": "Tax registration reason code",
+            "example": "7701123301",
+            "type": "string"
+          },
+          "tin": {
+            "description": "Taxpayer identification number",
+            "example": "010101010101",
+            "type": "string"
+          }
+        },
+        "required": [
+          "reportId",
+          "currency",
+          "rrdId",
+          "nmId",
+          "docTypeName",
+          "retailAmount",
+          "saleDate",
+          "acqDate",
+          "shkId",
+          "acquiringFee",
+          "acquiringFeeVat",
+          "acquiringBank",
+          "tin",
+          "taxRegistrationReasonCode",
+          "invoiceNumber",
+          "invoiceDate",
+          "srid"
+        ],
+        "type": "object"
+      },
+      "FinancialReportsDetailedReportIdReq": {
+        "description": "Request parameters",
+        "properties": {
+          "fields": {
+            "description": "List of fields that will be returned in response. If the parameter is not specified, all fields are returned",
+            "example": [
+              "rrdId",
+              "nmId",
+              "docTypeName",
+              "retailAmount",
+              "acquiringFee",
+              "srid"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "default": 100000,
+            "description": "Number of rows in the response",
+            "example": 21100,
+            "maximum": 100000,
+            "type": "integer"
+          },
+          "rrdId": {
+            "default": 0,
+            "description": "Response row ID. Required to get the report in parts.<br>Start report uploading with `\"rrdid\":0`. In subsequent requests, specify the `rrdId` value from the last row of the previous response.<br>Repeat the request until you get `204` response\n",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "GetCategories": {
+        "properties": {
+          "data": {
+            "properties": {
+              "categories": {
+                "description": "Documents categories",
+                "items": {
+                  "properties": "[MaxDepth]",
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      "GetDoc": {
+        "properties": {
+          "data": {
+            "properties": {
+              "document": {
+                "description": "Document in base64 encoding",
+                "example": "UEsDBBQACAgIAAAAAAAAAAAAAAAAAAAAAABHAAAA0KPQstC10LTQvtC80LvQtdC90LjQtSDQviDQstGL0LrRg9C/0LUg4oSWNDQ4NDE5NDEg0L7RgiAyNS4wOS4yMDIzLnhsc3jsnQk0lP3f/0dEUiRkNwmVECI7o0WS7EklxprdkH2bKVkqISRkGSlkaxRlN2TPnmzJvu/Gzmz/Uz33fY/L8/Q8zrn/x/07565zcjrn9f1cn/V6f69v53zTVCWnYATtA+0DAX/Rg0AgM5ip5l2Yg5OwKeyu+Wl3O1vbcA3YV5FDVfPej2vXKptOK1V9LjycmPDG72uW4vcG9xdsOI1V2wj86sk6+4nHJeZ92NFgC/He3gmDlccFXSyumXYUGSKK4hLLsqu5aBTspu5lqlcGB/JNlQVn1Eumj6o8ZEWPRotEVGkH9/kf457totEKj2N2P4dSZWAIaC0ajy5J+VL5fen1YOhcGMxvvUw+XOKFOHL...LSL/tC77s0GzTi2iBuHorbMpcOaw0Hmsc/gpk7ty3/cdDYRmhkRUPAIC37P94CA8oiP/fIvpPK8n9l43YARWRgH/tI6E3ntD/nfOfPyj9jxxDwn+b8/8dZqBDQPjPNSAACJgBAAD21P9s/y8AAP//UEsHCFHrudyQEwAASxQAAFBLAQIUABQACAgIAAAAAACH4v2BaSgAAGNjAABHAAAAAAAAAAAAAAAAAAAAAADQo9Cy0LXQtNC+0LzQu9C10L3QuNC1INC+INCy0YvQutGD0L/QtSDihJY0NDg0MTk0MSDQvtGCIDI1LjA5LjIwMjMueGxzeFBLAQIUABQACAgIAAAAAADTmLxwRQcAAGAPAABLAAAAAAAAAAAAAAAAAN4oAADQo9Cy0LXQtNC+0LzQu9C10L3QuNC1INC+INCy0YvQutGD0L/QtSDihJY0NDg0MTk0MSDQvtGCIDI1LjA5LjIwMjMueGxzeC5zaWdQSwECFAAUAAgACAAAAAAAUeu53JATAABLFAAACAAAAAAAAAAAAAAAAACcMAAAbWNoZC56aXBQSwUGAAAAAAMAAwAkAQAAYkQAAAAA",
+                "type": "string"
+              },
+              "extension": {
+                "description": "Document format",
+                "example": "zip",
+                "type": "string"
+              },
+              "fileName": {
+                "description": "Document name",
+                "example": "Notice of redemption 44841941.zip",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      "GetDocs": {
+        "properties": {
+          "data": {
+            "properties": {
+              "document": {
+                "description": "Document in base64 encoding",
+                "example": "UEsDBBQACAgIAAAAAAAAAAAAAAAAAAAAAABHAAAA0KPQstC10LTQvtC80LvQtdC90LjQtSDQviDQstGL0LrRg9C/0LUg4oSWNDQ4NDE5NDEg0L7RgiAyNS4wOS4yMDIzLnhsc3jsnQk0lP3f/0dEUiRkNwmVECI7o0WS7EklxprdkH2bKVkqISRkGSlkaxRlN2TPnmzJvu/Gzmz/Uz33fY/L8/Q8zrn/x/07565zcjrn9f1cn/V6f69v53zTVCWnYATtA+0DAX/Rg0AgM5ip5l2Yg5OwKeyu+Wl3O1vbcA3YV5FDVfPej2vXKptOK1V9LjycmPDG72uW4vcG9xdsOI1V2wj86sk6+4nHJeZ92NFgC/He3gmDlccFXSyumXYUGSKK4hLLsqu5aBTspu5lqlcGB/JNlQVn1Eumj6o8ZEWPRotEVGkH9/kf457totEKj2N2P4dSZWAIaC0ajy5J+VL5fen1YOhcGMxvvUw+XOKFOHL...LSL/tC77s0GzTi2iBuHorbMpcOaw0Hmsc/gpk7ty3/cdDYRmhkRUPAIC37P94CA8oiP/fIvpPK8n9l43YARWRgH/tI6E3ntD/nfOfPyj9jxxDwn+b8/8dZqBDQPjPNSAACJgBAAD21P9s/y8AAP//UEsHCFHrudyQEwAASxQAAFBLAQIUABQACAgIAAAAAACH4v2BaSgAAGNjAABHAAAAAAAAAAAAAAAAAAAAAADQo9Cy0LXQtNC+0LzQu9C10L3QuNC1INC+INCy0YvQutGD0L/QtSDihJY0NDg0MTk0MSDQvtGCIDI1LjA5LjIwMjMueGxzeFBLAQIUABQACAgIAAAAAADTmLxwRQcAAGAPAABLAAAAAAAAAAAAAAAAAN4oAADQo9Cy0LXQtNC+0LzQu9C10L3QuNC1INC+INCy0YvQutGD0L/QtSDihJY0NDg0MTk0MSDQvtGCIDI1LjA5LjIwMjMueGxzeC5zaWdQSwECFAAUAAgACAAAAAAAUeu53JATAABLFAAACAAAAAAAAAAAAAAAAACcMAAAbWNoZC56aXBQSwUGAAAAAAMAAwAkAQAAYkQAAAAA",
+                "type": "string"
+              },
+              "extension": {
+                "description": "Document format",
+                "example": "zip",
+                "type": "string"
+              },
+              "fileName": {
+                "description": "Document name",
+                "example": "documents.zip",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      "GetList": {
+        "properties": {
+          "data": {
+            "properties": {
+              "documents": {
+                "description": "Documents categories",
+                "items": {
+                  "properties": "[MaxDepth]",
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      "SalesReportListReq": {
+        "description": "Request parameters",
+        "properties": {
+          "dateFrom": {
+            "description": "Report start date.<br>Date in the [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339) format. You may send date or date with time. Time could be specified in seconds or milliseconds.<br> The time stands in Moscow time zone `UTC+3`.<br>Examples:\n  - `2025-06-20`\n  - `2025-06-20T23:59:59`\n  - `2025-06-20T00:00:00.12345`\n  - `2025-06-25T00:00:00`\n",
+            "example": "2026-03-17",
+            "type": "string"
+          },
+          "dateTo": {
+            "description": "Report end date.<br>Date in the [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339) format. You may send date or date with time. Time could be specified in seconds or milliseconds.<br> The time stands in Moscow time zone `UTC+3`.<br>Examples:\n  - `2025-06-20`\n  - `2025-06-20T23:59:59`\n  - `2025-06-20T00:00:00.12345`\n  - `2025-06-20T00:00:00`\n",
+            "example": "2026-03-20",
+            "type": "string"
+          },
+          "limit": {
+            "default": 1000,
+            "description": "Number of reports in the response",
+            "example": 211,
+            "maximum": 1000,
+            "type": "integer"
+          },
+          "offset": {
+            "default": 0,
+            "description": "How many results to skip. For example, with value `10`, the response will start with the 11 element",
+            "example": 345,
+            "type": "integer"
+          },
+          "period": {
+            "default": "weekly",
+            "description": "Report periodicity:\n  - `weekly`\n  - `daily`\n",
+            "enum": [
+              "daily",
+              "weekly"
+            ],
+            "example": "daily",
+            "type": "string"
+          }
+        },
+        "required": [
+          "dateFrom",
+          "dateTo"
+        ],
+        "type": "object"
+      },
+      "SalesReportListRes": {
+        "description": "Sales reports list",
+        "properties": {
+          "additionalPaymentSum": {
+            "description": "WB fee adjustment",
+            "example": "9509.71",
+            "type": "string"
+          },
+          "avgSalePercent": {
+            "description": "Agreed discount (%)",
+            "example": 0,
+            "type": "number"
+          },
+          "bankPaymentSum": {
+            "description": "Total",
+            "example": "5172.94",
+            "type": "string"
+          },
+          "cashbackAmountSum": {
+            "description": "Amount deducted for Loyalty Program rewards",
+            "example": "2",
+            "type": "string"
+          },
+          "cashbackCommissionChangeSum": {
+            "description": "Loyalty Program participation cost",
+            "example": "0.2",
+            "type": "string"
+          },
+          "cashbackDiscountSum": {
+            "description": "Loyalty Program discount compensation",
+            "example": "19",
+            "type": "string"
+          },
+          "createDate": {
+            "description": "Report date",
+            "example": "2026-03-23",
+            "format": "date",
+            "type": "string"
+          },
+          "currency": {
+            "description": "Report currency",
+            "example": "RUB",
+            "type": "string"
+          },
+          "dateFrom": {
+            "description": "Reporting period start date",
+            "example": "2026-03-16",
+            "format": "date",
+            "type": "string"
+          },
+          "dateTo": {
+            "description": "Reporting period end date",
+            "example": "2026-03-22",
+            "format": "date",
+            "type": "string"
+          },
+          "deductionSum": {
+            "description": "Other deductions and payments",
+            "example": "150",
+            "type": "string"
+          },
+          "deliveryServiceSum": {
+            "description": "Logistics cost",
+            "example": "2558.47",
+            "type": "string"
+          },
+          "forPaySum": {
+            "description": "Net revenue",
+            "example": "183.79",
+            "type": "string"
+          },
+          "paidAcceptanceSum": {
+            "description": "Acceptance cost",
+            "example": "243.81",
+            "type": "string"
+          },
+          "paidStorageSum": {
+            "description": "Storage cost",
+            "example": "626.84",
+            "type": "string"
+          },
+          "paymentSchedule": {
+            "description": "One-time payment period change",
+            "example": "-1",
+            "type": "string"
+          },
+          "penaltySum": {
+            "description": "Total penalties",
+            "example": "1457.61",
+            "type": "string"
+          },
+          "reportId": {
+            "description": "Report ID",
+            "example": 307401554,
+            "format": "int64",
+            "type": "integer"
+          },
+          "reportType": {
+            "description": "Report type:\n  - `1` — general\n  - `2` — by purchase\n  - `3` — by purchase for Georgia\n",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "example": 1,
+            "type": "integer"
+          },
+          "retailAmountSum": {
+            "description": "Sales",
+            "example": "258",
+            "type": "string"
+          },
+          "sellerFinanceName": {
+            "description": "Seller name",
+            "example": "ИП Кружинин В. Р.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "reportId",
+          "sellerFinanceName",
+          "dateFrom",
+          "dateTo",
+          "createDate",
+          "currency",
+          "reportType",
+          "retailAmountSum",
+          "forPaySum",
+          "avgSalePercent",
+          "deliveryServiceSum",
+          "paidStorageSum",
+          "paidAcceptanceSum",
+          "deductionSum",
+          "penaltySum",
+          "additionalPaymentSum",
+          "cashbackAmountSum",
+          "cashbackDiscountSum",
+          "cashbackCommissionChangeSum",
+          "paymentSchedule",
+          "bankPaymentSum"
+        ],
+        "type": "object"
+      },
+      "SalesReportsDetailedReq": {
+        "description": "Request parameters",
+        "properties": {
+          "dateFrom": {
+            "description": "Report start date.<br>Date in the [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339) format. You may send date or date with time. Time could be specified in seconds or milliseconds.<br> The time stands in Moscow time zone `UTC+3`.<br>Examples:\n  - `2025-06-20`\n  - `2025-06-20T23:59:59`\n  - `2025-06-20T00:00:00.12345`\n  - `2025-06-25T00:00:00`\n",
+            "example": "2026-03-17",
+            "type": "string"
+          },
+          "dateTo": {
+            "description": "Report end date.<br>Date in the [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339) format. You may send date or date with time. Time could be specified in seconds or milliseconds.<br> The time stands in Moscow time zone `UTC+3`.<br>Examples:\n  - `2025-06-20`\n  - `2025-06-20T23:59:59`\n  - `2025-06-20T00:00:00.12345`\n  - `2025-06-20T00:00:00`\n",
+            "example": "2026-03-20",
+            "type": "string"
+          },
+          "fields": {
+            "description": "List of fields that will be returned in response. If the parameter is not specified, all fields are returned",
+            "example": [
+              "rrdId",
+              "nmId",
+              "docTypeName",
+              "retailAmount",
+              "acquiringFee",
+              "srid"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "default": 100000,
+            "description": "Number of rows in the response",
+            "example": 21100,
+            "maximum": 100000,
+            "type": "integer"
+          },
+          "period": {
+            "default": "weekly",
+            "description": "Report periodicity:\n  - `weekly`\n  - `daily`\n",
+            "enum": [
+              "daily",
+              "weekly"
+            ],
+            "example": "daily",
+            "type": "string"
+          },
+          "rrdId": {
+            "default": 0,
+            "description": "Response row ID. Required to get the report in parts.<br>Start report uploading with `\"rrdid\":0`. In subsequent requests, specify the `rrdId` value from the last row of the previous response.<br>Repeat the request until you get `204` response\n",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "dateFrom",
+          "dateTo"
+        ],
+        "type": "object"
+      },
+      "SalesReportsDetailedRes": {
+        "description": "Details for sales reports",
+        "properties": {
+          "acquiringBank": {
+            "description": "Acquiring bank",
+            "example": "Тинькофф",
+            "type": "string"
+          },
+          "acquiringFee": {
+            "description": "Compensation for payment services/payment services integration fee",
+            "example": "14.89",
+            "type": "string"
+          },
+          "acquiringPercent": {
+            "description": "Compensation amount for payment services/payment services integration fee amount (%)",
+            "example": 4.06,
+            "type": "number"
+          },
+          "additionalPayment": {
+            "description": "WB fee adjustment",
+            "example": "0",
+            "type": "string"
+          },
+          "agencyVat": {
+            "description": "Tax agent VAT withholding (%).<br>Only for sellers from Kyrgyzstan",
+            "example": 0,
+            "type": "number"
+          },
+          "articleSubstitution": {
+            "description": "Promo item number ID",
+            "example": "",
+            "type": "string"
+          },
+          "b2bCustomerTin": {
+            "description": "Taxpayer identification number of B2B buyer",
+            "example": "010101010101",
+            "type": "string"
+          },
+          "bonusTypeName": {
+            "description": "Deduction reason",
+            "example": "Штраф МП. Невыполненный заказ (отмена клиентом после недовоза)",
+            "type": "string"
+          },
+          "brandName": {
+            "description": "Brand",
+            "example": "BlahBlah",
+            "type": "string"
+          },
+          "cashbackAmount": {
+            "description": "Amount deducted for Loyalty Program rewards",
+            "example": "2",
+            "type": "string"
+          },
+          "cashbackCommissionChange": {
+            "description": "Loyalty program participation cost",
+            "example": "0.2",
+            "type": "string"
+          },
+          "cashbackDiscount": {
+            "description": "Loyalty Program discount compensation",
+            "example": "19",
+            "type": "string"
+          },
+          "commissionPercent": {
+            "description": "WB fee rate (%)",
+            "example": 24,
+            "type": "number"
+          },
+          "country": {
+            "description": "Delivery country",
+            "example": "Россия",
+            "type": "string"
+          },
+          "createDate": {
+            "description": "Report date",
+            "example": "2026-03-23",
+            "format": "date",
+            "type": "string"
+          },
+          "currency": {
+            "description": "Report currency",
+            "example": "RUB",
+            "type": "string"
+          },
+          "dateFrom": {
+            "description": "Reporting period start date",
+            "example": "2026-03-16",
+            "format": "date",
+            "type": "string"
+          },
+          "dateTo": {
+            "description": "Reporting period end date",
+            "example": "2026-03-22",
+            "format": "date",
+            "type": "string"
+          },
+          "declarationNumber": {
+            "description": "Cargo Customs Declaration No.",
+            "example": "",
+            "type": "string"
+          },
+          "deduction": {
+            "description": "Deductions and payments",
+            "example": "6354",
+            "type": "string"
+          },
+          "deliveryAmount": {
+            "description": "Number of deliveries",
+            "example": 0,
+            "type": "integer"
+          },
+          "deliveryMethod": {
+            "description": "Sales model and item type",
+            "example": "FBS, (МГТ)",
+            "type": "string"
+          },
+          "deliveryService": {
+            "description": "Delivery to user",
+            "example": "0",
+            "type": "string"
+          },
+          "dlvPrc": {
+            "description": "Fixed warehouse multiplier for shipments",
+            "example": 1.8,
+            "type": "number"
+          },
+          "docTypeName": {
+            "description": "Purchased or returned",
+            "example": "Продажа",
+            "type": "string"
+          },
+          "fixTariffDateFrom": {
+            "description": "Warehouse multiplier fixed on",
+            "example": "2026-03-18",
+            "format": "date",
+            "type": "string"
+          },
+          "fixTariffDateTo": {
+            "description": "Warehouse multiplier fixed until",
+            "example": "2026-03-19",
+            "format": "date",
+            "type": "string"
+          },
+          "forPay": {
+            "description": "Net revenue for sold items",
+            "example": "376.99",
+            "type": "string"
+          },
+          "giBoxTypeName": {
+            "description": "Type of boxes",
+            "example": "Монопаллета",
+            "type": "string"
+          },
+          "giId": {
+            "description": "Shipment ID",
+            "example": 123456,
+            "type": "integer"
+          },
+          "installmentCofinancingAmount": {
+            "description": "Co-financing discount",
+            "example": "0",
+            "type": "string"
+          },
+          "isB2b": {
+            "description": "B2B sale",
+            "example": false,
+            "type": "boolean"
+          },
+          "isKgvpV2": {
+            "description": "WB fee rate reduction due to promos (%)",
+            "type": "number"
+          },
+          "kiz": {
+            "description": "Labeling code [Chestny ZNAK](https://chestnyznak.ru/en)",
+            "example": "0102900000376311210G2CIS?ehge)S\u001d91002A\u001d92F9Qof4FDo/31Icm14kmtuVYQzLypxm3HWkC1vQ/+pVVjm1dNAth1laFMoAGn7yEMWlTjxIe7lQnJqZ7TRZhlHQ==",
+            "type": "string"
+          },
+          "kvw": {
+            "description": "Final VAT-exempt WB fee rate (%)",
+            "example": 1.81,
+            "type": "number"
+          },
+          "kvwBase": {
+            "description": "VAT-exempt WB fee rate (%)",
+            "example": 24.15,
+            "type": "number"
+          },
+          "loyaltyDiscount": {
+            "description": "Loyalty discount (%)",
+            "example": 0,
+            "type": "number"
+          },
+          "loyaltyId": {
+            "description": "Loyalty discount ID",
+            "example": 0,
+            "type": "integer"
+          },
+          "nmId": {
+            "description": "WB item number",
+            "example": 1234567,
+            "type": "integer"
+          },
+          "officeName": {
+            "description": "Warehouse",
+            "example": "Склад WB",
+            "type": "string"
+          },
+          "orderDt": {
+            "description": "Ordered on",
+            "example": "2026-03-14T00:00:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "orderId": {
+            "description": "Assembly order ID",
+            "example": 2816993144,
+            "type": "integer"
+          },
+          "orderUid": {
+            "description": "Cart ID.<br>Orders in the same buyer's cart will have the same `orderUid`\n",
+            "example": "id375f16c4bec295d9995393af803ff7b",
+            "type": "string"
+          },
+          "paidAcceptance": {
+            "description": "Acceptance expenses",
+            "example": "865",
+            "type": "string"
+          },
+          "paidStorage": {
+            "description": "Storage",
+            "example": "12647.29",
+            "type": "string"
+          },
+          "paidWithSocialCertificate": {
+            "description": "Paid with social voucher",
+            "example": false,
+            "type": "boolean"
+          },
+          "paymentProcessing": {
+            "description": "Payment type: Compensation for payment services/payment services integration fee",
+            "example": "Комиссия за организацию платежа с НДС",
+            "type": "string"
+          },
+          "paymentSchedule": {
+            "description": "One-time payment period change",
+            "example": "-1",
+            "type": "string"
+          },
+          "penalty": {
+            "description": "Total penalties",
+            "example": "231.35",
+            "type": "string"
+          },
+          "ppvzOfficeId": {
+            "description": "Pickup point ID",
+            "example": 105383,
+            "type": "integer"
+          },
+          "ppvzOfficeName": {
+            "description": "Pickup point details",
+            "example": "Москва Москва Очаковское шоссе 6к2",
+            "type": "string"
+          },
+          "ppvzReward": {
+            "description": "Pickup point handover and return fee",
+            "example": "0",
+            "type": "string"
+          },
+          "ppvzSalesCommission": {
+            "description": "VAT-exempt WB fee excluding attorney service cost",
+            "example": "23.74",
+            "type": "string"
+          },
+          "ppvzSupplierInn": {
+            "description": "Pickup point TIN",
+            "example": "010101010101",
+            "type": "string"
+          },
+          "ppvzSupplierName": {
+            "description": "Pickup point name",
+            "example": "ИП Жасмин",
+            "type": "string"
+          },
+          "productDiscountForReport": {
+            "description": "Final agreed discount (%)",
+            "example": 0,
+            "type": "number"
+          },
+          "quantity": {
+            "description": "Number of purchases and returns",
+            "example": 1,
+            "type": "integer"
+          },
+          "rebillLogisticCost": {
+            "description": "Delivery and warehouse fee",
+            "example": "1.349",
+            "type": "string"
+          },
+          "rebillLogisticOrg": {
+            "description": "Carrier",
+            "example": "ИП Иванов Иван Иванович(123456789012)",
+            "type": "string"
+          },
+          "reportId": {
+            "description": "Report ID",
+            "example": 1234567,
+            "format": "int64",
+            "type": "integer"
+          },
+          "reportType": {
+            "description": "Report type:\n  - `1` — general\n  - `2` — purchase\n  - `3` — purchase for Georgia\n",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "example": 1,
+            "type": "integer"
+          },
+          "retailAmount": {
+            "description": "Sales on WB",
+            "example": "367",
+            "type": "string"
+          },
+          "retailPrice": {
+            "description": "Retail price",
+            "example": "1249",
+            "type": "string"
+          },
+          "retailPriceWithDisc": {
+            "description": "Price with applied agreed discount",
+            "example": "399.68",
+            "type": "string"
+          },
+          "returnAmount": {
+            "description": "Number of returns",
+            "example": 0,
+            "type": "integer"
+          },
+          "rrDate": {
+            "description": "Operation date",
+            "example": "2025-10-20",
+            "format": "date",
+            "type": "string"
+          },
+          "rrdId": {
+            "description": "Row ID",
+            "example": 1232610467,
+            "type": "integer"
+          },
+          "saleDt": {
+            "description": "Purchased on",
+            "example": "2026-03-21T00:00:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "salePercent": {
+            "description": "Agreed seller discount (%)",
+            "example": 0,
+            "type": "integer"
+          },
+          "salePriceAffiliatedDiscountPrc": {
+            "description": "Promo item number discount (%)",
+            "example": 0,
+            "type": "number"
+          },
+          "salePricePromocodeDiscountPrc": {
+            "description": "Promo code discount (%)",
+            "example": 0,
+            "type": "number"
+          },
+          "salePriceWholesaleDiscountPrc": {
+            "description": "Wholesale discount for businesses (%)",
+            "example": 0,
+            "type": "number"
+          },
+          "sellerOperName": {
+            "description": "Deduction reason",
+            "example": "Продажа",
+            "type": "string"
+          },
+          "sellerPromo": {
+            "description": "Promo code (%)",
+            "example": "0",
+            "type": "string"
+          },
+          "sellerPromoDiscount": {
+            "description": "Custom promo discount (%)",
+            "example": 3,
+            "type": "number"
+          },
+          "sellerPromoId": {
+            "description": "Custom promo discount ID",
+            "example": 14350,
+            "type": "integer"
+          },
+          "shkId": {
+            "description": "Item No.",
+            "example": 1239159661,
+            "type": "integer"
+          },
+          "sku": {
+            "description": "SKU",
+            "example": "1231312352310",
+            "type": "string"
+          },
+          "spp": {
+            "description": "WB discount (%)",
+            "example": 25.31,
+            "type": "number"
+          },
+          "srid": {
+            "description": "Order ID.<br>In the responses of the [FBS](./orders-fbs#tag/FBS-Assembly-Orders), [DBW](./orders-dbw#tag/dbwAssemblyOrders), [DBS](./orders-dbs#tag/dbsAssemblyOrders), and [In-Store Pickup](./in-store-pickup#tag/inStorePickupAssemblyOrders) assembly order methods, `srid` is `rid`\n",
+            "example": "0f1c3999172603062979867564654dac5b702849",
+            "type": "string"
+          },
+          "srvDbs": {
+            "description": "Paid delivery",
+            "example": true,
+            "type": "boolean"
+          },
+          "stickerId": {
+            "description": "FBS sticker",
+            "example": "1964038895",
+            "type": "string"
+          },
+          "subjectName": {
+            "description": "Subcategory",
+            "example": "Mini ovens",
+            "type": "string"
+          },
+          "supRatingUp": {
+            "description": "WB fee rate reduction due to rating (%)",
+            "type": "number"
+          },
+          "techSize": {
+            "description": "Size",
+            "example": "0",
+            "type": "string"
+          },
+          "title": {
+            "description": "Item name",
+            "example": "ДС тарелка",
+            "type": "string"
+          },
+          "trbxId": {
+            "description": "Master case ID",
+            "example": "WB-TRBX-1234567",
+            "type": "string"
+          },
+          "uuidPromocode": {
+            "description": "Promo code ID",
+            "example": "",
+            "type": "string"
+          },
+          "vendorCode": {
+            "description": "Seller item number",
+            "example": "MAB123",
+            "type": "string"
+          },
+          "vw": {
+            "description": "VAT-exempt WB fee",
+            "example": "22.25",
+            "type": "string"
+          },
+          "vwNds": {
+            "description": "VAT on WB fee",
+            "example": "4.45",
+            "type": "string"
+          },
+          "warehouseLogisticsCoeff": {
+            "description": "Logistics multiplier",
+            "example": 0,
+            "type": "number"
+          },
+          "wibesDiscountPercent": {
+            "description": "Wibes discount (%)",
+            "example": 1,
+            "type": "number"
+          }
+        },
+        "required": [
+          "reportId",
+          "dateFrom",
+          "dateTo",
+          "createDate",
+          "currency",
+          "reportType",
+          "rrdId",
+          "giId",
+          "dlvPrc",
+          "fixTariffDateFrom",
+          "fixTariffDateTo",
+          "subjectName",
+          "nmId",
+          "brandName",
+          "vendorCode",
+          "title",
+          "techSize",
+          "sku",
+          "docTypeName",
+          "quantity",
+          "retailPrice",
+          "retailAmount",
+          "salePercent",
+          "commissionPercent",
+          "officeName",
+          "sellerOperName",
+          "orderDt",
+          "saleDt",
+          "rrDate",
+          "shkId",
+          "retailPriceWithDisc",
+          "deliveryAmount",
+          "returnAmount",
+          "deliveryService",
+          "giBoxTypeName",
+          "productDiscountForReport",
+          "sellerPromo",
+          "spp",
+          "kvwBase",
+          "kvw",
+          "supRatingUp",
+          "isKgvpV2",
+          "ppvzSalesCommission",
+          "forPay",
+          "ppvzReward",
+          "acquiringFee",
+          "acquiringPercent",
+          "paymentProcessing",
+          "acquiringBank",
+          "vw",
+          "vwNds",
+          "ppvzOfficeName",
+          "ppvzOfficeId",
+          "ppvzSupplierName",
+          "ppvzSupplierInn",
+          "declarationNumber",
+          "stickerId",
+          "country",
+          "srvDbs",
+          "penalty",
+          "additionalPayment",
+          "rebillLogisticCost",
+          "paidStorage",
+          "deduction",
+          "paidAcceptance",
+          "orderId",
+          "isB2b",
+          "trbxId",
+          "installmentCofinancingAmount",
+          "wibesDiscountPercent",
+          "cashbackAmount",
+          "cashbackDiscount",
+          "cashbackCommissionChange",
+          "paymentSchedule",
+          "deliveryMethod",
+          "sellerPromoId",
+          "sellerPromoDiscount",
+          "loyaltyId",
+          "loyaltyDiscount",
+          "uuidPromocode",
+          "salePricePromocodeDiscountPrc",
+          "articleSubstitution",
+          "salePriceAffiliatedDiscountPrc",
+          "salePriceWholesaleDiscountPrc",
+          "b2bCustomerTin",
+          "paidWithSocialCertificate",
+          "warehouseLogisticsCoeff",
+          "orderUid",
+          "srid"
+        ],
+        "type": "object"
+      },
+      "requestDownload": {
+        "properties": {
+          "params": {
+            "items": {
+              "properties": {
+                "extension": {
+                  "description": "Document format",
+                  "type": "string"
+                },
+                "serviceName": {
+                  "description": "Unique document ID",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "maxItems": 50,
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "HeaderApiKey": {
+        "in": "header",
+        "name": "Authorization",
+        "type": "apiKey"
+      }
+    }
   },
-  "servers": [
-    {
-      "url": "https://finance-api.wildberries.ru"
+  "info": {
+    "description": "<div class=\"api-block\">\n\nView seller [balance](./financial-reports-and-accounting#tag/balance), [financial reports](./financial-reports-and-accounting#tag/financialReports), and [documents](./financial-reports-and-accounting#tag/documents).\n\n</div>\n",
+    "title": "Documents and Accounting",
+    "version": "finances",
+    "x-file-name": "finances"
+  },
+  "openapi": "3.0.1",
+  "paths": {
+    "/api/finance/v1/acquiring/detailed": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns details for the [acquiring expenses reports](https://seller.wildberries.ru/suppliers-mutual-settlements/reports-implementations/acquiring-reports) by specified period.\n<br><br>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
+        "operationId": "postV1AcquiringDetailed",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcquiringReportsDetailedReq"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "204": {
+            "description": "<span class='response__value response__value_success'>No data</span>"
+          },
+          "400": {
+            "$ref": "#/components/responses/response400FinancialReports"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Details for the Acquiring Expenses Reports by Period{{ /api/finance/v1/acquiring/detailed }}",
+        "tags": [
+          "financialReports"
+        ],
+        "x-category": "finance",
+        "x-readonly-method": true,
+        "x-token-types": [
+          "personal",
+          "service"
+        ],
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://finance-api.wildberries.ru"
+        }
+      ]
     },
-    {
-      "url": "https://statistics-api.wildberries.ru"
+    "/api/finance/v1/acquiring/detailed/{reportId}": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns details for the [acquiring expenses reports](https://seller.wildberries.ru/suppliers-mutual-settlements/reports-implementations/acquiring-reports) by report IDs.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
+        "operationId": "postV1AcquiringDetailedReportId",
+        "parameters": [
+          {
+            "description": "Report ID",
+            "in": "path",
+            "name": "reportId",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinancialReportsDetailedReportIdReq"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "204": {
+            "description": "<span class='response__value response__value_success'>No data</span>"
+          },
+          "400": {
+            "$ref": "#/components/responses/response400FinancialReports"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Details for the Acquiring Expenses Reports by Report ID{{ /api/finance/v1/acquiring/detailed/{reportId} }}",
+        "tags": [
+          "financialReports"
+        ],
+        "x-category": "finance",
+        "x-readonly-method": true,
+        "x-token-types": [
+          "personal",
+          "service"
+        ],
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://finance-api.wildberries.ru"
+        }
+      ]
     },
+    "/api/finance/v1/acquiring/list": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns acquiring expenses reports list in the [the report table](https://seller.wildberries.ru/suppliers-mutual-settlements/reports-implementations/acquiring-reports) format.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
+        "operationId": "postV1AcquiringList",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcquiringReportListReq"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "204": {
+            "description": "<span class='response__value response__value_success'>No data</span>"
+          },
+          "400": {
+            "$ref": "#/components/responses/response400FinancialReports"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Acquiring Expenses Reports List{{ /api/finance/v1/acquiring/list }}",
+        "tags": [
+          "financialReports"
+        ],
+        "x-category": "finance",
+        "x-readonly-method": true,
+        "x-token-types": [
+          "personal",
+          "service"
+        ],
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringList",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://finance-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/finance/v1/sales-reports/detailed": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns details for the [sales reports](https://seller.wildberries.ru/suppliers-mutual-settlements) by specified period.\n<br><br>\nThe data is available since January 29, 2024.\n\n<div class=\"description_important\">\n  You can save the report in <a href=\"/en/knowledge-base/articles/019d49a4-650c-7b04-9596-ba441936f9d3\">Google Sheets</a>\n</div>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 24 h | 2 requests | 12 h | 1 request |\n</div>\n",
+        "operationId": "postV1SalesReportsDetailed",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesReportsDetailedReq"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "204": {
+            "description": "<span class='response__value response__value_success'>No data</span>"
+          },
+          "400": {
+            "$ref": "#/components/responses/response400FinancialReports"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Details for the Sales Reports by Period{{ /api/finance/v1/sales-reports/detailed }}",
+        "tags": [
+          "financialReports"
+        ],
+        "x-category": "finance",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "1 request"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "1 request"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "1 request"
+            },
+            {
+              "type": "Base",
+              "period": "24 h",
+              "limit": "2 requests",
+              "interval": "12 h",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://finance-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/finance/v1/sales-reports/detailed/{reportId}": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns details for the [sales reports](https://seller.wildberries.ru/suppliers-mutual-settlements) by report IDs.\n<br><br>\nThe data is available since January 1, 2025.<br>For technical reasons, the method is currently unavailable for your registration country. For now, you can get this data on [request by period](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed).\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
+        "operationId": "postV1SalesReportsDetailedReportId",
+        "parameters": [
+          {
+            "description": "Report ID.<br>For daily reports, we recommend using non-standard libraries with [BigInt](https://www.npmjs.com/package/json-bigint) support, instead of standard deserialization",
+            "in": "path",
+            "name": "reportId",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinancialReportsDetailedReportIdReq"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "204": {
+            "description": "<span class='response__value response__value_success'>No data</span>"
+          },
+          "400": {
+            "$ref": "#/components/responses/response400FinancialReports"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Details for the Sales Reports by Report ID{{ /api/finance/v1/sales-reports/detailed/{reportId} }}",
+        "tags": [
+          "financialReports"
+        ],
+        "x-category": "finance",
+        "x-readonly-method": true,
+        "x-token-types": [
+          "personal",
+          "service"
+        ],
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://finance-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/finance/v1/sales-reports/list": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns sales reports list in the [report table](https://seller.wildberries.ru/suppliers-mutual-settlements) format.\n<br><br>\nThe list contains data since January 1, 2025.<br>For technical reasons, the method is currently unavailable for your registration country.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
+        "operationId": "postV1SalesReportsList",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SalesReportListReq"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "204": {
+            "description": "<span class='response__value response__value_success'>No data</span>"
+          },
+          "400": {
+            "$ref": "#/components/responses/response400FinancialReports"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Sales Reports List{{ /api/finance/v1/sales-reports/list }}",
+        "tags": [
+          "financialReports"
+        ],
+        "x-category": "finance",
+        "x-readonly-method": true,
+        "x-token-types": [
+          "personal",
+          "service"
+        ],
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsList",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://finance-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/account/balance": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nBalance widget data on [the main page](https://seller.wildberries.ru) of the sellers portal.\n<br><br>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
+        "operationId": "getV1AccountBalance",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": "[MaxDepth]",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Get Seller Balance{{ /api/v1/account/balance }}",
+        "tags": [
+          "balance"
+        ],
+        "x-category": "finance",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "1 request"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "1 request"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "1 request"
+            },
+            {
+              "type": "Base",
+              "period": "24 h",
+              "limit": "1 request",
+              "interval": "24 h",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/balance/operation/getV1AccountBalance",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://finance-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/documents/categories": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns documents categories\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
+        "operationId": "getV1DocumentsCategories",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/LocaleCat"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCategories"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Documents Categories{{ /api/v1/documents/categories }}",
+        "tags": [
+          "documents"
+        ],
+        "x-category": "documents",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "10 s",
+              "limit": "1 request",
+              "interval": "10 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Service",
+              "period": "10 s",
+              "limit": "1 request",
+              "interval": "10 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "10 s",
+              "limit": "1 request",
+              "interval": "10 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base",
+              "period": "24 h",
+              "limit": "1 request",
+              "interval": "24 h",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/getV1DocumentsCategories",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://documents-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/documents/download": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns one document\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
+        "operationId": "getV1DocumentsDownload",
+        "parameters": [
+          {
+            "description": "Unique document ID",
+            "in": "query",
+            "name": "serviceName",
+            "required": true,
+            "schema": {
+              "example": "redeem-notification-44841941",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Document format",
+            "in": "query",
+            "name": "extension",
+            "required": true,
+            "schema": {
+              "example": "zip",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDoc"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "$ref": "#/components/responses/Responses400Download"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Get Document{{ /api/v1/documents/download }}",
+        "tags": [
+          "documents"
+        ],
+        "x-category": "documents",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "10 s",
+              "limit": "1 request",
+              "interval": "10 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Service",
+              "period": "10 s",
+              "limit": "1 request",
+              "interval": "10 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "10 s",
+              "limit": "1 request",
+              "interval": "10 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base",
+              "period": "24 h",
+              "limit": "1 request",
+              "interval": "24 h",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/getV1DocumentsDownload",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://documents-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/documents/download/all": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns more than one document.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 min | 1 request | 5 min | 5 requests |\n| Service | 5 min | 1 request | 5 min | 5 requests |\n| Base with secret | 5 min | 1 request | 5 min | 5 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
+        "operationId": "postV1DocumentsDownloadAll",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "params": [
+                  "[MaxDepth]",
+                  "[MaxDepth]"
+                ]
+              },
+              "schema": {
+                "$ref": "#/components/schemas/requestDownload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDocs"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "$ref": "#/components/responses/Responses400DownloadAll"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Get Documents{{ /api/v1/documents/download/all }}",
+        "tags": [
+          "documents"
+        ],
+        "x-category": "documents",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "5 min",
+              "limit": "1 request",
+              "interval": "5 min",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Service",
+              "period": "5 min",
+              "limit": "1 request",
+              "interval": "5 min",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "5 min",
+              "limit": "1 request",
+              "interval": "5 min",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base",
+              "period": "24 h",
+              "limit": "1 request",
+              "interval": "24 h",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/postV1DocumentsDownloadAll",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://documents-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/documents/list": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns seller documents list\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
+        "operationId": "getV1DocumentsList",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/LocaleList"
+          },
+          {
+            "description": "Period start. Only with `endTime`",
+            "in": "query",
+            "name": "beginTime",
+            "schema": {
+              "example": "2024-07-09",
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Period end. Only with `beginTime`",
+            "in": "query",
+            "name": "endTime",
+            "schema": {
+              "example": "2024-07-15",
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Sorting:\n  - `date` — by the document creation date\n  - `category` — by category (only when `locale=ru`)\n\nOnly with `order`\n",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "default": "date",
+              "enum": [
+                "date",
+                "category"
+              ],
+              "example": "category",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Data order:\n  - `desc` — descending\n  - `asc` — ascending\n\nOnly with `sort`\n",
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "default": "desc",
+              "enum": [
+                "desc",
+                "asc"
+              ],
+              "example": "asc",
+              "type": "string"
+            }
+          },
+          {
+            "description": "[Document category](./financial-reports-and-accounting#tag/documents/operation/getV1DocumentsCategories) ID from the `name` field",
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "example": "redeem-notification",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Unique document ID",
+            "in": "query",
+            "name": "serviceName",
+            "schema": {
+              "example": "redeem-notification-44841941",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The maximum number of response rows",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 50,
+              "example": 10,
+              "maximum": 50,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "From which row to start outputting data",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "default": 0,
+              "example": 90,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetList"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "$ref": "#/components/responses/Responses400List"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Documents List{{ /api/v1/documents/list }}",
+        "tags": [
+          "documents"
+        ],
+        "x-category": "documents",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "10 s",
+              "limit": "1 request",
+              "interval": "10 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Service",
+              "period": "10 s",
+              "limit": "1 request",
+              "interval": "10 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "10 s",
+              "limit": "1 request",
+              "interval": "10 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base",
+              "period": "24 h",
+              "limit": "1 request",
+              "interval": "24 h",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/getV1DocumentsList",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://documents-api.wildberries.ru"
+        }
+      ]
+    }
+  },
+  "security": [
     {
-      "url": "https://documents-api.wildberries.ru"
+      "HeaderApiKey": []
     }
   ],
   "tags": [
     {
-      "name": "Documents and Accounting"
+      "description": "<div class=\"api-description\">\n\n<div class=\"api-block\">\n\nView seller [balance](./financial-reports-and-accounting#tag/balance), [financial reports](./financial-reports-and-accounting#tag/financialReports), and [documents](./financial-reports-and-accounting#tag/documents).\n\n</div>\n\n\n</div>",
+      "name": "Documents and Accounting",
+      "x-traitTag": true
     },
     {
-      "name": "Balance"
+      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Finance</strong> category\n</div>\n\nTo view your [current balance](https://seller.wildberries.ru), use the [seller balance method](./financial-reports-and-accounting#tag/balance/operation/getV1AccountBalance).\n",
+      "name": "balance",
+      "x-displayName": "Balance"
     },
     {
-      "name": "Financial Reports"
+      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Finance</strong> category\n</div>\n\nMethods for getting:\n  1. Sales reports [list](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsList) and details for the reports by [IDs](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId) and [period](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed)\n  2. Acquiring expenses reports [list](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringList) and details for the reports by [IDs](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId) and [period](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed). The methods are available only for sellers from Russia\n\n<div class=\"description_important\">\n  You can save the report in <a href=\"/en/knowledge-base/articles/019d49a4-650c-7b04-9596-ba441936f9d3\">Google Sheets</a>\n</div>\n",
+      "name": "financialReports",
+      "x-displayName": "Financial Reports"
     },
     {
-      "name": "Documents"
+      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Documents</strong> category\n</div>\n\nUsing these methods, you can get [seller documents](https://seller.wildberries.ru/supplementary-agreements) of various categories: acts, accounting reports, offers, letters, product lists, CCDs (Correction Calculation Documents), UPDs (Universal Transfer Documents), notifications, and so on.\n<br><br>\nTo work with documents, first get the lists:\n1. Of [document categories](./financial-reports-and-accounting#tag/documents/operation/getV1DocumentsCategories)\n2. Of [seller documents](./financial-reports-and-accounting#tag/documents/operation/getV1DocumentsList) available for download\n\nThen you can download [a single document](./financial-reports-and-accounting#tag/documents/operation/getV1DocumentsDownload) or [multiple documents](./financial-reports-and-accounting#tag/documents/operation/postV1DocumentsDownloadAll) from the list.\n",
+      "name": "documents",
+      "x-displayName": "Documents"
     }
   ],
-  "paths": {
-    "/api/v1/account/balance": {
-      "get": {
-        "summary": "Get Seller's Balance",
-        "tags": [
-          "Balance"
-        ],
-        "operationId": "tag/Balance/paths/~1api~1v1~1account~1balance/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Balance",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "1 запрос"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "1 запрос"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "1 запрос"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "24 ч",
-              "Лимит": "1 запрос",
-              "Интервал": "24 ч",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/balance/operation/getV1AccountBalance",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/finance/v1/sales-reports/list": {
-      "post": {
-        "summary": "Sales Report List",
-        "tags": [
-          "Financial Reports"
-        ],
-        "operationId": "tag/Financial-Reports/operation/postV1SalesReportsList",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Financial Reports",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsList",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/finance/v1/sales-reports/detailed/{reportId}": {
-      "post": {
-        "summary": "Details for the Sales Reports by Report ID",
-        "tags": [
-          "Financial Reports"
-        ],
-        "operationId": "tag/Financial-Reports/operation/postV1SalesReportsDetailedReportId",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Financial Reports",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/finance/v1/sales-reports/detailed": {
-      "post": {
-        "summary": "Details for the Sales Reports by Period",
-        "tags": [
-          "Financial Reports"
-        ],
-        "operationId": "tag/Financial-Reports/operation/postV1SalesReportsDetailed",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Financial Reports",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "1 запрос"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "1 запрос"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "1 запрос"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "24 ч",
-              "Лимит": "2 запроса",
-              "Интервал": "12 ч",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/finance/v1/acquiring/list": {
-      "post": {
-        "summary": "Acquiring Expenses Report List",
-        "tags": [
-          "Financial Reports"
-        ],
-        "operationId": "tag/Financial-Reports/operation/postV1AcquiringList",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Financial Reports",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringList",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/finance/v1/acquiring/detailed/{reportId}": {
-      "post": {
-        "summary": "Details for the Acquiring Expenses Reports by Report ID",
-        "tags": [
-          "Financial Reports"
-        ],
-        "operationId": "tag/Financial-Reports/operation/postV1AcquiringDetailedReportId",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Financial Reports",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/finance/v1/acquiring/detailed": {
-      "post": {
-        "summary": "Details for the Acquiring Expenses Reports by Period",
-        "tags": [
-          "Financial Reports"
-        ],
-        "operationId": "tag/Financial-Reports/operation/postV1AcquiringDetailed",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Financial Reports",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/documents/categories": {
-      "get": {
-        "summary": "Documents Categories",
-        "tags": [
-          "Documents"
-        ],
-        "operationId": "tag/Documents/paths/~1api~1v1~1documents~1categories/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Documents",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "10 сек",
-              "Лимит": "1 запрос",
-              "Интервал": "10 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "10 сек",
-              "Лимит": "1 запрос",
-              "Интервал": "10 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "10 сек",
-              "Лимит": "1 запрос",
-              "Интервал": "10 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "24 ч",
-              "Лимит": "1 запрос",
-              "Интервал": "24 ч",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/getV1DocumentsCategories",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/documents/list": {
-      "get": {
-        "summary": "Documents List",
-        "tags": [
-          "Documents"
-        ],
-        "operationId": "tag/Documents/paths/~1api~1v1~1documents~1list/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Documents",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "10 сек",
-              "Лимит": "1 запрос",
-              "Интервал": "10 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "10 сек",
-              "Лимит": "1 запрос",
-              "Интервал": "10 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "10 сек",
-              "Лимит": "1 запрос",
-              "Интервал": "10 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "24 ч",
-              "Лимит": "1 запрос",
-              "Интервал": "24 ч",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/getV1DocumentsList",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/documents/download": {
-      "get": {
-        "summary": "Get Document",
-        "tags": [
-          "Documents"
-        ],
-        "operationId": "tag/Documents/paths/~1api~1v1~1documents~1download/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Documents",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "10 сек",
-              "Лимит": "1 запрос",
-              "Интервал": "10 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "10 сек",
-              "Лимит": "1 запрос",
-              "Интервал": "10 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "10 сек",
-              "Лимит": "1 запрос",
-              "Интервал": "10 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "24 ч",
-              "Лимит": "1 запрос",
-              "Интервал": "24 ч",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/getV1DocumentsDownload",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/documents/download/all": {
-      "post": {
-        "summary": "Get Documents",
-        "tags": [
-          "Documents"
-        ],
-        "operationId": "tag/Documents/paths/~1api~1v1~1documents~1download~1all/post",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting and https://dev.wildberries.ru/en/swagger/finances for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Documents",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "5 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "5 мин",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "5 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "5 мин",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "5 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "5 мин",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "24 ч",
-              "Лимит": "1 запрос",
-              "Интервал": "24 ч",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/postV1DocumentsDownloadAll",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    }
-  },
   "x-wb-extraction": {
-    "mode": "docs-html-snapshot",
+    "mode": "browser-redoc-openapi",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting",
-    "swagger_url": "https://dev.wildberries.ru/en/swagger/finances",
-    "chapter_path": "financial-reports-and-accounting",
-    "group_count": 4,
-    "operation_count": 12
+    "capturedAt": "2026-08-19T18:12:37.448Z"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-07-29T13:07:26.863Z",
+    "verifiedAt": "2026-08-19T18:12:37.448Z",
     "source": "https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting",
     "operationCount": 11
   }

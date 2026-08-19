@@ -9,10 +9,10 @@
 ## Typical Calls
 
 ```bash
-python scripts/api_call.py --method GET --url "https://supplies-api.wildberries.ru/api/v1/warehouses"
-python scripts/api_call.py --method GET --url "https://supplies-api.wildberries.ru/api/v1/transit-tariffs"
-python scripts/api_call.py --method POST --url "https://supplies-api.wildberries.ru/api/v1/acceptance/options" --body '{}'
-python scripts/api_call.py --method GET --url "https://supplies-api.wildberries.ru/api/v1/supplies/123"
+python3 scripts/api_call.py --method GET --url "https://supplies-api.wildberries.ru/api/v1/warehouses"
+python3 scripts/api_call.py --method GET --url "https://supplies-api.wildberries.ru/api/v1/transit-tariffs"
+python3 scripts/api_call.py --method POST --url "https://supplies-api.wildberries.ru/api/v1/acceptance/options" --body '{}'
+python3 scripts/api_call.py --method GET --url "https://supplies-api.wildberries.ru/api/v1/supplies/123"
 ```
 
 Create or modify supply workflows only after confirming warehouse, acceptance window, and product list.

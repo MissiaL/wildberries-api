@@ -1,395 +1,1757 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "FBW Supplies",
-    "version": "html-snapshot",
-    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw."
+  "components": {
+    "examples": {
+      "BadFromOrTill": {
+        "description": "Specified date is incorrect",
+        "value": {
+          "detail": "ошибка при считывании даты \"11-03-2019\". Дата должна быть в формате ISO Date: 2006-01-02",
+          "origin": "supply-api",
+          "requestId": "7916f0258e363ad2b6663e980903818d",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "BadID": {
+        "description": "The length of the ID parameter is exceeded",
+        "value": {
+          "detail": "id выходит за рамки int64",
+          "origin": "supply-api",
+          "requestId": "0e35ac7fdbb94695db4004cb4c4ca12b",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "BadLimitFormat": {
+        "description": "The value of the `limit` parameter is incorrect",
+        "value": {
+          "detail": "Неверный формат limit",
+          "origin": "supply-api",
+          "requestId": "a6bdc2a4d2fde51c2036fa8af2483886",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "BadOffsetFormat": {
+        "description": "The value of the `offset` parameter is incorrect",
+        "value": {
+          "detail": "Неверный формат offset",
+          "origin": "supply-api",
+          "requestId": "a6bdc2a4d2fde51c2036fa8af2483886",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "BadPathParamFormat": {
+        "description": "The value of the parameter `ID` is either not specified or specified incorrectly",
+        "value": {
+          "detail": "неверный формат id (должен быть int64)",
+          "origin": "supply-api",
+          "requestId": "aee7d3a5378ef3c7ec0e7a5bc94abfcf",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "BadStatusIDs": {
+        "description": "The value of the `statusIDs` parameter is incorrect",
+        "value": {
+          "detail": "Выберите значение параметра 'StatusIDs[0]' из списка: '1 2 3 4 5 6'",
+          "origin": "supply-api",
+          "requestId": "52d7410a596b40cecfeb70c41ae5ac99",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "BadSupplyIDItems": {
+        "description": "The specified supply is not found",
+        "value": {
+          "detail": "fail to get box barcodes info: fail to get barcodes info: internal error: get supply by id: Поставка не найдена",
+          "origin": "supply-api",
+          "requestId": "a6bdc2a4d2fde51c2036fa8af2483886",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "BadSupplyIDPackage": {
+        "description": "The specified supply is not found",
+        "value": {
+          "detail": "fail to get barcodes info: internal error: get supply by id: Поставка не найдена",
+          "origin": "supply-api",
+          "requestId": "a6bdc2a4d2fde51c2036fa8af2483886",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "BadTypeFormat": {
+        "description": "The value of the parameter `type` is either not specified or specified incorrectly",
+        "value": {
+          "detail": "Выберите значение параметра 'Type' из списка: 'factDate createDate supplyDate updatedDate'",
+          "origin": "supply-api",
+          "requestId": "31aba083c7144409c3cbbb968e693f16",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "BadisPreorderIDFormat": {
+        "description": "The value of the parameter `isPreorderID` is either not specified or specified incorrectly",
+        "value": {
+          "detail": "Неверный формат isPreorderID",
+          "origin": "supply-api",
+          "requestId": "a6bdc2a4d2fde51c2036fa8af2483886",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "OptionsResponse": {
+        "value": {
+          "requestId": "kr53d2bRKYmkK2N6zaNKHs",
+          "result": [
+            {
+              "barcode": "Seller",
+              "error": {
+                "detail": "barcode Seller is not found",
+                "title": "barcode validation error"
+              },
+              "isError": true,
+              "warehouses": null
+            },
+            {
+              "barcode": "123456789",
+              "warehouses": [
+                {
+                  "canBox": true,
+                  "canMonopallet": false,
+                  "canSupersafe": false,
+                  "isBoxOnPallet": false,
+                  "warehouseID": 205349
+                },
+                {
+                  "canBox": false,
+                  "canMonopallet": true,
+                  "canSupersafe": false,
+                  "isBoxOnPallet": true,
+                  "warehouseID": 211622
+                },
+                {
+                  "canBox": true,
+                  "canMonopallet": false,
+                  "canSupersafe": false,
+                  "isBoxOnPallet": true,
+                  "warehouseID": 214951
+                },
+                {
+                  "canBox": true,
+                  "canMonopallet": false,
+                  "canSupersafe": false,
+                  "isBoxOnPallet": true,
+                  "warehouseID": 206319
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "PreorderIdSearchError": {
+        "description": "The supply has been found for the order. Use the supply ID for search.",
+        "value": {
+          "detail": "fail to get supply details: по заказу 123456789 найдена поставка 987654321. Используйте поиск по ID поставки",
+          "origin": "supply-api",
+          "requestId": "bc28456e85d5590c74decbcd9f63cd91",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "RequestOptions": {
+        "value": [
+          {
+            "barcode": "k",
+            "quantity": 1
+          },
+          {
+            "barcode": "1111111111",
+            "quantity": 7
+          }
+        ]
+      },
+      "Response400Options": {
+        "description": "The value of the parameter `warehouseID` is either not specified or specified incorrectly",
+        "value": {
+          "detail": "Неверный формат warehouseID",
+          "origin": "supply-api",
+          "requestId": "a6bdc2a4d2fde51c2036fa8af2483886",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "ResponseTariffs": {
+        "value": [
+          {
+            "activeFrom": "2024-11-03T21:01:00Z",
+            "boxTariff": null,
+            "destinationWarehouseName": "Краснодар",
+            "palletTariff": 7500,
+            "transitWarehouseName": "Обухово"
+          },
+          {
+            "activeFrom": "2025-04-08T21:00:48.019Z",
+            "boxTariff": [
+              {
+                "from": 0,
+                "to": 1500,
+                "value": 5.3
+              },
+              {
+                "from": 1500,
+                "to": 0,
+                "value": 3.9
+              }
+            ],
+            "destinationWarehouseName": "Краснодар (Тихорецкая)",
+            "palletTariff": 6500,
+            "transitWarehouseName": "СЦ Гомель 2"
+          }
+        ]
+      },
+      "SupplyNotFound": {
+        "value": {
+          "detail": "поставка 1234 не найдена",
+          "origin": "supply-api",
+          "requestId": "a6bdc2a4d2fde51c2036fa8af2483886",
+          "status": 404,
+          "title": "not found"
+        }
+      }
+    },
+    "responses": {
+      "401": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "code": "07e4668e--a53a3d31f8b0-[UK-oWaVDUqNrKG]; 03bce=277; 84bd353bf-75",
+              "detail": "token problem; token is malformed: could not base64 decode signature: illegal base64 data at input byte 84",
+              "origin": "s2s-api-auth-catalog",
+              "requestId": "7b80742415072fe8b6b7f7761f1d1211",
+              "status": 401,
+              "statusText": "Unauthorized",
+              "timestamp": "2024-09-30T06:52:38Z",
+              "title": "unauthorized"
+            },
+            "schema": {
+              "properties": {
+                "code": {
+                  "description": "Internal error code",
+                  "type": "string"
+                },
+                "detail": {
+                  "description": "Error details",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Unique request ID",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "type": "number"
+                },
+                "statusText": {
+                  "description": "Text of the HTTP status code",
+                  "type": "string"
+                },
+                "timestamp": {
+                  "description": "Request date and time",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Unauthorized</span>"
+      },
+      "402": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "detail": "wb solution for business has insufficient funds on its balance. please top up the balance in the company's personal account https://dev.wildberries.ru/company",
+              "title": "payment required"
+            },
+            "schema": {
+              "properties": {
+                "detail": {
+                  "description": "Error details. The error is only returned to services from the [Solutions for business Catalog](/business-solutions)",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Payment required</span>"
+      },
+      "429": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "code": "07e4668e-ac2242c5c8c5-[UK-4dx7JUdskGZ]",
+              "detail": "limited by c122a060-a7fb-4bb4-abb0-32fd4e18d489",
+              "origin": "s2s-api-auth-catalog",
+              "requestId": "9d3c02cc698f8b041c661a7c28bed293",
+              "status": 429,
+              "statusText": "Too Many Requests",
+              "timestamp": "2024-09-30T06:52:38Z",
+              "title": "too many requests"
+            },
+            "schema": {
+              "properties": {
+                "code": {
+                  "description": "Internal error code",
+                  "type": "string"
+                },
+                "detail": {
+                  "description": "Error details",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Unique request ID",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "type": "number"
+                },
+                "statusText": {
+                  "description": "Text of the HTTP status code",
+                  "type": "string"
+                },
+                "timestamp": {
+                  "description": "Request date and time",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Too many requests</span>"
+      }
+    },
+    "schemas": {
+      "models.Box": {
+        "example": {
+          "barcodes": [
+            {
+              "barcode": "1234567891234",
+              "quantity": 1
+            }
+          ],
+          "packageCode": "WB_689",
+          "quantity": 1
+        },
+        "properties": {
+          "barcodes": {
+            "description": "List of packed items",
+            "items": {
+              "$ref": "#/components/schemas/models.GoodInBox"
+            },
+            "type": "array"
+          },
+          "packageCode": {
+            "description": "Package SKU",
+            "type": "string"
+          },
+          "quantity": {
+            "description": "Total quantity of items in the package, pieces",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "models.DateFilterRequest": {
+        "properties": {
+          "from": {
+            "description": "Period start date",
+            "format": "ISO 8601",
+            "type": "string"
+          },
+          "till": {
+            "description": "Period end date",
+            "format": "ISO 8601",
+            "type": "string"
+          },
+          "type": {
+            "description": "Dates type:\n  - `factDate` — actual dispatch date\n  - `createDate` — supply creation date\n  - `supplyDate` — planned dispatch date\n  - `updatedDate` — supply update date\n",
+            "enum": [
+              "factDate",
+              "createDate",
+              "supplyDate",
+              "updatedDate"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "type": "object"
+      },
+      "models.ErrorModel": {
+        "properties": {
+          "detail": {
+            "description": "Error description",
+            "type": "string"
+          },
+          "origin": {
+            "description": "Service that returned the error",
+            "type": "string"
+          },
+          "requestId": {
+            "description": "Request ID",
+            "type": "string"
+          },
+          "status": {
+            "description": "HTTP status code",
+            "type": "integer"
+          },
+          "title": {
+            "description": "Error ID",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.Good": {
+        "properties": {
+          "barcode": {
+            "description": "Barcode from the listing",
+            "type": "string"
+          },
+          "quantity": {
+            "description": "Total quantity of items planned for supply. <br> **Maximum 999999**\n",
+            "maximum": 999999,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "models.GoodInBox": {
+        "properties": {
+          "barcode": {
+            "description": "Barcode",
+            "type": "string"
+          },
+          "quantity": {
+            "description": "Quantity, pieces",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "models.GoodInSupply": {
+        "example": {
+          "acceptedQuantity": 0,
+          "barcode": "1234567891234",
+          "color": "красный",
+          "needKiz": true,
+          "nmID": 987456654,
+          "quantity": 10,
+          "readyForSaleQuantity": 0,
+          "supplierBoxAmount": 10,
+          "techSize": "C",
+          "tnved": "6204430000",
+          "unloadingQuantity": 0,
+          "vendorCode": "wb4sewt0vg"
+        },
+        "properties": {
+          "acceptedQuantity": {
+            "description": "Accepted, pieces",
+            "nullable": true,
+            "type": "integer"
+          },
+          "barcode": {
+            "description": "Item barcode",
+            "type": "string"
+          },
+          "color": {
+            "description": "Item color",
+            "nullable": true,
+            "type": "string"
+          },
+          "needKiz": {
+            "description": "Is a labeling code [Chestny ZNAK](https://chestnyznak.ru/en) required for this item:\n  - `false` — not required\n  - `true` — required\n",
+            "type": "boolean"
+          },
+          "nmID": {
+            "description": "WB item number",
+            "type": "integer"
+          },
+          "quantity": {
+            "description": "Specified in the supply/order, pieces",
+            "type": "integer"
+          },
+          "readyForSaleQuantity": {
+            "description": "Ready for sale, pieces",
+            "nullable": true,
+            "type": "integer"
+          },
+          "supplierBoxAmount": {
+            "description": "Specified in the package, pieces",
+            "nullable": true,
+            "type": "integer"
+          },
+          "techSize": {
+            "description": "Item size specified by the seller",
+            "type": "string"
+          },
+          "tnved": {
+            "description": "HS-code.\n<br>\nIf `\"needKiz\":true` and `\"tnved\":null`, it is required to specify the **HS-codes** in the [personal account](https://seller.wildberries.ru/new-goods) or through [API](./work-with-products#tag/listings/paths/~1content~1v2~1cards~1update/post)\n",
+            "nullable": true,
+            "type": "string"
+          },
+          "unloadingQuantity": {
+            "description": "Total items at putaway, pieces",
+            "nullable": true,
+            "type": "integer"
+          },
+          "vendorCode": {
+            "description": "Seller item number",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.HandySupplyStatus": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "type": "integer",
+        "x-enum-varnames": [
+          "NotPlanned",
+          "Planned",
+          "AllowUnload",
+          "Accepting",
+          "Accepted",
+          "Virtual",
+          "UnloadedOnGate"
+        ]
+      },
+      "models.OptionsResultModel": {
+        "properties": {
+          "requestId": {
+            "description": "Request ID if an error is present",
+            "type": "string"
+          },
+          "result": {
+            "items": {
+              "properties": {
+                "barcode": {
+                  "description": "Listing barcode",
+                  "type": "string"
+                },
+                "error": {
+                  "description": "Error data. If an error is present",
+                  "properties": "[MaxDepth]",
+                  "type": "object"
+                },
+                "isError": {
+                  "description": "Presence of an error:\n  - `true` — there is an error\n  - Field is absent — there is no error\n",
+                  "type": "boolean"
+                },
+                "warehouses": {
+                  "description": "Warehouses list. Will be `null` if an error is present",
+                  "items": "[MaxDepth]",
+                  "nullable": true,
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "models.SuppliesFiltersRequest": {
+        "properties": {
+          "dates": {
+            "description": "Filter by dates",
+            "items": {
+              "$ref": "#/components/schemas/models.DateFilterRequest"
+            },
+            "type": "array"
+          },
+          "statusIDs": {
+            "description": "Filter the supply by statuses. Possible values:\n  - `1` — Not planned\n  - `2` — Planned\n  - `3` — Dispatch allowed\n  - `4` — Accepting\n  - `5` — Accepted\n  - `6` — Unloaded at the gate\n",
+            "items": {
+              "$ref": "#/components/schemas/models.HandySupplyStatus"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "models.Supply": {
+        "properties": {
+          "boxTypeID": {
+            "description": "Supply type ID:\n  - `0` — Without boxes (virtual supply)\n  - `1` and `2` — Boxes\n  - `5` — Monopallets\n  - `6` — Supersafe\n"
+          },
+          "createDate": {
+            "description": "Date and time the supply was created",
+            "type": "string"
+          },
+          "factDate": {
+            "description": "Actual dispatch date",
+            "nullable": true,
+            "type": "string"
+          },
+          "isBoxOnPallet": {
+            "description": "**Pallet with Single Items** — supply type:\n  - `true` — yes\n  - `false` — no\n\n  The field is returned only when `\"boxTypeID\": 2`\n",
+            "type": "boolean"
+          },
+          "phone": {
+            "description": "Phone number of the user that created the supply",
+            "type": "string"
+          },
+          "preorderID": {
+            "description": "Order ID (unplanned supply). Will be `0` for all virtual supplies",
+            "type": "integer"
+          },
+          "statusID": {
+            "description": "Supply status ID:\n- `1` — Not planned\n- `2` — Planned\n- `3` — Dispatch allowed\n- `4` — Accepting\n- `5` — Accepted\n- `6` — Unloaded at the gate\n",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "type": "integer"
+          },
+          "supplyDate": {
+            "description": "Planned dispatch date",
+            "nullable": true,
+            "type": "string"
+          },
+          "supplyID": {
+            "description": "Supply ID. If `null`, it's an order, so use the value of the `preorderID` field",
+            "nullable": true,
+            "type": "integer"
+          },
+          "updatedDate": {
+            "description": "Date of the supply update",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.SupplyDetails": {
+        "example": {
+          "acceptanceCost": 5000,
+          "acceptedQuantity": 10,
+          "actualWarehouseID": 507,
+          "actualWarehouseName": "Коледино",
+          "boxTypeID": 2,
+          "createDate": "2025-07-15T17:17:45+03:00",
+          "deliveryCoef": "200",
+          "depersonalizedQuantity": 0,
+          "factDate": "2025-07-18T11:37:32+03:00",
+          "isBoxOnPallet": true,
+          "paidAcceptanceCoefficient": 10,
+          "phone": "+7 903 *** 98 62",
+          "quantity": 10,
+          "readyForSaleQuantity": 0,
+          "rejectReason": null,
+          "statusID": 5,
+          "storageCoef": "215",
+          "supplierAssignName": "Магазин",
+          "supplyDate": "2025-07-15T00:00:00+03:00",
+          "transitWarehouseID": null,
+          "transitWarehouseName": "",
+          "unloadingQuantity": 10,
+          "updatedDate": "2025-07-18T12:59:53+03:00",
+          "warehouseID": 507,
+          "warehouseName": "Коледино"
+        },
+        "properties": {
+          "acceptanceCost": {
+            "description": "Preliminary acceptance cost, ₽",
+            "nullable": true,
+            "type": "number"
+          },
+          "acceptedQuantity": {
+            "description": "Accepted, pieces",
+            "nullable": false,
+            "type": "integer"
+          },
+          "actualWarehouseID": {
+            "description": "Warehouse ID where the supply was delivered",
+            "nullable": true,
+            "type": "integer"
+          },
+          "actualWarehouseName": {
+            "description": "Warehouse name where the supply was delivered",
+            "type": "string"
+          },
+          "boxTypeID": {
+            "description": "Supply type ID:\n  - `0` — Without boxes (virtual supply)\n  - `1` and `2` — Boxes\n  - `5` — Monopallets\n  - `6` — Supersafe\n",
+            "type": "integer"
+          },
+          "createDate": {
+            "description": "Date and time the supply was created",
+            "type": "string"
+          },
+          "deliveryCoef": {
+            "description": "Logistics coefficient",
+            "nullable": true,
+            "type": "string"
+          },
+          "depersonalizedQuantity": {
+            "description": "Quantity of depersonalized items, pieces",
+            "nullable": true,
+            "type": "integer"
+          },
+          "factDate": {
+            "description": "Actual dispatch date",
+            "nullable": true,
+            "type": "string"
+          },
+          "isBoxOnPallet": {
+            "description": "**Pallet with Single Items** — supply type:\n  - `true` — yes\n  - `false` — no\n\n  The field is returned only when `\"boxTypeID\": 2`\n",
+            "type": "boolean"
+          },
+          "paidAcceptanceCoefficient": {
+            "description": "Acceptance coefficient",
+            "nullable": true,
+            "type": "number"
+          },
+          "phone": {
+            "description": "Phone number of the user that created the supply",
+            "type": "string"
+          },
+          "quantity": {
+            "description": "Added to the supply/order, pieces",
+            "type": "integer"
+          },
+          "readyForSaleQuantity": {
+            "description": "Ready for sale, pieces",
+            "nullable": false,
+            "type": "integer"
+          },
+          "rejectReason": {
+            "description": "Reason why the supply cannot be accepted",
+            "nullable": true,
+            "type": "string"
+          },
+          "statusID": {
+            "description": "Supply status ID:\n- `1` — Not planned\n- `2` — Planned\n- `3` — Dispatch allowed\n- `4` — Accepting\n- `5` — Accepted\n- `6` — Unloaded at the gate\n",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "type": "integer"
+          },
+          "storageCoef": {
+            "description": "Storage coefficient",
+            "nullable": true,
+            "type": "string"
+          },
+          "supplierAssignName": {
+            "description": "Short seller's name",
+            "nullable": true,
+            "type": "string"
+          },
+          "supplyDate": {
+            "description": "Planned dispatch date",
+            "nullable": true,
+            "type": "string"
+          },
+          "transitWarehouseID": {
+            "description": "Transit warehouse ID",
+            "nullable": true,
+            "type": "integer"
+          },
+          "transitWarehouseName": {
+            "description": "Transit warehouse name",
+            "type": "string"
+          },
+          "unloadingQuantity": {
+            "description": "Total items at putaway, pieces",
+            "nullable": false,
+            "type": "integer"
+          },
+          "updatedDate": {
+            "description": "Date of the supply update",
+            "nullable": true,
+            "type": "string"
+          },
+          "virtualTypeID": {
+            "description": "ID of virtual supply type. Displayed only for supplies with `\"boxTypeID\":0`.\n  - `0` — Carryover of stock\n  - `1` — Depersonalization\n  - `4` — QR supply\n  - `5` — Additional acceptance\n  - `6` — Scan acceptance\n",
+            "type": "integer"
+          },
+          "warehouseID": {
+            "description": "Warehouse ID for planned supply",
+            "type": "integer"
+          },
+          "warehouseName": {
+            "description": "Warehouse name for planned supply",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.TransitTariff": {
+        "properties": {
+          "activeFrom": {
+            "description": "From what date the transit direction is available",
+            "format": "date-time",
+            "type": "string"
+          },
+          "boxTariff": {
+            "description": "Tariff for box transit. If `null`, transit for boxes is not available",
+            "items": {
+              "$ref": "#/components/schemas/models.VolumeTariff"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "destinationWarehouseName": {
+            "description": "Destination warehouse",
+            "type": "string"
+          },
+          "palletTariff": {
+            "description": "Tariff per pallet, ₽",
+            "type": "integer"
+          },
+          "transitWarehouseName": {
+            "description": "Transit warehouse",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.VolumeTariff": {
+        "properties": {
+          "from": {
+            "description": "Supply volume from, liters",
+            "type": "integer"
+          },
+          "to": {
+            "description": "Supply volume up to, liters",
+            "type": "integer"
+          },
+          "value": {
+            "description": "Rate, ₽ per liter",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "models.WarehousesResultItems": {
+        "example": {
+          "ID": 300461,
+          "address": "Гомель, Могилёвская улица 1/А",
+          "isActive": false,
+          "isTransitActive": true,
+          "name": "Гомель 2",
+          "workTime": "24/7"
+        },
+        "properties": {
+          "ID": {
+            "description": "Warehouse ID",
+            "type": "integer"
+          },
+          "address": {
+            "description": "Warehouse address",
+            "type": "string"
+          },
+          "isActive": {
+            "description": "Is it available as a destination warehouse:\n- `true` — yes\n- `false` — no\n",
+            "type": "boolean"
+          },
+          "isTransitActive": {
+            "description": "Is it available as a transit warehouse:\n- `true` — yes\n- `false` — no\n",
+            "type": "boolean"
+          },
+          "name": {
+            "description": "Warehouse name",
+            "type": "string"
+          },
+          "workTime": {
+            "description": "Warehouse operating hours",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "HeaderApiKey": {
+        "in": "header",
+        "name": "Authorization",
+        "type": "apiKey"
+      }
+    }
   },
-  "servers": [
+  "info": {
+    "description": "<div class=\"api-block\">\n\nThis section describes the methods for getting:\n  - [information for forming supplies](./orders-fbw#tag/informationForFormingSupplies)\n  - [supplies information](./orders-fbw#tag/suppliesInformation)\n\nYou can create listings in the [Content](./api-information#tag/authorization/Token-categories) sandbox and then use the item SKUs in the Supplies <a href='/en/sandbox'>sandbox</a>\n\n</div>\n",
+    "title": "FBW Supplies",
+    "version": "ordersfbw",
+    "x-file-name": "orders-fbw"
+  },
+  "openapi": "3.0.1",
+  "paths": {
+    "/api/v1/acceptance/options": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method is [temporary disabled](https://dev.wildberries.ru/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 6 requests |\n| Service | 1 min | 6 requests | 10 s | 6 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 6 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all methods in total.\n\n</div>\n",
+        "operationId": "postV1AcceptanceOptions",
+        "parameters": [
+          {
+            "description": "Warehouse ID. <br> If the parameter is not specified, data for all warehouses is returned. <br> **Maximum is one value**",
+            "example": 507,
+            "in": "query",
+            "name": "warehouseID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "examples": {
+                "RequestOptions": {
+                  "$ref": "#/components/examples/RequestOptions"
+                }
+              },
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/models.Good"
+                },
+                "maxItems": 5000,
+                "type": "array"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Response": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/models.OptionsResultModel"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "BadWarehouseIDsParam": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/models.ErrorModel"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Incorrect request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "description": "<span class='response__value '>Access denied</span>"
+          },
+          "404": {
+            "description": "<span class='response__value '>Not found</span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Acceptance Options{{ /api/v1/acceptance/options }}",
+        "tags": [
+          "informationForFormingSupplies"
+        ],
+        "x-category": "supplies",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "6 requests",
+              "interval": "10 s",
+              "burst": "6 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "6 requests",
+              "interval": "10 s",
+              "burst": "6 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "6 requests",
+              "interval": "10 s",
+              "burst": "6 requests"
+            },
+            {
+              "type": "Base",
+              "period": "1 h",
+              "limit": "2 requests",
+              "interval": "30 min",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/informationForFormingSupplies/operation/postV1AcceptanceOptions",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "In Sandbox — maximum of 1 request per second for all methods in total."
+        }
+      },
+      "servers": [
+        {
+          "description": "**Prod**\n",
+          "url": "https://supplies-api.wildberries.ru"
+        },
+        {
+          "description": "**Sandbox**\n",
+          "url": "https://supplies-api-sandbox.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/supplies": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns a list of supplies, the last 1000 supplies by default.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 30 requests | 2 s | 10 requests |\n| Service | 1 min | 30 requests | 2 s | 10 requests |\n| Base with secret | 1 min | 30 requests | 2 s | 10 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
+        "operationId": "postV1Supplies",
+        "parameters": [
+          {
+            "description": "Number of objects in the response",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 1000,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "From which element to start outputting data",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "default": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "dates": [
+                  "[MaxDepth]"
+                ],
+                "statusIDs": [
+                  5,
+                  6
+                ]
+              },
+              "schema": {
+                "$ref": "#/components/schemas/models.SuppliesFiltersRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": [
+                  "[MaxDepth]",
+                  "[MaxDepth]",
+                  "[MaxDepth]"
+                ],
+                "schema": {
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "BadFromOrTill": "[MaxDepth]",
+                  "BadLimitFormat": "[MaxDepth]",
+                  "BadOffsetFormat": "[MaxDepth]",
+                  "BadStatusIDs": "[MaxDepth]",
+                  "BadTypeFormat": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/models.ErrorModel"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Supplies List{{ /api/v1/supplies }}",
+        "tags": [
+          "suppliesInformation"
+        ],
+        "x-category": "supplies",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "30 requests",
+              "interval": "2 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "30 requests",
+              "interval": "2 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "30 requests",
+              "interval": "2 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Base",
+              "period": "1 h",
+              "limit": "2 requests",
+              "interval": "30 min",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/suppliesInformation/operation/postV1Supplies",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://supplies-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/supplies/{ID}": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns supply details by ID.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 30 requests | 2 s | 10 requests |\n| Service | 1 min | 30 requests | 2 s | 10 requests |\n| Base with secret | 1 min | 30 requests | 2 s | 10 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
+        "operationId": "getV1SuppliesId",
+        "parameters": [
+          {
+            "description": "ID of the supply or the order",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Search by:\n  - `true` — order ID, if you pass the order ID in `ID`\n  - `false` — supply ID, if you pass the supply ID in `ID`\n",
+            "in": "query",
+            "name": "isPreorderID",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.SupplyDetails"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "BadID": "[MaxDepth]",
+                  "BadPathParamFormat": "[MaxDepth]",
+                  "BadisPreorderIDFormat": "[MaxDepth]",
+                  "PreorderIdSearchError": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/models.ErrorModel"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "SupplyNotFound": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/models.ErrorModel"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Not found</span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Supply Details{{ /api/v1/supplies/{ID} }}",
+        "tags": [
+          "suppliesInformation"
+        ],
+        "x-category": "supplies",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "30 requests",
+              "interval": "2 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "30 requests",
+              "interval": "2 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "30 requests",
+              "interval": "2 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Base",
+              "period": "1 h",
+              "limit": "2 requests",
+              "interval": "30 min",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/suppliesInformation/operation/getV1SuppliesId",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://supplies-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/supplies/{ID}/goods": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns information about the items in the supply.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 30 requests | 2 s | 10 requests |\n| Service | 1 min | 30 requests | 2 s | 10 requests |\n| Base with secret | 1 min | 30 requests | 2 s | 10 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
+        "operationId": "getV1SuppliesIdGoods",
+        "parameters": [
+          {
+            "description": "Number of objects in the response",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 100,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "From which element to start outputting data",
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "default": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Search by:\n  - `true` — order ID, if you pass the order ID in `ID`\n  - `false` — supply ID, if you pass the supply ID in `ID`\n",
+            "in": "query",
+            "name": "isPreorderID",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "ID of the supply or the order",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "text/plain; charset=utf-8": {
+                "examples": {
+                  "BadID": "[MaxDepth]",
+                  "BadLimitFormat": "[MaxDepth]",
+                  "BadOffsetFormat": "[MaxDepth]",
+                  "BadPathParamFormat": "[MaxDepth]",
+                  "BadSupplyIDItems": "[MaxDepth]",
+                  "BadisPreorderIDFormat": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/models.ErrorModel"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Supply Items{{ /api/v1/supplies/{ID}/goods }}",
+        "tags": [
+          "suppliesInformation"
+        ],
+        "x-category": "supplies",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "30 requests",
+              "interval": "2 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "30 requests",
+              "interval": "2 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "30 requests",
+              "interval": "2 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Base",
+              "period": "1 h",
+              "limit": "2 requests",
+              "interval": "30 min",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/suppliesInformation/operation/getV1SuppliesIdGoods",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://supplies-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/supplies/{ID}/package": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns information about the package of the supply.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 30 requests | 2 s | 10 requests |\n| Service | 1 min | 30 requests | 2 s | 10 requests |\n| Base with secret | 1 min | 30 requests | 2 s | 10 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
+        "operationId": "getV1SuppliesIdPackage",
+        "parameters": [
+          {
+            "description": "Supply ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "BadID": "[MaxDepth]",
+                  "BadPathParamFormat": "[MaxDepth]",
+                  "BadSupplyIDPackage": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/models.ErrorModel"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Supply Package{{ /api/v1/supplies/{ID}/package }}",
+        "tags": [
+          "suppliesInformation"
+        ],
+        "x-category": "supplies",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "30 requests",
+              "interval": "2 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "30 requests",
+              "interval": "2 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "30 requests",
+              "interval": "2 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Base",
+              "period": "1 h",
+              "limit": "2 requests",
+              "interval": "30 min",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/suppliesInformation/operation/getV1SuppliesIdPackage",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://supplies-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/transit-tariffs": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method is [temporary disabled](https://dev.wildberries.ru/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 10 requests |\n| Service | 1 min | 6 requests | 10 s | 10 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 10 requests |\n| Base | 12 h | 1 request | 12 h | 1 request |\n</div>\n",
+        "operationId": "getV1TransitTariffs",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "ResponseTariffs": "[MaxDepth]"
+                },
+                "schema": {
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Transit Directions{{ /api/v1/transit-tariffs }}",
+        "tags": [
+          "informationForFormingSupplies"
+        ],
+        "x-category": "supplies",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "6 requests",
+              "interval": "10 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "6 requests",
+              "interval": "10 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "6 requests",
+              "interval": "10 s",
+              "burst": "10 requests"
+            },
+            {
+              "type": "Base",
+              "period": "12 h",
+              "limit": "1 request",
+              "interval": "12 h",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/informationForFormingSupplies/operation/getV1TransitTariffs",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://supplies-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/warehouses": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method is [temporary disabled](https://dev.wildberries.ru/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 6 requests |\n| Service | 1 min | 6 requests | 10 s | 6 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 6 requests |\n| Base | 12 h | 1 request | 12 h | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all methods in total.\n\n</div>\n",
+        "operationId": "getV1Warehouses",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "description": "<span class='response__value '>Access denied</span>"
+          },
+          "404": {
+            "description": "<span class='response__value '>Not found</span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Warehouses List{{ /api/v1/warehouses }}",
+        "tags": [
+          "informationForFormingSupplies"
+        ],
+        "x-category": "supplies",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "6 requests",
+              "interval": "10 s",
+              "burst": "6 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "6 requests",
+              "interval": "10 s",
+              "burst": "6 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "6 requests",
+              "interval": "10 s",
+              "burst": "6 requests"
+            },
+            {
+              "type": "Base",
+              "period": "12 h",
+              "limit": "1 request",
+              "interval": "12 h",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/informationForFormingSupplies/operation/getV1Warehouses",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "In Sandbox — maximum of 1 request per second for all methods in total."
+        }
+      },
+      "servers": [
+        {
+          "description": "**Prod**\n",
+          "url": "https://supplies-api.wildberries.ru"
+        },
+        {
+          "description": "**Sandbox**\n",
+          "url": "https://supplies-api-sandbox.wildberries.ru"
+        }
+      ]
+    }
+  },
+  "security": [
     {
-      "url": "https://supplies-api.wildberries.ru"
+      "HeaderApiKey": []
     }
   ],
   "tags": [
     {
-      "name": "FBW Supplies"
+      "description": "<div class=\"api-description\">\n\n<div class=\"api-block\">\n\nThis section describes the methods for getting:\n  - [information for forming supplies](./orders-fbw#tag/informationForFormingSupplies)\n  - [supplies information](./orders-fbw#tag/suppliesInformation)\n\nYou can create listings in the [Content](./api-information#tag/authorization/Token-categories) sandbox and then use the item SKUs in the Supplies <a href='/en/sandbox'>sandbox</a>\n\n</div>\n\n\n</div>",
+      "name": "FBW Supplies",
+      "x-traitTag": true
     },
     {
-      "name": "Information for Forming Supplies"
+      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Supplies</strong> category\n</div>\n\nGetting information for forming supplies to WB warehouses:\n  1. [Acceptance options](./orders-fbw#tag/informationForFormingSupplies/operation/postV1AcceptanceOptions)\n  2. [Warehouses list](./orders-fbw#tag/informationForFormingSupplies/operation/getV1Warehouses)\n  3. [Transit directions](./orders-fbw#tag/informationForFormingSupplies/operation/getV1TransitTariffs)\n",
+      "name": "informationForFormingSupplies",
+      "x-displayName": "Information for Forming Supplies"
     },
     {
-      "name": "Supplies Information"
+      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Supplies</strong> category\n</div>\n\nGetting information about item supplies for storage in WB warehouses:\n  1. [Supplies list](./orders-fbw#tag/suppliesInformation/operation/postV1Supplies)\n  2. [Supply details](./orders-fbw#tag/suppliesInformation/operation/getV1SuppliesId)\n  3. [Supply items](./orders-fbw#tag/suppliesInformation/operation/getV1SuppliesIdGoods)\n  4. [Supply package](./orders-fbw#tag/suppliesInformation/operation/getV1SuppliesIdPackage)\n",
+      "name": "suppliesInformation",
+      "x-displayName": "Supplies Information"
     }
   ],
-  "paths": {
-    "/api/v1/acceptance/options": {
-      "post": {
-        "summary": "Acceptance Options",
-        "tags": [
-          "Information for Forming Supplies"
-        ],
-        "operationId": "tag/Information-for-Forming-Supplies/paths/~1api~1v1~1acceptance~1options/post",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Information for Forming Supplies",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "6 запросов",
-              "Интервал": "10 сек",
-              "Всплеск": "6 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "6 запросов",
-              "Интервал": "10 сек",
-              "Всплеск": "6 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "6 запросов",
-              "Интервал": "10 сек",
-              "Всплеск": "6 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "1 ч",
-              "Лимит": "2 запроса",
-              "Интервал": "30 мин",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/informationForFormingSupplies/operation/postV1AcceptanceOptions",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/warehouses": {
-      "get": {
-        "summary": "Warehouses List",
-        "tags": [
-          "Information for Forming Supplies"
-        ],
-        "operationId": "tag/Information-for-Forming-Supplies/paths/~1api~1v1~1warehouses/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Information for Forming Supplies",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "6 запросов",
-              "Интервал": "10 сек",
-              "Всплеск": "6 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "6 запросов",
-              "Интервал": "10 сек",
-              "Всплеск": "6 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "6 запросов",
-              "Интервал": "10 сек",
-              "Всплеск": "6 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "12 ч",
-              "Лимит": "1 запрос",
-              "Интервал": "12 ч",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/informationForFormingSupplies/operation/getV1Warehouses",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/transit-tariffs": {
-      "get": {
-        "summary": "Transit Directions",
-        "tags": [
-          "Information for Forming Supplies"
-        ],
-        "operationId": "tag/Information-for-Forming-Supplies/paths/~1api~1v1~1transit-tariffs/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Information for Forming Supplies",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "6 запросов",
-              "Интервал": "10 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "6 запросов",
-              "Интервал": "10 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "6 запросов",
-              "Интервал": "10 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "12 ч",
-              "Лимит": "1 запрос",
-              "Интервал": "12 ч",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/informationForFormingSupplies/operation/getV1TransitTariffs",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/supplies": {
-      "post": {
-        "summary": "Supplies List",
-        "tags": [
-          "Supplies Information"
-        ],
-        "operationId": "tag/Supplies-Information/paths/~1api~1v1~1supplies/post",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Supplies Information",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "30 запросов",
-              "Интервал": "2 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "30 запросов",
-              "Интервал": "2 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "30 запросов",
-              "Интервал": "2 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "1 ч",
-              "Лимит": "2 запроса",
-              "Интервал": "30 мин",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/suppliesInformation/operation/postV1Supplies",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/supplies/{ID}": {
-      "get": {
-        "summary": "Supply Details",
-        "tags": [
-          "Supplies Information"
-        ],
-        "operationId": "tag/Supplies-Information/paths/~1api~1v1~1supplies~1{ID}/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Supplies Information",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "30 запросов",
-              "Интервал": "2 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "30 запросов",
-              "Интервал": "2 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "30 запросов",
-              "Интервал": "2 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "1 ч",
-              "Лимит": "2 запроса",
-              "Интервал": "30 мин",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/suppliesInformation/operation/getV1SuppliesId",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/supplies/{ID}/goods": {
-      "get": {
-        "summary": "Supply Products",
-        "tags": [
-          "Supplies Information"
-        ],
-        "operationId": "tag/Supplies-Information/paths/~1api~1v1~1supplies~1{ID}~1goods/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Supplies Information",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "30 запросов",
-              "Интервал": "2 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "30 запросов",
-              "Интервал": "2 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "30 запросов",
-              "Интервал": "2 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "1 ч",
-              "Лимит": "2 запроса",
-              "Интервал": "30 мин",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/suppliesInformation/operation/getV1SuppliesIdGoods",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/supplies/{ID}/package": {
-      "get": {
-        "summary": "Supply Package",
-        "tags": [
-          "Supplies Information"
-        ],
-        "operationId": "tag/Supplies-Information/paths/~1api~1v1~1supplies~1{ID}~1package/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-fbw and https://dev.wildberries.ru/en/swagger/orders-fbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Supplies Information",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "30 запросов",
-              "Интервал": "2 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "30 запросов",
-              "Интервал": "2 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "30 запросов",
-              "Интервал": "2 сек",
-              "Всплеск": "10 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "1 ч",
-              "Лимит": "2 запроса",
-              "Интервал": "30 мин",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/suppliesInformation/operation/getV1SuppliesIdPackage",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    }
-  },
   "x-wb-extraction": {
-    "mode": "docs-html-snapshot",
+    "mode": "browser-redoc-openapi",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-fbw",
-    "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-fbw",
-    "chapter_path": "orders-fbw",
-    "group_count": 3,
-    "operation_count": 7
+    "capturedAt": "2026-08-19T18:12:37.448Z"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-07-29T13:07:26.863Z",
+    "verifiedAt": "2026-08-19T18:12:37.448Z",
     "source": "https://dev.wildberries.ru/en/docs/openapi/orders-fbw",
     "operationCount": 7
   }

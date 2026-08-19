@@ -9,11 +9,11 @@
 ## Typical Calls
 
 ```bash
-python scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/v1/tariffs/commission"
-python scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/v1/tariffs/box"
-python scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/v1/tariffs/pallet"
-python scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/tariffs/v1/acceptance/coefficients"
-python scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/v1/tariffs/return"
+python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/v1/tariffs/commission"
+python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/v1/tariffs/box"
+python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/v1/tariffs/pallet"
+python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/tariffs/v1/acceptance/coefficients"
+python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/v1/tariffs/return"
 ```
 
 Tariff endpoints are read-only in the current snapshot; still preserve user filters and dates exactly.

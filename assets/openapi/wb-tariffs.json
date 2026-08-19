@@ -1,299 +1,1428 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "Tariffs",
-    "version": "html-snapshot",
-    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/wb-tariffs and https://dev.wildberries.ru/en/swagger/tariffs."
+  "components": {
+    "examples": {
+      "Fee": {
+        "description": "Fee",
+        "summary": "Fee",
+        "value": {
+          "report": [
+            {
+              "kgvpBooking": 14.5,
+              "kgvpMarketplace": 15.5,
+              "kgvpPickup": 14.5,
+              "kgvpSupplier": 12.5,
+              "kgvpSupplierExpress": 3,
+              "paidStorageKgvp": 15.5,
+              "parentID": 657,
+              "parentName": "Бытовая техника",
+              "subjectID": 6461,
+              "subjectName": "Оборудование зуботехническое"
+            }
+          ]
+        }
+      },
+      "FeeChina": {
+        "description": "China fee",
+        "summary": "FeeChina",
+        "value": {
+          "report": [
+            {
+              "kgvpChina": 15.5,
+              "parentID": 657,
+              "parentName": "国内设备",
+              "subjectID": 6461,
+              "subjectName": "牙齿矫正设备"
+            }
+          ]
+        }
+      },
+      "FeeTurkey": {
+        "description": "Turkey fee",
+        "summary": "FeeTurkey",
+        "value": {
+          "report": [
+            {
+              "kgvpTurkey": 15.5,
+              "parentID": 657,
+              "parentName": "Home appliance",
+              "subjectID": 6461,
+              "subjectName": "Dental equipment"
+            }
+          ]
+        }
+      },
+      "FeeUAE": {
+        "description": "UAE fee",
+        "summary": "FeeUAE",
+        "value": {
+          "report": [
+            {
+              "kgvpUAE": 15.5,
+              "parentID": 657,
+              "parentName": "Home appliance",
+              "subjectID": 6461,
+              "subjectName": "Dental equipment"
+            }
+          ]
+        }
+      },
+      "FeeUzbekistan": {
+        "description": "Uzbekistan fee",
+        "summary": "FeeUzbekistan",
+        "value": {
+          "report": [
+            {
+              "kgvpMarketplaceUz": 15.5,
+              "kgvpPaidStorageUz": 15.5,
+              "kgvpSupplierUz": 15.5,
+              "parentID": 657,
+              "parentName": "Бытовая техника",
+              "subjectID": 6461,
+              "subjectName": "Оборудование зуботехническое"
+            }
+          ]
+        }
+      },
+      "Response400CoefficientsNew": {
+        "description": "The value of the parameter `warehouseIDs` is either not specified or specified incorrectly",
+        "value": {
+          "detail": "Неверный формат warehouseIDs",
+          "origin": "supply-api",
+          "requestId": "a6bdc2a4d2fde51c2036fa8af2483886",
+          "status": 400,
+          "title": "bad request"
+        }
+      },
+      "ResponseCoefficients": {
+        "value": [
+          {
+            "allowUnload": false,
+            "boxTypeID": 6,
+            "coefficient": -1,
+            "date": "2024-04-11T00:00:00Z",
+            "deliveryAdditionalLiter": null,
+            "deliveryBaseLiter": null,
+            "deliveryCoef": null,
+            "isSortingCenter": true,
+            "storageAdditionalLiter": null,
+            "storageBaseLiter": null,
+            "storageCoef": null,
+            "warehouseID": 217081,
+            "warehouseName": "Сц Брянск 2"
+          }
+        ]
+      }
+    },
+    "parameters": {
+      "Date": {
+        "description": "Date, YYYY-MM-DD",
+        "example": "2026-08-15",
+        "in": "query",
+        "name": "date",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Locale": {
+        "description": "Language of the `parentName` and `subjectName` response fields:\n  - `ru` — Russian\n  - `en` — English\n  - `zh` — Chinese\n",
+        "in": "query",
+        "name": "locale",
+        "schema": {
+          "example": "ru",
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "401": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "code": "07e4668e--a53a3d31f8b0-[UK-oWaVDUqNrKG]; 03bce=277; 84bd353bf-75",
+              "detail": "token problem; token is malformed: could not base64 decode signature: illegal base64 data at input byte 84",
+              "origin": "s2s-api-auth-catalog",
+              "requestId": "7b80742415072fe8b6b7f7761f1d1211",
+              "status": 401,
+              "statusText": "Unauthorized",
+              "timestamp": "2024-09-30T06:52:38Z",
+              "title": "unauthorized"
+            },
+            "schema": {
+              "properties": {
+                "code": {
+                  "description": "Internal error code",
+                  "type": "string"
+                },
+                "detail": {
+                  "description": "Error details",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Unique request ID",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "type": "number"
+                },
+                "statusText": {
+                  "description": "Text of the HTTP status code",
+                  "type": "string"
+                },
+                "timestamp": {
+                  "description": "Request date and time",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Unauthorized</span>"
+      },
+      "402": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "detail": "wb solution for business has insufficient funds on its balance. please top up the balance in the company's personal account https://dev.wildberries.ru/company",
+              "title": "payment required"
+            },
+            "schema": {
+              "properties": {
+                "detail": {
+                  "description": "Error details. The error is only returned to services from the [Solutions for business Catalog](/business-solutions)",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Payment required</span>"
+      },
+      "429": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "code": "07e4668e-ac2242c5c8c5-[UK-4dx7JUdskGZ]",
+              "detail": "limited by c122a060-a7fb-4bb4-abb0-32fd4e18d489",
+              "origin": "s2s-api-auth-catalog",
+              "requestId": "9d3c02cc698f8b041c661a7c28bed293",
+              "status": 429,
+              "statusText": "Too Many Requests",
+              "timestamp": "2024-09-30T06:52:38Z",
+              "title": "too many requests"
+            },
+            "schema": {
+              "properties": {
+                "code": {
+                  "description": "Internal error code",
+                  "type": "string"
+                },
+                "detail": {
+                  "description": "Error details",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Unique request ID",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "type": "number"
+                },
+                "statusText": {
+                  "description": "Text of the HTTP status code",
+                  "type": "string"
+                },
+                "timestamp": {
+                  "description": "Request date and time",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Too many requests</span>"
+      }
+    },
+    "schemas": {
+      "BadRequest": {
+        "properties": {
+          "detail": {
+            "description": "Error details",
+            "type": "string"
+          },
+          "origin": {
+            "description": "WB internal service ID",
+            "type": "string"
+          },
+          "requestId": {
+            "description": "Unique request ID",
+            "type": "string"
+          },
+          "title": {
+            "description": "Error title",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Fee": {
+        "additionalProperties": false,
+        "properties": {
+          "report": {
+            "description": "Fees list",
+            "items": {
+              "properties": {
+                "kgvpBooking": {
+                  "description": "Fee for the **Booking** model, %",
+                  "type": "number"
+                },
+                "kgvpMarketplace": {
+                  "description": "Fee for the `FBS` model, %",
+                  "type": "number"
+                },
+                "kgvpPickup": {
+                  "description": "Fee for the **In-store pickup** (`C&C`) model, %",
+                  "type": "number"
+                },
+                "kgvpSupplier": {
+                  "description": "Fee for the `DBS` and `DBW` models, %",
+                  "type": "number"
+                },
+                "kgvpSupplierExpress": {
+                  "description": "Fee for the `EDBS` model, %",
+                  "type": "number"
+                },
+                "paidStorageKgvp": {
+                  "description": "Fee for the `FBW` model, %",
+                  "type": "number"
+                },
+                "parentID": {
+                  "description": "Parent category ID",
+                  "type": "integer"
+                },
+                "parentName": {
+                  "description": "Parent category name",
+                  "type": "string"
+                },
+                "subjectID": {
+                  "description": "Subcategory ID",
+                  "type": "integer"
+                },
+                "subjectName": {
+                  "description": "Subcategory name",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "FeeChina": {
+        "properties": {
+          "report": {
+            "description": "Fees list",
+            "items": {
+              "properties": {
+                "kgvpChina": {
+                  "description": "Fee for China sellers, %",
+                  "type": "number"
+                },
+                "parentID": {
+                  "description": "Parent category ID",
+                  "type": "integer"
+                },
+                "parentName": {
+                  "description": "Parent category name",
+                  "type": "string"
+                },
+                "subjectID": {
+                  "description": "Subcategory ID",
+                  "type": "integer"
+                },
+                "subjectName": {
+                  "description": "Subcategory name",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "FeeTurkey": {
+        "properties": {
+          "report": {
+            "description": "Fees list",
+            "items": {
+              "properties": {
+                "kgvpTurkey": {
+                  "description": "Fee for Turkey sellers, %",
+                  "type": "number"
+                },
+                "parentID": {
+                  "description": "Parent category ID",
+                  "type": "integer"
+                },
+                "parentName": {
+                  "description": "Parent category name",
+                  "type": "string"
+                },
+                "subjectID": {
+                  "description": "Subcategory ID",
+                  "type": "integer"
+                },
+                "subjectName": {
+                  "description": "Subcategory name",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "FeeUAE": {
+        "properties": {
+          "report": {
+            "description": "Fees list",
+            "items": {
+              "properties": {
+                "kgvpUAE": {
+                  "description": "Fee for UAE sellers, %",
+                  "type": "number"
+                },
+                "parentID": {
+                  "description": "Parent category ID",
+                  "type": "integer"
+                },
+                "parentName": {
+                  "description": "Parent category name",
+                  "type": "string"
+                },
+                "subjectID": {
+                  "description": "Subcategory ID",
+                  "type": "integer"
+                },
+                "subjectName": {
+                  "description": "Subcategory name",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "FeeUzbekistan": {
+        "properties": {
+          "report": {
+            "description": "Fees list",
+            "items": {
+              "properties": {
+                "kgvpMarketplaceUz": {
+                  "description": "Fee for the model `FBS`, %",
+                  "type": "number"
+                },
+                "kgvpPaidStorageUz": {
+                  "description": "Fee for the model `FBW`, %",
+                  "type": "number"
+                },
+                "kgvpSupplierUz": {
+                  "description": "Fee for the model `DBS`, %",
+                  "type": "number"
+                },
+                "parentID": {
+                  "description": "Parent category ID",
+                  "type": "integer"
+                },
+                "parentName": {
+                  "description": "Parent category name",
+                  "type": "string"
+                },
+                "subjectID": {
+                  "description": "Subcategory ID",
+                  "type": "integer"
+                },
+                "subjectName": {
+                  "description": "Subcategory name",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "RatesBoxResponse": {
+        "properties": {
+          "response": {
+            "$ref": "#/components/schemas/models.RatesBoxResponse"
+          }
+        },
+        "type": "object"
+      },
+      "RatesPalletResponse": {
+        "properties": {
+          "response": {
+            "$ref": "#/components/schemas/models.RatesPalletResponse"
+          }
+        },
+        "type": "object"
+      },
+      "ReturnRatesResponse": {
+        "properties": {
+          "response": {
+            "$ref": "#/components/schemas/models.ReturnRatesResponse"
+          }
+        },
+        "type": "object"
+      },
+      "models.AcceptanceCoefficient": {
+        "properties": {
+          "allowUnload": {
+            "description": "Availability of acceptance for deliveries of this type, see the value of the field `boxTypeID`:\n - `true` — available\n - `false` — not available\n",
+            "type": "boolean"
+          },
+          "boxTypeID": {
+            "description": "Supply type ID:\n  - `2` — Box\n  - `5` — Monopallets\n  - `6` — Super safe\n<br>For the **QR-delivery with boxes** supply type the field is not returned\n",
+            "type": "integer"
+          },
+          "coefficient": {
+            "description": "Acceptance coefficient:\n  - `-1` — acceptance is not available, regardless of the value of the field `allowUnload`\n  - `0` — free acceptance\n  - from `1` — acceptance cost multiplier\n",
+            "type": "number"
+          },
+          "date": {
+            "description": "Start date of the coefficient",
+            "type": "string"
+          },
+          "deliveryAdditionalLiter": {
+            "description": "Cost of logistic for each additional liter",
+            "nullable": true,
+            "type": "string"
+          },
+          "deliveryBaseLiter": {
+            "description": "Cost of logistic for the first liter",
+            "nullable": true,
+            "type": "string"
+          },
+          "deliveryCoef": {
+            "description": "Logistic coefficient",
+            "nullable": true,
+            "type": "string"
+          },
+          "isSortingCenter": {
+            "description": "Warehouse type: - `true` — a sorting center (SC) - `false` — regular\n",
+            "type": "boolean"
+          },
+          "storageAdditionalLiter": {
+            "description": "Storage cost for each additional liter:\n  - for pallets — will always be `null` since the storage cost per pallet is defined in `StorageBaseLiter`\n  - for boxes — storage cost for each additional liter\n",
+            "nullable": true,
+            "type": "string"
+          },
+          "storageBaseLiter": {
+            "description": "Storage cost:\n  - for pallets — cost per pallet\n  - for boxes — storage cost for the first liter\n",
+            "nullable": true,
+            "type": "string"
+          },
+          "storageCoef": {
+            "description": "Storage coefficient",
+            "nullable": true,
+            "type": "string"
+          },
+          "warehouseID": {
+            "description": "Warehouse ID. Use it to get [information about the warehouse](./orders-fbw#tag/informationForFormingSupplies/operation/getV1Warehouses)",
+            "type": "integer"
+          },
+          "warehouseName": {
+            "description": "Warehouse name",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.ErrorModel": {
+        "properties": {
+          "detail": {
+            "description": "Error description",
+            "type": "string"
+          },
+          "origin": {
+            "description": "Service that returned the error",
+            "type": "string"
+          },
+          "requestId": {
+            "description": "Request ID",
+            "type": "string"
+          },
+          "status": {
+            "description": "HTTP status code",
+            "type": "integer"
+          },
+          "title": {
+            "description": "Error ID",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.RatesBoxResponse": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/models.WarehousesBoxRates"
+          }
+        },
+        "type": "object"
+      },
+      "models.RatesPalletResponse": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/models.WarehousesPalletRates"
+          }
+        },
+        "type": "object"
+      },
+      "models.ReturnRatesResponse": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/models.WarehousesReturnRates"
+          }
+        },
+        "type": "object"
+      },
+      "models.WarehouseBoxRates": {
+        "properties": {
+          "boxDeliveryBase": {
+            "description": "Logistics of the first liter, ₽",
+            "example": "48",
+            "type": "string"
+          },
+          "boxDeliveryCoefExpr": {
+            "description": "Coefficient **Logistics**, %. The logistics cost is multiplied by it. Already included in the rates",
+            "example": "160",
+            "type": "string"
+          },
+          "boxDeliveryLiter": {
+            "description": "Logistics of every next liter, ₽",
+            "example": "11,2",
+            "type": "string"
+          },
+          "boxDeliveryMarketplaceBase": {
+            "description": "FBS logistics of the first liter, ₽",
+            "example": "40",
+            "type": "string"
+          },
+          "boxDeliveryMarketplaceCoefExpr": {
+            "description": "Coefficient **FBS**, %. The FBS logistics cost is multiplied by it. Already included in the rates",
+            "example": "125",
+            "type": "string"
+          },
+          "boxDeliveryMarketplaceLiter": {
+            "description": "FBS logistics of every next liter, ₽",
+            "example": "11",
+            "type": "string"
+          },
+          "boxStorageBase": {
+            "description": "Storage of the first liter per day, ₽",
+            "example": "0,14",
+            "type": "string"
+          },
+          "boxStorageCoefExpr": {
+            "description": "Coefficient **Storage**, %. The storage cost is multiplied by it. Already included in the rates",
+            "example": "115",
+            "type": "string"
+          },
+          "boxStorageLiter": {
+            "description": "Storage of every next liter per day, ₽",
+            "example": "0,07",
+            "type": "string"
+          },
+          "geoName": {
+            "description": "Warehouse location",
+            "example": "Россия",
+            "type": "string"
+          },
+          "warehouseName": {
+            "description": "Warehouse name",
+            "example": "Свой склад СГТ РФ",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.WarehousePalletRates": {
+        "properties": {
+          "palletDeliveryExpr": {
+            "description": "Delivery coefficient, %. The delivery cost is multiplied by it. All prices contain final data, with this coefficient",
+            "example": "170",
+            "type": "string"
+          },
+          "palletDeliveryValueBase": {
+            "description": "Delivery of 1 liter, ₽",
+            "example": "51",
+            "type": "string"
+          },
+          "palletDeliveryValueLiter": {
+            "description": "Delivery of each next liter, ₽",
+            "example": "11,9",
+            "type": "string"
+          },
+          "palletStorageExpr": {
+            "description": "Storage coefficient, %. The storage cost is multiplied by it. All prices contain final data, with this coefficient",
+            "example": "155",
+            "type": "string"
+          },
+          "palletStorageValueExpr": {
+            "description": "Storage of one pallet, ₽",
+            "example": "35.65",
+            "type": "string"
+          },
+          "warehouseName": {
+            "description": "Warehouse",
+            "example": "СЦ Брест",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.WarehouseReturnRates": {
+        "properties": {
+          "deliveryDumpKgtOfficeBase": {
+            "description": "**Return to the pick-up point, per 1 liter, ₽**\nUsed  for large-sized items, when:\n  - the seller takes items out from Wildberries warehouse,\n  - defective items was found on the warehouse,\n  - buyer returns items but we can not sell them again.\n",
+            "example": "1 039",
+            "type": "string"
+          },
+          "deliveryDumpKgtOfficeLiter": {
+            "description": "**Return cost for freight delivery, delivery to the pickup point (additional liter), ₽** Cost per each additional liter.\n",
+            "example": "9,1",
+            "type": "string"
+          },
+          "deliveryDumpKgtReturnExpr": {
+            "description": "**Return cost for freight delivery, reverse logistics for unclaimed return, ₽** <br>Freight delivery of unclaimed return back to the Wildberries warehouse. Per 1 item.\n",
+            "example": "1 050",
+            "type": "string"
+          },
+          "deliveryDumpSrgOfficeExpr": {
+            "description": "**Return of unknown items to the pick-up point. Per one item, ₽**\n\nApplies to items that could not be accepted at the warehouse.\n",
+            "example": "170",
+            "type": "string"
+          },
+          "deliveryDumpSrgReturnExpr": {
+            "description": "**Return cost for items unidentified by the warehouse per unit, reverse logistics for unclaimed return, ₽**<br>Delivery of unclaimed return back to the Wildberries warehouse.\n",
+            "example": "170",
+            "type": "string"
+          },
+          "deliveryDumpSupCourierBase": {
+            "description": "**Return cost, courier delivery (base price per one liter), ₽**\n\nApplies when:\n- the seller wants to remove items from the Wildberries warehouse\n- defective items are found in the warehouse\n- a customer returns an item, but it cannot be returned to sale\n- auto-return of items sold under the Marketplace model is enabled\n",
+            "example": "229",
+            "type": "string"
+          },
+          "deliveryDumpSupCourierLiter": {
+            "description": "**Return by courier, per each next liter, ₽**\n<br>Cost per each additional liter.\n",
+            "example": "9,1",
+            "type": "string"
+          },
+          "deliveryDumpSupOfficeBase": {
+            "description": "**Common return in pick-up point, per one liter, ₽**\n\nApplies when:\n- the seller wants to remove items from the Wildberries warehouse\n- defective items are found in the warehouse\n- a customer returns an item, but it cannot be returned to sale\n- auto-return of items sold under the Marketplace model is enabled\n",
+            "example": "129",
+            "type": "string"
+          },
+          "deliveryDumpSupOfficeLiter": {
+            "description": "**Common return in pick-up point, per each next liter, ₽**\n<br>Cost per each additional liter.\n",
+            "example": "9,1",
+            "type": "string"
+          },
+          "deliveryDumpSupReturnExpr": {
+            "description": "**Return cost, reverse logistics for unclaimed return, per one item, ₽**<br>\nDelivery of unclaimed return back to the Wildberries warehouse.\n\nApplies when:\n- the seller wants to remove items from the Wildberries warehouse\n- defective items are found in the warehouse\n- a customer returns an item, but it cannot be returned to sale\n- auto-return of items sold under the Marketplace model is enabled\n",
+            "example": "250",
+            "type": "string"
+          },
+          "warehouseName": {
+            "description": "Warehouse",
+            "example": "Склад WB РФ",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "models.WarehousesBoxRates": {
+        "properties": {
+          "currency": {
+            "description": "Rate currency",
+            "example": "RUB",
+            "type": "string"
+          },
+          "dtNextBox": {
+            "description": "Start date of next rate",
+            "example": "2024-02-01",
+            "type": "string"
+          },
+          "dtTillMax": {
+            "description": "End date of the last set rate",
+            "example": "2024-03-31",
+            "type": "string"
+          },
+          "warehouseList": {
+            "description": "Box rates grouped by Wildberries warehouses",
+            "items": {
+              "$ref": "#/components/schemas/models.WarehouseBoxRates"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "models.WarehousesPalletRates": {
+        "properties": {
+          "currency": {
+            "description": "Rate currency",
+            "example": "RUB",
+            "type": "string"
+          },
+          "dtNextPallet": {
+            "description": "Start date of next rate",
+            "example": "2024-02-01",
+            "type": "string"
+          },
+          "dtTillMax": {
+            "description": "End date of the last set rate",
+            "example": "2024-03-31",
+            "type": "string"
+          },
+          "warehouseList": {
+            "description": "Pallet rates grouped by Wildberries warehouses",
+            "items": {
+              "$ref": "#/components/schemas/models.WarehousePalletRates"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "models.WarehousesReturnRates": {
+        "properties": {
+          "currency": {
+            "description": "Rate currency",
+            "example": "RUB",
+            "type": "string"
+          },
+          "dtNextDeliveryDumpKgt": {
+            "description": "Start date of next rate, for delivery of large-sized items",
+            "example": "2024-02-01",
+            "type": "string"
+          },
+          "dtNextDeliveryDumpSrg": {
+            "description": "Start date of next rate, for delivery of unknown items",
+            "example": "2024-02-01",
+            "type": "string"
+          },
+          "dtNextDeliveryDumpSup": {
+            "description": "Start date of next rate, for common delivery",
+            "example": "2024-02-01",
+            "type": "string"
+          },
+          "warehouseList": {
+            "description": "Return rates grouped by warehouses:\n  - cost of returning defective items and returns initiated by the seller for freight delivery.\n  - cost of returning items unidentified by the warehouse.\n  - cost of returning defective items, returns initiated by the seller, and auto-returns by the Marketplace (to the pickup point and back).\n\n You can get the cost of returns to the pickup point and reverse logistics if the seller did not collect the items from the pickup point within 7 days.\n",
+            "items": {
+              "$ref": "#/components/schemas/models.WarehouseReturnRates"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "HeaderApiKey": {
+        "in": "header",
+        "name": "Authorization",
+        "type": "apiKey"
+      }
+    }
   },
-  "servers": [
+  "info": {
+    "description": "<div class=\"api-block\">\n\nManagement of rates and fees.\n\n</div>\n",
+    "title": "Rates",
+    "version": "rates",
+    "x-file-name": "rates"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/tariffs/v1/acceptance/coefficients": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method is [temporary disabled](https://dev.wildberries.ru/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 6 requests |\n| Service | 1 min | 6 requests | 10 s | 6 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 6 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "operationId": "getV1AcceptanceCoefficients",
+        "parameters": [
+          {
+            "description": "Warehouse IDs.<br>By default, data for all warehouses is returned",
+            "example": "507,117501",
+            "in": "query",
+            "name": "warehouseIDs",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "ResponseCoefficients": "[MaxDepth]"
+                },
+                "schema": {
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "BadWarehouseIDsParamNew": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/models.ErrorModel"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Incorrect request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "description": "<span class='response__value '>Access denied</span>"
+          },
+          "404": {
+            "description": "<span class='response__value '>Not found</span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Supply Rates{{ /api/tariffs/v1/acceptance/coefficients }}",
+        "tags": [
+          "supplyRates"
+        ],
+        "x-category": "commonapi",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "6 requests",
+              "interval": "10 s",
+              "burst": "6 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "6 requests",
+              "interval": "10 s",
+              "burst": "6 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "6 requests",
+              "interval": "10 s",
+              "burst": "6 requests"
+            },
+            {
+              "type": "Base",
+              "period": "1 h",
+              "limit": "1 request",
+              "interval": "1 h",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/supplyRates/operation/getV1AcceptanceCoefficients",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://common-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/tariffs/box": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nFor items inventory supplied to the warehouse in boxes, the method returns the [rates](https://seller.wildberries.ru/dynamic-product-categories):\n  - for delivery from warehouse or sorting center to the buyer\n  - for delivery from the buyer to the sorting center\n  - for storage on WB warehouse\n\n<div class=\"description_important\">\n  The rates for boxes match the <strong>Supersafe</strong> rates\n</div>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 60 requests | 1 s | 5 requests |\n| Service | 1 min | 60 requests | 1 s | 5 requests |\n| Base with secret | 1 min | 60 requests | 1 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "operationId": "getV1TariffsBox",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatesBoxResponse"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/problem+json": {
+                "example": {
+                  "detail": "Invalid date param",
+                  "origin": "tariffs",
+                  "requestId": "70da980b108e6f52ce7630921bd05b1a",
+                  "title": "Bad Request"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Box Rates{{ /api/v1/tariffs/box }}",
+        "tags": [
+          "stockRates"
+        ],
+        "x-category": "commonapi",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "60 requests",
+              "interval": "1 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "60 requests",
+              "interval": "1 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "60 requests",
+              "interval": "1 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base",
+              "period": "1 h",
+              "limit": "1 request",
+              "interval": "1 h",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/stockRates/operation/getV1TariffsBox",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://common-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/tariffs/commission": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n[WB fee](https://seller.wildberries.ru/dynamic-product-categories/commission) by [parent categories of items](./work-with-products#tag/categoriesSubcategoriesAndCharacteristics/paths/~1content~1v2~1object~1parent~1all/get) according to sales model.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 2 requests |\n| Service | 1 min | 1 request | 1 min | 2 requests |\n| Base with secret | 1 min | 1 request | 1 min | 2 requests |\n| Base | 1 h | 5 requests | 12 min | 1 request |\n</div>\n",
+        "operationId": "getV1TariffsCommission",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Locale"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Fee": "[MaxDepth]",
+                  "FeeChina": "[MaxDepth]",
+                  "FeeTurkey": "[MaxDepth]",
+                  "FeeUAE": "[MaxDepth]",
+                  "FeeUzbekistan": "[MaxDepth]"
+                },
+                "schema": {
+                  "oneOf": "[MaxDepth]"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/problem+json": {
+                "example": {
+                  "detail": "parameter \"locale\" in query has an error: value is not one of the allowed values [\"ru\",\"en\",\"zh\"]",
+                  "origin": "api-statistics",
+                  "requestId": "102d2641a931c41bed60649d6c99d80a",
+                  "title": "Bad Request"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Item Category Fee{{ /api/v1/tariffs/commission }}",
+        "tags": [
+          "fees"
+        ],
+        "x-category": "commonapi",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "2 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "2 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "1 request",
+              "interval": "1 min",
+              "burst": "2 requests"
+            },
+            {
+              "type": "Base",
+              "period": "1 h",
+              "limit": "5 requests",
+              "interval": "12 min",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/fees/operation/getV1TariffsCommission",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://common-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/tariffs/pallet": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nFor items supplied to the WB warehouse on pallets, the method returns the [cost](https://seller.wildberries.ru/dynamic-product-categories):\n  - of delivery from warehouse to the buyer\n  - of delivery from the buyer to warehouse\n  - of storage on WB warehouse\n\n<div class=\"description_important\">\n  The rates for pallets match the <strong>Piece pallet</strong> rates\n</div>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 60 requests | 1 s | 5 requests |\n| Service | 1 min | 60 requests | 1 s | 5 requests |\n| Base with secret | 1 min | 60 requests | 1 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "operationId": "getV1TariffsPallet",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatesPalletResponse"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/problem+json": {
+                "example": {
+                  "detail": "parameter \"date\" in query has an error: value is required but missing",
+                  "origin": "tariffs",
+                  "requestId": "7bc5c30d95933058d0e0bddc79b9da547",
+                  "title": "Bad Request"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Pallet Rates{{ /api/v1/tariffs/pallet }}",
+        "tags": [
+          "stockRates"
+        ],
+        "x-category": "commonapi",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "60 requests",
+              "interval": "1 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "60 requests",
+              "interval": "1 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "60 requests",
+              "interval": "1 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base",
+              "period": "1 h",
+              "limit": "1 request",
+              "interval": "1 h",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/stockRates/operation/getV1TariffsPallet",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://common-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v1/tariffs/return": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns [rates](https://seller.wildberries.ru/dynamic-product-categories/return-cost):\n  - on transfer from Wildberries warehouse or sorting center to the seller\n  - on transfer of returned items that were not picked up by seller\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 60 requests | 1 s | 5 requests |\n| Service | 1 min | 60 requests | 1 s | 5 requests |\n| Base with secret | 1 min | 60 requests | 1 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "operationId": "getV1TariffsReturn",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReturnRatesResponse"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/problem+json": {
+                "example": {
+                  "detail": "parameter \"date\" in query has an error: empty value is not allowed",
+                  "origin": "tariffs",
+                  "requestId": "e8096bddcfe5e3ff75f1afd26755364c",
+                  "title": "Bad Request"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Return Rates{{ /api/v1/tariffs/return }}",
+        "tags": [
+          "returnCostToSeller"
+        ],
+        "x-category": "commonapi",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account:",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "60 requests",
+              "interval": "1 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "60 requests",
+              "interval": "1 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "60 requests",
+              "interval": "1 s",
+              "burst": "5 requests"
+            },
+            {
+              "type": "Base",
+              "period": "1 h",
+              "limit": "1 request",
+              "interval": "1 h",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/returnCostToSeller/operation/getV1TariffsReturn",
+          "verifiedAt": "2026-08-19T18:12:37.448Z"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://common-api.wildberries.ru"
+        }
+      ]
+    }
+  },
+  "security": [
     {
-      "url": "https://common-api.wildberries.ru"
+      "HeaderApiKey": []
     }
   ],
   "tags": [
     {
-      "name": "Tariffs"
+      "description": "<div class=\"api-description\">\n\n<div class=\"api-block\">\n\nManagement of rates and fees.\n\n</div>\n\n\n</div>",
+      "name": "Rates",
+      "x-traitTag": true
     },
     {
-      "name": "Commissions"
+      "description": "<div class=\"description_auth\">\n  You can get Fees with a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>\n</div>\n",
+      "name": "fees",
+      "x-displayName": "Fees"
     },
     {
-      "name": "Stock Tariffs"
+      "description": "<div class=\"description_auth\">\n  You can get Supply Rates with a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>\n</div>\n\nData on [supply rates](./wb-tariffs#tag/supplyRates/operation/getV1AcceptanceCoefficients) fixed coefficients\n",
+      "name": "supplyRates",
+      "x-displayName": "Supply Rates"
     },
     {
-      "name": "Supply Tariffs"
+      "description": "<div class=\"description_auth\">\n  You can get Stock Rates with a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>\n</div>\n\nData on current and archived rates for:\n  - [boxes](./wb-tariffs#tag/stockRates/operation/getV1TariffsBox)\n  - [pallets](./wb-tariffs#tag/stockRates/operation/getV1TariffsPallet)\n\nThe methods return rate coefficients that are not fixed to a specific supply\n",
+      "name": "stockRates",
+      "x-displayName": "Stock Rates"
     },
     {
-      "name": "Return Cost to Seller"
+      "description": "<div class=\"description_auth\">\n  You can get Returned Cost to Seller a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>\n</div>\n",
+      "name": "returnCostToSeller",
+      "x-displayName": "Return Cost to Seller"
     }
   ],
-  "paths": {
-    "/api/v1/tariffs/commission": {
-      "get": {
-        "summary": "Product Category Commission",
-        "tags": [
-          "Commissions"
-        ],
-        "operationId": "tag/Commissions/paths/~1api~1v1~1tariffs~1commission/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/wb-tariffs and https://dev.wildberries.ru/en/swagger/tariffs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Commissions",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "2 запроса"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "2 запроса"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "1 запрос",
-              "Интервал": "1 мин",
-              "Всплеск": "2 запроса"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "1 ч",
-              "Лимит": "5 запросов",
-              "Интервал": "12 мин",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/fees/operation/getV1TariffsCommission",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/tariffs/box": {
-      "get": {
-        "summary": "Box Tariffs",
-        "tags": [
-          "Stock Tariffs"
-        ],
-        "operationId": "tag/Stock-Tariffs/paths/~1api~1v1~1tariffs~1box/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/wb-tariffs and https://dev.wildberries.ru/en/swagger/tariffs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Stock Tariffs",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "60 запросов",
-              "Интервал": "1 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "60 запросов",
-              "Интервал": "1 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "60 запросов",
-              "Интервал": "1 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "1 ч",
-              "Лимит": "1 запрос",
-              "Интервал": "1 ч",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/stockRates/operation/getV1TariffsBox",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/tariffs/pallet": {
-      "get": {
-        "summary": "Pallet Tariffs",
-        "tags": [
-          "Stock Tariffs"
-        ],
-        "operationId": "tag/Stock-Tariffs/paths/~1api~1v1~1tariffs~1pallet/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/wb-tariffs and https://dev.wildberries.ru/en/swagger/tariffs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Stock Tariffs",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "60 запросов",
-              "Интервал": "1 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "60 запросов",
-              "Интервал": "1 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "60 запросов",
-              "Интервал": "1 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "1 ч",
-              "Лимит": "1 запрос",
-              "Интервал": "1 ч",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/stockRates/operation/getV1TariffsPallet",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/tariffs/v1/acceptance/coefficients": {
-      "get": {
-        "summary": "Supply Tariffs",
-        "tags": [
-          "Supply Tariffs"
-        ],
-        "operationId": "tag/Supply-Tariffs/paths/~1api~1tariffs~1v1~1acceptance~1coefficients/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/wb-tariffs and https://dev.wildberries.ru/en/swagger/tariffs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Supply Tariffs",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "6 запросов",
-              "Интервал": "10 сек",
-              "Всплеск": "6 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "6 запросов",
-              "Интервал": "10 сек",
-              "Всплеск": "6 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "6 запросов",
-              "Интервал": "10 сек",
-              "Всплеск": "6 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "1 ч",
-              "Лимит": "1 запрос",
-              "Интервал": "1 ч",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/supplyRates/operation/getV1AcceptanceCoefficients",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    },
-    "/api/v1/tariffs/return": {
-      "get": {
-        "summary": "Return Tariffs",
-        "tags": [
-          "Return Cost to Seller"
-        ],
-        "operationId": "tag/Return-Cost-to-Seller/paths/~1api~1v1~1tariffs~1return/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/wb-tariffs and https://dev.wildberries.ru/en/swagger/tariffs for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "Return Cost to Seller",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "60 запросов",
-              "Интервал": "1 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "60 запросов",
-              "Интервал": "1 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "60 запросов",
-              "Интервал": "1 сек",
-              "Всплеск": "5 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "1 ч",
-              "Лимит": "1 запрос",
-              "Интервал": "1 ч",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/returnCostToSeller/operation/getV1TariffsReturn",
-          "verifiedAt": "2026-07-29T13:07:26.863Z"
-        }
-      }
-    }
-  },
   "x-wb-extraction": {
-    "mode": "docs-html-snapshot",
+    "mode": "browser-redoc-openapi",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/wb-tariffs",
-    "swagger_url": "https://dev.wildberries.ru/en/swagger/tariffs",
-    "chapter_path": "wb-tariffs",
-    "group_count": 5,
-    "operation_count": 5
+    "capturedAt": "2026-08-19T18:12:37.448Z"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-07-29T13:07:26.863Z",
+    "verifiedAt": "2026-08-19T18:12:37.448Z",
     "source": "https://dev.wildberries.ru/en/docs/openapi/wb-tariffs",
     "operationCount": 5
   }

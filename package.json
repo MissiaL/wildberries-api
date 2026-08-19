@@ -1,6 +1,6 @@
 {
   "name": "wildberries-api",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Production-only Wildberries seller API skill with a safe HTTP helper and local OpenAPI coverage.",
   "keywords": [
     "agent-skill",

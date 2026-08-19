@@ -38,10 +38,10 @@ TOKEN_TYPES = {
     4: "service",
 }
 TOKEN_TYPE_LABELS = {
-    "basic": "Базовый",
-    "test": "Тестовый",
-    "personal": "Персональный",
-    "service": "Сервисный",
+    "basic": {"base", "basic", "Базовый"},
+    "test": {"test", "Тестовый"},
+    "personal": {"personal", "Персональный"},
+    "service": {"service", "Сервисный"},
 }
 
 
@@ -121,13 +121,15 @@ def select_token_limit(rate_limit, token_type):
     limits = rate_limit.get("limits")
     if not limits:
         return None
-    rows_with_type = [row for row in limits if row.get("Тип")]
+    rows_with_type = [row for row in limits if row.get("type") or row.get("Тип")]
     if not rows_with_type:
         return limits[0]
-    expected = TOKEN_TYPE_LABELS.get(token_type)
+    expected = TOKEN_TYPE_LABELS.get(token_type, set())
     if expected:
         for row in rows_with_type:
-            if row.get("Тип") == expected:
+            if (row.get("type") or row.get("Тип", "")).casefold() in {
+                label.casefold() for label in expected
+            }:
                 return row
     return None
 

@@ -1,575 +1,2723 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "DBW Orders",
-    "version": "html-snapshot",
-    "description": "Production documentation snapshot extracted from the official Wildberries documentation HTML for https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw."
+  "components": {
+    "examples": {
+      "FailedToUpdateMeta": {
+        "value": {
+          "code": "FailedToUpdateMeta",
+          "message": ""
+        }
+      },
+      "IncorrectParameter": {
+        "value": {
+          "code": "IncorrectParameter",
+          "message": ""
+        }
+      },
+      "IncorrectRequest": {
+        "value": {
+          "message": ""
+        }
+      },
+      "IncorrectRequest1": {
+        "description": "Incorrect Request",
+        "value": {
+          "code": "IncorrectRequest",
+          "message": ""
+        }
+      },
+      "IncorrectRequestBody": {
+        "description": "Некорректное тело запроса",
+        "value": {
+          "message": ""
+        }
+      },
+      "StatusMismatch": {
+        "value": {
+          "code": "StatusMismatch",
+          "data": {},
+          "message": ""
+        }
+      },
+      "UploadDataLimit": {
+        "description": "The number of order IDs in the request exceeds the limit",
+        "value": {
+          "detail": "Upload limit exceeded",
+          "origin": "dbs-public-api",
+          "requestId": "fd48ee9a-6ff6-446f-b238-5793a9189f1a",
+          "title": "UploadDataLimit"
+        }
+      }
+    },
+    "parameters": {
+      "Limit": {
+        "description": "Pagination parameter. Sets the limit for the amount of data returned",
+        "in": "query",
+        "name": "limit",
+        "required": true,
+        "schema": {
+          "maximum": 1000,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "Next": {
+        "description": "Pagination parameter. Sets the value from which to retrieve the next batch. It should start at `0` to get the full list of data. For the subsequent requests, you must take the value from the `next` field in the response",
+        "in": "query",
+        "name": "next",
+        "required": true,
+        "schema": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "Order": {
+        "description": "Assembly order ID",
+        "in": "path",
+        "name": "orderId",
+        "required": true,
+        "schema": {
+          "example": 5632423,
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "responses": {
+      "401": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "code": "07e4668e--a53a3d31f8b0-[UK-oWaVDUqNrKG]; 03bce=277; 84bd353bf-75",
+              "detail": "token problem; token is malformed: could not base64 decode signature: illegal base64 data at input byte 84",
+              "origin": "s2s-api-auth-catalog",
+              "requestId": "7b80742415072fe8b6b7f7761f1d1211",
+              "status": 401,
+              "statusText": "Unauthorized",
+              "timestamp": "2024-09-30T06:52:38Z",
+              "title": "unauthorized"
+            },
+            "schema": {
+              "properties": {
+                "code": {
+                  "description": "Internal error code",
+                  "type": "string"
+                },
+                "detail": {
+                  "description": "Error details",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Unique request ID",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "type": "number"
+                },
+                "statusText": {
+                  "description": "Text of the HTTP status code",
+                  "type": "string"
+                },
+                "timestamp": {
+                  "description": "Request date and time",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Unauthorized</span>"
+      },
+      "402": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "detail": "wb solution for business has insufficient funds on its balance. please top up the balance in the company's personal account https://dev.wildberries.ru/company",
+              "title": "payment required"
+            },
+            "schema": {
+              "properties": {
+                "detail": {
+                  "description": "Error details. The error is only returned to services from the [Solutions for business Catalog](/business-solutions)",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Payment required</span>"
+      },
+      "429": {
+        "content": {
+          "application/problem+json": {
+            "example": {
+              "code": "07e4668e-ac2242c5c8c5-[UK-4dx7JUdskGZ]",
+              "detail": "limited by c122a060-a7fb-4bb4-abb0-32fd4e18d489",
+              "origin": "s2s-api-auth-catalog",
+              "requestId": "9d3c02cc698f8b041c661a7c28bed293",
+              "status": 429,
+              "statusText": "Too Many Requests",
+              "timestamp": "2024-09-30T06:52:38Z",
+              "title": "too many requests"
+            },
+            "schema": {
+              "properties": {
+                "code": {
+                  "description": "Internal error code",
+                  "type": "string"
+                },
+                "detail": {
+                  "description": "Error details",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "WB internal service ID",
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Unique request ID",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "HTTP status code",
+                  "type": "number"
+                },
+                "statusText": {
+                  "description": "Text of the HTTP status code",
+                  "type": "string"
+                },
+                "timestamp": {
+                  "description": "Request date and time",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Error title",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Too many requests</span>"
+      },
+      "AccessDenied": {
+        "content": {
+          "application/json": {
+            "example": {
+              "code": "AccessDenied",
+              "message": ""
+            },
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        },
+        "description": "<span class='response__value '>Access denied</span>"
+      },
+      "NotFound": {
+        "content": {
+          "application/json": {
+            "example": {
+              "code": "NotFound",
+              "message": ""
+            },
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        },
+        "description": "<span class='response__value '>The resource is not found</span>"
+      }
+    },
+    "schemas": {
+      "ClientInfo": {
+        "properties": {
+          "additionalPhoneCodes": {
+            "description": "Additional extension codes. <br>\nUse it if you could not reach the buyer using the extension code from `phoneCode`.<br>\nAn empty value means that the codes are not assigned yet\n",
+            "example": [
+              12345
+            ],
+            "items": {
+              "type": "integer"
+            },
+            "nullable": false,
+            "type": "array"
+          },
+          "additionalPhones": {
+            "description": "Additional phone numbers to contact the buyer. <br>\nUse it to call the buyer, if the main number from `phone` is unavailable.<br>\nAn empty value means that the number is not specified\n",
+            "example": [
+              "1234554321"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "nullable": false,
+            "type": "array"
+          },
+          "firstName": {
+            "description": "Buyer first name",
+            "example": "Иван",
+            "nullable": false,
+            "type": "string"
+          },
+          "fullName": {
+            "description": "Buyer full name, used for documents",
+            "example": "Иванов Иван Иванович",
+            "nullable": false,
+            "type": "string"
+          },
+          "orderId": {
+            "description": "Assembly order ID",
+            "example": 1345678910,
+            "type": "integer"
+          },
+          "phone": {
+            "description": "Buyer contact phone number:\n  - if the extension code is not specified in the `phoneCode` field, you can call the buyer using the specified number. Additional phone numbers that do not need extension codes are specified in the `additionalPhones` field\n  - if the extension code is specified in the `phoneCode` field, use it to reach the buyer via the specified number and extension code\n",
+            "example": "+79871234567",
+            "nullable": false,
+            "type": "string"
+          },
+          "phoneCode": {
+            "description": "Extension phone code. <br>\nUse it to reach the buyer via the number from `phone`.<br>\nIf the code is not specified, you can call the buyer without codes\n",
+            "example": 0,
+            "nullable": false,
+            "type": "integer"
+          },
+          "replacementPhone": {
+            "description": "Replacement phone number to contact the buyer. <br>\nAn empty value `\"\"` means that the number is not assigned yet\n",
+            "example": "79871234567",
+            "nullable": false,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ClientInfoResp": {
+        "properties": {
+          "orders": {
+            "description": "Buyers information",
+            "items": {
+              "$ref": "#/components/schemas/ClientInfo"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "CourierContactsResponse": {
+        "properties": {
+          "carNumber": {
+            "description": "Vehicle number",
+            "example": "х111хх11",
+            "type": "string"
+          },
+          "fullName": {
+            "description": "Courier's full name",
+            "example": "Иванов Иван Иванович",
+            "type": "string"
+          },
+          "pTimeFrom": {
+            "description": "Date and time from which the courier will arrive",
+            "example": "2025-09-06T08:00:00Z",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "pTimeTo": {
+            "description": "Date and time by which the courier will arrive",
+            "example": "2025-09-06T11:00:00Z",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "phone": {
+            "description": "Phone number",
+            "example": "71230971931",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CourierInfo": {
+        "properties": {
+          "contacts": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CourierContactsResponse"
+              }
+            ],
+            "description": "Courier contact information",
+            "nullable": true,
+            "type": "object"
+          },
+          "mustBeAssigned": {
+            "description": "If the the courier should be assigned by the current moment:\n - `false` — no\n - `true` — yes\n\n If `\"mustBeAssigned\": true` and `\"contacts\": null`, then you need to request the contacts from [support](https://seller.wildberries.ru/service-desk-v2)\n",
+            "type": "boolean"
+          },
+          "updatedAt": {
+            "description": "Date and time of the courier information update. <br> If `null`, the information has not been updated",
+            "example": "2025-09-06T11:33:10+03:00",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "DeliveryDatesInfoResp": {
+        "properties": {
+          "orders": {
+            "items": {
+              "properties": {
+                "dDate": {
+                  "description": "Current delivery date",
+                  "example": "2025-02-20",
+                  "nullable": false,
+                  "type": "string"
+                },
+                "dDateOld": {
+                  "description": "Previous delivery date. Available only one day after the change",
+                  "example": "2025-01-28",
+                  "nullable": true,
+                  "type": "string"
+                },
+                "dTimeFrom": {
+                  "description": "Current delivery time \"from\"",
+                  "example": "11:11",
+                  "nullable": true,
+                  "type": "string"
+                },
+                "dTimeFromOld": {
+                  "description": "Previous delivery time \"from\". Available only during the first day after the change",
+                  "example": "12:30",
+                  "nullable": true,
+                  "type": "string"
+                },
+                "dTimeTo": {
+                  "description": "Current delivery time \"to\"",
+                  "example": "22:22",
+                  "nullable": true,
+                  "type": "string"
+                },
+                "dTimeToOld": {
+                  "description": "Previous delivery time \"to\". Available only during the first day after the change",
+                  "example": "22:30",
+                  "nullable": true,
+                  "type": "string"
+                },
+                "id": {
+                  "description": "Assembly order ID",
+                  "example": 1234567890,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "DeliveryDatesRequest": {
+        "example": {
+          "orders": [
+            1234567890
+          ]
+        },
+        "properties": {
+          "orders": {
+            "description": "Assembly order IDs list",
+            "items": {
+              "maxItems": 1000,
+              "minItems": 1,
+              "type": "integer"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Error": {
+        "nullable": false,
+        "properties": {
+          "code": {
+            "description": "Error code",
+            "nullable": false,
+            "type": "string"
+          },
+          "data": {
+            "description": "Additional data for the error",
+            "nullable": true,
+            "type": "object"
+          },
+          "message": {
+            "description": "Error description",
+            "nullable": false,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Next": {
+        "description": "Pagination parameter. Sets the value from which to retrieve the next batch",
+        "example": 13833711,
+        "format": "int64",
+        "nullable": false,
+        "type": "integer"
+      },
+      "Order": {
+        "properties": {
+          "address": {
+            "description": "Address of the buyer for delivery",
+            "nullable": true,
+            "properties": {
+              "fullAddress": {
+                "description": "Delivery address",
+                "example": "Chelyabinsk Region, Chelyabinsk, 51st Arabkir Street, Building 10A, Apartment 42",
+                "type": "string"
+              },
+              "latitude": {
+                "description": "Latitude",
+                "example": 40.20192,
+                "format": "float64",
+                "nullable": false,
+                "type": "number"
+              },
+              "longitude": {
+                "description": "Longitude",
+                "example": 44.519068,
+                "format": "float64",
+                "nullable": false,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "article": {
+            "description": "Seller item number",
+            "example": "one-ring-7548",
+            "nullable": false,
+            "type": "string"
+          },
+          "cargoType": {
+            "description": "Type of cargo:\n  - `1` — small-sized items\n  - `2` — over dimensional cargo (ODC)\n  - `3` — dimensional cargo+ (CD+)\n",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "nullable": false,
+            "type": "integer"
+          },
+          "chrtId": {
+            "description": "Item size ID in WB systems",
+            "example": 987654321,
+            "nullable": false,
+            "type": "integer"
+          },
+          "colorCode": {
+            "description": "Color code (for tinted items only)",
+            "example": "RAL 3017",
+            "nullable": false,
+            "type": "string"
+          },
+          "comment": {
+            "description": "Buyer comment",
+            "example": "Упакуйте в пленку, пожалуйста",
+            "maxLength": 300,
+            "nullable": false,
+            "type": "string"
+          },
+          "convertedCurrencyCode": {
+            "description": "Currency code of the seller country",
+            "example": 643,
+            "format": "ISO 4217",
+            "nullable": false,
+            "type": "integer"
+          },
+          "convertedPrice": {
+            "description": "The price in the currency of the seller country including all discounts, except WB Wallet discount, multiplied by 100. Provided for informational purposes only",
+            "example": 1014,
+            "nullable": false,
+            "type": "integer"
+          },
+          "createdAt": {
+            "description": "Order creation date",
+            "example": "2022-05-04T07:56:29Z",
+            "format": "date-time",
+            "nullable": false,
+            "type": "string"
+          },
+          "currencyCode": {
+            "description": "Sale currency code",
+            "example": 933,
+            "format": "ISO 4217",
+            "nullable": false,
+            "type": "integer"
+          },
+          "groupId": {
+            "description": "Assembly order group ID. <br> It unites assembly orders received at a single warehouse (`warehouseId`) as part of a single buyer transaction (`orderUid`)",
+            "example": "7a2c8810-1db2-4011-9682-5c7fa33afd83",
+            "format": "UUID",
+            "type": "string"
+          },
+          "id": {
+            "description": "Assembly order ID",
+            "example": 13833711,
+            "format": "int64",
+            "nullable": false,
+            "type": "integer"
+          },
+          "isZeroOrder": {
+            "description": "Indicator of an order for a item with zero inventory:\n  - `false` — the order is made for a item with a non-zero inventory\n  - `true` — the order is made for a item with zero inventory. Such an order can be canceled without a cancellation fee\n",
+            "example": false,
+            "type": "boolean"
+          },
+          "nmId": {
+            "description": "WB item number",
+            "example": 123456789,
+            "nullable": false,
+            "type": "integer"
+          },
+          "options": {
+            "description": "Order options",
+            "properties": {
+              "isB2b": {
+                "description": "Indicator of a B2B sale:\n  - `false` — not B2B sale\n  - `true` — B2B sale\n",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "orderUid": {
+            "description": "Transaction ID for order grouping. Orders in the same buyer's cart will have the same `orderUid`",
+            "example": "165918930_629fbc924b984618a44354475ca58675",
+            "type": "string"
+          },
+          "price": {
+            "description": "The price in the currency of sale including all discounts, except WB Wallet discount, multiplied by 100. You can find a currency code in the `currencyCode`. Provided for informational purposes only",
+            "example": 1014,
+            "nullable": false,
+            "type": "integer"
+          },
+          "rid": {
+            "description": "Unique order ID. <br>\nNote: `rid` corresponds to `srid` in the responses of the methods:\n  - [Buyers Return Applications](./user-communication#tag/buyersReturns/operation/getV1Claims)\n  - [Order Feed](./analytics#tag/orderFeed/operation/postV1OrderFeed)\n  - [Orders](./reports#tag/mainReports/operation/getV1SupplierOrders)\n  - [Sales](./reports#tag/mainReports/operation/getV1SupplierSales)\n  - [Returns and Item Movement Report](./reports#tag/returnsAndItemMovementReport)\n  - [Details for the Sales Reports by Report ID](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId)\n  - [Details for the Sales Reports by Period](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed)\n  - [Details for the Acquiring Expenses Reports by Report ID](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId)\n  - [Details for the Acquiring Expenses Reports by Period](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed)\n",
+            "example": "f884001e44e511edb8780242ac120002",
+            "nullable": false,
+            "type": "string"
+          },
+          "skus": {
+            "description": "Item SKU array",
+            "items": {
+              "example": "6665956397512",
+              "type": "string"
+            },
+            "nullable": false,
+            "type": "array"
+          },
+          "warehouseId": {
+            "description": "Seller warehouse ID where the order was received",
+            "example": 658434,
+            "nullable": false,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "OrderCourierInfo": {
+        "properties": {
+          "courierInfo": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CourierInfo"
+              }
+            ],
+            "description": "Courier info",
+            "type": "object"
+          },
+          "orderID": {
+            "description": "Assembly order ID",
+            "example": 2876979713,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "OrderCourierInfoResp": {
+        "properties": {
+          "orders": {
+            "items": {
+              "$ref": "#/components/schemas/OrderCourierInfo"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "OrderNewDBW": {
+        "properties": {
+          "address": {
+            "description": "Address of the buyer for delivery",
+            "nullable": true,
+            "properties": {
+              "fullAddress": {
+                "description": "Delivery address",
+                "example": "Chelyabinsk Region, Chelyabinsk, 51st Arabkir Street, Building 10A, Apartment 42",
+                "type": "string"
+              },
+              "latitude": {
+                "description": "Latitude",
+                "example": 40.20192,
+                "format": "float64",
+                "nullable": false,
+                "type": "number"
+              },
+              "longitude": {
+                "description": "Longitude",
+                "example": 44.519068,
+                "format": "float64",
+                "nullable": false,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "article": {
+            "description": "Seller item number",
+            "example": "one-ring-7548",
+            "nullable": false,
+            "type": "string"
+          },
+          "cargoType": {
+            "description": "Type of cargo:\n  - `1` — small-sized items\n  - `2` — over dimensional cargo (ODC)\n  - `3` — dimensional cargo+ (CD+)\n",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "nullable": false,
+            "type": "integer"
+          },
+          "chrtId": {
+            "description": "Item size ID in WB systems",
+            "example": 987654321,
+            "nullable": false,
+            "type": "integer"
+          },
+          "colorCode": {
+            "description": "Color code (for tinted items only)",
+            "example": "RAL 3017",
+            "nullable": false,
+            "type": "string"
+          },
+          "comment": {
+            "description": "Buyer comment",
+            "example": "Упакуйте в пленку, пожалуйста",
+            "maxLength": 300,
+            "nullable": false,
+            "type": "string"
+          },
+          "convertedCurrencyCode": {
+            "description": "Currency code of the seller country",
+            "example": 643,
+            "format": "ISO 4217",
+            "nullable": false,
+            "type": "integer"
+          },
+          "convertedPrice": {
+            "description": "The price in the currency of the seller country including all discounts, except WB Wallet discount, multiplied by 100. Provided for informational purposes only",
+            "example": 1014,
+            "nullable": false,
+            "type": "integer"
+          },
+          "createdAt": {
+            "description": "Order creation date",
+            "example": "2022-05-04T07:56:29Z",
+            "format": "date-time",
+            "nullable": false,
+            "type": "string"
+          },
+          "currencyCode": {
+            "description": "Sale currency code",
+            "example": 933,
+            "format": "ISO 4217",
+            "nullable": false,
+            "type": "integer"
+          },
+          "groupId": {
+            "description": "Assembly order group ID. <br> It unites assembly orders received at a single warehouse (`warehouseId`) as part of a single buyer transaction (`orderUid`)",
+            "example": "7a2c8810-1db2-4011-9682-5c7fa33afd83",
+            "format": "UUID",
+            "type": "string"
+          },
+          "id": {
+            "description": "Assembly order ID",
+            "example": 13833711,
+            "format": "int64",
+            "nullable": false,
+            "type": "integer"
+          },
+          "isZeroOrder": {
+            "description": "Indicator of an order for a item with zero inventory:\n  - `false` — the order is made for a item with a non-zero inventory\n  - `true` — the order is made for a item with zero inventory. Such an order can be canceled without a cancellation fee\n",
+            "example": false,
+            "type": "boolean"
+          },
+          "nmId": {
+            "description": "WB item number",
+            "example": 123456789,
+            "nullable": false,
+            "type": "integer"
+          },
+          "options": {
+            "description": "Order options",
+            "properties": {
+              "isB2b": {
+                "description": "Indicator of a B2B sale:\n  - `false` — not B2B sale\n  - `true` — B2B sale\n",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "orderUid": {
+            "description": "Transaction ID for order grouping. Orders in the same buyer's cart will have the same `orderUid`",
+            "example": "165918930_629fbc924b984618a44354475ca58675",
+            "type": "string"
+          },
+          "price": {
+            "description": "The price in the currency of sale including all discounts, except WB Wallet discount, multiplied by 100. You can find a currency code in the `currencyCode`. Provided for informational purposes only",
+            "example": 1014,
+            "nullable": false,
+            "type": "integer"
+          },
+          "requiredMeta": {
+            "description": "List of label identifiers available for the assembly order. [Specifying the IMEI](./orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaImei) is required for `Smartphones` [subcategory](./work-with-products#tag/categoriesSubcategoriesAndCharacteristics/paths/~1content~1v2~1object~1all/get), `\"subjectId\":515`",
+            "example": [
+              "uin"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "rid": {
+            "description": "Unique order ID. <br>\nNote: `rid` corresponds to `srid` in the responses of the methods:\n  - [Buyers Return Applications](./user-communication#tag/buyersReturns/operation/getV1Claims)\n  - [Order Feed](./analytics#tag/orderFeed/operation/postV1OrderFeed)\n  - [Orders](./reports#tag/mainReports/operation/getV1SupplierOrders)\n  - [Sales](./reports#tag/mainReports/operation/getV1SupplierSales)\n  - [Returns and Item Movement Report](./reports#tag/returnsAndItemMovementReport)\n  - [Details for the Sales Reports by Report ID](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId)\n  - [Details for the Sales Reports by Period](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed)\n  - [Details for the Acquiring Expenses Reports by Report ID](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId)\n  - [Details for the Acquiring Expenses Reports by Period](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed)\n",
+            "example": "f884001e44e511edb8780242ac120002",
+            "nullable": false,
+            "type": "string"
+          },
+          "salePrice": {
+            "description": "Seller price in the currency of sale, including seller discount, except the WB Club discount, multiplied by 100\n",
+            "example": 504600,
+            "nullable": true,
+            "type": "integer"
+          },
+          "skus": {
+            "description": "Item SKU array",
+            "items": {
+              "example": "6665956397512",
+              "type": "string"
+            },
+            "nullable": false,
+            "type": "array"
+          },
+          "warehouseId": {
+            "description": "Seller warehouse ID where the order was received",
+            "example": 658434,
+            "nullable": false,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "OrdersRequestAPI": {
+        "example": {
+          "orders": [
+            987654321,
+            123456789
+          ]
+        },
+        "properties": {
+          "orders": {
+            "description": "Assembly order IDs list",
+            "items": {
+              "type": "integer"
+            },
+            "maxItems": 1000,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "api.BatchError": {
+        "properties": {
+          "detail": {
+            "description": "Error details",
+            "example": null,
+            "nullable": true,
+            "type": "string"
+          },
+          "origin": {
+            "description": "WB internal service ID",
+            "example": "dbs-public-api",
+            "type": "string"
+          },
+          "requestId": {
+            "description": "Unique request ID",
+            "example": "f1787bd2d1fdс35d6f537316514у4a05",
+            "type": "string"
+          },
+          "title": {
+            "description": "Error title",
+            "example": "IncorrectRequest",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "api.BatchErrorResponse": {
+        "properties": {
+          "code": {
+            "description": "Error code:\n  - `404`\n  - `409`\n",
+            "example": 404,
+            "type": "integer"
+          },
+          "detail": {
+            "description": "- `NotFound` —  assembly order is not found\n- `StatusMismatch` — operation is not possible for this assembly order status\n- `ImeiIsNotFilled` — IMEI is not filled\n- `MetaValidationFail` — errors label identifier validation\n",
+            "example": "NotFound",
+            "type": "string"
+          },
+          "metaDetails": {
+            "description": "Label identifiers validation error details",
+            "items": {
+              "properties": {
+                "decision": {
+                  "description": "Статус проверки:\n- `sgtin`\n  - `sgtinInvalidFormat` — Invalid format\n  - `sgtinNotFound` — Label identifier not found in [Chestny ZNAK](https://chestnyznak.ru/en/)\n  - `sgtinEmitted` —  Label identifier has been issued\n  - `sgtinApplied` — Putting into circulation not completed\n  - `sgtinWrittenOff` — Written off\n  - `sgtinRetired` — Retired\n  - `sgtinWithdrawn` — Withdrawn\n  - `sgtinDisaggregation` — Disaggregation\n  - `sgtinDisaggregated` — Disaggregated\n  - `sgtinAppliedNotPaid` — Not paid\n  - `pending` — Label identifier for inspection\n",
+                  "example": "sgtinEmitted",
+                  "type": "string"
+                },
+                "key": {
+                  "description": "Label identifier",
+                  "example": "sgtin",
+                  "type": "string"
+                },
+                "value": {
+                  "description": "Label identifier value",
+                  "example": "1234567890",
+                  "nullable": true,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "decision",
+                "key"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "code",
+          "detail"
+        ],
+        "type": "object"
+      },
+      "api.MetaDeleteResponses": {
+        "properties": {
+          "requestId": {
+            "description": "Unique request ID. Displayed for responses with errors",
+            "type": "string"
+          },
+          "results": {
+            "items": {
+              "properties": {
+                "errors": {
+                  "description": "Error details",
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                },
+                "isError": {
+                  "description": "Are there any errors",
+                  "type": "boolean"
+                },
+                "orderId": {
+                  "description": "Assembly order ID with successfully set data",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "isError",
+                "orderId"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "results"
+        ],
+        "type": "object"
+      },
+      "api.OrdersMetaDetailsResponse": {
+        "properties": {
+          "orders": {
+            "description": "Assembly orders label identifiers and validation statuses",
+            "items": {
+              "properties": {
+                "errors": {
+                  "description": "Error data",
+                  "example": "[MaxDepth]",
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                },
+                "isError": {
+                  "description": "Are there any errors",
+                  "example": false,
+                  "type": "boolean"
+                },
+                "metaDetails": {
+                  "description": "Label identifiers and their validation statuses",
+                  "items": "[MaxDepth]",
+                  "type": "array"
+                },
+                "orderId": {
+                  "description": "Assembly order ID",
+                  "example": 123456,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "isError"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "requestId": {
+            "description": "Unique request ID",
+            "example": "f1787bd2d1fdс35d6f537316514у4a05",
+            "type": "string"
+          }
+        },
+        "required": [
+          "requestId"
+        ],
+        "type": "object"
+      },
+      "api.OrdersMetaDleteRequestV2": {
+        "properties": {
+          "key": {
+            "description": "Name of label identifier to delete. Only one value is passed",
+            "enum": [
+              "imei",
+              "uin",
+              "gtin",
+              "sgtin"
+            ],
+            "example": "sgtin",
+            "type": "string"
+          },
+          "ordersIds": {
+            "description": "List of assembly order IDs",
+            "example": [
+              123456789
+            ],
+            "items": {
+              "type": "integer"
+            },
+            "maxItems": 1000,
+            "type": "array"
+          }
+        },
+        "required": [
+          "key",
+          "ordersIds"
+        ],
+        "type": "object"
+      },
+      "api.OrdersRequestV2": {
+        "properties": {
+          "ordersIds": {
+            "description": "List of assembly order IDs",
+            "example": [
+              1234678898
+            ],
+            "items": {
+              "type": "integer"
+            },
+            "maxItems": 1000,
+            "type": "array"
+          }
+        },
+        "required": [
+          "ordersIds"
+        ],
+        "type": "object"
+      },
+      "api.OrdersSGTINsSetRequest": {
+        "properties": {
+          "orders": {
+            "items": {
+              "$ref": "#/components/schemas/api.SGTINs"
+            },
+            "maxItems": 1000,
+            "type": "array"
+          }
+        },
+        "required": [
+          "orders"
+        ],
+        "type": "object"
+      },
+      "api.SGTINs": {
+        "properties": {
+          "orderId": {
+            "description": "Assembly order ID",
+            "example": 123456,
+            "type": "integer"
+          },
+          "sgtins": {
+            "description": "List of labeling codes Chestny ZNAK. From 16 to 135 characters for one label",
+            "example": [
+              "123456789012345678",
+              "1234567890123456"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 24,
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "orderId",
+          "sgtins"
+        ],
+        "type": "object"
+      },
+      "api.StatusSetResponse": {
+        "properties": {
+          "errors": {
+            "description": "Error details",
+            "items": {
+              "$ref": "#/components/schemas/api.BatchErrorResponse"
+            },
+            "type": "array"
+          },
+          "isError": {
+            "description": "Are there any errors",
+            "example": true,
+            "type": "boolean"
+          },
+          "orderId": {
+            "description": "Assembly order ID with successfully set data",
+            "example": 123456,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "isError",
+          "orderId"
+        ],
+        "type": "object"
+      },
+      "api.StatusSetResponses": {
+        "example": {
+          "requestId": "03615778-eb9e-4f55-b4Of-fd3ac0fad2сc",
+          "results": [
+            {
+              "errors": [
+                {
+                  "code": 404,
+                  "detail": "NotFound"
+                }
+              ],
+              "isError": true,
+              "orderId": 4299281547
+            },
+            {
+              "isError": false,
+              "orderId": 4279781545
+            }
+          ]
+        },
+        "properties": {
+          "requestId": {
+            "description": "Unique ID of the request with errors.",
+            "type": "string"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/api.StatusSetResponse"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "results"
+        ],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "HeaderApiKey": {
+        "in": "header",
+        "name": "Authorization",
+        "type": "apiKey"
+      }
+    }
   },
-  "servers": [
+  "info": {
+    "description": "<div class=\"api-block\">\n\nUse DBW (Delivery by WB Courier) orders methods to:\n  - get [assembly orders](./orders-dbw#tag/dbwAssemblyOrders) information, manage statuses, and cancel assembly orders\n  - get, add, edit, and delete [label identifiers](./orders-dbw#tag/dbwLabelIdentifiers) for assembly orders\n\n</div>\n\n\n<div class=\"description_ref\">\n  You can learn how to use methods in business cases in the <a href=\"/en/knowledge-base/articles/019d49a4-036a-7721-98e8-bed5f1a4f72d/dbw-orders\">instructions</a> on working with <strong>DBW orders</strong>\n</div>\n\n",
+    "title": "DBW Orders",
+    "version": "ordersdbw",
+    "x-file-name": "orders-dbw"
+  },
+  "openapi": "3.0.1",
+  "paths": {
+    "/api/marketplace/v3/dbw/orders/client": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns buyers information by order IDs.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "postV3DbwOrdersClient",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrdersRequestAPI"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientInfoResp"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectRequest": "[MaxDepth]",
+                  "IncorrectRequestBody": "[MaxDepth]",
+                  "UploadDataLimit": "[MaxDepth]"
+                },
+                "schema": {
+                  "allOf": "[MaxDepth]"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Buyer Information{{ /api/marketplace/v3/dbw/orders/client }}",
+        "tags": [
+          "dbwAssemblyOrders"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nassembly orders",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersClient",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/marketplace/v3/dbw/orders/meta/delete": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nRemoves all [assembly order label identifiers](./orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDetails) values.\n<br><br>\nYou can only delete one type of label identifiers in one request.\nSpecify the label identifiers type in the request:\n- `imei` — [IMEI](./orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaImei)\n- `uin` — [UIN](./orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaUin)\n- `gtin` — [GTIN](./orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaGtin)\n- `sgtin` — [labeling code Chestny ZNAK](./orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaSgtin)\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "postV3DbwOrdersMetaDelete",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api.OrdersMetaDleteRequestV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": "[MaxDepth]"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectParameter": "[MaxDepth]",
+                  "IncorrectRequest": "[MaxDepth]",
+                  "IncorrectRequestBody": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Delete Assembly Orders Label Identifiers{{ /api/marketplace/v3/dbw/orders/meta/delete }}",
+        "tags": [
+          "dbwLabelIdentifiers"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": false,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nassembly orders",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDelete",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/marketplace/v3/dbw/orders/meta/details": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns [assembly orders](./orders-dbw#tag/dbwAssemblyOrders) label identifiers and their validation statuses.\n<br><br>\nThe list of label identifiers available for the assembly order can be obtained in the [list of new assembly orders](./orders-dbw#tag/dbwAssemblyOrders/operation/getV3DbwOrdersNew), field `requiredMeta`. If the `requiredMeta` field does not contain the label identifier, it means that this label identifier cannot be added to this assembly order.<br>\nPossible label identifiers:\n  - `imei` — [IMEI](./orders-dbw#tag/dbwLabelIdentifiers/paths/~1api~1v3~1dbw~1orders~1%7BorderId%7D~1meta~1imei/put)\n  - `uin` — [UIN](./orders-dbw#tag/dbwLabelIdentifiers/paths/~1api~1v3~1dbw~1orders~1%7BorderId%7D~1meta~1uin/put)\n  - `gtin` — [GTIN](./orders-dbw#tag/dbwLabelIdentifiers/paths/~1api~1v3~1dbw~1orders~1%7BorderId%7D~1meta~1gtin/put)\n  - `sgtin` — [labeling code Chestny ZNAK](./orders-dbw#tag/dbwLabelIdentifiers/paths/~1api~1marketplace~1v3~1dbw~1orders~1meta~1sgtin/post)\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "postV3DbwOrdersMetaDetails",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api.OrdersRequestV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.OrdersMetaDetailsResponse"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "detail": null,
+                  "origin": "dbs-public-api",
+                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
+                  "title": "IncorrectRequest"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "detail": null,
+                  "origin": "dbs-public-api",
+                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
+                  "title": "AccessDenied"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Access denied</span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Get Order Label Identifiers{{ /api/marketplace/v3/dbw/orders/meta/details }}",
+        "tags": [
+          "dbwLabelIdentifiers"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nassembly orders",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDetails",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/marketplace/v3/dbw/orders/meta/sgtin": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the labeling code [Chestny ZNAK](https://chestnyznak.ru/en) for the assembly orders. <br>\nYou can add the labeling code Chestny ZNAK only for orders in the `confirm` status, and if the field `sgtin` is returned in the response of the [Get Order Label Identifiers](orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDetails) method.\n<br><br>\nFor more information about labeling code Chestny ZNAK please check: https://chestnyznak.ru/en/.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "postV3DbwOrdersMetaSgtin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api.OrdersSGTINsSetRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "requestId": "03615778-eb9e-4f55-b4Of-fd3ac0fad2сc",
+                  "results": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/api.StatusSetResponses"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectParameter": "[MaxDepth]",
+                  "IncorrectRequest": "[MaxDepth]",
+                  "IncorrectRequestBody": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Add Labeling Codes Chestny ZNAK to Assembly Orders{{ /api/marketplace/v3/dbw/orders/meta/sgtin }}",
+        "tags": [
+          "dbwLabelIdentifiers"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": false,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nassembly orders",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaSgtin",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/marketplace/v3/dbw/orders/status/deliver": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method transfers [assembly orders](./orders-dbw#tag/dbwAssemblyOrders/operation/getV3DbwOrders) with the `confirm` [status](./orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStatus) to the `complete` status — in delivery.\n\n<div class=\"description_important\">\nCheck the method response. Assembly orders that have been successfully transferred to delivery will be returned with the flag \"isError\": false.\nFor all other assembly orders, see the error reason in the errors array.\n</div>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "postV3DbwOrdersStatusDeliver",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api.OrdersRequestV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "requestId": "03615778-eb9e-4f55-b4Of-fd3ac0fad2сc",
+                  "results": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/api.StatusSetResponses"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectParameter": "[MaxDepth]",
+                  "IncorrectRequest": "[MaxDepth]",
+                  "IncorrectRequestBody": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Transfer Assembly Orders to Delivery{{ /api/marketplace/v3/dbw/orders/status/deliver }}",
+        "tags": [
+          "dbwAssemblyOrders"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": false,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nassembly orders",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStatusDeliver",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v3/dbw/orders": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns information on completed orders (either canceled or sold).\n<br>\nYou can get data for a specified period, maximum of 30 calendar days per request.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "getV3DbwOrders",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Next"
+          },
+          {
+            "description": "Period start date in Unix timestamp format\n",
+            "in": "query",
+            "name": "dateFrom",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Period end date in Unix timestamp format",
+            "in": "query",
+            "name": "dateTo",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "nullable": false,
+                  "properties": "[MaxDepth]",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectParameter": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Get Information on Completed Orders{{ /api/v3/dbw/orders }}",
+        "tags": [
+          "dbwAssemblyOrders"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nassembly orders",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/getV3DbwOrders",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v3/dbw/orders/courier": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nMethod provides the courier's contact information and vehicle number based on the assembly order ID. For assembly orders in the statuses `confirm` and `complete`.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "postV3DbwOrdersCourier",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrdersRequestAPI"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderCourierInfoResp"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectParameter": "[MaxDepth]",
+                  "IncorrectRequest": "[MaxDepth]",
+                  "IncorrectRequestBody": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "summary": "Courier Info{{ /api/v3/dbw/orders/courier }}",
+        "tags": [
+          "dbwAssemblyOrders"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nassembly orders",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersCourier",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v3/dbw/orders/delivery-date": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nMethod provides information about the delivery date and time selected by the buyer for orders.\n<br>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "postV3DbwOrdersDeliveryDate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeliveryDatesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeliveryDatesInfoResp"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectRequest": "[MaxDepth]",
+                  "IncorrectRequestBody": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Get Delivery Date and Time{{ /api/v3/dbw/orders/delivery-date }}",
+        "tags": [
+          "dbwAssemblyOrders"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nassembly orders",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersDeliveryDate",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v3/dbw/orders/new": {
+      "get": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns a list of all new [orders](./orders-dbw#tag/dbwAssemblyOrders).\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "getV3DbwOrdersNew",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "nullable": false,
+                  "properties": "[MaxDepth]",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Get New Orders{{ /api/v3/dbw/orders/new }}",
+        "tags": [
+          "dbwAssemblyOrders"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nassembly orders",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/getV3DbwOrdersNew",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v3/dbw/orders/status": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns the statuses of orders based on the provided list of assembly order IDs\n\n`supplierStatus` is a status of an order. The trigger for its change is the action of the seller himself.<br>\nPossible values for this field are:\n| Status   | Description               | How to move an order to this status   |\n| -------  | ---------                 | --------------------------------------|\n| `new`      | **New order** | |\n| `confirm`  | **Order on assembly**      |  [Transfer to assembly](./orders-dbw#tag/dbwAssemblyOrders/operation/patchV3DbwOrdersOrderIdConfirm)\n| `complete`  | **Order on delivery**<br>    | [Transfer to delivery](./orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStatusDeliver)\n| `receive`  | **Received by the buyer**<br>       | Changed by the courier\n| `reject`   | **Declined upon receipt**<br>           |  Changed by the courier\n| `cancel`   | **Canceled by the seller**   |  [Cancel the order](./orders-dbw#tag/dbwAssemblyOrders/operation/patchV3DbwOrdersOrderIdCancel)\n| `cancel_missed_call` | **Cancellation due to unreachable buyer** | The status changes automatically |\n\n`wbStatus` is a status of an order on the Wildberries side.<br>\nPossible values for this field are:\n- `waiting` — order in work\n- `sold` — the buyer got the order\n- `canceled` — order canceled\n- `canceled_by_client` — the buyer canceled the order\n- `declined_by_client` — the buyer canceled the order in the first hour <br> Cancellation is available to the buyer in the first hour from the moment of order, if the order is not transferred to confirm status.\n- `defect` — order canceled due to a defect\n- `canceled_by_missed_call` — cancellation due to unreachable buyer\n- `postponed_delivery` — courier delivery is postponed\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "postV3DbwOrdersStatus",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "orders": "[MaxDepth]"
+                },
+                "required": [
+                  "orders"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": "[MaxDepth]",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectParameter": "[MaxDepth]",
+                  "IncorrectRequest": "[MaxDepth]",
+                  "IncorrectRequestBody": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Get Orders Statuses{{ /api/v3/dbw/orders/status }}",
+        "tags": [
+          "dbwAssemblyOrders"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nassembly orders",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStatus",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v3/dbw/orders/stickers": {
+      "post": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns a list of stickers for the [assembly orders](./orders-dbw#tag/dbwAssemblyOrders/operation/getV3DbwOrdersNew) in the [statuses](./orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStatus):\n  - `confirm` — on assembly\n  - `complete` — on delivery\n\nYou can get a maximum of 100 stickers per request.<br>\nAvailable sticker formats:\n  - SVG\n  - ZPLV (vertical)\n  - ZPLH (horizontal)\n  - PNG\n\nAvailable dimensions:\n  - 580x400 px, with `width=58&height=40` in request\n  - 400x300 px, with `width=40&height=30` in request\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "postV3DbwOrdersStickers",
+        "parameters": [
+          {
+            "description": "Sticker format",
+            "in": "query",
+            "name": "type",
+            "required": true,
+            "schema": {
+              "enum": [
+                "svg",
+                "zplv",
+                "zplh",
+                "png"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Sticker width",
+            "in": "query",
+            "name": "width",
+            "required": true,
+            "schema": {
+              "enum": [
+                58,
+                40
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sticker height",
+            "in": "query",
+            "name": "height",
+            "required": true,
+            "schema": {
+              "enum": [
+                40,
+                30
+              ],
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "orders": "[MaxDepth]"
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": "[MaxDepth]",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "<span class='response__value response__value_success'>Success</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectParameter": "[MaxDepth]",
+                  "IncorrectRequest": "[MaxDepth]",
+                  "IncorrectRequestBody": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Get Orders Stickers{{ /api/v3/dbw/orders/stickers }}",
+        "tags": [
+          "dbwAssemblyOrders"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": true,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nassembly orders",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStickers",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v3/dbw/orders/{orderId}/cancel": {
+      "patch": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nMoves the assembly order to `cancel` status — canceled by the seller.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for the DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>for managing assembly orders</li>\n</ul>\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 300 requests | 200 ms | 20 requests |\n| Service | 1 min | 300 requests | 200 ms | 20 requests |\n| Base with secret | 1 min | 300 requests | 200 ms | 20 requests |\n| Base | 1 h | 10 requests | 6 min | 1 request |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "patchV3DbwOrdersOrderIdCancel",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Canceled</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectParameter": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "StatusMismatch": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Error updating a status</span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Cancel the Order{{ /api/v3/dbw/orders/{orderId}/cancel }}",
+        "tags": [
+          "dbwAssemblyOrders"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": false,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for the DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nfor managing assembly orders",
+          "limits": [
+            {
+              "type": "Personal",
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            },
+            {
+              "type": "Service",
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            },
+            {
+              "type": "Base with secret",
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            },
+            {
+              "type": "Base",
+              "period": "1 h",
+              "limit": "10 requests",
+              "interval": "6 min",
+              "burst": "1 request"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/patchV3DbwOrdersOrderIdCancel",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v3/dbw/orders/{orderId}/confirm": {
+      "patch": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nTransfers the assembly order to the `confirm` status — on assembly.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting label identifiers</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "patchV3DbwOrdersOrderIdConfirm",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Confirmed</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectParameter": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "StatusMismatch": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Error updating a status</span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Transfer to Assembly{{ /api/v3/dbw/orders/{orderId}/confirm }}",
+        "tags": [
+          "dbwAssemblyOrders"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": false,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for DBW methods:\nfor getting and updating contact lists\nfor getting and deleting label identifiers\nassembly orders",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "300 requests",
+              "interval": "200 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/patchV3DbwOrdersOrderIdConfirm",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v3/dbw/orders/{orderId}/meta/gtin": {
+      "put": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the GTIN (Belarus item unique identifier) for the assembly order. The assembly order can only have one GTIN. <br>\nYou can add the GTIN only for assembly orders in the `confirm` status, and if the field `gtin` is returned in the response of the [Get Order Label Identifiers](orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDetails) method.\n\n <div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding DBW label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1000 requests | 60 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "putV3DbwOrdersOrderIdMetaGtin",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "gtin": "[MaxDepth]"
+                },
+                "required": [
+                  "gtin"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Updated</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectParameter": "[MaxDepth]",
+                  "IncorrectRequest": "[MaxDepth]",
+                  "IncorrectRequestBody": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "FailedToUpdateMeta": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Label identifiers update error</span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Add GTIN to the Order{{ /api/v3/dbw/orders/{orderId}/meta/gtin }}",
+        "tags": [
+          "dbwLabelIdentifiers"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": false,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for all methods for adding DBW label identifiers :",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "1000 requests",
+              "interval": "60 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaGtin",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v3/dbw/orders/{orderId}/meta/imei": {
+      "put": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the IMEI for the [assembly orders label identifiers](./orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDetails). <br>\nThe assembly order can have only one IMEI. If a device has two IMEIs — **IMEI** and **IMEI2** or **IMEI1** and **IMEI2** — you should only specify **IMEI** or **IMEI1**. You don't need to specify **IMEI2**.<br>\nYou can add the IMEI only for assembly orders in the `confirm` status, and if the field `imei` is returned in the response of the [Get Order Label Identifiers](orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDetails) method.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding DBW label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1000 requests | 60 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "putV3DbwOrdersOrderIdMetaImei",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "imei": "[MaxDepth]"
+                },
+                "required": [
+                  "imei"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Updated</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectParameter": "[MaxDepth]",
+                  "IncorrectRequest": "[MaxDepth]",
+                  "IncorrectRequestBody": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "FailedToUpdateMeta": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Label identifiers update error</span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Add IMEI to the Order{{ /api/v3/dbw/orders/{orderId}/meta/imei }}",
+        "tags": [
+          "dbwLabelIdentifiers"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": false,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for all methods for adding DBW label identifiers :",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "1000 requests",
+              "interval": "60 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaImei",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    },
+    "/api/v3/dbw/orders/{orderId}/meta/uin": {
+      "put": {
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the UIN for the [assembly order label identifiers](./orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDetails).\nThe assembly order can only have one UIN. <br>\nYou can add the UIN only for orders in the `confirm` status, and if the field `uin` is returned in the response of the [Get Order Label Identifiers](orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDetails) method.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding DBW label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1000 requests | 60 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n",
+        "operationId": "putV3DbwOrdersOrderIdMetaUin",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "uin": "[MaxDepth]"
+                },
+                "required": [
+                  "uin"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Updated</span>"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "IncorrectParameter": "[MaxDepth]",
+                  "IncorrectRequest": "[MaxDepth]",
+                  "IncorrectRequestBody": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Bad request</span>"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "402": {
+            "$ref": "#/components/responses/402"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "FailedToUpdateMeta": "[MaxDepth]"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "<span class='response__value '>Label identifiers update error</span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Add UIN (Unique Identification Number) to the Order{{ /api/v3/dbw/orders/{orderId}/meta/uin }}",
+        "tags": [
+          "dbwLabelIdentifiers"
+        ],
+        "x-category": "marketplace",
+        "x-readonly-method": false,
+        "x-wb-rate-limits": {
+          "scope": "Request limit per one seller account for all methods for adding DBW label identifiers :",
+          "limits": [
+            {
+              "period": "1 min",
+              "limit": "1000 requests",
+              "interval": "60 ms",
+              "burst": "20 requests"
+            }
+          ],
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaUin",
+          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      },
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ]
+    }
+  },
+  "security": [
     {
-      "url": "https://marketplace-api.wildberries.ru"
+      "HeaderApiKey": []
     }
   ],
   "tags": [
     {
-      "name": "DBW Orders"
+      "description": "<div class=\"api-description\">\n\n<div class=\"api-block\">\n\nUse DBW (Delivery by WB Courier) orders methods to:\n  - get [assembly orders](./orders-dbw#tag/dbwAssemblyOrders) information, manage statuses, and cancel assembly orders\n  - get, add, edit, and delete [label identifiers](./orders-dbw#tag/dbwLabelIdentifiers) for assembly orders\n\n</div>\n\n\n<div class=\"description_ref\">\n  You can learn how to use methods in business cases in the <a href=\"/en/knowledge-base/articles/019d49a4-036a-7721-98e8-bed5f1a4f72d/dbw-orders\">instructions</a> on working with <strong>DBW orders</strong>\n</div>\n\n\n\n</div>",
+      "name": "DBW Orders",
+      "x-traitTag": true
     },
     {
-      "name": "DBW Assembly Orders"
+      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Marketplace</strong> category\n</div>\n\nHow to work with DBW assembly orders:\n1. [Get a new assembly order](./orders-dbw#tag/dbwAssemblyOrders/operation/getV3DbwOrdersNew).\n2. [Transfer it for assembly](./orders-dbw#tag/dbwAssemblyOrders/operation/patchV3DbwOrdersOrderIdConfirm).\n3. After the assembly order is moved to assembly, [information about the courier](./orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersCourier) (phone, vehicle number) becomes available. To allow the courier to contact you, [link](./work-with-products#tag/Seller-Warehouses/paths/~1api~1v3~1dbw~1warehouses~1%7BwarehouseId%7D~1contacts/put) your contacts to the warehouse. You can also [get](./work-with-products#tag/Seller-Warehouses/paths/~1api~1v3~1dbw~1warehouses~1%7BwarehouseId%7D~1contacts/get) the current list of your contacts.\n4. [Get](./orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStickers), print, and attach the stickers.\n5. [Transfer to delivery](./orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStatusDeliver).\n6. Waiting for the courier.\n7. The courier picks up the order and delivers it to the buyer.\n8. The buyer accepts or declines the order.\n9. If the buyer accepts the order, the courier changes the assembly order status to `receive`. If the buyer declines, it is changed to `reject`.\n",
+      "name": "dbwAssemblyOrders",
+      "x-displayName": "DBW Assembly Orders"
     },
     {
-      "name": "DBW Label Identifiers"
-    },
-    {
-      "name": "dbwLabelIdentifiers"
+      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Marketplace</strong> category\n</div>\n",
+      "name": "dbwLabelIdentifiers",
+      "x-displayName": "DBW Label Identifiers"
     }
   ],
-  "paths": {
-    "/api/v3/dbw/orders/new": {
-      "get": {
-        "summary": "Get New Orders",
-        "tags": [
-          "DBW Assembly Orders"
-        ],
-        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1new/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Assembly Orders",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/getV3DbwOrdersNew",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/v3/dbw/orders": {
-      "get": {
-        "summary": "Get Information on Completed Orders",
-        "tags": [
-          "DBW Assembly Orders"
-        ],
-        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Assembly Orders",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/getV3DbwOrders",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/v3/dbw/orders/delivery-date": {
-      "post": {
-        "summary": "Get Delivery Date and Time",
-        "tags": [
-          "DBW Assembly Orders"
-        ],
-        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1delivery-date/post",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Assembly Orders",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersDeliveryDate",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/marketplace/v3/dbw/orders/client": {
-      "post": {
-        "summary": "Buyer Information",
-        "tags": [
-          "DBW Assembly Orders"
-        ],
-        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1marketplace~1v3~1dbw~1orders~1client/post",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Assembly Orders",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersClient",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/v3/dbw/orders/status": {
-      "post": {
-        "summary": "Get Orders Statuses",
-        "tags": [
-          "DBW Assembly Orders"
-        ],
-        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1status/post",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Assembly Orders",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStatus",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/v3/dbw/orders/{orderId}/confirm": {
-      "patch": {
-        "summary": "Transfer to Assembly",
-        "tags": [
-          "DBW Assembly Orders"
-        ],
-        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1{orderId}~1confirm/patch",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Assembly Orders",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/patchV3DbwOrdersOrderIdConfirm",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/v3/dbw/orders/stickers": {
-      "post": {
-        "summary": "Get Orders Stickers",
-        "tags": [
-          "DBW Assembly Orders"
-        ],
-        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1stickers/post",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Assembly Orders",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStickers",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/marketplace/v3/dbw/orders/status/deliver": {
-      "post": {
-        "summary": "Transfer Assembly Orders to Delivery",
-        "tags": [
-          "DBW Assembly Orders"
-        ],
-        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1marketplace~1v3~1dbw~1orders~1status~1deliver/post",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Assembly Orders",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersStatusDeliver",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/v3/dbw/orders/courier": {
-      "post": {
-        "summary": "Courier Info",
-        "tags": [
-          "DBW Assembly Orders"
-        ],
-        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1courier/post",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Assembly Orders",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/postV3DbwOrdersCourier",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/v3/dbw/orders/{orderId}/cancel": {
-      "patch": {
-        "summary": "Cancel the Order",
-        "tags": [
-          "DBW Assembly Orders"
-        ],
-        "operationId": "tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1{orderId}~1cancel/patch",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Assembly Orders",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для методов DBW:",
-          "limits": [
-            {
-              "Тип": "Персональный",
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            },
-            {
-              "Тип": "Сервисный",
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            },
-            {
-              "Тип": "Базовый с секретом",
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            },
-            {
-              "Тип": "Базовый",
-              "Период": "1 ч",
-              "Лимит": "10 запросов",
-              "Интервал": "6 мин",
-              "Всплеск": "1 запрос"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwAssemblyOrders/operation/patchV3DbwOrdersOrderIdCancel",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nуправление сборочными заданиями\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/marketplace/v3/dbw/orders/meta/details": {
-      "post": {
-        "summary": "Get Order Label Identifiers",
-        "tags": [
-          "dbwLabelIdentifiers"
-        ],
-        "operationId": "tag/dbwLabelIdentifiers/paths/~1api~1marketplace~1v3~1dbw~1orders~1meta~1details/post",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Label Identifiers",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDetails",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/marketplace/v3/dbw/orders/meta/delete": {
-      "post": {
-        "summary": "Delete Assembly Orders Label Identifiers",
-        "tags": [
-          "dbwLabelIdentifiers"
-        ],
-        "operationId": "tag/dbwLabelIdentifiers/paths/~1api~1marketplace~1v3~1dbw~1orders~1meta~1delete/post",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Label Identifiers",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaDelete",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/v3/dbw/orders/{orderId}/meta": {
-      "get": {
-        "summary": "Get Order Label Identifiers",
-        "tags": [
-          "dbwLabelIdentifiers"
-        ],
-        "operationId": "tag/dbwLabelIdentifiers/paths/~1api~1v3~1dbw~1orders~1{orderId}~1meta/get",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Label Identifiers",
-        "deprecated": true,
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/getV3DbwOrdersOrderIdMeta",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/marketplace/v3/dbw/orders/meta/sgtin": {
-      "post": {
-        "summary": "Add Labeling Codes Chestny ZNAK to Assembly Orders",
-        "tags": [
-          "dbwLabelIdentifiers"
-        ],
-        "operationId": "tag/dbwLabelIdentifiers/paths/~1api~1marketplace~1v3~1dbw~1orders~1meta~1sgtin/post",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Label Identifiers",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для следующих методов DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "300 запросов",
-              "Интервал": "200 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/postV3DbwOrdersMetaSgtin",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "получение и обновление списка контактов\nполучение и удаление идентификаторов маркировки\nметоды сборочных заданий\n\n\nОдин запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/v3/dbw/orders/{orderId}/meta/uin": {
-      "put": {
-        "summary": "Add UIN (Unique Identification Number) to the Order",
-        "tags": [
-          "dbwLabelIdentifiers"
-        ],
-        "operationId": "tag/dbwLabelIdentifiers/paths/~1api~1v3~1dbw~1orders~1{orderId}~1meta~1uin/put",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Label Identifiers",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "1000 запросов",
-              "Интервал": "60 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaUin",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/v3/dbw/orders/{orderId}/meta/imei": {
-      "put": {
-        "summary": "Add IMEI to the Order",
-        "tags": [
-          "dbwLabelIdentifiers"
-        ],
-        "operationId": "tag/dbwLabelIdentifiers/paths/~1api~1v3~1dbw~1orders~1{orderId}~1meta~1imei/put",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Label Identifiers",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "1000 запросов",
-              "Интервал": "60 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaImei",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    },
-    "/api/v3/dbw/orders/{orderId}/meta/gtin": {
-      "put": {
-        "summary": "Add GTIN to the Order",
-        "tags": [
-          "dbwLabelIdentifiers"
-        ],
-        "operationId": "tag/dbwLabelIdentifiers/paths/~1api~1v3~1dbw~1orders~1{orderId}~1meta~1gtin/put",
-        "description": "See https://dev.wildberries.ru/en/docs/openapi/orders-dbw and https://dev.wildberries.ru/en/swagger/orders-dbw for request and response details.",
-        "responses": {
-          "200": {
-            "description": "Operation details are documented on the official Wildberries page."
-          }
-        },
-        "x-wb-group": "DBW Label Identifiers",
-        "x-wb-rate-limits": {
-          "scope": "Лимит запросов на один аккаунт продавца для всех методов закрепления идентификаторов маркировки DBW:",
-          "limits": [
-            {
-              "Период": "1 мин",
-              "Лимит": "1000 запросов",
-              "Интервал": "60 мс",
-              "Всплеск": "20 запросов"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/dbwLabelIdentifiers/operation/putV3DbwOrdersOrderIdMetaGtin",
-          "verifiedAt": "2026-07-29T13:07:26.863Z",
-          "note": "Один запрос с кодами ответов 4XX учитывается как 10 запросов"
-        }
-      }
-    }
-  },
   "x-wb-extraction": {
-    "mode": "docs-html-snapshot",
+    "mode": "browser-redoc-openapi",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-dbw",
-    "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-dbw",
-    "chapter_path": "orders-dbw",
-    "group_count": 3,
-    "operation_count": 17
+    "capturedAt": "2026-08-19T18:12:37.448Z"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-07-29T13:07:26.863Z",
+    "verifiedAt": "2026-08-19T18:12:37.448Z",
     "source": "https://dev.wildberries.ru/en/docs/openapi/orders-dbw",
-    "operationCount": 17
+    "operationCount": 16
   }
 }

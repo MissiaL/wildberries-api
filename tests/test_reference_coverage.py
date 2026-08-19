@@ -71,4 +71,4 @@ def test_every_operation_has_verified_rate_limits():
                 )
                 covered += 1
 
-    assert covered == rate_manifest["operationCount"] == 283
+    assert covered == rate_manifest["operationCount"] == 286

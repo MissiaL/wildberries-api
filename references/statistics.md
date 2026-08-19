@@ -10,8 +10,8 @@
 ## Typical Calls
 
 ```bash
-python scripts/api_call.py --method GET --url "https://statistics-api.wildberries.ru/api/v1/supplier/orders" --params '{"dateFrom":"2026-04-01"}'
-python scripts/api_call.py --method GET --url "https://statistics-api.wildberries.ru/api/v1/supplier/sales" --params '{"dateFrom":"2026-04-01"}'
+python3 scripts/api_call.py --method GET --url "https://statistics-api.wildberries.ru/api/v1/supplier/orders" --params '{"dateFrom":"2026-04-01"}'
+python3 scripts/api_call.py --method GET --url "https://statistics-api.wildberries.ru/api/v1/supplier/sales" --params '{"dateFrom":"2026-04-01"}'
 ```
 
 Statistics endpoints often require date bounds. Use absolute dates and avoid unbounded pulls unless the user explicitly asks.

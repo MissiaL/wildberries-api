@@ -30,4 +30,4 @@ Before repeated, parallel, paginated, or polling calls, read [rate-limits.md](ra
 2. Open the guide named in the `Guide` column for domain caveats.
 3. Inspect the schema in `assets/openapi/<schema>` for exact paths, methods, and operation summaries.
 4. Check the exact method's current limit and token-type row in the official documentation.
-5. Send the request through `python scripts/api_call.py --method ... --url ...`.
+5. Send the request through `python3 scripts/api_call.py --method ... --url ...`.

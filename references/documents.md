@@ -9,8 +9,8 @@
 ## Typical Calls
 
 ```bash
-python scripts/api_call.py --method GET --url "https://documents-api.wildberries.ru/api/v1/documents/categories"
-python scripts/api_call.py --method GET --url "https://documents-api.wildberries.ru/api/v1/documents/list"
+python3 scripts/api_call.py --method GET --url "https://documents-api.wildberries.ru/api/v1/documents/categories"
+python3 scripts/api_call.py --method GET --url "https://documents-api.wildberries.ru/api/v1/documents/list"
 ```
 
 When downloading or retrieving document details, keep the WB document ID exactly as provided by the API or user.

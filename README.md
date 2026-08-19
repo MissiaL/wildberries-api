@@ -27,12 +27,12 @@ The directory name should match the skill name: `wildberries-api`.
 
 ```bash
 export WB_API_TOKEN="wb-production-token"
-python scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/ping"
+python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/ping"
 ```
 
 This skill is production-only. Sandbox hosts and test-token workflows are intentionally excluded.
 
-For repeated calls, read [`references/rate-limits.md`](references/rate-limits.md). All 283 saved operations carry a verified `x-wb-rate-limits` block. The helper can show the exact token-type profile with `--show-rate-limit`, retries `429` up to three times, honors `X-Ratelimit-Retry`, and caps a single wait at 60 seconds.
+For repeated calls, read [`references/rate-limits.md`](references/rate-limits.md). All 286 saved operations carry a verified `x-wb-rate-limits` block. The helper can show the exact token-type profile with `--show-rate-limit`, retries `429` up to three times, honors `X-Ratelimit-Retry`, and caps a single wait at 60 seconds.
 
 ## How It Works
 
@@ -70,11 +70,11 @@ The authoritative coverage list is `assets/openapi/manifest.json`; allowed produ
 ## Development
 
 ```bash
-python -m pytest -v
-python scripts/fetch_openapi.py
+python3 -m pytest -v
+python3 scripts/sync_openapi.py /tmp/wb-live-specs.json --captured-at <ISO-8601-time>
 ```
 
-Use `scripts/fetch_openapi.py` to refresh the saved schemas from the official Wildberries documentation at `https://dev.wildberries.ru/docs/openapi/api-information`.
+`dev.wildberries.ru` returns anti-bot HTTP 498 to plain HTTP clients. Refresh the 13 official documentation pages in a real browser, export each rendered `__redoc_state.spec.data` object into one JSON object keyed by page slug, then run `scripts/sync_openapi.py`. The sync installs the full official schemas and requires a rate-limit block for every operation.
 
 ## License
 

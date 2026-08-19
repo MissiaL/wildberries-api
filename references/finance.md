@@ -9,10 +9,10 @@
 ## Typical Calls
 
 ```bash
-python scripts/api_call.py --method GET --url "https://finance-api.wildberries.ru/api/v1/account/balance"
-python scripts/api_call.py --method POST --url "https://finance-api.wildberries.ru/api/finance/v1/sales-reports/list" --body '{}'
-python scripts/api_call.py --method POST --url "https://finance-api.wildberries.ru/api/finance/v1/sales-reports/detailed" --body '{"dateFrom":"2026-04-01","dateTo":"2026-04-20"}'
-python scripts/api_call.py --method POST --url "https://finance-api.wildberries.ru/api/finance/v1/acquiring/list" --body '{}'
+python3 scripts/api_call.py --method GET --url "https://finance-api.wildberries.ru/api/v1/account/balance"
+python3 scripts/api_call.py --method POST --url "https://finance-api.wildberries.ru/api/finance/v1/sales-reports/list" --body '{}'
+python3 scripts/api_call.py --method POST --url "https://finance-api.wildberries.ru/api/finance/v1/sales-reports/detailed" --body '{"dateFrom":"2026-04-01","dateTo":"2026-04-20"}'
+python3 scripts/api_call.py --method POST --url "https://finance-api.wildberries.ru/api/finance/v1/acquiring/list" --body '{}'
 ```
 
 Financial requests are high-stakes. Preserve exact report IDs, periods, currencies, and seller-supplied filters.

@@ -10,7 +10,7 @@ Rate limits are live operational data and can change independently of endpoint s
 - [Rate-limit knowledge-base article, updated 2026-04-03](https://dev.wildberries.ru/knowledge-base/articles/019d49a1-28ca-7735-bf2f-98210695abc7/limity-zaprosov-wb-api)
 - [Token-type limit change effective 2026-03-30](https://dev.wildberries.ru/news/281/obnovlenie-limitov-zaprosov-wb-api)
 
-Every saved OpenAPI operation carries the live table captured on 2026-07-29 in `x-wb-rate-limits`. `assets/openapi/rate-limit-manifest.json` records coverage and verification time. Never infer a limit from a similar endpoint; if the saved `verifiedAt` may be stale, re-check the exact live operation.
+Every saved OpenAPI operation carries the live table captured on 2026-08-19 in `x-wb-rate-limits`. `assets/openapi/rate-limit-manifest.json` records coverage and verification time. Never infer a limit from a similar endpoint; if the saved `verifiedAt` may be stale, re-check the exact live operation.
 
 ## Model
 
@@ -63,7 +63,7 @@ The helper follows this policy:
 Example:
 
 ```bash
-python scripts/api_call.py \
+python3 scripts/api_call.py \
   --method GET \
   --url "https://common-api.wildberries.ru/ping" \
   --max-retries 3 \

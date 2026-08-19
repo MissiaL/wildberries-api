@@ -73,8 +73,8 @@ def test_configured_rate_limit_selects_personal_row():
     )
 
     assert profile["tokenType"] == "personal"
-    assert profile["limit"]["Тип"] == "Персональный"
-    assert profile["limit"]["Интервал"] == "1 мин"
+    assert profile["limit"]["type"] == "Personal"
+    assert profile["limit"]["interval"] == "1 min"
     assert profile["source"].startswith("https://dev.wildberries.ru/docs/openapi/api-information")
 
 

@@ -23,7 +23,7 @@
         "finance-api.wildberries.ru",
         "user-management-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
+      "extraction_mode": "browser-redoc-openapi",
       "path_count": 10,
       "operation_count": 10,
       "source_lastmod": null,
@@ -34,12 +34,12 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.481869+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     },
     {
       "slug": "work-with-products",
-      "title": "Product Management",
+      "title": "Item Management",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/work-with-products",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/products",
       "schema_source_url": null,
@@ -49,7 +49,7 @@
         "discounts-prices-api.wildberries.ru",
         "marketplace-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
+      "extraction_mode": "browser-redoc-openapi",
       "path_count": 45,
       "operation_count": 52,
       "source_lastmod": null,
@@ -60,8 +60,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482017+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     },
     {
       "slug": "orders-fbs",
@@ -73,9 +73,9 @@
       "hosts": [
         "marketplace-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
-      "path_count": 29,
-      "operation_count": 35,
+      "extraction_mode": "browser-redoc-openapi",
+      "path_count": 32,
+      "operation_count": 40,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
@@ -84,8 +84,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482046+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     },
     {
       "slug": "orders-dbw",
@@ -97,9 +97,9 @@
       "hosts": [
         "marketplace-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
-      "path_count": 17,
-      "operation_count": 17,
+      "extraction_mode": "browser-redoc-openapi",
+      "path_count": 16,
+      "operation_count": 16,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
@@ -108,12 +108,12 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482061+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     },
     {
       "slug": "orders-dbs",
-      "title": "DBS Orders",
+      "title": "DBS",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-dbs",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-dbs",
       "schema_source_url": null,
@@ -121,7 +121,7 @@
       "hosts": [
         "marketplace-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
+      "extraction_mode": "browser-redoc-openapi",
       "path_count": 21,
       "operation_count": 21,
       "source_lastmod": null,
@@ -132,12 +132,12 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482077+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     },
     {
       "slug": "promotion",
-      "title": "Marketing and Promotions",
+      "title": "Marketing and Promotion",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/promotion",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/promotion",
       "schema_source_url": null,
@@ -145,7 +145,7 @@
       "hosts": [
         "advert-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
+      "extraction_mode": "browser-redoc-openapi",
       "path_count": 38,
       "operation_count": 39,
       "source_lastmod": null,
@@ -156,8 +156,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482104+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     },
     {
       "slug": "user-communication",
@@ -171,7 +171,7 @@
         "buyer-chat-api.wildberries.ru",
         "returns-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
+      "extraction_mode": "browser-redoc-openapi",
       "path_count": 21,
       "operation_count": 25,
       "source_lastmod": null,
@@ -182,12 +182,12 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482127+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     },
     {
       "slug": "wb-tariffs",
-      "title": "Tariffs",
+      "title": "Rates",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/wb-tariffs",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/tariffs",
       "schema_source_url": null,
@@ -195,7 +195,7 @@
       "hosts": [
         "common-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
+      "extraction_mode": "browser-redoc-openapi",
       "path_count": 5,
       "operation_count": 5,
       "source_lastmod": null,
@@ -206,12 +206,12 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482137+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     },
     {
       "slug": "in-store-pickup",
-      "title": "In-Store Pickup Orders",
+      "title": "In-Store Pickup",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/in-store-pickup",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/in-store-pickup",
       "schema_source_url": null,
@@ -219,7 +219,7 @@
       "hosts": [
         "marketplace-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
+      "extraction_mode": "browser-redoc-openapi",
       "path_count": 18,
       "operation_count": 18,
       "source_lastmod": null,
@@ -230,8 +230,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482149+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     },
     {
       "slug": "orders-fbw",
@@ -243,7 +243,7 @@
       "hosts": [
         "supplies-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
+      "extraction_mode": "browser-redoc-openapi",
       "path_count": 7,
       "operation_count": 7,
       "source_lastmod": null,
@@ -254,8 +254,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482160+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     },
     {
       "slug": "analytics",
@@ -267,7 +267,7 @@
       "hosts": [
         "seller-analytics-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
+      "extraction_mode": "browser-redoc-openapi",
       "path_count": 18,
       "operation_count": 19,
       "source_lastmod": null,
@@ -278,8 +278,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482174+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     },
     {
       "slug": "reports",
@@ -292,9 +292,9 @@
         "statistics-api.wildberries.ru",
         "seller-analytics-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
-      "path_count": 24,
-      "operation_count": 24,
+      "extraction_mode": "browser-redoc-openapi",
+      "path_count": 23,
+      "operation_count": 23,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
@@ -303,8 +303,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482198+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     },
     {
       "slug": "financial-reports-and-accounting",
@@ -318,7 +318,7 @@
         "statistics-api.wildberries.ru",
         "documents-api.wildberries.ru"
       ],
-      "extraction_mode": "docs-html-snapshot",
+      "extraction_mode": "browser-redoc-openapi",
       "path_count": 11,
       "operation_count": 11,
       "source_lastmod": null,
@@ -329,8 +329,8 @@
         "schema_source_url": null,
         "source_lastmod": null
       },
-      "fetched_at": "2026-06-11T15:26:12.482213+00:00",
-      "rate_limits_verified_at": "2026-07-29T13:07:26.863Z"
+      "fetched_at": "2026-08-19T18:12:37.448Z",
+      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
     }
   ]
 }

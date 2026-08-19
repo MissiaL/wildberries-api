@@ -1,11 +1,11 @@
 """Fetch Wildberries OpenAPI doc snapshots from dev.wildberries.ru.
 
-NOTE (2026-06): dev.wildberries.ru sits behind an anti-bot challenge and
+NOTE (2026-08): dev.wildberries.ru sits behind an anti-bot challenge and
 returns HTTP 498 for plain urllib/curl requests, so running this script
-directly fails. Workaround: open the docs in a real browser session
-(Playwright/Chrome), extract the per-chapter payloads from the page HTML
-(same logic as extract_chapter_payload), then rebuild the snapshots offline
-with build_snapshot_schema / build_manifest_record / write_outputs.
+directly fails. The maintained refresh path is to extract each rendered
+``__redoc_state.spec.data`` object in a real browser and pass the combined JSON
+export to ``scripts/sync_openapi.py``. This module remains for parsing tests and
+legacy HTML snapshots.
 """
 from datetime import datetime, timezone
 import json

@@ -1,8 +1,9 @@
 {
-  "schemaVersion": 1,
-  "verifiedAt": "2026-07-29T13:07:26.863Z",
-  "source": "Live Wildberries OpenAPI documentation rendered in a browser",
-  "operationCount": 283,
+  "schemaVersion": 2,
+  "verifiedAt": "2026-08-19T18:12:37.448Z",
+  "source": "Live Wildberries OpenAPI data rendered in a browser",
+  "operationCount": 286,
+  "specialLimitCount": 2,
   "pages": [
     {
       "slug": "api-information",
@@ -14,11 +15,11 @@
     },
     {
       "slug": "orders-fbs",
-      "operationCount": 35
+      "operationCount": 40
     },
     {
       "slug": "orders-dbw",
-      "operationCount": 17
+      "operationCount": 16
     },
     {
       "slug": "orders-dbs",
@@ -50,7 +51,7 @@
     },
     {
       "slug": "reports",
-      "operationCount": 24
+      "operationCount": 23
     },
     {
       "slug": "financial-reports-and-accounting",
