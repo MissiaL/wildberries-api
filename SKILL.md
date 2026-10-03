@@ -1,7 +1,7 @@
 ---
 name: wildberries-api
 description: Use when the user needs to read or change Wildberries (WB, вайлдберриз, вб) seller data through the official production API, including product cards, prices, orders, supplies, analytics, promotions, reviews, reports, finance, returns, documents, tariffs, and seller operations.
-metadata: {"author":"MissiaL","version":"0.4.0","keywords":["wildberries","wb","вайлдберриз","вб","seller-api","marketplace","product-cards","prices","orders","analytics","promotions","reports","finance","rate-limits"]}
+metadata: {"author":"MissiaL","version":"0.5.0","keywords":["wildberries","wb","вайлдберриз","вб","seller-api","marketplace","product-cards","prices","orders","analytics","promotions","reports","finance","rate-limits"]}
 ---
 
 # Wildberries API
@@ -37,7 +37,7 @@ python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.r
 - Start with [references/overview.md](references/overview.md) to choose the schema and domain guide.
 - Use [references/general.md](references/general.md) for auth, token scopes, seller info, and common API behavior.
 - Use [references/rate-limits.md](references/rate-limits.md) for token buckets, token-type limits, scheduling, headers, and retry rules.
-- Inspect `assets/openapi/manifest.json` for browser-captured schema coverage and provenance.
+- Inspect `assets/openapi/manifest.json` for official Swagger schema coverage, capture time, and source URLs.
 - Inspect the matching `assets/openapi/*.json` file before complex requests.
 
 ## Rules
@@ -48,7 +48,8 @@ python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.r
 - Preserve user-provided filters exactly; use absolute dates for dated reports and analytics.
 - If WB returns an auth or scope error, explain the missing permission and ask for a token with the matching WB seller scope.
 - Do not use sandbox endpoints, mock tokens, browser sessions, cookies, or manually supplied authorization headers.
-- Never assume one global WB limit or reuse a limit from another method. Each local operation now carries its verified table in `x-wb-rate-limits`; if its `verifiedAt` may be stale, re-check the exact live method page before a batch.
+- Match the host as well as the method and path, using the operation or path `servers` in the schema. Check `x-token-types` when present; category access alone does not guarantee the token type can call the method.
+- Never assume one global WB limit or reuse a limit from another method. Read the exact operation's `x-wb-rate-limits`; `status: undocumented` means WB publishes no limit, so verify it with WB before repeated calls. If `verifiedAt` may be stale, re-check the exact live method page before a batch.
 - Pace repeated requests by the documented `Interval`; treat `Burst` as short headroom, not as the normal concurrency target. Coordinate parallel workers against one shared budget.
 - On `429`, obey `X-Ratelimit-Retry`; do not retry early or indefinitely. Do not retry `4XX` blindly: many live method descriptions charge one `4XX` as 10 requests, and the exact operation note in `x-wb-rate-limits` wins.
 - Do not automatically retry `401`, `403`, or write-request timeouts/`5xx`. Their causes are not rate limits, and a write may already have been applied.

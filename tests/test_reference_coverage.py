@@ -48,12 +48,13 @@ def test_overview_routes_every_manifest_slug_and_schema_filename():
         )
 
 
-def test_every_operation_has_verified_rate_limits():
+def test_every_operation_has_current_rate_limit_status():
     manifest = json.loads((OPENAPI_DIR / "manifest.json").read_text(encoding="utf-8"))
     rate_manifest = json.loads(
         (OPENAPI_DIR / "rate-limit-manifest.json").read_text(encoding="utf-8")
     )
     covered = 0
+    undocumented = []
 
     for record in manifest["schemas"]:
         schema = json.loads(
@@ -69,6 +70,14 @@ def test_every_operation_has_verified_rate_limits():
                 assert operation["x-wb-rate-limits"]["source"].startswith(
                     "https://dev.wildberries.ru/docs/openapi/"
                 )
+                assert operation["x-wb-rate-limits"]["verifiedAt"] == rate_manifest["verifiedAt"]
+                if operation["x-wb-rate-limits"].get("status") == "undocumented":
+                    assert not operation["x-wb-rate-limits"].get("limits")
+                    undocumented.append({"slug": record["slug"], "method": method.upper(), "path": path})
+                else:
+                    assert operation["x-wb-rate-limits"].get("limits") or operation["x-wb-rate-limits"].get("raw")
                 covered += 1
 
-    assert covered == rate_manifest["operationCount"] == 286
+    assert covered == rate_manifest["operationCount"]
+    assert undocumented == rate_manifest["undocumentedLimits"]
+    assert covered - len(undocumented) == rate_manifest["documentedLimitCount"]

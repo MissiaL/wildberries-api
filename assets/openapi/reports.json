@@ -266,6 +266,46 @@
             "total": 2
           }
         }
+      },
+      "ReportExample": {
+        "description": "Success",
+        "value": {
+          "count": 87,
+          "report": [
+            {
+              "sku": "1234567890",
+              "brand": "",
+              "completedDt": null,
+              "dstOfficeAddress": "г. Клин (Московская область), улица Ленина, д. 8",
+              "dstOfficeId": 33,
+              "expiredDt": null,
+              "kiz": null,
+              "nmId": 987654321,
+              "orderDt": "2026-08-24",
+              "orderId": 6789054321,
+              "readyToReturnDt": null,
+              "returnType": "Возврат товара, который приехал по МП, продавцу",
+              "shkId": 987612345,
+              "srid": "mp.1b4fc35bfe3f4b799cf01f8e11ffd2cb.r",
+              "returnStatus": "В пути в пвз",
+              "stickerId": "918273645",
+              "subjectName": "Вода питьевая",
+              "techSize": "0"
+            }
+          ]
+        }
+      },
+      "Response403TokenCategory": {
+        "value": {
+          "status": 403,
+          "statusText": "Forbidden",
+          "title": "Forbidden",
+          "detail": "scope is not allowed for this resource",
+          "requestId": "2dbf6fc9-bad8-4ef9-a058-c938a8553ba5",
+          "origin": "ag-marketplace",
+          "timestamp": "2026-09-03T13:55:15Z"
+        },
+        "description": "Invalid token category"
       }
     },
     "parameters": {
@@ -338,7 +378,7 @@
             "example": {
               "code": "07e4668e--a53a3d31f8b0-[UK-oWaVDUqNrKG]; 03bce=277; 84bd353bf-75",
               "detail": "token problem; token is malformed: could not base64 decode signature: illegal base64 data at input byte 84",
-              "origin": "s2s-api-auth-catalog",
+              "origin": "ag-marketplace",
               "requestId": "7b80742415072fe8b6b7f7761f1d1211",
               "status": 401,
               "statusText": "Unauthorized",
@@ -385,7 +425,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Unauthorized</span>"
+        "description": "Unauthorized"
       },
       "402": {
         "content": {
@@ -409,7 +449,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Payment required</span>"
+        "description": "Payment required"
       },
       "429": {
         "content": {
@@ -417,7 +457,7 @@
             "example": {
               "code": "07e4668e-ac2242c5c8c5-[UK-4dx7JUdskGZ]",
               "detail": "limited by c122a060-a7fb-4bb4-abb0-32fd4e18d489",
-              "origin": "s2s-api-auth-catalog",
+              "origin": "ag-marketplace",
               "requestId": "9d3c02cc698f8b041c661a7c28bed293",
               "status": 429,
               "statusText": "Too Many Requests",
@@ -464,7 +504,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Too many requests</span>"
+        "description": "Too many requests"
       },
       "SuccessBrandShareResponse": {
         "content": {
@@ -501,7 +541,30 @@
               "properties": {
                 "report": {
                   "description": "Report",
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "applyDate": {
+                        "type": "string",
+                        "format": "ГГГГ-ММ-ДД",
+                        "description": "Date"
+                      },
+                      "brandRating": {
+                        "type": "integer",
+                        "description": "Brand rating in parent category"
+                      },
+                      "pricePercent": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Share of sales in the parent category — price, %"
+                      },
+                      "qtyPercent": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Share of sales in the parent category — quantity, %"
+                      }
+                    }
+                  },
                   "type": "array"
                 }
               },
@@ -509,7 +572,7 @@
             }
           }
         },
-        "description": "<span class='response__value response__value_success'>Success</span>"
+        "description": "Success"
       },
       "SuccessBrandsResponse": {
         "content": {
@@ -518,8 +581,24 @@
               "properties": {
                 "data": {
                   "description": "Brands list",
-                  "example": "[MaxDepth]",
-                  "items": "[MaxDepth]",
+                  "example": [
+                    "1000 | Каталог",
+                    "1000 Каталог",
+                    "AndBerries",
+                    "H&M",
+                    "Mirtex",
+                    "PlayToday",
+                    "Test1",
+                    "WOW",
+                    "[\"Colambetta\"]",
+                    "dubs",
+                    "test",
+                    "Бест Трикотаж",
+                    "Тест"
+                  ],
+                  "items": {
+                    "type": "string"
+                  },
                   "type": "array"
                 }
               },
@@ -527,7 +606,7 @@
             }
           }
         },
-        "description": "<span class='response__value response__value_success'>Success</span>"
+        "description": "Success"
       },
       "SuccessGoodsLabelingResponse": {
         "content": {
@@ -539,7 +618,11 @@
                   "date": "2024-03-26T01:00:00Z",
                   "incomeId": 18484008,
                   "nmID": 49434732,
-                  "photoUrls": "[MaxDepth]",
+                  "photoUrls": [
+                    "https://static-basket-03.{{ .baseDomain }}/vol54/photo-fixation-violation-shk-excise/12345678900-1811460999-1.jpg",
+                    "https://static-basket-03.{{ .baseDomain }}/vol54/photo-fixation-violation-shk-excise/12345678900-1811461000-2.jpg",
+                    "https://static-basket-03.{{ .baseDomain }}/vol54/photo-fixation-violation-shk-excise/12345678900-1811461001-3.jpg"
+                  ],
                   "shkID": 17346434621,
                   "sku": "4630153500834"
                 }
@@ -548,7 +631,43 @@
             "schema": {
               "properties": {
                 "report": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "description": "Fine amount, rubles",
+                        "type": "number"
+                      },
+                      "date": {
+                        "description": "Date",
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "incomeId": {
+                        "description": "Income ID",
+                        "type": "integer"
+                      },
+                      "nmID": {
+                        "description": "WB article number",
+                        "type": "integer"
+                      },
+                      "photoUrls": {
+                        "description": "Item photo URL",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "shkID": {
+                        "description": "Wildberries item SKU",
+                        "type": "integer"
+                      },
+                      "sku": {
+                        "description": "Listing SKU",
+                        "type": "string"
+                      }
+                    }
+                  },
                   "type": "array"
                 }
               },
@@ -556,7 +675,7 @@
             }
           }
         },
-        "description": "<span class='response__value response__value_success'>Success</span>"
+        "description": "Success"
       },
       "SuccessParentsResponse": {
         "content": {
@@ -585,7 +704,19 @@
               "properties": {
                 "data": {
                   "description": "Brand categories",
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "parentId": {
+                        "type": "integer",
+                        "description": "Parent category ID"
+                      },
+                      "parentName": {
+                        "type": "string",
+                        "description": "Parent category name"
+                      }
+                    }
+                  },
                   "type": "array"
                 }
               },
@@ -593,7 +724,7 @@
             }
           }
         },
-        "description": "<span class='response__value response__value_success'>Success</span>"
+        "description": "Success"
       },
       "SuccessRegionSaleResponse": {
         "content": {
@@ -601,7 +732,58 @@
             "schema": {
               "properties": {
                 "report": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "cityName": {
+                        "type": "string",
+                        "description": "Location",
+                        "example": "деревня Суханово"
+                      },
+                      "countryName": {
+                        "type": "string",
+                        "description": "Country",
+                        "example": "Россия"
+                      },
+                      "foName": {
+                        "type": "string",
+                        "description": "Federal district",
+                        "example": "Центральный федеральный округ"
+                      },
+                      "nmID": {
+                        "type": "integer",
+                        "description": "WB article number",
+                        "example": 177974431
+                      },
+                      "regionName": {
+                        "type": "string",
+                        "description": "Region",
+                        "example": "Московская область"
+                      },
+                      "sa": {
+                        "type": "string",
+                        "description": "Seller article number",
+                        "example": "112233445566778899"
+                      },
+                      "saleInvoiceCostPrice": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "To payment for the item, rub.",
+                        "example": 592.11
+                      },
+                      "saleInvoiceCostPricePerc": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Fraction, %",
+                        "example": 43.0547333297454
+                      },
+                      "saleItemInvoiceQty": {
+                        "type": "integer",
+                        "description": "Redeemed, pcs.",
+                        "example": 4
+                      }
+                    }
+                  },
                   "type": "array"
                 }
               },
@@ -609,7 +791,7 @@
             }
           }
         },
-        "description": "<span class='response__value response__value_success'>Success</span>"
+        "description": "Success"
       },
       "SuccessSubstIncorAttachResponse": {
         "content": {
@@ -618,8 +800,108 @@
               "properties": {
                 "data": {
                   "description": "Response data",
-                  "properties": "[MaxDepth]",
-                  "required": "[MaxDepth]",
+                  "properties": {
+                    "reports": {
+                      "type": "array",
+                      "description": "Retentions",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "dtBonus": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Fine date and time",
+                            "example": "2025-06-02T00:00:00Z"
+                          },
+                          "nmId": {
+                            "type": "integer",
+                            "description": "Wildberries article number",
+                            "example": 544454
+                          },
+                          "oldShkId": {
+                            "type": "integer",
+                            "description": "Old SKU",
+                            "example": 26624352356
+                          },
+                          "oldColor": {
+                            "type": "string",
+                            "description": "Old color",
+                            "example": "темно-синий,голубой"
+                          },
+                          "oldSize": {
+                            "type": "string",
+                            "description": "Old Size",
+                            "example": "A"
+                          },
+                          "oldSku": {
+                            "type": "string",
+                            "description": "Old SKU",
+                            "example": "54532562"
+                          },
+                          "oldVendorCode": {
+                            "type": "string",
+                            "description": "Old seller `supplierArticle`",
+                            "example": "23535 Стемпинг 500"
+                          },
+                          "newShkId": {
+                            "type": "integer",
+                            "description": "New SKU",
+                            "example": 123333223
+                          },
+                          "newColor": {
+                            "type": "string",
+                            "description": "New color",
+                            "example": "темно-синий,голубой"
+                          },
+                          "newSize": {
+                            "type": "string",
+                            "description": "New size",
+                            "example": "A"
+                          },
+                          "newSku": {
+                            "type": "string",
+                            "description": "New SKU",
+                            "example": "12323332223"
+                          },
+                          "newVendorCode": {
+                            "type": "string",
+                            "description": "New seller article number",
+                            "example": "wh-service-podmena"
+                          },
+                          "bonusSumm": {
+                            "type": "number",
+                            "description": "Fine amount",
+                            "example": 247.5
+                          },
+                          "bonusType": {
+                            "type": "string",
+                            "description": "Fine reason",
+                            "example": "Подмена FBW"
+                          },
+                          "photoUrls": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Photos of the measurements",
+                            "example": [
+                              "https://static-basket-03.wb.ru/vol49/change_characteristics/19189882946-2023-12-15T10:18:21.125Z-1.webp",
+                              "https://static-basket-03.wb.ru/vol49/change_characteristics/19189052946-2023-12-15T10:18:35.249Z-2.webp"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "total": {
+                      "type": "integer",
+                      "description": "Number of retentions in the report. Except `limit` and `offset`",
+                      "example": 11
+                    }
+                  },
+                  "required": [
+                    "reports",
+                    "total"
+                  ],
                   "type": "object"
                 }
               },
@@ -630,7 +912,7 @@
             }
           }
         },
-        "description": "<span class='response__value response__value_success'>Успешно</span>"
+        "description": "Успешно"
       },
       "SuccessTaskResponse": {
         "content": {
@@ -638,7 +920,36 @@
             "schema": {
               "properties": {
                 "details": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "nmID": {
+                        "type": "integer",
+                        "description": "Wildberries article number",
+                        "example": 123456789
+                      },
+                      "sum": {
+                        "type": "integer",
+                        "description": "Order sum",
+                        "example": 3540
+                      },
+                      "currency": {
+                        "type": "string",
+                        "description": "Currency",
+                        "example": "RUB"
+                      },
+                      "dateFrom": {
+                        "type": "string",
+                        "description": "Report start date",
+                        "example": "2023-08-23"
+                      },
+                      "dateTo": {
+                        "type": "string",
+                        "description": "Report end date",
+                        "example": "2023-08-29"
+                      }
+                    }
+                  },
                   "type": "array"
                 }
               },
@@ -646,31 +957,69 @@
             }
           }
         },
-        "description": "<span class='response__value response__value_success'>Self-purchase deductions</span>"
+        "description": "Self-purchase deductions"
+      },
+      "403": {
+        "description": "Access denied",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Error title"
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "Error details"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "Internal error code"
+                },
+                "requestId": {
+                  "type": "string",
+                  "description": "Request ID"
+                },
+                "origin": {
+                  "type": "string",
+                  "description": "WB internal service ID"
+                },
+                "status": {
+                  "type": "number",
+                  "description": "HTTP status code"
+                },
+                "statusText": {
+                  "type": "string",
+                  "description": "Text of the HTTP status code"
+                },
+                "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Request date and time"
+                }
+              }
+            },
+            "examples": {
+              "Response403TokenCategory": {
+                "value": {
+                  "status": 403,
+                  "statusText": "Forbidden",
+                  "title": "Forbidden",
+                  "detail": "scope is not allowed for this resource",
+                  "requestId": "2dbf6fc9-bad8-4ef9-a058-c938a8553ba5",
+                  "origin": "ag-marketplace",
+                  "timestamp": "2026-09-03T13:55:15Z"
+                },
+                "description": "Invalid token category"
+              }
+            }
+          }
+        }
       }
     },
     "schemas": {
-      "4xxResponse": {
-        "properties": {
-          "detail": {
-            "description": "Error details",
-            "type": "string"
-          },
-          "origin": {
-            "description": "WB internal service ID",
-            "type": "string"
-          },
-          "requestId": {
-            "description": "Unique request ID",
-            "type": "string"
-          },
-          "title": {
-            "description": "Error title",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "CreateTaskResponse": {
         "properties": {
           "data": {
@@ -751,8 +1100,135 @@
               "reports": {
                 "description": "Retentions",
                 "items": {
-                  "properties": "[MaxDepth]",
-                  "type": "object"
+                  "properties": {
+                    "nmId": {
+                      "type": "integer",
+                      "description": "Wildberries article number",
+                      "example": 123456789
+                    },
+                    "subjectName": {
+                      "type": "string",
+                      "description": "Subcategory",
+                      "example": "Костюмы спортивные"
+                    },
+                    "dimId": {
+                      "type": "integer",
+                      "description": "Measurement ID",
+                      "example": 123456789
+                    },
+                    "prcOver": {
+                      "type": "number",
+                      "description": "Difference in dimensions, %",
+                      "example": 130.71
+                    },
+                    "volume": {
+                      "type": "number",
+                      "description": "Volume, l (as measured at warehouse)",
+                      "example": 6.47
+                    },
+                    "width": {
+                      "type": "integer",
+                      "description": "Width, cm (as measured at warehouse)",
+                      "example": 7
+                    },
+                    "length": {
+                      "type": "integer",
+                      "description": "Length, cm (as measured at warehouse)",
+                      "example": 28
+                    },
+                    "height": {
+                      "type": "integer",
+                      "description": "Height, cm (as measured at warehouse)",
+                      "example": 33
+                    },
+                    "volumeSup": {
+                      "type": "number",
+                      "description": "Volume, L (as specified in listing)",
+                      "example": 4.95
+                    },
+                    "widthSup": {
+                      "type": "integer",
+                      "description": "Width, cm (as specified in listing)",
+                      "example": 8
+                    },
+                    "lengthSup": {
+                      "type": "integer",
+                      "description": "Length, cm (as specified in listing)",
+                      "example": 33
+                    },
+                    "heightSup": {
+                      "type": "integer",
+                      "description": "Height, cm (as specified in listing)",
+                      "example": 33
+                    },
+                    "photoUrls": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Photos of the measurements",
+                      "example": [
+                        "https://static-basket-09.wbbasket.ru/vol184/obmer-tovarov/measurement_on_table/wbs35154094220_em907759_n1_b2eaa5ed-bf21-4c58-b419-b5b5ec6f29ee.webp",
+                        "https://static-basket-09.wbbasket.ru/vol184/obmer-tovarov/measurement_on_table/wbs35159094420_em907759_n2_040407b0-7752-4ae7-a4a4-7ec016e86511.webp",
+                        "https://static-basket-09.wbbasket.ru/vol184/obmer-tovarov/measurement_on_table/wbs35189094220_em904757_n3_9f502e24-3b3e-4efd-9hac-802813046ac3.webp"
+                      ]
+                    },
+                    "dtBonus": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Fine date",
+                      "example": "2025-06-02T00:00:00Z"
+                    },
+                    "isValid": {
+                      "type": "boolean",
+                      "description": "Status of measurement\n  - `false` — canceled\n  - `true` — valid\n",
+                      "example": true
+                    },
+                    "isValidDt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Date and time of validation or cancellation of the measurement",
+                      "example": "2025-05-29T13:35:57Z"
+                    },
+                    "reversalAmount": {
+                      "type": "number",
+                      "description": "Reversal amount",
+                      "example": 0
+                    },
+                    "penaltyAmount": {
+                      "type": "number",
+                      "description": "Fine amount",
+                      "example": 449.83
+                    },
+                    "dateStart": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-05-09T13:35:57Z",
+                      "description": "Warehouse multipier start date and time"
+                    },
+                    "dateEnd": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-05-29T13:35:57Z",
+                      "description": "Warehouse multipier end date and time"
+                    }
+                  },
+                  "type": "object",
+                  "required": [
+                    "nmId",
+                    "subjectName",
+                    "dimId",
+                    "prcOver",
+                    "volume",
+                    "width",
+                    "length",
+                    "height",
+                    "volumeSup",
+                    "widthSup",
+                    "lengthSup",
+                    "heightSup",
+                    "photoUrls"
+                  ]
                 },
                 "type": "array"
               },
@@ -1010,7 +1486,8 @@
             },
             "chrtId": {
               "description": "Size ID",
-              "type": "integer"
+              "type": "integer",
+              "format": "uint64"
             },
             "date": {
               "description": "Calculation or recalculation date",
@@ -1230,7 +1707,60 @@
               "reports": {
                 "description": "Measurements",
                 "items": {
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "nmId": {
+                      "type": "integer",
+                      "description": "Wildberries article number",
+                      "example": 123456789
+                    },
+                    "subjectName": {
+                      "type": "string",
+                      "description": "Subcategory",
+                      "example": ""
+                    },
+                    "dimId": {
+                      "type": "integer",
+                      "description": "Measurement ID",
+                      "example": 123456789
+                    },
+                    "volume": {
+                      "type": "number",
+                      "description": "Volume, l"
+                    },
+                    "width": {
+                      "type": "integer",
+                      "description": "Width, cm",
+                      "example": 66
+                    },
+                    "length": {
+                      "type": "integer",
+                      "description": "Length, cm",
+                      "example": 54
+                    },
+                    "height": {
+                      "type": "integer",
+                      "description": "Height, cm",
+                      "example": 11
+                    },
+                    "photoUrls": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Photos of measurements",
+                      "example": [
+                        "https://static-basket-03.wb.ru/vol54/handheld-goods-measurements-photo/8906416_a9f839da-c3b7-4ed6-737c-a9e731250fb0.jpg",
+                        "https://static-basket-03.wb.ru/vol54/handheld-goods-measurements-photo/8906416_2aac23b7-c8f9-42db-74e9-b4a9c916017c.jpg",
+                        "https://static-basket-03.wb.ru/vol54/handheld-goods-measurements-photo/8906416_ff93b7c4-19d6-e0a2-4dba-7c2f09f06b3.jpg"
+                      ]
+                    },
+                    "dt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Date and time",
+                      "example": "2025-04-01T00:06:00Z"
+                    }
+                  },
                   "type": "object"
                 },
                 "type": "array"
@@ -1346,6 +1876,207 @@
           }
         },
         "type": "object"
+      },
+      "GoodsReturn200Response": {
+        "type": "object",
+        "required": [
+          "count",
+          "report"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Total number of returns for the requested period"
+          },
+          "report": {
+            "description": "Report",
+            "type": "array",
+            "items": {
+              "required": [
+                "sku",
+                "brand",
+                "completedDt",
+                "dstOfficeAddress",
+                "dstOfficeId",
+                "expiredDt",
+                "kiz",
+                "nmId",
+                "orderDt",
+                "orderId",
+                "readyToReturnDt",
+                "returnType",
+                "shkId",
+                "srid",
+                "returnStatus",
+                "stickerId",
+                "subjectName",
+                "techSize"
+              ],
+              "type": "object",
+              "properties": {
+                "sku": {
+                  "type": "string",
+                  "example": "1680063403480",
+                  "description": "SKU"
+                },
+                "brand": {
+                  "type": "string",
+                  "example": "dub",
+                  "description": "Brand"
+                },
+                "completedDt": {
+                  "type": "string",
+                  "nullable": true,
+                  "example": "2025-03-31T11:33:53",
+                  "description": "Date and time the seller received the return"
+                },
+                "dstOfficeAddress": {
+                  "type": "string",
+                  "example": "Жуковский Улица Маяковского 19",
+                  "description": "Address of pick-up point where the seller receives returns"
+                },
+                "kiz": {
+                  "nullable": true,
+                  "type": "string",
+                  "example": "0102900000376311210G2CIS?ehge)S\u001d91002A\u001d92F9Qof4FDo/31Icm14kmtuVYQzLypxm3HWkC1vQ/+pVVjm1dNAth1laFMoAGn7yEMWlTjxIe7lQnJqZ7TRZhlHQ==",
+                  "description": "Labeling code [Chestny ZNAK](https://chestnyznak.ru/en)"
+                },
+                "dstOfficeId": {
+                  "type": "integer",
+                  "example": 310105,
+                  "description": "ID of pick-up point where the seller receives returns"
+                },
+                "expiredDt": {
+                  "type": "string",
+                  "nullable": true,
+                  "example": "2025-03-31T11:33:53",
+                  "description": "Expiration date and time of the storage period"
+                },
+                "nmId": {
+                  "type": "integer",
+                  "example": 12862181,
+                  "description": "WB item number"
+                },
+                "orderDt": {
+                  "type": "string",
+                  "format": "date",
+                  "example": "2024-08-26",
+                  "description": "Date of the return order"
+                },
+                "orderId": {
+                  "type": "integer",
+                  "example": 2034240826,
+                  "description": "Assembly order ID"
+                },
+                "readyToReturnDt": {
+                  "type": "string",
+                  "nullable": true,
+                  "example": "2025-01-31T08:33:50",
+                  "description": "Date and time when the return is ready for pickup"
+                },
+                "returnReason": {
+                  "type": "string",
+                  "example": "Цвет",
+                  "description": "The reason for the return.<br>\nThe field is returned only when `\"returnType\":\"Возврат неопознанного товара\"`\n"
+                },
+                "returnType": {
+                  "type": "string",
+                  "example": "Возврат заблокированного товара",
+                  "description": "Return type"
+                },
+                "shkId": {
+                  "type": "integer",
+                  "example": 23411783472,
+                  "description": "Item No."
+                },
+                "srid": {
+                  "type": "string",
+                  "example": "mp.123130940efa4d67af77f901594c7d2c.r",
+                  "description": "Return order ID"
+                },
+                "returnStatus": {
+                  "type": "string",
+                  "example": "В пути в пвз",
+                  "description": "Return status"
+                },
+                "stickerId": {
+                  "type": "string",
+                  "example": "33811984302",
+                  "description": "Sticker of the return order"
+                },
+                "subjectName": {
+                  "type": "string",
+                  "example": "Багажные бирки",
+                  "description": "Subcategory"
+                },
+                "techSize": {
+                  "type": "string",
+                  "example": "0",
+                  "description": "Size"
+                }
+              }
+            }
+          }
+        }
+      },
+      "4XXResponse": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "string",
+            "description": "Error details"
+          },
+          "origin": {
+            "type": "string",
+            "description": "WB internal service ID"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Unique request ID"
+          },
+          "title": {
+            "type": "string",
+            "description": "Error title"
+          }
+        }
+      },
+      "Response4XX": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Error title"
+          },
+          "detail": {
+            "type": "string",
+            "description": "Error details"
+          },
+          "code": {
+            "type": "string",
+            "description": "Internal error code"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Request ID"
+          },
+          "origin": {
+            "type": "string",
+            "description": "WB internal service ID"
+          },
+          "status": {
+            "type": "number",
+            "description": "HTTP status code"
+          },
+          "statusText": {
+            "type": "string",
+            "description": "Text of the HTTP status code"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Request date and time"
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -1366,7 +2097,7 @@
   "paths": {
     "/api/analytics/v1/deductions": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns a report with [substitutions and incorrect attachments](https://seller.wildberries.ru/analytics-reports/dimensions-penalties/retentions) retentions\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n</div>\n",
+        "description": "The method returns a report with [substitutions and incorrect attachments](https://seller.wildberries.ru/analytics-reports/dimensions-penalties/retentions) retentions\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n</div>\n",
         "operationId": "getV1Deductions",
         "parameters": [
           {
@@ -1453,7 +2184,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1467,9 +2198,19 @@
                 "schema": {
                   "$ref": "#/components/schemas/Response403Retentions"
                 }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1480,9 +2221,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Substitutions and Incorrect Attachments{{ /api/analytics/v1/deductions }}",
+        "summary": "Substitutions and Incorrect Attachments",
         "tags": [
-          "retentionReports"
+          "Retention Reports"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -1518,9 +2259,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/retentionReports/operation/getV1Deductions",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Retention Reports/operation/getV1Deductions",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "retentionReports"
       },
       "servers": [
         {
@@ -1530,7 +2272,7 @@
     },
     "/api/analytics/v1/measurement-penalties": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns a report with [logistics and storage costs multiplier](https://seller.wildberries.ru/analytics-reports/dimensions-penalties)\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 6 h | 1 request | 6 h | 1 request |\n</div>\n",
+        "description": "The method returns a report with [logistics and storage costs multiplier](https://seller.wildberries.ru/analytics-reports/dimensions-penalties)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 6 h | 1 request | 6 h | 1 request |\n</div>\n",
         "operationId": "getV1MeasurementPenalties",
         "parameters": [
           {
@@ -1581,14 +2323,16 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "MeasurementPenalties": "[MaxDepth]"
+                  "MeasurementPenalties": {
+                    "$ref": "#/components/examples/MeasurementPenalties"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/MeasurementPenalties"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -1598,7 +2342,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1612,9 +2356,19 @@
                 "schema": {
                   "$ref": "#/components/schemas/Response403Retentions"
                 }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1625,9 +2379,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Logistics and Storage Costs Multiplier{{ /api/analytics/v1/measurement-penalties }}",
+        "summary": "Logistics and Storage Costs Multiplier",
         "tags": [
-          "retentionReports"
+          "Retention Reports"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -1663,9 +2417,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/retentionReports/operation/getV1MeasurementPenalties",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Retention Reports/operation/getV1MeasurementPenalties",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "retentionReports"
       },
       "servers": [
         {
@@ -1675,7 +2430,7 @@
     },
     "/api/analytics/v1/warehouse-measurements": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns a report with [warehouse measurements](https://seller.wildberries.ru/analytics-reports/dimensions-penalties/warehouse-measurements)\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 6 h | 1 request | 6 h | 1 request |\n</div>\n",
+        "description": "The method returns a report with [warehouse measurements](https://seller.wildberries.ru/analytics-reports/dimensions-penalties/warehouse-measurements)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 6 h | 1 request | 6 h | 1 request |\n</div>\n",
         "operationId": "getV1WarehouseMeasurements",
         "parameters": [
           {
@@ -1726,14 +2481,16 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "Measurements": "[MaxDepth]"
+                  "Measurements": {
+                    "$ref": "#/components/examples/WHM"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/WHM"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -1743,7 +2500,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1757,9 +2514,19 @@
                 "schema": {
                   "$ref": "#/components/schemas/Response403Retentions"
                 }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1770,9 +2537,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Warehouse Measurements{{ /api/analytics/v1/warehouse-measurements }}",
+        "summary": "Warehouse Measurements",
         "tags": [
-          "retentionReports"
+          "Retention Reports"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -1808,9 +2575,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/retentionReports/operation/getV1WarehouseMeasurements",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Retention Reports/operation/getV1WarehouseMeasurements",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "retentionReports"
       },
       "servers": [
         {
@@ -1820,7 +2588,7 @@
     },
     "/api/v1/acceptance_report": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nCreates a task for report generation.<br></br>\nMaximum of report period is 31 days.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 3 h | 1 request | 3 h | 1 request |\n</div>\n",
+        "description": "Creates a task for report generation.<br></br>\nMaximum of report period is 31 days.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 3 h | 1 request | 3 h | 1 request |\n</div>\n",
         "operationId": "getV1AcceptanceReport",
         "parameters": [
           {
@@ -1835,32 +2603,46 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "CreateResponseData": "[MaxDepth]"
+                  "CreateResponseData": {
+                    "$ref": "#/components/examples/CreateResponseData"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/CreateTaskResponse"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/problem+json": {
                 "examples": {
-                  "DateRangeExceeded": "[MaxDepth]",
-                  "DateRanges": "[MaxDepth]",
-                  "IncorrectDateTimeFrom": "[MaxDepth]",
-                  "IncorrectDateTimeTo": "[MaxDepth]",
-                  "MissingDateTimeFrom": "[MaxDepth]",
-                  "MissingDateTimeTo": "[MaxDepth]"
+                  "DateRangeExceeded": {
+                    "$ref": "#/components/examples/DateRangeExceeded"
+                  },
+                  "DateRanges": {
+                    "$ref": "#/components/examples/DateRanges"
+                  },
+                  "IncorrectDateTimeFrom": {
+                    "$ref": "#/components/examples/IncorrectDateTimeFrom"
+                  },
+                  "IncorrectDateTimeTo": {
+                    "$ref": "#/components/examples/IncorrectDateTimeTo"
+                  },
+                  "MissingDateTimeFrom": {
+                    "$ref": "#/components/examples/MissingDateTimeFrom"
+                  },
+                  "MissingDateTimeTo": {
+                    "$ref": "#/components/examples/MissingDateTimeTo"
+                  }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1870,6 +2652,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -1877,9 +2662,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Create the Report{{ /api/v1/acceptance_report }}",
+        "summary": "Create the Report",
         "tags": [
-          "acceptanceExpenses"
+          "Acceptance Expenses"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -1915,9 +2700,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/acceptanceExpenses/operation/getV1AcceptanceReport",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Acceptance Expenses/operation/getV1AcceptanceReport",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "acceptanceExpenses"
       },
       "servers": [
         {
@@ -1927,7 +2713,7 @@
     },
     "/api/v1/acceptance_report/tasks/{task_id}/download": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns the report by task ID\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
+        "description": "Returns the report by task ID\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
         "operationId": "getV1AcceptanceReportTasksTaskIdDownload",
         "parameters": [
           {
@@ -1946,15 +2732,56 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "description": "Number of items",
+                        "example": 40
+                      },
+                      "giCreateDate": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Shipment creation date",
+                        "example": "2025-03-04"
+                      },
+                      "incomeId": {
+                        "type": "integer",
+                        "description": "Shipment number",
+                        "example": 11834106
+                      },
+                      "nmID": {
+                        "type": "integer",
+                        "description": "Wildberries item number",
+                        "example": 123456789
+                      },
+                      "shkCreateDate": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Receiving date",
+                        "example": "2025-03-14"
+                      },
+                      "subjectName": {
+                        "type": "string",
+                        "description": "Subcategory",
+                        "example": "Добавки пищевые"
+                      },
+                      "total": {
+                        "type": "number",
+                        "description": "Receiving cost, ₽ with kopecks",
+                        "example": 873.04
+                      }
+                    }
+                  },
                   "type": "array"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "204": {
-            "description": "<span class='response__value response__value_success'>No data</span>"
+            "description": "No data"
           },
           "400": {
             "content": {
@@ -1966,11 +2793,11 @@
                   "title": "Bad Request"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1988,14 +2815,17 @@
                   "title": "Not Found"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Not found</span>"
+            "description": "Not found"
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2003,9 +2833,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get the Report{{ /api/v1/acceptance_report/tasks/{task_id}/download }}",
+        "summary": "Get the Report",
         "tags": [
-          "acceptanceExpenses"
+          "Acceptance Expenses"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -2041,9 +2871,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/acceptanceExpenses/operation/getV1AcceptanceReportTasksTaskIdDownload",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Acceptance Expenses/operation/getV1AcceptanceReportTasksTaskIdDownload",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "acceptanceExpenses"
       },
       "servers": [
         {
@@ -2053,7 +2884,7 @@
     },
     "/api/v1/acceptance_report/tasks/{task_id}/status": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns the status of the generation task\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 s | 1 request | 5 s | 1 request |\n| Service | 5 s | 1 request | 5 s | 1 request |\n| Base with secret | 5 s | 1 request | 5 s | 1 request |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
+        "description": "Returns the status of the generation task\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 s | 1 request | 5 s | 1 request |\n| Service | 5 s | 1 request | 5 s | 1 request |\n| Base with secret | 5 s | 1 request | 5 s | 1 request |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
         "operationId": "getV1AcceptanceReportTasksTaskIdStatus",
         "parameters": [
           {
@@ -2072,14 +2903,16 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "GetTasksResponseData": "[MaxDepth]"
+                  "GetTasksResponseData": {
+                    "$ref": "#/components/examples/GetTasksResponseData"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/GetTasksResponse"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -2091,11 +2924,11 @@
                   "title": "Bad Request"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2110,14 +2943,17 @@
                   "title": "Not Found"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Not found</span>"
+            "description": "Not found"
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2125,9 +2961,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Check the Status{{ /api/v1/acceptance_report/tasks/{task_id}/status }}",
+        "summary": "Check the Status",
         "tags": [
-          "acceptanceExpenses"
+          "Acceptance Expenses"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -2163,9 +2999,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/acceptanceExpenses/operation/getV1AcceptanceReportTasksTaskIdStatus",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Acceptance Expenses/operation/getV1AcceptanceReportTasksTaskIdStatus",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "acceptanceExpenses"
       },
       "servers": [
         {
@@ -2175,7 +3012,7 @@
     },
     "/api/v1/analytics/antifraud-details": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns report with self-purchase deductions. The report is generated on Wednesdays at 7:00 UTC+4 and contains weekly data. Also you can get all data starting from August 2023.\n<br><br>\nSelf-purchase deduction is 30% of item price. Minimum deduction is 100,000 ₽, if the total item cost delivered to the pick-up point is more than 100,000 ₽ per one week.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 min | 1 request | 10 min | 10 requests |\n| Service | 10 min | 1 request | 10 min | 10 requests |\n| Base with secret | 10 min | 1 request | 10 min | 10 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Returns report with self-purchase deductions. The report is generated on Wednesdays at 7:00 UTC+4 and contains weekly data. Also you can get all data starting from August 2023.\n<br><br>\nSelf-purchase deduction is 30% of item price. Minimum deduction is 100,000 ₽, if the total item cost delivered to the pick-up point is more than 100,000 ₽ per one week.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 min | 1 request | 10 min | 10 requests |\n| Service | 10 min | 1 request | 10 min | 10 requests |\n| Base with secret | 10 min | 1 request | 10 min | 10 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1AnalyticsAntifraudDetails",
         "parameters": [
           {
@@ -2190,14 +3027,16 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "IncorrectDate": "[MaxDepth]"
+                  "IncorrectDate": {
+                    "$ref": "#/components/examples/IncorrectDate"
+                  }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2207,6 +3046,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2214,9 +3056,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Self-purchases{{ /api/v1/analytics/antifraud-details }}",
+        "summary": "Self-purchases",
         "tags": [
-          "retentionReports"
+          "Retention Reports"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -2252,9 +3094,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/retentionReports/operation/getV1AnalyticsAntifraudDetails",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Retention Reports/operation/getV1AnalyticsAntifraudDetails",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "retentionReports"
       },
       "servers": [
         {
@@ -2264,7 +3107,7 @@
     },
     "/api/v1/analytics/banned-products/blocked": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns the list of [blocked listings](https://seller.wildberries.ru/analytics-reports/banned-products).\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 6 requests |\n| Service | 10 s | 1 request | 10 s | 6 requests |\n| Base with secret | 10 s | 1 request | 10 s | 6 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Returns the list of [blocked listings](https://seller.wildberries.ru/analytics-reports/banned-products).\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 6 requests |\n| Service | 10 s | 1 request | 10 s | 6 requests |\n| Base with secret | 10 s | 1 request | 10 s | 6 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1AnalyticsBannedProducsBlocked",
         "parameters": [
           {
@@ -2304,12 +3147,47 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "report": {
+                      "description": "Report",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "brand": {
+                            "type": "string",
+                            "example": "Тест22",
+                            "description": "Brand"
+                          },
+                          "nmId": {
+                            "type": "integer",
+                            "example": 82722944,
+                            "description": "WB item number"
+                          },
+                          "title": {
+                            "type": "string",
+                            "example": "Гуминовые кислоты - биоактивный противовирусный комплекс на",
+                            "description": "Item title"
+                          },
+                          "vendorCode": {
+                            "type": "string",
+                            "example": "пкdeир76",
+                            "description": "Seller item number"
+                          },
+                          "reason": {
+                            "type": "string",
+                            "example": "Контактные данные Продавца и ссылки на иные сайты/группы/сообщества на фотографиях Товара",
+                            "description": "Reason for blocking"
+                          }
+                        }
+                      }
+                    }
+                  },
                   "type": "object"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -2322,12 +3200,33 @@
                   "title": "bad request"
                 },
                 "schema": {
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "description": "Error title"
+                    },
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code"
+                    },
+                    "detail": {
+                      "type": "string",
+                      "description": "Error details"
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique request ID"
+                    },
+                    "origin": {
+                      "type": "string",
+                      "description": "WB internal service ID"
+                    }
+                  },
                   "type": "object"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2337,6 +3236,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2344,9 +3246,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Report{{ /api/v1/analytics/banned-products/blocked }}",
+        "summary": "Get Report",
         "tags": [
-          "blockedItems"
+          "Blocked Items"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -2382,9 +3284,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/blockedItems/operation/getV1AnalyticsBannedProducsBlocked",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Blocked Items/operation/getV1AnalyticsBannedProducsBlocked",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "blockedItems"
       },
       "servers": [
         {
@@ -2394,7 +3297,7 @@
     },
     "/api/v1/analytics/brand-share": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns a report on the brand's share in sales.\n\nData can be obtained starting from 1 November 2022, for up to 365 days.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 s | 1 request | 5 s | 20 requests |\n| Service | 5 s | 1 request | 5 s | 20 requests |\n| Base with secret | 5 s | 1 request | 5 s | 20 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Returns a report on the brand's share in sales.\n\nData can be obtained starting from 1 November 2022, for up to 365 days.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 s | 1 request | 5 s | 20 requests |\n| Service | 5 s | 1 request | 5 s | 20 requests |\n| Base with secret | 5 s | 1 request | 5 s | 20 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1AnalyticsBrandShare",
         "parameters": [
           {
@@ -2432,22 +3335,40 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "DateRangeExceeded": "[MaxDepth]",
-                  "DateRanges": "[MaxDepth]",
-                  "IncorrectDateFrom": "[MaxDepth]",
-                  "IncorrectDateTimeFrom": "[MaxDepth]",
-                  "IncorrectDateTimeTo": "[MaxDepth]",
-                  "MissingBrand": "[MaxDepth]",
-                  "MissingDateTimeFrom": "[MaxDepth]",
-                  "MissingDateTimeTo": "[MaxDepth]",
-                  "MissingParentId": "[MaxDepth]"
+                  "DateRangeExceeded": {
+                    "$ref": "#/components/examples/DateRangeExceeded365"
+                  },
+                  "DateRanges": {
+                    "$ref": "#/components/examples/DateRanges"
+                  },
+                  "IncorrectDateFrom": {
+                    "$ref": "#/components/examples/IncorrectDateFromBS"
+                  },
+                  "IncorrectDateTimeFrom": {
+                    "$ref": "#/components/examples/IncorrectDateTimeFrom"
+                  },
+                  "IncorrectDateTimeTo": {
+                    "$ref": "#/components/examples/IncorrectDateTimeTo"
+                  },
+                  "MissingBrand": {
+                    "$ref": "#/components/examples/MissingBrand"
+                  },
+                  "MissingDateTimeFrom": {
+                    "$ref": "#/components/examples/MissingDateTimeFrom"
+                  },
+                  "MissingDateTimeTo": {
+                    "$ref": "#/components/examples/MissingDateTimeTo"
+                  },
+                  "MissingParentId": {
+                    "$ref": "#/components/examples/MissingParentId"
+                  }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2457,6 +3378,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2464,9 +3388,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Report{{ /api/v1/analytics/brand-share }}",
+        "summary": "Get Report",
         "tags": [
-          "shareOfBrandInSales"
+          "Share of Brand in Sales"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -2502,9 +3426,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/shareOfBrandInSales/operation/getV1AnalyticsBrandShare",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Share of Brand in Sales/operation/getV1AnalyticsBrandShare",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "shareOfBrandInSales"
       },
       "servers": [
         {
@@ -2514,7 +3439,7 @@
     },
     "/api/v1/analytics/brand-share/brands": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns the list of the seller brands.\n\nYou can only get brands that:\n- were sold in the last 90 days\n- Have inventory available, regardless of the warehouse\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 10 requests |\n| Service | 1 min | 1 request | 1 min | 10 requests |\n| Base with secret | 1 min | 1 request | 1 min | 10 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Returns the list of the seller brands.\n\nYou can only get brands that:\n- were sold in the last 90 days\n- Have inventory available, regardless of the warehouse\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 10 requests |\n| Service | 1 min | 1 request | 1 min | 10 requests |\n| Base with secret | 1 min | 1 request | 1 min | 10 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1AnalyticsBrandShareBrands",
         "responses": {
           "200": {
@@ -2528,6 +3453,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2535,9 +3463,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Seller Brands{{ /api/v1/analytics/brand-share/brands }}",
+        "summary": "Seller Brands",
         "tags": [
-          "shareOfBrandInSales"
+          "Share of Brand in Sales"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -2573,9 +3501,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/shareOfBrandInSales/operation/getV1AnalyticsBrandShareBrands",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Share of Brand in Sales/operation/getV1AnalyticsBrandShareBrands",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "shareOfBrandInSales"
       },
       "servers": [
         {
@@ -2585,7 +3514,7 @@
     },
     "/api/v1/analytics/brand-share/parent-subjects": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns parent categories of the brand.\n\nData can be obtained starting from 1 November 2022, for up to 365 days.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 s | 1 request | 5 s | 20 requests |\n| Service | 5 s | 1 request | 5 s | 20 requests |\n| Base with secret | 5 s | 1 request | 5 s | 20 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Returns parent categories of the brand.\n\nData can be obtained starting from 1 November 2022, for up to 365 days.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 s | 1 request | 5 s | 20 requests |\n| Service | 5 s | 1 request | 5 s | 20 requests |\n| Base with secret | 5 s | 1 request | 5 s | 20 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1AnalyticsBrandShareParentSubjects",
         "parameters": [
           {
@@ -2623,22 +3552,40 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "DateRangeExceeded": "[MaxDepth]",
-                  "DateRanges": "[MaxDepth]",
-                  "IncorrectDateFrom": "[MaxDepth]",
-                  "IncorrectDateTimeFrom": "[MaxDepth]",
-                  "IncorrectDateTimeTo": "[MaxDepth]",
-                  "LocaleError": "[MaxDepth]",
-                  "MissingBrand": "[MaxDepth]",
-                  "MissingDateTimeFrom": "[MaxDepth]",
-                  "MissingDateTimeTo": "[MaxDepth]"
+                  "DateRangeExceeded": {
+                    "$ref": "#/components/examples/DateRangeExceeded365"
+                  },
+                  "DateRanges": {
+                    "$ref": "#/components/examples/DateRanges"
+                  },
+                  "IncorrectDateFrom": {
+                    "$ref": "#/components/examples/IncorrectDateFromBS"
+                  },
+                  "IncorrectDateTimeFrom": {
+                    "$ref": "#/components/examples/IncorrectDateTimeFrom"
+                  },
+                  "IncorrectDateTimeTo": {
+                    "$ref": "#/components/examples/IncorrectDateTimeTo"
+                  },
+                  "LocaleError": {
+                    "$ref": "#/components/examples/LocaleError"
+                  },
+                  "MissingBrand": {
+                    "$ref": "#/components/examples/MissingBrand"
+                  },
+                  "MissingDateTimeFrom": {
+                    "$ref": "#/components/examples/MissingDateTimeFrom"
+                  },
+                  "MissingDateTimeTo": {
+                    "$ref": "#/components/examples/MissingDateTimeTo"
+                  }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2648,6 +3595,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2655,9 +3605,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Parent Categories of the Brand{{ /api/v1/analytics/brand-share/parent-subjects }}",
+        "summary": "Parent Categories of the Brand",
         "tags": [
-          "shareOfBrandInSales"
+          "Share of Brand in Sales"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -2693,9 +3643,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/shareOfBrandInSales/operation/getV1AnalyticsBrandShareParentSubjects",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Share of Brand in Sales/operation/getV1AnalyticsBrandShareParentSubjects",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "shareOfBrandInSales"
       },
       "servers": [
         {
@@ -2705,7 +3656,7 @@
     },
     "/api/v1/analytics/excise-report": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns operations with labeled items.\n\nYou can save the main reports in <a href=\"/en/knowledge-base/articles/019d49a4-650c-7b04-9596-ba441936f9d3\">sheets format</a>.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 h | 10 requests | 30 min | 10 requests |\n| Service | 5 h | 10 requests | 30 min | 10 requests |\n| Base with secret | 5 h | 10 requests | 30 min | 10 requests |\n| Base | 24 h | 2 requests | 12 h | 1 request |\n</div>\n",
+        "description": "Returns operations with labeled items.\n\nYou can save the main reports in <a href=\"/en/knowledge-base/articles/019d49a4-650c-7b04-9596-ba441936f9d3\">sheets format</a>.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 h | 10 requests | 30 min | 10 requests |\n| Service | 5 h | 10 requests | 30 min | 10 requests |\n| Base with secret | 5 h | 10 requests | 30 min | 10 requests |\n| Base | 24 h | 2 requests | 12 h | 1 request |\n</div>\n",
         "operationId": "postV1AnalyticsExciseReport",
         "parameters": [
           {
@@ -2734,7 +3685,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -2746,11 +3697,11 @@
                   "title": "Bad Request"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2760,11 +3711,14 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
-        "summary": "Report on Items with Mandatory Labeling{{ /api/v1/analytics/excise-report }}",
+        "summary": "Report on Items with Mandatory Labeling",
         "tags": [
-          "reportOnItemsWithMandatoryLabeling"
+          "Report on Items with Mandatory Labeling"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -2800,9 +3754,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/reportOnItemsWithMandatoryLabeling/operation/postV1AnalyticsExciseReport",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Report on Items with Mandatory Labeling/operation/postV1AnalyticsExciseReport",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "reportOnItemsWithMandatoryLabeling"
       },
       "servers": [
         {
@@ -2812,7 +3767,7 @@
     },
     "/api/v1/analytics/goods-labeling": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns a report on deductions for the absence of mandatory item labeling.\n<br>The report contains photos of items where the labeling is absent or cannot be read.\n<br>Data can be obtained for up to 31 days, starting from March 2024\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 10 requests |\n| Service | 1 min | 1 request | 1 min | 10 requests |\n| Base with secret | 1 min | 1 request | 1 min | 10 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Returns a report on deductions for the absence of mandatory item labeling.\n<br>The report contains photos of items where the labeling is absent or cannot be read.\n<br>Data can be obtained for up to 31 days, starting from March 2024\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 10 requests |\n| Service | 1 min | 1 request | 1 min | 10 requests |\n| Base with secret | 1 min | 1 request | 1 min | 10 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1AnalyticsGoodsLabeling",
         "parameters": [
           {
@@ -2830,19 +3785,31 @@
             "content": {
               "application/problem+json": {
                 "examples": {
-                  "DateRangeExceeded": "[MaxDepth]",
-                  "DateRanges": "[MaxDepth]",
-                  "IncorrectDateTimeFrom": "[MaxDepth]",
-                  "IncorrectDateTimeTo": "[MaxDepth]",
-                  "MissingDateTimeFrom": "[MaxDepth]",
-                  "MissingDateTimeTo": "[MaxDepth]"
+                  "DateRangeExceeded": {
+                    "$ref": "#/components/examples/DateRangeExceeded"
+                  },
+                  "DateRanges": {
+                    "$ref": "#/components/examples/DateRanges"
+                  },
+                  "IncorrectDateTimeFrom": {
+                    "$ref": "#/components/examples/IncorrectDateTimeFrom"
+                  },
+                  "IncorrectDateTimeTo": {
+                    "$ref": "#/components/examples/IncorrectDateTimeTo"
+                  },
+                  "MissingDateTimeFrom": {
+                    "$ref": "#/components/examples/MissingDateTimeFrom"
+                  },
+                  "MissingDateTimeTo": {
+                    "$ref": "#/components/examples/MissingDateTimeTo"
+                  }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2852,6 +3819,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2859,9 +3829,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Item Labeling{{ /api/v1/analytics/goods-labeling }}",
+        "summary": "Item Labeling",
         "tags": [
-          "retentionReports"
+          "Retention Reports"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -2897,9 +3867,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/retentionReports/operation/getV1AnalyticsGoodsLabeling",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Retention Reports/operation/getV1AnalyticsGoodsLabeling",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "retentionReports"
       },
       "servers": [
         {
@@ -2909,7 +3880,7 @@
     },
     "/api/v1/analytics/goods-return": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns a list of [item returns to the seller](https://seller.wildberries.ru/analytics-reports/goods-return). With one request, you can obtain a report for a maximum of 31 days.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 10 requests |\n| Service | 1 min | 1 request | 1 min | 10 requests |\n| Base with secret | 1 min | 1 request | 1 min | 10 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
+        "description": "The method will be disabled on [October 26](/en/release-notes?id=577)\n",
         "operationId": "getV1AnalyticsGoodsReturn",
         "parameters": [
           {
@@ -2940,30 +3911,155 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "report": {
+                      "description": "Report",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "barcode": {
+                            "type": "string",
+                            "example": "1680063403480",
+                            "description": "Barcode"
+                          },
+                          "brand": {
+                            "type": "string",
+                            "example": "dub",
+                            "description": "Brand"
+                          },
+                          "completedDt": {
+                            "type": "string",
+                            "nullable": true,
+                            "example": "2025-03-31T11:33:53",
+                            "description": "Date and time the seller received return"
+                          },
+                          "dstOfficeAddress": {
+                            "type": "string",
+                            "example": "Жуковский Улица Маяковского 19",
+                            "description": "Address of pick-up point where the seller receives returns"
+                          },
+                          "dstOfficeId": {
+                            "type": "integer",
+                            "example": 310105,
+                            "description": "ID of pick-up point where the seller receives returns"
+                          },
+                          "expiredDt": {
+                            "type": "string",
+                            "nullable": true,
+                            "example": "2025-03-31T11:33:53",
+                            "description": "Expiration date and time of the storage period"
+                          },
+                          "isStatusActive": {
+                            "type": "integer",
+                            "example": 0,
+                            "description": "Type of return status:\n\n  * `0` — archive\n  * `1` — active\n",
+                            "enum": [
+                              0,
+                              1
+                            ]
+                          },
+                          "nmId": {
+                            "type": "integer",
+                            "example": 12862181,
+                            "description": "WB item number"
+                          },
+                          "orderDt": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2024-08-26",
+                            "description": "Date of the return order"
+                          },
+                          "orderId": {
+                            "type": "integer",
+                            "example": 2034240826,
+                            "description": "Assembly order number"
+                          },
+                          "readyToReturnDt": {
+                            "type": "string",
+                            "nullable": true,
+                            "example": "2025-01-31T08:33:50",
+                            "description": "Date and time when the return is ready for delivery"
+                          },
+                          "reason": {
+                            "type": "string",
+                            "example": "Цвет",
+                            "description": "The reason for the return"
+                          },
+                          "returnType": {
+                            "type": "string",
+                            "example": "Возврат заблокированного товара",
+                            "description": "Return type"
+                          },
+                          "shkId": {
+                            "type": "integer",
+                            "example": 23411783472,
+                            "description": "SKU of the item unit"
+                          },
+                          "srid": {
+                            "type": "string",
+                            "example": "ad3817664d3046c5a8d55054d8be96d6",
+                            "description": "The unique ID of the return order"
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "В пути в пвз",
+                            "description": "Return status"
+                          },
+                          "stickerId": {
+                            "type": "string",
+                            "example": "33811984302",
+                            "description": "Sticker of the return order"
+                          },
+                          "subjectName": {
+                            "type": "string",
+                            "example": "Багажные бирки",
+                            "description": "Subcategory name"
+                          },
+                          "techSize": {
+                            "type": "string",
+                            "example": "0",
+                            "description": "Size"
+                          }
+                        }
+                      }
+                    }
+                  },
                   "type": "object"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/problem+json": {
                 "examples": {
-                  "DateRangeExceeded": "[MaxDepth]",
-                  "DateRanges": "[MaxDepth]",
-                  "IncorrectDateTimeFrom": "[MaxDepth]",
-                  "IncorrectDateTimeTo": "[MaxDepth]",
-                  "MissingDateTimeFrom": "[MaxDepth]",
-                  "MissingDateTimeTo": "[MaxDepth]"
+                  "DateRangeExceeded": {
+                    "$ref": "#/components/examples/DateRangeExceeded"
+                  },
+                  "DateRanges": {
+                    "$ref": "#/components/examples/DateRanges"
+                  },
+                  "IncorrectDateTimeFrom": {
+                    "$ref": "#/components/examples/IncorrectDateTimeFrom"
+                  },
+                  "IncorrectDateTimeTo": {
+                    "$ref": "#/components/examples/IncorrectDateTimeTo"
+                  },
+                  "MissingDateTimeFrom": {
+                    "$ref": "#/components/examples/MissingDateTimeFrom"
+                  },
+                  "MissingDateTimeTo": {
+                    "$ref": "#/components/examples/MissingDateTimeTo"
+                  }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2973,6 +4069,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2980,47 +4079,20 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Report{{ /api/v1/analytics/goods-return }}",
+        "summary": "Get Report",
         "tags": [
-          "returnsAndItemMovementReport"
+          "Returns and Item Movement Report"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
         "x-wb-rate-limits": {
-          "scope": "Request limit per one seller account:",
-          "limits": [
-            {
-              "type": "Personal",
-              "period": "1 min",
-              "limit": "1 request",
-              "interval": "1 min",
-              "burst": "10 requests"
-            },
-            {
-              "type": "Service",
-              "period": "1 min",
-              "limit": "1 request",
-              "interval": "1 min",
-              "burst": "10 requests"
-            },
-            {
-              "type": "Base with secret",
-              "period": "1 min",
-              "limit": "1 request",
-              "interval": "1 min",
-              "burst": "10 requests"
-            },
-            {
-              "type": "Base",
-              "period": "1 h",
-              "limit": "2 requests",
-              "interval": "30 min",
-              "burst": "1 request"
-            }
-          ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/returnsAndItemMovementReport/operation/getV1AnalyticsGoodsReturn",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Returns and Item Movement Report/operation/getV1AnalyticsGoodsReturn",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "status": "undocumented",
+          "note": "The current official operation publishes no rate limit; verify with WB before repeated calls."
+        },
+        "deprecated": true,
+        "x-tagKey": "returnsAndItemMovementReport"
       },
       "servers": [
         {
@@ -3030,7 +4102,7 @@
     },
     "/api/v1/analytics/region-sale": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns sales data grouped by regions of the countries. You can obtain a report for a maximum of 31 days.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Returns sales data grouped by regions of the countries. You can obtain a report for a maximum of 31 days.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1AnalyticsRegionSale",
         "parameters": [
           {
@@ -3048,19 +4120,31 @@
             "content": {
               "application/problem+json": {
                 "examples": {
-                  "DateRangeExceeded": "[MaxDepth]",
-                  "DateRanges": "[MaxDepth]",
-                  "IncorrectDateTimeFrom": "[MaxDepth]",
-                  "IncorrectDateTimeTo": "[MaxDepth]",
-                  "MissingDateTimeFrom": "[MaxDepth]",
-                  "MissingDateTimeTo": "[MaxDepth]"
+                  "DateRangeExceeded": {
+                    "$ref": "#/components/examples/DateRangeExceeded"
+                  },
+                  "DateRanges": {
+                    "$ref": "#/components/examples/DateRanges"
+                  },
+                  "IncorrectDateTimeFrom": {
+                    "$ref": "#/components/examples/IncorrectDateTimeFrom"
+                  },
+                  "IncorrectDateTimeTo": {
+                    "$ref": "#/components/examples/IncorrectDateTimeTo"
+                  },
+                  "MissingDateTimeFrom": {
+                    "$ref": "#/components/examples/MissingDateTimeFrom"
+                  },
+                  "MissingDateTimeTo": {
+                    "$ref": "#/components/examples/MissingDateTimeTo"
+                  }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3070,6 +4154,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -3077,9 +4164,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Report{{ /api/v1/analytics/region-sale }}",
+        "summary": "Get Report",
         "tags": [
-          "salesByRegions"
+          "Sales by Regions"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -3115,9 +4202,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/salesByRegions/operation/getV1AnalyticsRegionSale",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Sales by Regions/operation/getV1AnalyticsRegionSale",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "salesByRegions"
       },
       "servers": [
         {
@@ -3127,7 +4215,7 @@
     },
     "/api/v1/paid_storage": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nCreate a task to generate a report. Maximum of report period — 8 days\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 5 requests |\n| Service | 1 min | 1 request | 1 min | 5 requests |\n| Base with secret | 1 min | 1 request | 1 min | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Create a task to generate a report. Maximum of report period — 8 days\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 5 requests |\n| Service | 1 min | 1 request | 1 min | 5 requests |\n| Base with secret | 1 min | 1 request | 1 min | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1PaidStorage",
         "parameters": [
           {
@@ -3156,32 +4244,46 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "CreateResponseData": "[MaxDepth]"
+                  "CreateResponseData": {
+                    "$ref": "#/components/examples/CreateResponseData"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/CreateTaskResponse"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/problem+json": {
                 "examples": {
-                  "DateRangeExceeded": "[MaxDepth]",
-                  "DateRanges": "[MaxDepth]",
-                  "IncorrectDateTimeFrom": "[MaxDepth]",
-                  "IncorrectDateTimeTo": "[MaxDepth]",
-                  "MissingDateTimeFrom": "[MaxDepth]",
-                  "MissingDateTimeTo": "[MaxDepth]"
+                  "DateRangeExceeded": {
+                    "$ref": "#/components/examples/DateRangeExceeded8"
+                  },
+                  "DateRanges": {
+                    "$ref": "#/components/examples/DateRanges"
+                  },
+                  "IncorrectDateTimeFrom": {
+                    "$ref": "#/components/examples/IncorrectDateTimeFrom"
+                  },
+                  "IncorrectDateTimeTo": {
+                    "$ref": "#/components/examples/IncorrectDateTimeTo"
+                  },
+                  "MissingDateTimeFrom": {
+                    "$ref": "#/components/examples/MissingDateTimeFrom"
+                  },
+                  "MissingDateTimeTo": {
+                    "$ref": "#/components/examples/MissingDateTimeTo"
+                  }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3191,6 +4293,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -3198,9 +4303,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Generate the Report{{ /api/v1/paid_storage }}",
+        "summary": "Generate the Report",
         "tags": [
-          "paidStorage"
+          "Paid Storage"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -3236,9 +4341,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/paidStorage/operation/getV1PaidStorage",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Paid Storage/operation/getV1PaidStorage",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "paidStorage"
       },
       "servers": [
         {
@@ -3248,7 +4354,7 @@
     },
     "/api/v1/paid_storage/tasks/{task_id}/download": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns the report by task ID\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
+        "description": "Returns the report by task ID\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
         "operationId": "getV1PaidStorageTasksTaskIdDownload",
         "parameters": [
           {
@@ -3267,17 +4373,41 @@
             "content": {
               "application/json": {
                 "example": [
-                  "[MaxDepth]"
+                  {
+                    "date": "2023-10-01",
+                    "logWarehouseCoef": 0,
+                    "officeId": 0,
+                    "warehouse": "Склад WB РФ",
+                    "warehouseCoef": 1.7,
+                    "giId": 123456,
+                    "chrtId": 1234567,
+                    "size": "0",
+                    "barcode": "",
+                    "subject": "Маски одноразовые",
+                    "brand": "1000 Каталог",
+                    "vendorCode": "567383",
+                    "nmId": 1234567,
+                    "volume": 12,
+                    "calcType": "короба: без габаритов",
+                    "warehousePrice": 7.65,
+                    "barcodesCount": 1,
+                    "palletPlaceCode": 0,
+                    "palletCount": 0,
+                    "originalDate": "2023-03-01",
+                    "loyaltyDiscount": 10,
+                    "tariffFixDate": "2023-10-01",
+                    "tariffLowerDate": "2023-11-01"
+                  }
                 ],
                 "schema": {
                   "$ref": "#/components/schemas/ResponsePaidStorage"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "204": {
-            "description": "<span class='response__value response__value_success'>No data</span>"
+            "description": "No data"
           },
           "400": {
             "content": {
@@ -3289,11 +4419,11 @@
                   "title": "Bad Request"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3311,14 +4441,17 @@
                   "title": "Not Found"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Not found</span>"
+            "description": "Not found"
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -3326,9 +4459,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get the Report{{ /api/v1/paid_storage/tasks/{task_id}/download }}",
+        "summary": "Get the Report",
         "tags": [
-          "paidStorage"
+          "Paid Storage"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -3364,9 +4497,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/paidStorage/operation/getV1PaidStorageTasksTaskIdDownload",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Paid Storage/operation/getV1PaidStorageTasksTaskIdDownload",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "paidStorage"
       },
       "servers": [
         {
@@ -3376,7 +4510,7 @@
     },
     "/api/v1/paid_storage/tasks/{task_id}/status": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns the status of task\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 s | 1 request | 5 s | 5 requests |\n| Service | 5 s | 1 request | 5 s | 5 requests |\n| Base with secret | 5 s | 1 request | 5 s | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 2 requests |\n</div>\n",
+        "description": "Returns the status of task\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 s | 1 request | 5 s | 5 requests |\n| Service | 5 s | 1 request | 5 s | 5 requests |\n| Base with secret | 5 s | 1 request | 5 s | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 2 requests |\n</div>\n",
         "operationId": "getV1PaidStorageTasksTaskIdStatus",
         "parameters": [
           {
@@ -3395,14 +4529,16 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "GetTasksResponseData": "[MaxDepth]"
+                  "GetTasksResponseData": {
+                    "$ref": "#/components/examples/GetTasksResponseData"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/GetTasksResponse"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -3414,11 +4550,11 @@
                   "title": "Bad Request"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3433,14 +4569,17 @@
                   "title": "Not Found"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Not found</span>"
+            "description": "Not found"
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -3448,9 +4587,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Check the Status{{ /api/v1/paid_storage/tasks/{task_id}/status }}",
+        "summary": "Check the Status",
         "tags": [
-          "paidStorage"
+          "Paid Storage"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -3486,9 +4625,10 @@
               "burst": "2 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/paidStorage/operation/getV1PaidStorageTasksTaskIdStatus",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Paid Storage/operation/getV1PaidStorageTasksTaskIdStatus",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "paidStorage"
       },
       "servers": [
         {
@@ -3498,7 +4638,7 @@
     },
     "/api/v1/supplier/orders": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns order information.<br>The data updated every 30 minutes.<br><br>\n\n1 line means 1 order and means 1 item.<br>The `srid` field should be used to identify the order.<br><br>\n\nData storage is guaranteed for no more than 90 days from the date of sale.<br><br>\n\nThe responses do not include orders for which payment was not confirmed. For example, it could be orders with delayed payments or installment payments. However, if there are sales for such orders, you can get it using [details for the realization reports](./financial-reports-and-accounting#tag/financialReports).<br>\nTo receive all completed orders, use [Order Feed](./analytics#tag/orderFeed).\n\n<div class=\"description_important\">\n  The data in this report is preliminary and is used for operational monitoring\n</div>\n\nFor a single response to a request with `flag=0` or without `flag`, a conditional limit of 80,000 rows is set. Therefore, more than one request may be necessary to retrieve all orders. In the second and subsequent requests, use the full value of the `lastChangeDate` field of the last row from the response of the previous request in the `dateFrom` parameter.<br> If the response returns an empty array `[]`, all orders have already been retrieved.<br><br>\n\nIn the sandbox, the `dateFrom` and `dateTo` parameters can only be set to a range within the last 4 months from the current date.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 10 requests |\n| Service | 1 min | 1 request | 1 min | 10 requests |\n| Base with secret | 1 min | 1 request | 1 min | 10 requests |\n| Base | 3 h | 1 request | 3 h | 1 request |\n</div>\n",
+        "description": "The method returns order information.<br>The data updated every 30 minutes.<br><br>\n\n1 line means 1 order and means 1 item.<br>The `srid` field should be used to identify the order.<br><br>\n\nData storage is guaranteed for no more than 90 days from the date of sale.<br><br>\n\nThe responses do not include orders for which payment was not confirmed. For example, it could be orders with delayed payments or installment payments. However, if there are sales for such orders, you can get it using [details for the realization reports](/openapi/documents-and-accounting#tag/financialReports).<br>\nTo receive all completed orders, use [Order Feed](/openapi/analytics#tag/orderFeed).\n\n<div class=\"description_important\">\n  The data in this report is preliminary and is used for operational monitoring\n</div>\n\nFor a single response to a request with `flag=0` or without `flag`, a conditional limit of 80,000 rows is set. Therefore, more than one request may be necessary to retrieve all orders. In the second and subsequent requests, use the full value of the `lastChangeDate` field of the last row from the response of the previous request in the `dateFrom` parameter.<br> If the response returns an empty array `[]`, all orders have already been retrieved.<br><br>\n\nIn the sandbox, the `dateFrom` and `dateTo` parameters can only be set to a range within the last 4 months from the current date.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 10 requests |\n| Service | 1 min | 1 request | 1 min | 10 requests |\n| Base with secret | 1 min | 1 request | 1 min | 10 requests |\n| Base | 3 h | 1 request | 3 h | 1 request |\n</div>\n",
         "operationId": "getV1SupplierOrders",
         "parameters": [
           {
@@ -3519,29 +4659,70 @@
             "content": {
               "application/json": {
                 "example": [
-                  "[MaxDepth]"
+                  {
+                    "date": "2022-03-04T18:08:31",
+                    "lastChangeDate": "2022-03-06T10:11:07",
+                    "warehouseName": "Склад WB РФ",
+                    "warehouseType": "Склад продавца",
+                    "countryName": "Россия",
+                    "oblastOkrugName": "Центральный федеральный округ",
+                    "regionName": "Московская",
+                    "supplierArticle": "12345",
+                    "nmId": 1234567,
+                    "barcode": "123453559000",
+                    "category": "Бытовая техника",
+                    "subject": "Мультистайлеры",
+                    "brand": "Тест",
+                    "techSize": "0",
+                    "incomeID": 56735459,
+                    "isSupply": false,
+                    "isRealization": true,
+                    "totalPrice": 1887,
+                    "discountPercent": 18,
+                    "spp": 26,
+                    "finishedPrice": 1145,
+                    "priceWithDisc": 1547,
+                    "isCancel": true,
+                    "cancelDate": "2022-03-09T00:00:00",
+                    "sticker": "926912515",
+                    "gNumber": "34343462218572569531",
+                    "srid": "11.rf9ef11fce1684117b0nhj96222982382.3.0"
+                  }
                 ],
                 "schema": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "$ref": "#/components/schemas/OrdersItem"
+                  },
                   "type": "array"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
                 "examples": {
-                  "DateFromFieldRequired": "[MaxDepth]",
-                  "DateFromValueNotValidated": "[MaxDepth]"
+                  "DateFromFieldRequired": {
+                    "$ref": "#/components/examples/DateFromFieldRequired"
+                  },
+                  "DateFromValueNotValidated": {
+                    "$ref": "#/components/examples/DateFromValueNotValidated"
+                  }
                 },
                 "schema": {
-                  "oneOf": "[MaxDepth]"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/responseErrorStatistics"
+                    },
+                    {
+                      "$ref": "#/components/schemas/responseErrorStatistics2"
+                    }
+                  ]
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3551,6 +4732,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -3558,9 +4742,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Orders{{ /api/v1/supplier/orders }}",
+        "summary": "Orders",
         "tags": [
-          "mainReports"
+          "Main Reports"
         ],
         "x-category": "statistics",
         "x-readonly-method": true,
@@ -3596,9 +4780,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/mainReports/operation/getV1SupplierOrders",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Main Reports/operation/getV1SupplierOrders",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "mainReports"
       },
       "servers": [
         {
@@ -3613,7 +4798,7 @@
     },
     "/api/v1/supplier/sales": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns sale and return information.<br>The data updated every 30 minutes.<br><br>\n\n1 line means 1 sale/return and means 1 item.<br>The `srid` field should be used to identify the order.<br><br>\n\nData storage is guaranteed for no more than 90 days from the date of sale.<br><br>\n\n<div class=\"description_important\">\n  The data in this report is preliminary and is used for operational monitoring\n</div>\n\n  - The responses do not include orders for which payment was not confirmed, even if these orders are in details for the realization reports. For example, it could be orders with delayed payments or installment payments\n  - The values of the `priceWithDisc` and `forPay` fields are calculated using a simplified logic and may differ from `retail_price_withdisc_rub` and `ppvz_for_pay`, respectively, in details for the realization reports\n  - The fields `finishedPrice`, `priceWithDisc`, and `forPay` may temporarily have the value `0`: data is filled in asynchronously and updated within 24 hours\n  - For orders that are paid in a currency other than the seller currency, prices may be rounded due to currency conversion\n\nUse [details for the realization reports](./financial-reports-and-accounting#tag/financialReports) for accurate financial calculations, reconciliation, and reporting.<br><br>\n\nFor a single response to a request with `flag=0` or without `flag`, a conditional limit of 80,000 rows is set. Therefore, more than one request may be necessary to retrieve all sales and returns. In the second and subsequent requests, use the full value of the `lastChangeDate` field of the last row from the response of the previous request in the `dateFrom` parameter.<br> If the response returns an empty array `[]`, all sales and returns have already been retrieved.<br><br>\n\nIn the sandbox, the `dateFrom` and `dateTo` parameters can only be set to a range within the last 4 months from the current date.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 2 h | 1 request | 2 h | 1 request |\n</div>\n",
+        "description": "The method returns sale and return information.<br>The data updated every 30 minutes.<br><br>\n\n1 line means 1 sale/return and means 1 item.<br>The `srid` field should be used to identify the order.<br><br>\n\nData storage is guaranteed for no more than 90 days from the date of sale.<br><br>\n\n<div class=\"description_important\">\n  The data in this report is preliminary and is used for operational monitoring\n</div>\n\n  - The responses do not include orders for which payment was not confirmed, even if these orders are in details for the realization reports. For example, it could be orders with delayed payments or installment payments\n  - The values of the `priceWithDisc` and `forPay` fields are calculated using a simplified logic and may differ from `retail_price_withdisc_rub` and `ppvz_for_pay`, respectively, in details for the realization reports\n  - The fields `finishedPrice`, `priceWithDisc`, and `forPay` may temporarily have the value `0`: data is filled in asynchronously and updated within 24 hours\n  - For orders that are paid in a currency other than the seller currency, prices may be rounded due to currency conversion\n\nUse [details for the realization reports](/openapi/documents-and-accounting#tag/financialReports) for accurate financial calculations, reconciliation, and reporting.<br><br>\n\nFor a single response to a request with `flag=0` or without `flag`, a conditional limit of 80,000 rows is set. Therefore, more than one request may be necessary to retrieve all sales and returns. In the second and subsequent requests, use the full value of the `lastChangeDate` field of the last row from the response of the previous request in the `dateFrom` parameter.<br> If the response returns an empty array `[]`, all sales and returns have already been retrieved.<br><br>\n\nIn the sandbox, the `dateFrom` and `dateTo` parameters can only be set to a range within the last 4 months from the current date.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 2 h | 1 request | 2 h | 1 request |\n</div>\n",
         "operationId": "getV1SupplierSales",
         "parameters": [
           {
@@ -3634,29 +4819,71 @@
             "content": {
               "application/json": {
                 "example": [
-                  "[MaxDepth]"
+                  {
+                    "date": "2022-03-04T18:08:31",
+                    "lastChangeDate": "2022-03-06T10:11:07",
+                    "warehouseName": "Склад WB РФ",
+                    "warehouseType": "Склад продавца",
+                    "countryName": "Россия",
+                    "oblastOkrugName": "Центральный федеральный округ",
+                    "regionName": "Московская",
+                    "supplierArticle": "12345",
+                    "nmId": 1234567,
+                    "barcode": "123453559000",
+                    "category": "Бытовая техника",
+                    "subject": "Мультистайлеры",
+                    "brand": "Тест",
+                    "techSize": "0",
+                    "incomeID": 56735459,
+                    "isSupply": false,
+                    "isRealization": true,
+                    "totalPrice": 1887,
+                    "discountPercent": 18,
+                    "spp": 20,
+                    "paymentSaleAmount": 93,
+                    "forPay": 1284.01,
+                    "finishedPrice": 1145,
+                    "priceWithDisc": 1547,
+                    "saleID": "S9993700024",
+                    "sticker": "926912515",
+                    "gNumber": "34343462218572569531",
+                    "srid": "11.rf9ef11fce1684117b0nhj96222982382.3.0"
+                  }
                 ],
                 "schema": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "$ref": "#/components/schemas/SalesItem"
+                  },
                   "type": "array"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
                 "examples": {
-                  "DateFromFieldRequired": "[MaxDepth]",
-                  "DateFromValueNotValidated": "[MaxDepth]"
+                  "DateFromFieldRequired": {
+                    "$ref": "#/components/examples/DateFromFieldRequired"
+                  },
+                  "DateFromValueNotValidated": {
+                    "$ref": "#/components/examples/DateFromValueNotValidated"
+                  }
                 },
                 "schema": {
-                  "oneOf": "[MaxDepth]"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/responseErrorStatistics"
+                    },
+                    {
+                      "$ref": "#/components/schemas/responseErrorStatistics2"
+                    }
+                  ]
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3666,6 +4893,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -3673,9 +4903,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Sales{{ /api/v1/supplier/sales }}",
+        "summary": "Sales",
         "tags": [
-          "mainReports"
+          "Main Reports"
         ],
         "x-category": "statistics",
         "x-readonly-method": true,
@@ -3711,9 +4941,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/mainReports/operation/getV1SupplierSales",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Main Reports/operation/getV1SupplierSales",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "mainReports"
       },
       "servers": [
         {
@@ -3728,7 +4959,7 @@
     },
     "/api/v1/warehouse_remains": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nCreates a task for report generation. The parameters `groupBy` and `filter` can be set in any combination — similar to the [version](https://seller.wildberries.ru/analytics-reports/warehouse-remains) in the personal account.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 5 requests |\n| Service | 1 min | 1 request | 1 min | 5 requests |\n| Base with secret | 1 min | 1 request | 1 min | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n</div>\n",
+        "description": "Creates a task for report generation. The parameters `groupBy` and `filter` can be set in any combination — similar to the [version](https://seller.wildberries.ru/analytics-reports/warehouse-remains) in the personal account.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 5 requests |\n| Service | 1 min | 1 request | 1 min | 5 requests |\n| Base with secret | 1 min | 1 request | 1 min | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n</div>\n",
         "operationId": "getV1WarehouseRemains",
         "parameters": [
           {
@@ -3827,14 +5058,16 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "CreateResponseData": "[MaxDepth]"
+                  "CreateResponseData": {
+                    "$ref": "#/components/examples/CreateResponseData"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/CreateTaskResponse"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -3846,11 +5079,11 @@
                   "title": "Bad Request"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3860,6 +5093,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -3867,9 +5103,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Create the Report{{ /api/v1/warehouse_remains }}",
+        "summary": "Create the Report",
         "tags": [
-          "warehousesInventoryReport"
+          "Warehouses Inventory Report"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -3905,9 +5141,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/warehousesInventoryReport/operation/getV1WarehouseRemains",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Warehouses Inventory Report/operation/getV1WarehouseRemains",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "warehousesInventoryReport"
       },
       "servers": [
         {
@@ -3917,7 +5154,7 @@
     },
     "/api/v1/warehouse_remains/tasks/{task_id}/download": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns the report by task ID\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n</div>\n",
+        "description": "Returns the report by task ID\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n</div>\n",
         "operationId": "getV1WarehouseRemainsTasksTaskIdDownload",
         "parameters": [
           {
@@ -3936,18 +5173,110 @@
             "content": {
               "application/json": {
                 "example": [
-                  "[MaxDepth]"
+                  {
+                    "brand": "Wonderful",
+                    "subjectName": "Photo Albums",
+                    "vendorCode": "41058/прозрачный",
+                    "nmId": 183804172,
+                    "barcode": "2037031652319",
+                    "techSize": "0",
+                    "volume": 1.33,
+                    "warehouses": [
+                      {
+                        "warehouseName": "To the client",
+                        "quantity": 14
+                      },
+                      {
+                        "warehouseName": "From the client",
+                        "quantity": 4
+                      },
+                      {
+                        "warehouseName": "Total in warehouses",
+                        "quantity": 267
+                      },
+                      {
+                        "warehouseName": "Warehouse WB Rus",
+                        "quantity": 134
+                      },
+                      {
+                        "warehouseName": "Warehouse WB SGT Rus",
+                        "quantity": 10
+                      },
+                      {
+                        "warehouseName": "Minsk",
+                        "quantity": 123
+                      }
+                    ]
+                  }
                 ],
                 "schema": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "brand": {
+                        "type": "string",
+                        "example": "Wonderful",
+                        "description": "Brand"
+                      },
+                      "subjectName": {
+                        "type": "string",
+                        "example": "Фотоальбомы",
+                        "description": "Subcategory name"
+                      },
+                      "vendorCode": {
+                        "type": "string",
+                        "example": "41058/прозрачный",
+                        "description": "Seller item number"
+                      },
+                      "nmId": {
+                        "type": "integer",
+                        "example": 183804172,
+                        "description": "WB item number"
+                      },
+                      "barcode": {
+                        "type": "string",
+                        "example": "2037031652319",
+                        "description": "Barcode"
+                      },
+                      "techSize": {
+                        "type": "string",
+                        "example": "0",
+                        "description": "Size"
+                      },
+                      "volume": {
+                        "type": "number",
+                        "example": 1.33,
+                        "description": "Volume, L"
+                      },
+                      "warehouses": {
+                        "type": "array",
+                        "description": "Inventory and to and from the client. It will be included in the response only if `quantity` is non-zero",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "warehouseName": {
+                              "type": "string",
+                              "example": "Невинномысск",
+                              "description": "Warehouse name"
+                            },
+                            "quantity": {
+                              "type": "integer",
+                              "example": 134,
+                              "description": "Quantity\n"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
                   "type": "array"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "204": {
-            "description": "<span class='response__value response__value_success'>No data</span>"
+            "description": "No data"
           },
           "400": {
             "content": {
@@ -3959,11 +5288,11 @@
                   "title": "Bad Request"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3981,14 +5310,17 @@
                   "title": "Not Found"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Not found</span>"
+            "description": "Not found"
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -3996,9 +5328,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get the Report{{ /api/v1/warehouse_remains/tasks/{task_id}/download }}",
+        "summary": "Get the Report",
         "tags": [
-          "warehousesInventoryReport"
+          "Warehouses Inventory Report"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -4034,9 +5366,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/warehousesInventoryReport/operation/getV1WarehouseRemainsTasksTaskIdDownload",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Warehouses Inventory Report/operation/getV1WarehouseRemainsTasksTaskIdDownload",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "warehousesInventoryReport"
       },
       "servers": [
         {
@@ -4046,7 +5379,7 @@
     },
     "/api/v1/warehouse_remains/tasks/{task_id}/status": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns the status of the generation task\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 s | 1 request | 5 s | 5 requests |\n| Service | 5 s | 1 request | 5 s | 5 requests |\n| Base with secret | 5 s | 1 request | 5 s | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n</div>\n",
+        "description": "Returns the status of the generation task\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 s | 1 request | 5 s | 5 requests |\n| Service | 5 s | 1 request | 5 s | 5 requests |\n| Base with secret | 5 s | 1 request | 5 s | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n</div>\n",
         "operationId": "getV1WarehouseRemainsTasksTaskIdStatus",
         "parameters": [
           {
@@ -4065,14 +5398,16 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "GetTasksResponseData": "[MaxDepth]"
+                  "GetTasksResponseData": {
+                    "$ref": "#/components/examples/GetTasksResponseData"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/GetTasksResponse"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -4084,11 +5419,11 @@
                   "title": "Bad Request"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -4103,14 +5438,17 @@
                   "title": "Not Found"
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/4xxResponse"
+                  "$ref": "#/components/schemas/4XXResponse"
                 }
               }
             },
-            "description": "<span class='response__value '>Not found</span>"
+            "description": "Not found"
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -4118,9 +5456,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Check the Status{{ /api/v1/warehouse_remains/tasks/{task_id}/status }}",
+        "summary": "Check the Status",
         "tags": [
-          "warehousesInventoryReport"
+          "Warehouses Inventory Report"
         ],
         "x-category": "contentanalytics",
         "x-readonly-method": true,
@@ -4156,15 +5494,160 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/warehousesInventoryReport/operation/getV1WarehouseRemainsTasksTaskIdStatus",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Warehouses Inventory Report/operation/getV1WarehouseRemainsTasksTaskIdStatus",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "warehousesInventoryReport"
       },
       "servers": [
         {
           "url": "https://seller-analytics-api.wildberries.ru"
         }
       ]
+    },
+    "/api/analytics/v1/item-returns": {
+      "servers": [
+        {
+          "url": "https://seller-analytics-api.wildberries.ru"
+        }
+      ],
+      "get": {
+        "operationId": "getV1GoodsReturn",
+        "x-readonly-method": true,
+        "x-category": "contentanalytics",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "Returns and Item Movement Report"
+        ],
+        "summary": "Get Report",
+        "description": "Returns a list of [item returns to the seller](https://seller.wildberries.ru/return-transfer-reports).\n",
+        "parameters": [
+          {
+            "name": "dateFrom",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2024-08-13"
+            },
+            "description": "Beginning date of the reporting period"
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2024-08-27"
+            },
+            "description": "End date of the reporting period"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "active",
+              "enum": [
+                "active",
+                "archive"
+              ]
+            },
+            "description": "Return status:\n  - `archive` — archive\n  - `active` — active\n"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "maximum": 1000,
+              "minimum": 0,
+              "format": "date",
+              "example": 10
+            },
+            "description": "Number of returns in the response"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "date",
+              "example": 3
+            },
+            "description": "How many results to skip. For example, for the value 10, the response will start with the 11 element"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsReturn200Response"
+                },
+                "examples": {
+                  "ReportExample": {
+                    "$ref": "#/components/examples/ReportExample"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No data"
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/4XXResponse"
+                },
+                "examples": {
+                  "MissingDateTimeFrom": {
+                    "$ref": "#/components/examples/MissingDateTimeFrom"
+                  },
+                  "MissingDateTimeTo": {
+                    "$ref": "#/components/examples/MissingDateTimeTo"
+                  },
+                  "IncorrectDateTimeFrom": {
+                    "$ref": "#/components/examples/IncorrectDateTimeFrom"
+                  },
+                  "IncorrectDateTimeTo": {
+                    "$ref": "#/components/examples/IncorrectDateTimeTo"
+                  },
+                  "DateRangeExceeded": {
+                    "$ref": "#/components/examples/DateRangeExceeded"
+                  },
+                  "DateRanges": {
+                    "$ref": "#/components/examples/DateRanges"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "x-tagKey": "returnsAndItemMovementReport",
+        "x-wb-rate-limits": {
+          "status": "undocumented",
+          "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Returns and Item Movement Report/operation/getV1GoodsReturn",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "note": "The current official operation publishes no rate limit; verify with WB before repeated calls."
+        }
+      }
     }
   },
   "security": [
@@ -4174,69 +5657,75 @@
   ],
   "tags": [
     {
-      "description": "<div class=\"api-description\">\n\n<div class=\"api-block\">\n\nReports on items, retentions, and paid storage\n\n</div>\n\n\n</div>",
-      "name": "Reports",
-      "x-traitTag": true
+      "description": "",
+      "name": "Main Reports",
+      "x-displayName": "Main Reports",
+      "x-tagKey": "mainReports"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Statistics</strong> category\n</div>\n\nYou can save the main reports in <a href=\"/en/knowledge-base/articles/019d49a4-650c-7b04-9596-ba441936f9d3\">sheets format</a>\n",
-      "name": "mainReports",
-      "x-displayName": "Main Reports"
+      "description": "",
+      "name": "Warehouses Inventory Report",
+      "x-displayName": "Warehouses Inventory Report",
+      "x-tagKey": "warehousesInventoryReport"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Analytics</strong> category\n</div>\n\nTo get the report on [WB warehouses remains](https://seller.wildberries.ru/analytics-reports/warehouse-remains):\n  1. [Create the report](./reports#tag/warehousesInventoryReport/operation/getV1WarehouseRemains).\n  2. Wait for the report to be ready. You can [check the status](./reports#tag/warehousesInventoryReport/operation/getV1WarehouseRemainsTasksTaskIdStatus) of the report readiness. The ready report is stored for 2 hours.\n  3. [Get the report](./reports#tag/warehousesInventoryReport/operation/getV1WarehouseRemainsTasksTaskIdDownload).\n",
-      "name": "warehousesInventoryReport",
-      "x-displayName": "Warehouses Inventory Report"
+      "description": "",
+      "name": "Report on Items with Mandatory Labeling",
+      "x-displayName": "Report on Items with Mandatory Labeling",
+      "x-tagKey": "reportOnItemsWithMandatoryLabeling"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Analytics</strong> category\n</div>\n",
-      "name": "reportOnItemsWithMandatoryLabeling",
-      "x-displayName": "Report on Items with Mandatory Labeling"
+      "description": "",
+      "name": "Retention Reports",
+      "x-displayName": "Retention Reports",
+      "x-tagKey": "retentionReports"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Analytics</strong> category\n</div>\n",
-      "name": "retentionReports",
-      "x-displayName": "Retention Reports"
+      "description": "",
+      "name": "Acceptance Expenses",
+      "x-displayName": "Acceptance Expenses",
+      "x-tagKey": "acceptanceExpenses"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Analytics</strong> category\n</div>\n\nTo get the report on [acceptance expenses](https://seller.wildberries.ru/analytics-reports/acceptance-report):\n  1. [Create the report](./reports#tag/acceptanceExpenses/operation/getV1AcceptanceReport).\n  2. Wait for the report to be ready. You can [check the status](./reports#tag/acceptanceExpenses/operation/getV1AcceptanceReportTasksTaskIdStatus) of the report readiness. The ready report is stored for 2 hours.\n  3. [Get the report](./reports#tag/acceptanceExpenses/operation/getV1AcceptanceReportTasksTaskIdDownload).\n",
-      "name": "acceptanceExpenses",
-      "x-displayName": "Acceptance Expenses"
+      "description": "",
+      "name": "Paid Storage",
+      "x-displayName": "Paid Storage",
+      "x-tagKey": "paidStorage"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Analytics</strong> category\n</div>\n\nTo get the report:\n\n  1. [Generate the report](./reports#tag/paidStorage/operation/getV1PaidStorage)\n  2. Check if the report is generated with [Check the status](./reports#tag/paidStorage/operation/getV1PaidStorageTasksTaskIdStatus) method. Generated report is available during 2 hours.\n  3. [Get the report](./reports#tag/paidStorage/operation/getV1PaidStorageTasksTaskIdDownload)\n",
-      "name": "paidStorage",
-      "x-displayName": "Paid Storage"
+      "description": "",
+      "name": "Sales by Regions",
+      "x-displayName": "Sales by Regions",
+      "x-tagKey": "salesByRegions"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Analytics</strong> category\n</div>\n",
-      "name": "salesByRegions",
-      "x-displayName": "Sales by Regions"
+      "description": "",
+      "name": "Share of Brand in Sales",
+      "x-displayName": "Share of Brand in Sales",
+      "x-tagKey": "shareOfBrandInSales"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Analytics</strong> category\n</div>\n\n[Reports](https://seller.wildberries.ru/analytics-reports/brand-share) on the seller brand share in sales.\n\nTo [obtain a report](./reports#tag/shareOfBrandInSales/operation/getV1AnalyticsBrandShare), you will need:\n1. [Brand names](./reports#tag/shareOfBrandInSales/operation/getV1AnalyticsBrandShareBrands).\n2. [ID and names of categories](./reports#tag/shareOfBrandInSales/operation/getV1AnalyticsBrandShareParentSubjects).\n\nYou can get a report for a maximum of one year\n",
-      "name": "shareOfBrandInSales",
-      "x-displayName": "Share of Brand in Sales"
+      "description": "",
+      "name": "Blocked Items",
+      "x-displayName": "Blocked Items",
+      "x-tagKey": "blockedItems"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Analytics</strong> category\n</div>\n",
-      "name": "blockedItems",
-      "x-displayName": "Blocked Items"
-    },
-    {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Analytics</strong> category\n</div>\n",
-      "name": "returnsAndItemMovementReport",
-      "x-displayName": "Returns and Item Movement Report"
+      "description": "",
+      "name": "Returns and Item Movement Report",
+      "x-displayName": "Returns and Item Movement Report",
+      "x-tagKey": "returnsAndItemMovementReport"
     }
   ],
   "x-wb-extraction": {
-    "mode": "browser-redoc-openapi",
+    "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/reports",
-    "capturedAt": "2026-08-19T18:12:37.448Z"
+    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/12-reports.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-08-19T18:12:37.448Z",
+    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/reports",
-    "operationCount": 23
+    "operationCount": 24
   }
 }

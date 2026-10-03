@@ -16,3 +16,5 @@ python3 scripts/api_call.py --method POST --url "https://seller-analytics-api.wi
 ```
 
 Use date ranges exactly as WB expects for the operation. For long-running report endpoints, create the task first, then poll/download according to the schema path.
+
+`POST /api/analytics/v1/stocks-report/seller-warehouses` reports seller-warehouse inventory with a Personal or Service token. Its data updates every 30 minutes and its documented steady request interval is 20 seconds. Check the schema for filters and pagination.

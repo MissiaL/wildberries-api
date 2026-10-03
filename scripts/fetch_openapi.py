@@ -1,11 +1,7 @@
-"""Fetch Wildberries OpenAPI doc snapshots from dev.wildberries.ru.
+"""Refresh schemas from official downloadable YAML URLs in the manifest.
 
-NOTE (2026-08): dev.wildberries.ru sits behind an anti-bot challenge and
-returns HTTP 498 for plain urllib/curl requests, so running this script
-directly fails. The maintained refresh path is to extract each rendered
-``__redoc_state.spec.data`` object in a real browser and pass the combined JSON
-export to ``scripts/sync_openapi.py``. This module remains for parsing tests and
-legacy HTML snapshots.
+Documentation HTML may return HTTP 498, but its Swagger YAML downloads are
+public HTTP resources. Legacy HTML parsers remain for older snapshots.
 """
 from datetime import datetime, timezone
 import json
@@ -17,6 +13,11 @@ import urllib.request
 import xml.etree.ElementTree as ET
 
 import yaml
+
+if __package__:
+    from .sync_openapi import extract_hosts, sync
+else:
+    from sync_openapi import extract_hosts, sync
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -323,15 +324,6 @@ def build_snapshot_schema(slug, doc_url, swagger_url, chapter, hosts):
     }
 
 
-def extract_hosts(schema):
-    hosts = []
-    for server in schema.get("servers", []):
-        hostname = urllib.parse.urlparse(server["url"]).hostname
-        if hostname and hostname not in hosts and "sandbox" not in hostname:
-            hosts.append(hostname)
-    return hosts
-
-
 def extract_hosts_from_text(*texts):
     hosts = []
     for text in texts:
@@ -451,11 +443,15 @@ def fetch_page_schema(page):
 
 
 def fetch_all(output_dir=OUTPUT_DIR):
-    sitemap = fetch_text(SITEMAP_URL)
-    pages = extract_openapi_pages_from_sitemap(sitemap)
-    records = [fetch_page_schema(page) for page in pages]
-    write_outputs(output_dir, records)
-    return records
+    manifest = json.loads((Path(output_dir) / "manifest.json").read_text(encoding="utf-8"))
+    specs = {}
+    for record in manifest["schemas"]:
+        schema = parse_schema_document(fetch_text(record["schema_source_url"]))
+        if not isinstance(schema, dict) or not schema.get("openapi") or not schema.get("paths"):
+            raise ValueError(f"Invalid official OpenAPI schema: {record['slug']}")
+        specs[record["slug"]] = schema
+    sync(specs, output_dir=output_dir)
+    return specs
 
 
 def main():

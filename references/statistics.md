@@ -19,3 +19,5 @@ Statistics endpoints often require date bounds. Use absolute dates and avoid unb
 Do not call deprecated `GET /api/v1/supplier/stocks`; WB scheduled it for shutdown on 2026-06-23. Use `POST https://seller-analytics-api.wildberries.ru/api/analytics/v1/stocks-report/wb-warehouses` with an Analytics Personal or Service token. Its documented steady limit is one request per 20 seconds.
 
 Do not call deprecated `GET /api/v5/supplier/reportDetailByPeriod`; WB scheduled it for shutdown on 2026-07-15. Use the Finance API methods described in [finance.md](finance.md).
+
+For returns to the seller, prefer `GET https://seller-analytics-api.wildberries.ru/api/analytics/v1/item-returns`, with required `dateFrom` and `dateTo` and optional `status`, `limit`, and `offset`. The deprecated `GET /api/v1/analytics/goods-return` is scheduled to stop on 2026-10-26. Neither method currently publishes a rate limit; verify with WB before pagination or polling.

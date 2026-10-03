@@ -78,6 +78,14 @@ def test_configured_rate_limit_selects_personal_row():
     assert profile["source"].startswith("https://dev.wildberries.ru/docs/openapi/api-information")
 
 
+def test_rate_limit_matches_official_host_and_marks_undocumented_returns():
+    assert api_call.load_operation_rate_limit("GET", "https://common-api.wildberries.ru/api/common/v1/rating") is None
+    assert api_call.load_operation_rate_limit("GET", "https://feedbacks-api.wildberries.ru/api/common/v1/rating")
+    profile = api_call.configured_rate_limit("GET", "https://seller-analytics-api.wildberries.ru/api/analytics/v1/item-returns", fake_jwt({"acc": 3}))
+    assert profile["status"] == "undocumented"
+    assert profile["limit"] is None
+
+
 class DummyResponse:
     def __init__(self, payload, headers=None):
         self.payload = payload

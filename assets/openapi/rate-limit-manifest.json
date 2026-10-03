@@ -1,9 +1,22 @@
 {
   "schemaVersion": 2,
-  "verifiedAt": "2026-08-19T18:12:37.448Z",
-  "source": "Live Wildberries OpenAPI data rendered in a browser",
-  "operationCount": 286,
-  "specialLimitCount": 2,
+  "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+  "source": "Official Wildberries OpenAPI specifications",
+  "operationCount": 307,
+  "documentedLimitCount": 305,
+  "undocumentedLimits": [
+    {
+      "slug": "reports",
+      "method": "GET",
+      "path": "/api/v1/analytics/goods-return"
+    },
+    {
+      "slug": "reports",
+      "method": "GET",
+      "path": "/api/analytics/v1/item-returns"
+    }
+  ],
+  "specialLimitCount": 1,
   "pages": [
     {
       "slug": "api-information",
@@ -11,11 +24,11 @@
     },
     {
       "slug": "work-with-products",
-      "operationCount": 52
+      "operationCount": 55
     },
     {
       "slug": "orders-fbs",
-      "operationCount": 40
+      "operationCount": 46
     },
     {
       "slug": "orders-dbw",
@@ -27,7 +40,7 @@
     },
     {
       "slug": "promotion",
-      "operationCount": 39
+      "operationCount": 42
     },
     {
       "slug": "user-communication",
@@ -43,15 +56,15 @@
     },
     {
       "slug": "orders-fbw",
-      "operationCount": 7
+      "operationCount": 14
     },
     {
       "slug": "analytics",
-      "operationCount": 19
+      "operationCount": 20
     },
     {
       "slug": "reports",
-      "operationCount": 23
+      "operationCount": 24
     },
     {
       "slug": "financial-reports-and-accounting",

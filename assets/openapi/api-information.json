@@ -80,6 +80,31 @@
           ],
           "totalCommissionRate": 2.3
         }
+      },
+      "Response403TokenCategory": {
+        "value": {
+          "status": 403,
+          "statusText": "Forbidden",
+          "title": "Forbidden",
+          "detail": "scope is not allowed for this resource",
+          "requestId": "2dbf6fc9-bad8-4ef9-a058-c938a8553ba5",
+          "origin": "ag-marketplace",
+          "timestamp": "2026-09-03T13:55:15Z"
+        },
+        "description": "Invalid token category"
+      },
+      "Response403TokenType": {
+        "value": {
+          "title": "forbidden",
+          "detail": "base token is not allowed",
+          "code": "base token is not allowed for this path",
+          "requestId": "722199b2e15bbca48cc1d488a7989976",
+          "origin": "ag-marketplace",
+          "status": 403,
+          "statusText": "Forbidden",
+          "timestamp": "2026-05-25T02:47:09Z"
+        },
+        "description": "Invalid token type"
       }
     },
     "responses": {
@@ -89,7 +114,7 @@
             "example": {
               "code": "07e4668e--a53a3d31f8b0-[UK-oWaVDUqNrKG]; 03bce=277; 84bd353bf-75",
               "detail": "token problem; token is malformed: could not base64 decode signature: illegal base64 data at input byte 84",
-              "origin": "s2s-api-auth-catalog",
+              "origin": "ag-marketplace",
               "requestId": "7b80742415072fe8b6b7f7761f1d1211",
               "status": 401,
               "statusText": "Unauthorized",
@@ -136,7 +161,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Unauthorized</span>"
+        "description": "Unauthorized"
       },
       "402": {
         "content": {
@@ -160,21 +185,11 @@
             }
           }
         },
-        "description": "<span class='response__value '>Payment required</span>"
+        "description": "Payment required"
       },
       "403": {
         "content": {
           "application/problem+json": {
-            "example": {
-              "code": "base token is not allowed for this path",
-              "detail": "base token is not allowed",
-              "origin": "s2s-finance",
-              "requestId": "722199b2e15bbca48cc1d488a7989976",
-              "status": 403,
-              "statusText": "Forbidden",
-              "timestamp": "2026-05-25T02:47:09Z",
-              "title": "forbidden"
-            },
             "schema": {
               "properties": {
                 "code": {
@@ -212,10 +227,24 @@
                 }
               },
               "type": "object"
+            },
+            "examples": {
+              "Response403TokenCategory": {
+                "value": {
+                  "status": 403,
+                  "statusText": "Forbidden",
+                  "title": "Forbidden",
+                  "detail": "scope is not allowed for this resource",
+                  "requestId": "2dbf6fc9-bad8-4ef9-a058-c938a8553ba5",
+                  "origin": "ag-marketplace",
+                  "timestamp": "2026-09-03T13:55:15Z"
+                },
+                "description": "Invalid token category"
+              }
             }
           }
         },
-        "description": "<span class='response__value '>Access denied</span>"
+        "description": "Access denied"
       },
       "429": {
         "content": {
@@ -223,7 +252,7 @@
             "example": {
               "code": "07e4668e-ac2242c5c8c5-[UK-4dx7JUdskGZ]",
               "detail": "limited by c122a060-a7fb-4bb4-abb0-32fd4e18d489",
-              "origin": "s2s-api-auth-catalog",
+              "origin": "ag-marketplace",
               "requestId": "9d3c02cc698f8b041c661a7c28bed293",
               "status": 429,
               "statusText": "Too Many Requests",
@@ -270,7 +299,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Too many requests</span>"
+        "description": "Too many requests"
       }
     },
     "schemas": {
@@ -414,9 +443,8 @@
                 "$ref": "#/components/schemas/PlanBuilderPromotion"
               },
               {
-                "description": "Акция, по которой подключена опция. Не возвращается, если опция подключена без акции или срок действия акции истёк"
-              },
-              {}
+                "description": "Promo via the option is activated. Not returned if the option is activated without a promo or if the promo period expired"
+              }
             ]
           },
           "slug": {
@@ -828,7 +856,30 @@
                 "inviteeInfo": {
                   "description": "Invitation information, if the user is invited",
                   "nullable": true,
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "phoneNumber": {
+                      "type": "string",
+                      "description": "Invited user's phone number"
+                    },
+                    "position": {
+                      "type": "string",
+                      "description": "Invited user's position"
+                    },
+                    "inviteUuid": {
+                      "type": "string",
+                      "description": "Invitation ID",
+                      "format": "UUID"
+                    },
+                    "expiredAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Invitation expiration date and time"
+                    },
+                    "isActive": {
+                      "type": "boolean",
+                      "description": "- `true` — the invitation is active\n- `false` — the invitation is inactive\n"
+                    }
+                  },
                   "type": "object"
                 },
                 "isInvitee": {
@@ -853,7 +904,10 @@
                 },
                 "role": {
                   "description": "User role:\n* `user` — user who have activated access\n* ` ` (empty string) — user who have not yet activated access\n",
-                  "enum": "[MaxDepth]",
+                  "enum": [
+                    "user",
+                    ""
+                  ],
                   "type": "string"
                 },
                 "secondName": {
@@ -940,6 +994,44 @@
           "usersAccesses"
         ],
         "type": "object"
+      },
+      "Response4XX": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Error title"
+          },
+          "detail": {
+            "type": "string",
+            "description": "Error details"
+          },
+          "code": {
+            "type": "string",
+            "description": "Internal error code"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Request ID"
+          },
+          "origin": {
+            "type": "string",
+            "description": "WB internal service ID"
+          },
+          "status": {
+            "type": "number",
+            "description": "HTTP status code"
+          },
+          "statusText": {
+            "type": "string",
+            "description": "Text of the HTTP status code"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Request date and time"
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -951,7 +1043,7 @@
     }
   },
   "info": {
-    "description": "<div class=\"api-block\">\n\nIn this section:\n  - [WB API general information](./api-information#tag/introduction)\n  - how to [get started with the WB API](./api-information#tag/introduction/How-to-get-started-with-the-API)\n  - how to [log in](./api-information#tag/authorization) and [create tokens](./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token)\n  - main [HTTP status codes](./api-information#tag/introduction/HTTP-status-codes)\n  - [rate limits](./api-information#tag/introduction/Rate-Limits)\n  - how to contact [support](./api-information#tag/introduction/Support)\n\nUse the methods in this section to:\n  - check the [WB API connection](./api-information#tag/connectionCheck)\n  - get [seller portal news](./api-information#tag/newsApi/operation/getV2News)\n  - get [seller information](./api-information#tag/sellerInformation)\n  - [manage seller users](./api-information#tag/sellerUserManagement)\n\n</div>\n",
+    "description": "<div class=\"api-block\">\n\nIn this section:\n  - [WB API general information](/openapi/api-information#tag/introduction)\n  - how to [get started with the WB API](/openapi/api-information#tag/introduction/How-to-get-started-with-the-API)\n  - how to [log in](/openapi/api-information#tag/authorization) and [create tokens](/openapi/api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token)\n  - main [HTTP status codes](/openapi/api-information#tag/introduction/HTTP-status-codes)\n  - [rate limits](/openapi/api-information#tag/introduction/Rate-Limits)\n  - how to contact [support](/openapi/api-information#tag/introduction/Support)\n\nUse the methods in this section to:\n  - check the [WB API connection](/openapi/api-information#tag/connectionCheck)\n  - get [seller portal news](/openapi/api-information#tag/newsApi/operation/getV2News)\n  - get [seller information](/openapi/api-information#tag/sellerInformation)\n  - [manage seller users](/openapi/api-information#tag/sellerUserManagement)\n\n</div>\n",
     "title": "General",
     "version": "general",
     "x-file-name": "general"
@@ -960,7 +1052,7 @@
   "paths": {
     "/api/common/v1/rating": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n<div class=\"description_auth\">\n  To access the method, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Feedbacks and Questions</strong> category\n</div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Service</strong> token\n</div>\n\nThe method returns the seller user rating and feedbacks count.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
+        "description": "<div class=\"description_auth\">\n  To access the method, use a <a href=\"/openapi/api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Feedbacks and Questions</strong> category\n</div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Service</strong> token\n</div>\n\nThe method returns the seller user rating and feedbacks count.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
         "operationId": "getV1Rating",
         "responses": {
           "200": {
@@ -971,7 +1063,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -980,7 +1072,22 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/403"
+            "description": "Access denied",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -991,9 +1098,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Seller Rating{{ /api/common/v1/rating }}",
+        "summary": "Get Seller Rating",
         "tags": [
-          "sellerInformation"
+          "Seller Information"
         ],
         "x-category": "questionsandfeedback",
         "x-readonly-method": true,
@@ -1010,9 +1117,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/sellerInformation/operation/getV1Rating",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller Information/operation/getV1Rating",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "sellerInformation"
       },
       "servers": [
         {
@@ -1022,7 +1130,7 @@
     },
     "/api/common/v1/subscriptions": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n<div class=\"description_auth\">\n  You can get Jam subscription information with a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>.\n</div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Service</strong> token\n</div>\n\nThe method returns [Jam](https://seller.wildberries.ru/monetization/jam) subscription information:\n  - If seller has never activated the Jam subscription, an empty `200` response is returned.\n  - If seller activated the subscription and never canceled it, the following is returned:\n    - subscription activation date `since`\n    - end date of the current paid period `till`\n  - If the subscription expired or was canceled but seller reactivated it, the following is returned:\n    - date of the first subscription activation `since`\n    - end date of the current paid period `till`\n  - If the subscription is inactive, the following is returned:\n    - date of the first subscription activation `since`\n    - end date of the last paid period `till`\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 10 requests |\n</div>\n",
+        "description": "<div class=\"description_auth\">\n  You can get Jam subscription information with a token of any <a href=\"/openapi/api-information#tag/authorization/Token-categories\">category</a>.\n</div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Service</strong> token\n</div>\n\nThe method returns [Jam](https://seller.wildberries.ru/monetization/jam) subscription information:\n  - If seller has never activated the Jam subscription, an empty `200` response is returned.\n  - If seller activated the subscription and never canceled it, the following is returned:\n    - subscription activation date `since`\n    - end date of the current paid period `till`\n  - If the subscription expired or was canceled but seller reactivated it, the following is returned:\n    - date of the first subscription activation `since`\n    - end date of the current paid period `till`\n  - If the subscription is inactive, the following is returned:\n    - date of the first subscription activation `since`\n    - end date of the last paid period `till`\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 10 requests |\n</div>\n",
         "operationId": "getV1Subscriptions",
         "responses": {
           "200": {
@@ -1033,7 +1141,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Успешно</span>"
+            "description": "Успешно"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1042,7 +1150,22 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/403"
+            "description": "Access denied",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1053,9 +1176,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Jam Subscription Information{{ /api/common/v1/subscriptions }}",
+        "summary": "Get Jam Subscription Information",
         "tags": [
-          "sellerInformation"
+          "Seller Information"
         ],
         "x-category": "commonapi",
         "x-readonly-method": true,
@@ -1072,9 +1195,10 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/sellerInformation/operation/getV1Subscriptions",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller Information/operation/getV1Subscriptions",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "sellerInformation"
       },
       "servers": [
         {
@@ -1084,7 +1208,7 @@
     },
     "/api/common/v1/tariff-constructor/options": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n<div class=\"description_auth\">\n  You can get information about Plan Builder options with a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>.\n</div>\n\nThe method returns information about all options and option packages that the seller activated in the [Plan Builder](https://seller.wildberries.ru/tariff-constructor).<br><br>\n\nOptions included in activated packages are returned in the `packages` array. Options activated outside of packages are returned in the `options` array.\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Service</strong> token\n</div>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 10 requests |\n</div>\n",
+        "description": "<div class=\"description_auth\">\n  You can get information about Plan Builder options with a token of any <a href=\"/openapi/api-information#tag/authorization/Token-categories\">category</a>.\n</div>\n\nThe method returns information about all options and option packages that the seller activated in the [Plan Builder](https://seller.wildberries.ru/tariff-constructor).<br><br>\n\nOptions included in activated packages are returned in the `packages` array. Options activated outside of packages are returned in the `options` array.\n\n\n<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Service</strong> token\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 10 requests |\n</div>\n",
         "operationId": "getV1TariffConstructorOptions",
         "parameters": [
           {
@@ -1107,46 +1231,67 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "PlanBuilderSuccess": "[MaxDepth]"
+                  "PlanBuilderSuccess": {
+                    "$ref": "#/components/examples/PlanBuilderSuccess"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/PlanBuilderOptionsInfo"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Успешно</span>"
+            "description": "Успешно"
           },
           "400": {
             "content": {
               "application/problem+json": {
                 "examples": {
-                  "PlanBuilder400": "[MaxDepth]"
+                  "PlanBuilder400": {
+                    "$ref": "#/components/examples/PlanBuilder400"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/PlanBuilderErrors"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
           },
           "403": {
-            "$ref": "#/components/responses/403"
+            "description": "Access denied",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "content": {
               "application/problem+json": {
                 "examples": {
-                  "PlanBuilder404": "[MaxDepth]"
+                  "PlanBuilder404": {
+                    "$ref": "#/components/examples/PlanBuilder404"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/PlanBuilderErrors"
                 }
               }
             },
-            "description": "<span class='response__value '>Not found</span>"
+            "description": "Not found"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1157,9 +1302,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Information about Plan Builder Options{{ /api/common/v1/tariff-constructor/options }}",
+        "summary": "Get Information about Plan Builder Options",
         "tags": [
-          "sellerInformation"
+          "Seller Information"
         ],
         "x-category": "commonapi",
         "x-readonly-method": true,
@@ -1176,9 +1321,10 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/sellerInformation/operation/getV1TariffConstructorOptions",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller Information/operation/getV1TariffConstructorOptions",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "sellerInformation"
       },
       "servers": [
         {
@@ -1188,7 +1334,7 @@
     },
     "/api/communications/v2/news": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method allows getting news from the seller portal.\n<br> To receive a successful response, one of the parameters `from` or `fromID` must be specified.\n<br> You can get up to 100 news items per request.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 10 requests |\n| Service | 1 min | 1 request | 1 min | 10 requests |\n| Base with secret | 1 min | 1 request | 1 min | 10 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "The method allows getting news from the seller portal.\n<br> To receive a successful response, one of the parameters `from` or `fromID` must be specified.\n<br> You can get up to 100 news items per request.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 10 requests |\n| Service | 1 min | 1 request | 1 min | 10 requests |\n| Base with secret | 1 min | 1 request | 1 min | 10 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV2News",
         "parameters": [
           {
@@ -1219,18 +1365,92 @@
             "content": {
               "application/json": {
                 "example": {
-                  "data": "[MaxDepth]"
+                  "data": [
+                    {
+                      "content": "Теперь в кампаниях ВБ.Медиа вы можете размещать баннеры для пользователей, которые взаимодействовали\nс товарами из определённой категории: покупали, искали, добавляли в корзину и избранное. Также можно\nвыбрать период, за который хотите учитывать эти действия.Например, вы продаёте обувь. Рекламу можно\nпоказать людям, которые добавляли в корзину или избранное товары из этой категории за последние 14\nдней. Возможно, пользователи, которые попадают под этот критерий, уже совершили покупку. Поэтому вы\nможете уточнить настройки показа: добавить параметр «Не покупал товар из категории „Обувь“ в последние\n14 дней». Так вероятность того, что ваш баннер приведёт к покупке, будет выше.Чтобы запустить рекламу,\nсоздайте в кабинете ВБ.Медиа кампанию «По показам» и на шаге 4 включите «Поведенческие параметры».\nЭти параметры можно комбинировать с таргетированием по предполагаемым интересам, полу, возрасту и\nрегиону.Подробнее о том, как настроить таргетинг, — в инструкции «По показам».Запустить рекламу на\nWildberries\n",
+                      "date": "2025-02-05T14:10:35+03:00",
+                      "header": "Новые настройки кампаний в ВБ.Медиа: таргетируйте рекламу в зависимости от того, как аудитория\nиспользует сервисы Wildberries\n",
+                      "id": 7369,
+                      "types": [
+                        {
+                          "id": 4,
+                          "name": "Маркетинг"
+                        }
+                      ]
+                    },
+                    {
+                      "content": "Добавили получение отчётов по текстам поисковых запросов в формате CSV. В описания методов «Создать\nотчёт» и «Получить отчёт» добавили описания и примеры моделей: • запросов — SearchReportTextReq, •\nуспешных ответов (статус-код 200) — SearchReportTextRes.В ответ метода «Поисковые запросы по товару»\nдобавили 8 полей и структуры price и medianPosition. Узнать больше можно в Журнале изменений.Эти методы\nдоступны только с подпиской «Джем»\n",
+                      "date": "2025-02-06T18:14:58+03:00",
+                      "header": "Изменения в API «Аналитики и данных»",
+                      "id": 7373,
+                      "types": [
+                        {
+                          "id": 8,
+                          "name": "API"
+                        },
+                        {
+                          "id": 41,
+                          "name": "Аналитика продавца"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "schema": {
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "description": "News data",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "content": {
+                            "type": "string",
+                            "description": "News text",
+                            "format": "plaintext"
+                          },
+                          "date": {
+                            "format": "date-time",
+                            "type": "string",
+                            "description": "News publication date and time"
+                          },
+                          "header": {
+                            "type": "string",
+                            "description": "News header"
+                          },
+                          "id": {
+                            "type": "integer",
+                            "description": "News ID"
+                          },
+                          "types": {
+                            "type": "array",
+                            "description": "News tags",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "description": "Tag ID"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "description": "Tag name"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
                   "type": "object"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1244,9 +1464,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Getting Seller Portal News{{ /api/communications/v2/news }}",
+        "summary": "Getting Seller Portal News",
         "tags": [
-          "newsApi"
+          "News API"
         ],
         "x-category": "commonapi",
         "x-readonly-method": true,
@@ -1282,9 +1502,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/newsApi/operation/getV2News",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/News API/operation/getV2News",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "newsApi"
       },
       "servers": [
         {
@@ -1294,7 +1515,7 @@
     },
     "/api/v1/invite": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token\n</div>\n\nThe method creates an invitation for a new user with access settings to the seller account sections.<br>\nHow access rights are assigned:\n- If `access` is empty (`[]`) or not provided — by default, all access is granted, except for access to the showcase (`showcase`) and **Jam** (`changeJam`)\n- If `access` specifies some of the account sections, then in addition to the access rights specified in the request, all default access rights are also granted\n- If `access` lists all possible sections, access rights will be granted according to the request, without the default access rights\n- If the same section (`code`) is specified twice in `access`:\n  - with different `disabled` values (`true` and `false`), access will not be granted\n  - with identical values of `\"disabled\": true`, access will not be granted\n  - with identical values of `\"disabled\": false`, access will be granted\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 5 requests |\n</div>\n",
+        "description": "<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token\n</div>\n\nThe method creates an invitation for a new user with access settings to the seller account sections.<br>\nHow access rights are assigned:\n- If `access` is empty (`[]`) or not provided — by default, all access is granted, except for access to the showcase (`showcase`) and **Jam** (`changeJam`)\n- If `access` specifies some of the account sections, then in addition to the access rights specified in the request, all default access rights are also granted\n- If `access` lists all possible sections, access rights will be granted according to the request, without the default access rights\n- If the same section (`code`) is specified twice in `access`:\n  - with different `disabled` values (`true` and `false`), access will not be granted\n  - with identical values of `\"disabled\": true`, access will not be granted\n  - with identical values of `\"disabled\": false`, access will be granted\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 5 requests |\n</div>\n",
         "operationId": "postV1Invite",
         "requestBody": {
           "content": {
@@ -1315,7 +1536,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -1325,13 +1546,28 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
           },
           "403": {
-            "$ref": "#/components/responses/403"
+            "description": "Access denied",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1342,9 +1578,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Create an Invitation for a New User{{ /api/v1/invite }}",
+        "summary": "Create an Invitation for a New User",
         "tags": [
-          "sellerUserManagement"
+          "Seller User Management"
         ],
         "x-category": "usermanagement",
         "x-readonly-method": false,
@@ -1361,9 +1597,10 @@
               "burst": "5 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/sellerUserManagement/operation/postV1Invite",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller User Management/operation/postV1Invite",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "sellerUserManagement"
       },
       "servers": [
         {
@@ -1373,7 +1610,7 @@
     },
     "/api/v1/seller-info": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n<div class=\"description_auth\">\n  You can get seller information with a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>.\n</div>\n\nThis method allows you to obtain the seller's name and account ID.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 10 requests |\n| Service | 1 min | 1 request | 1 min | 10 requests |\n| Base with secret | 1 min | 1 request | 1 min | 10 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
+        "description": "<div class=\"description_auth\">\n  You can get seller information with a token of any <a href=\"/openapi/api-information#tag/authorization/Token-categories\">category</a>.\n</div>\n\nThis method allows you to obtain the seller's name and account ID.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 10 requests |\n| Service | 1 min | 1 request | 1 min | 10 requests |\n| Base with secret | 1 min | 1 request | 1 min | 10 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
         "operationId": "getV1SellerInfo",
         "responses": {
           "200": {
@@ -1386,12 +1623,30 @@
                   "tradeMark": "Flax Store"
                 },
                 "schema": {
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "Seller's name"
+                    },
+                    "sid": {
+                      "format": "UUID",
+                      "type": "string",
+                      "description": "Wildberries Seller [ID](./api-information#tag/authorization/Kak-ustroen-token)"
+                    },
+                    "tin": {
+                      "type": "string",
+                      "description": "Taxpayer identification number of the partner (INN in Russian)"
+                    },
+                    "tradeMark": {
+                      "type": "string",
+                      "description": "Seller's trade name"
+                    }
+                  },
                   "type": "object"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1408,9 +1663,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Seller Information{{ /api/v1/seller-info }}",
+        "summary": "Get Seller Information",
         "tags": [
-          "sellerInformation"
+          "Seller Information"
         ],
         "x-category": "commonapi",
         "x-readonly-method": true,
@@ -1446,9 +1701,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/sellerInformation/operation/getV1SellerInfo",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller Information/operation/getV1SellerInfo",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "sellerInformation"
       },
       "servers": [
         {
@@ -1458,7 +1714,7 @@
     },
     "/api/v1/user": {
       "delete": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token\n</div>\n\nThe method removes a user from [the seller users list](./api-information#tag/sellerUserManagement/operation/getV1Users). This user will no longer have access to the seller account.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n</div>\n",
+        "description": "<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token\n</div>\n\nThe method removes a user from [the seller users list](/openapi/api-information#tag/sellerUserManagement/operation/getV1Users). This user will no longer have access to the seller account.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n</div>\n",
         "operationId": "deleteV1User",
         "parameters": [
           {
@@ -1474,7 +1730,7 @@
         ],
         "responses": {
           "200": {
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -1484,13 +1740,28 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
           },
           "403": {
-            "$ref": "#/components/responses/403"
+            "description": "Access denied",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1501,9 +1772,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Delete User{{ /api/v1/user }}",
+        "summary": "Delete User",
         "tags": [
-          "sellerUserManagement"
+          "Seller User Management"
         ],
         "x-category": "usermanagement",
         "x-readonly-method": false,
@@ -1520,9 +1791,10 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/sellerUserManagement/operation/deleteV1User",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller User Management/operation/deleteV1User",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "sellerUserManagement"
       },
       "servers": [
         {
@@ -1532,7 +1804,7 @@
     },
     "/api/v1/users": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token\n</div>\n\nThe method returns a list of seller account active or invited users.<br><br>\n\nSpecify the value of the `isInviteOnly` parameter to select the list:\n  - `isInviteOnly=true` — invited users list who have not yet activated access\n  - `isInviteOnly=false` or is not provided — active users list\n\nFor each user, you can get:\n  - user's role\n  - accessible sections\n  - invitation status\n\nThe list of invited users in the response is always sorted by creation date: from newest to oldest.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 5 requests |\n</div>\n",
+        "description": "<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token\n</div>\n\nThe method returns a list of seller account active or invited users.<br><br>\n\nSpecify the value of the `isInviteOnly` parameter to select the list:\n  - `isInviteOnly=true` — invited users list who have not yet activated access\n  - `isInviteOnly=false` or is not provided — active users list\n\nFor each user, you can get:\n  - user's role\n  - accessible sections\n  - invitation status\n\nThe list of invited users in the response is always sorted by creation date: from newest to oldest.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 5 requests |\n</div>\n",
         "operationId": "getV1Users",
         "parameters": [
           {
@@ -1571,15 +1843,435 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "invitesOnly": "[MaxDepth]",
-                  "usersOnly": "[MaxDepth]"
+                  "invitesOnly": {
+                    "summary": "isInviteOnly=true",
+                    "description": "List of invited users",
+                    "value": {
+                      "total": 2,
+                      "countInResponse": 2,
+                      "users": [
+                        {
+                          "id": 0,
+                          "role": "",
+                          "position": "Аналитик",
+                          "phone": "79998888888",
+                          "email": "",
+                          "isOwner": false,
+                          "firstName": "",
+                          "secondName": "",
+                          "patronymic": "",
+                          "goodsReturn": false,
+                          "isInvitee": true,
+                          "inviteeInfo": {
+                            "phoneNumber": "79998888888",
+                            "position": "Аналитик",
+                            "inviteUuid": "00000000-0000-4000-8000-000000000001",
+                            "expiredAt": "2025-12-01T00:00:00Z",
+                            "isActive": true
+                          },
+                          "access": [
+                            {
+                              "code": "supply",
+                              "disabled": true
+                            },
+                            {
+                              "code": "changeJam",
+                              "disabled": true
+                            },
+                            {
+                              "code": "showcase",
+                              "disabled": false
+                            },
+                            {
+                              "code": "suppliersDocuments",
+                              "disabled": false
+                            },
+                            {
+                              "code": "discountPrice",
+                              "disabled": true
+                            },
+                            {
+                              "code": "feedbacks",
+                              "disabled": false
+                            },
+                            {
+                              "code": "questions",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brands",
+                              "disabled": true
+                            },
+                            {
+                              "code": "pointsForReviews",
+                              "disabled": false
+                            },
+                            {
+                              "code": "pinFeedbacks",
+                              "disabled": false
+                            },
+                            {
+                              "code": "finance",
+                              "disabled": true
+                            },
+                            {
+                              "code": "balance",
+                              "disabled": false
+                            },
+                            {
+                              "code": "oldAnalyticsReports",
+                              "disabled": false
+                            },
+                            {
+                              "code": "marketplace",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brandsFlow",
+                              "disabled": false
+                            },
+                            {
+                              "code": "copyrightComplaints",
+                              "disabled": false
+                            },
+                            {
+                              "code": "pretrialClaims",
+                              "disabled": false
+                            },
+                            {
+                              "code": "sellersChat",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brandzone",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brandzoneSubscribe",
+                              "disabled": false
+                            }
+                          ]
+                        },
+                        {
+                          "id": 0,
+                          "role": "",
+                          "position": "",
+                          "phone": "7999XXXX102",
+                          "email": "",
+                          "isOwner": false,
+                          "firstName": "",
+                          "secondName": "",
+                          "patronymic": "",
+                          "goodsReturn": false,
+                          "isInvitee": true,
+                          "inviteeInfo": {
+                            "phoneNumber": "79996666666",
+                            "position": "Аналитик",
+                            "inviteUuid": "00000000-0000-4000-8000-000000000002",
+                            "expiredAt": "2025-12-10T00:00:00Z",
+                            "isActive": false
+                          },
+                          "access": [
+                            {
+                              "code": "supply",
+                              "disabled": true
+                            },
+                            {
+                              "code": "changeJam",
+                              "disabled": true
+                            },
+                            {
+                              "code": "showcase",
+                              "disabled": false
+                            },
+                            {
+                              "code": "suppliersDocuments",
+                              "disabled": false
+                            },
+                            {
+                              "code": "discountPrice",
+                              "disabled": true
+                            },
+                            {
+                              "code": "feedbacks",
+                              "disabled": false
+                            },
+                            {
+                              "code": "questions",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brands",
+                              "disabled": true
+                            },
+                            {
+                              "code": "pointsForReviews",
+                              "disabled": false
+                            },
+                            {
+                              "code": "pinFeedbacks",
+                              "disabled": false
+                            },
+                            {
+                              "code": "finance",
+                              "disabled": true
+                            },
+                            {
+                              "code": "balance",
+                              "disabled": false
+                            },
+                            {
+                              "code": "oldAnalyticsReports",
+                              "disabled": false
+                            },
+                            {
+                              "code": "marketplace",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brandsFlow",
+                              "disabled": false
+                            },
+                            {
+                              "code": "copyrightComplaints",
+                              "disabled": false
+                            },
+                            {
+                              "code": "pretrialClaims",
+                              "disabled": false
+                            },
+                            {
+                              "code": "sellersChat",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brandzone",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brandzoneSubscribe",
+                              "disabled": false
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "usersOnly": {
+                    "summary": "isInviteOnly=false",
+                    "description": "List of active users",
+                    "value": {
+                      "total": 2,
+                      "countInResponse": 2,
+                      "users": [
+                        {
+                          "id": 1001,
+                          "role": "user",
+                          "position": "Аналитик",
+                          "phone": "79999999999",
+                          "email": "user1@example.com",
+                          "isOwner": true,
+                          "firstName": "Иван",
+                          "secondName": "Иванов",
+                          "patronymic": "",
+                          "goodsReturn": true,
+                          "isInvitee": false,
+                          "inviteeInfo": null,
+                          "access": [
+                            {
+                              "code": "supply",
+                              "disabled": true
+                            },
+                            {
+                              "code": "changeJam",
+                              "disabled": true
+                            },
+                            {
+                              "code": "showcase",
+                              "disabled": false
+                            },
+                            {
+                              "code": "suppliersDocuments",
+                              "disabled": false
+                            },
+                            {
+                              "code": "discountPrice",
+                              "disabled": true
+                            },
+                            {
+                              "code": "feedbacks",
+                              "disabled": false
+                            },
+                            {
+                              "code": "questions",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brands",
+                              "disabled": true
+                            },
+                            {
+                              "code": "pointsForReviews",
+                              "disabled": false
+                            },
+                            {
+                              "code": "pinFeedbacks",
+                              "disabled": false
+                            },
+                            {
+                              "code": "finance",
+                              "disabled": true
+                            },
+                            {
+                              "code": "balance",
+                              "disabled": false
+                            },
+                            {
+                              "code": "oldAnalyticsReports",
+                              "disabled": false
+                            },
+                            {
+                              "code": "marketplace",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brandsFlow",
+                              "disabled": false
+                            },
+                            {
+                              "code": "copyrightComplaints",
+                              "disabled": false
+                            },
+                            {
+                              "code": "pretrialClaims",
+                              "disabled": false
+                            },
+                            {
+                              "code": "sellersChat",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brandzone",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brandzoneSubscribe",
+                              "disabled": false
+                            }
+                          ]
+                        },
+                        {
+                          "id": 1002,
+                          "role": "user",
+                          "position": "Менеджер",
+                          "phone": "79997777777",
+                          "email": "user2@example.com",
+                          "isOwner": false,
+                          "firstName": "Владимир",
+                          "secondName": "Смирнов",
+                          "patronymic": "",
+                          "goodsReturn": true,
+                          "isInvitee": true,
+                          "inviteeInfo": {
+                            "phoneNumber": "79997777777",
+                            "position": "Менеджер",
+                            "inviteUuid": "00000000-0000-4000-8000-000000000001",
+                            "expiredAt": "2025-12-01T00:00:00Z",
+                            "isActive": true
+                          },
+                          "access": [
+                            {
+                              "code": "supply",
+                              "disabled": true
+                            },
+                            {
+                              "code": "changeJam",
+                              "disabled": true
+                            },
+                            {
+                              "code": "showcase",
+                              "disabled": false
+                            },
+                            {
+                              "code": "suppliersDocuments",
+                              "disabled": false
+                            },
+                            {
+                              "code": "discountPrice",
+                              "disabled": true
+                            },
+                            {
+                              "code": "feedbacks",
+                              "disabled": false
+                            },
+                            {
+                              "code": "questions",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brands",
+                              "disabled": true
+                            },
+                            {
+                              "code": "pointsForReviews",
+                              "disabled": false
+                            },
+                            {
+                              "code": "pinFeedbacks",
+                              "disabled": false
+                            },
+                            {
+                              "code": "finance",
+                              "disabled": true
+                            },
+                            {
+                              "code": "balance",
+                              "disabled": false
+                            },
+                            {
+                              "code": "oldAnalyticsReports",
+                              "disabled": false
+                            },
+                            {
+                              "code": "marketplace",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brandsFlow",
+                              "disabled": false
+                            },
+                            {
+                              "code": "copyrightComplaints",
+                              "disabled": false
+                            },
+                            {
+                              "code": "pretrialClaims",
+                              "disabled": false
+                            },
+                            {
+                              "code": "sellersChat",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brandzone",
+                              "disabled": false
+                            },
+                            {
+                              "code": "brandzoneSubscribe",
+                              "disabled": false
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/getUsersResponse"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -1589,13 +2281,28 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
           },
           "403": {
-            "$ref": "#/components/responses/403"
+            "description": "Access denied",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1606,9 +2313,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get a List of Seller Active or Invited Users{{ /api/v1/users }}",
+        "summary": "Get a List of Seller Active or Invited Users",
         "tags": [
-          "sellerUserManagement"
+          "Seller User Management"
         ],
         "x-category": "usermanagement",
         "x-readonly-method": true,
@@ -1625,9 +2332,10 @@
               "burst": "5 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/sellerUserManagement/operation/getV1Users",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller User Management/operation/getV1Users",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "sellerUserManagement"
       },
       "servers": [
         {
@@ -1637,7 +2345,7 @@
     },
     "/api/v1/users/access": {
       "put": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token\n</div>\n\nThe method changes the access rights for one or more users.<br>\n<br>\nOnly the data passed in the request parameters will be updated. The other fields will remain unchanged.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 5 requests |\n</div>\n",
+        "description": "<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token\n</div>\n\nThe method changes the access rights for one or more users.<br>\n<br>\nOnly the data passed in the request parameters will be updated. The other fields will remain unchanged.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 5 requests |\n</div>\n",
         "operationId": "putV1UsersAccess",
         "requestBody": {
           "content": {
@@ -1651,7 +2359,7 @@
         },
         "responses": {
           "200": {
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -1661,13 +2369,28 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
           },
           "403": {
-            "$ref": "#/components/responses/403"
+            "description": "Access denied",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1678,9 +2401,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Update User's Access Permissions{{ /api/v1/users/access }}",
+        "summary": "Update User's Access Permissions",
         "tags": [
-          "sellerUserManagement"
+          "Seller User Management"
         ],
         "x-category": "usermanagement",
         "x-readonly-method": false,
@@ -1697,9 +2420,10 @@
               "burst": "5 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/sellerUserManagement/operation/putV1UsersAccess",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller User Management/operation/putV1UsersAccess",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "sellerUserManagement"
       },
       "servers": [
         {
@@ -1709,7 +2433,7 @@
     },
     "/ping": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nChecks:\n  1. Whether the request successfully reaches the WB API.\n  2. The validity of the authorization token and request URL.\n  3. Whether the token category matches the service.\n\n<div class=\"description_important\">\n  This method is not intended to check the availability of WB services\n</div>\n\nEach service has its own version of the method depending on the domain:\n\n| Category | Request URL |\n|---------------|-----------------------|\n| Content | `https://content-api.wildberries.ru/ping`<br>`https://content-api-sandbox.wildberries.ru/ping` |\n| Analytics | `https://seller-analytics-api.wildberries.ru/ping` |\n| Prices and Discounts | `https://discounts-prices-api.wildberries.ru/ping`<br>`https://discounts-prices-api-sandbox.wildberries.ru/ping` |\n| Marketplace | `https://marketplace-api.wildberries.ru/ping` |\n| Statistics | `https://statistics-api.wildberries.ru/ping`<br>`https://statistics-api-sandbox.wildberries.ru/ping` |\n| Promotion | `https://advert-api.wildberries.ru/ping`<br>`https://advert-api-sandbox.wildberries.ru/ping` |\n| Feedbacks and Questions | `https://feedbacks-api.wildberries.ru/ping`<br>`https://feedbacks-api-sandbox.wildberries.ru/ping` |\n| Buyers Chat | `https://buyer-chat-api.wildberries.ru/ping` |\n| Supplies | `https://supplies-api.wildberries.ru/ping` |\n| Buyers Returns | `https://returns-api.wildberries.ru/ping` |\n| Documents | `https://documents-api.wildberries.ru/ping` |\n| Finance | `https://finance-api.wildberries.ru/ping` |\n| Rates, News, Get Seller Information | `https://common-api.wildberries.ru/ping` |\n| Seller User Management | `https://user-management-api.wildberries.ru/ping` |\n\n<div class=\"description_limit\">\n  A maximum of 3 requests every 30 <a href='./api-information#tag/introduction/Rate-Limits'>seconds</a>. If you try to use this method programmatically, the method will be temporarily blocked. The rate limit applies individually to each instance of the method on each host\n</div>\n",
+        "description": "Checks:\n  1. Whether the request successfully reaches the WB API.\n  2. The validity of the authorization token and request URL.\n  3. Whether the token category matches the service.\n\n<div class=\"description_important\">\n  This method is not intended to check the availability of WB services\n</div>\n\nEach service has its own version of the method depending on the domain:\n\n| Category | Request URL |\n|---------------|-----------------------|\n| Content | `https://content-api.wildberries.ru/ping`<br>`https://content-api-sandbox.wildberries.ru/ping` |\n| Analytics | `https://seller-analytics-api.wildberries.ru/ping` |\n| Prices and Discounts | `https://discounts-prices-api.wildberries.ru/ping`<br>`https://discounts-prices-api-sandbox.wildberries.ru/ping` |\n| Marketplace | `https://marketplace-api.wildberries.ru/ping` |\n| Statistics | `https://statistics-api.wildberries.ru/ping`<br>`https://statistics-api-sandbox.wildberries.ru/ping` |\n| Promotion | `https://advert-api.wildberries.ru/ping`<br>`https://advert-api-sandbox.wildberries.ru/ping` |\n| Feedbacks and Questions | `https://feedbacks-api.wildberries.ru/ping`<br>`https://feedbacks-api-sandbox.wildberries.ru/ping` |\n| Buyers Chat | `https://buyer-chat-api.wildberries.ru/ping` |\n| Supplies | `https://supplies-api.wildberries.ru/ping` |\n| Buyers Returns | `https://returns-api.wildberries.ru/ping` |\n| Documents | `https://documents-api.wildberries.ru/ping` |\n| Finance | `https://finance-api.wildberries.ru/ping` |\n| Rates, News, Get Seller Information | `https://common-api.wildberries.ru/ping` |\n| Seller User Management | `https://user-management-api.wildberries.ru/ping` |\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 30 s | 3 requests | 10 s | 99 requests |\n</div>\n\nThe rate limit applies individually to each instance of the method on each host\n",
         "operationId": "getPing",
         "responses": {
           "200": {
@@ -1720,18 +2444,33 @@
                   "TS": "2024-08-16T11:19:05+03:00"
                 },
                 "schema": {
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "TS": {
+                      "type": "string",
+                      "description": "Request timestamp"
+                    },
+                    "Status": {
+                      "type": "string",
+                      "enum": [
+                        "OK"
+                      ],
+                      "description": "Status"
+                    }
+                  },
                   "type": "object"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "401": {
             "$ref": "#/components/responses/401"
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -1739,18 +2478,26 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Connection Check{{ /ping }}",
+        "summary": "Connection Check",
         "tags": [
-          "connectionCheck"
+          "WB API Connection Check"
         ],
-        "x-category": "all",
+        "x-category": "commonapi",
         "x-readonly-method": true,
         "x-wb-rate-limits": {
-          "scope": "Non-tabular limit from the official operation description",
-          "raw": "A maximum of 3 requests every 30 seconds . If you try to use this method programmatically, the method will be temporarily blocked. The rate limit applies individually to each instance of the method on each host",
-          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/connectionCheck/operation/getPing",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "scope": "Request limit per one seller account:",
+          "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/WB API Connection Check/operation/getPing",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "limits": [
+            {
+              "period": "30 s",
+              "limit": "3 requests",
+              "interval": "10 s",
+              "burst": "99 requests"
+            }
+          ]
+        },
+        "x-tagKey": "connectionCheck"
       },
       "servers": [
         {
@@ -1766,85 +2513,51 @@
   ],
   "tags": [
     {
-      "description": "<div class=\"api-description\">\n\n<div class=\"api-block\">\n\nIn this section:\n  - [WB API general information](./api-information#tag/introduction)\n  - how to [get started with the WB API](./api-information#tag/introduction/How-to-get-started-with-the-API)\n  - how to [log in](./api-information#tag/authorization) and [create tokens](./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token)\n  - main [HTTP status codes](./api-information#tag/introduction/HTTP-status-codes)\n  - [rate limits](./api-information#tag/introduction/Rate-Limits)\n  - how to contact [support](./api-information#tag/introduction/Support)\n\nUse the methods in this section to:\n  - check the [WB API connection](./api-information#tag/connectionCheck)\n  - get [seller portal news](./api-information#tag/newsApi/operation/getV2News)\n  - get [seller information](./api-information#tag/sellerInformation)\n  - [manage seller users](./api-information#tag/sellerUserManagement)\n\n</div>\n\n\n</div>",
-      "name": "General",
-      "x-traitTag": true
+      "description": "",
+      "name": "Introduction",
+      "x-displayName": "Introduction",
+      "x-tagKey": "introduction"
     },
     {
-      "description": "The Wildberries API provides sellers with tools to manage their store and obtain real-time and statistical information via the HTTP REST API protocol.<br><br>\n\nThe main advantage of the API is the ability to automate processes through integration with the seller information systems, such as ERP, WMS, OMS, CRM. With the WB API, sellers can manage their store without manually using the website interface.<br><br>\n\nUsing the API to operate a store on Wildberries is a great way to:\n  - automate routine processes\n  - access up-to-date information\n  - optimize inventory management\n\nThe API documentation is provided in the Swagger OpenAPI format and can be used for import into other tools, such as Postman, or for generating client code in various programming languages using Swagger CodeGen.<br><br>\n\nFor manual API testing you can use:\n  - For Windows — [PostMan](https://www.postman.com)\n  - For Linux — [curl](https://curl.se)\n\n# How to get started with the API\n\n  1. Register in the [Seller personal account](https://seller.wildberries.ru/).\n  2. Choose the integration type:\n      1. Self-integration with the WB API using your own developers or outsource specialists. For this, you can use the specifications in OpenAPI format. Methods are updated regularly, so for the integration to work properly, please monitor the [release notes](/en/release-notes).\n      2. Connecting partner services from the [Solutions for Business catalog](https://seller.wildberries.ru/auth-services). The services maintain updates for the WB API themselves.\n  3. Create an API token in the [store settings](./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token). The token will allow you to access the WB API. The token system lets you control who interacts with your data through the API and how.\n\n\n<div class=\"description_ref\">\n  You can learn more about the types of the WB API integration in the knowledge base article <a href=\"/knowledge-base/articles/019d49a0-daa8-7cc4-81a4-af60cf43a6dd/sposoby-integratsii-svoio-reshenie-ili-gotovyi-servis\">Integration Types: Custom Solution or Ready-made Service</a>\n</div>\n\n\n<div class=\"description_important\">\n    Use the <a href='./api-information#tag/connectionCheck'>connection test method</a> to find out if requests are successfully reaching the API and if the API token is configured correctly\n</div>\n\nPractical tips:\n- **Use the documentation**.<br>[Official WB API documentation](./api-information) will help you understand the functionality and capabilities of the API. It includes examples of possible requests and responses, a list of potential errors, rate limits, security rules, and more.\n- **Regularly check the integration**.<br>Ensure that you are transmitting data correctly and note the responses you receive to timely update the integration. Remember the restrictions and take into account the request limits.\n- **Keep the API token secure**.<br> Do not share it with third parties unnecessarily. Use only trusted services. If you detect suspicious activity, immediately delete and replace the token.\n- Contact [technical support](./api-information#tag/introduction/Support) if needed.\n- Stay updated on WB API news and changes in:\n  - [Release Notes](/en/release-notes)\n  - [Telegram channel](https://t.me/wb_api_notifications)\n  - [MAX channel](https://max.ru/wbapi)\n  - [Wildberries news feed](https://seller.wildberries.ru/news-v2)\n\n# Support\n\nTechnical support is conducted via [chats](https://seller.wildberries.ru/service-desk-v2) in the seller personal account. When creating a new chat with the support, use the **Интеграции по API** category.\n\n# HTTP status codes\n\nMain response status codes for requests in the WB API:\n\n| Code | Description | How to resolve |\n| --- | --- | --- |\n| **200** | Success | |\n| **204** | Deleted/Updated/Confirmed | |\n| **400** | Bad request | Check the request syntax |\n| **401** | Unauthorized | Check the authorization token. The token category must match the API category. Additionally, the token may be:<br />• expired<br />• incorrect<br />• missing from the request |\n| **402** | Payment required | The service has insufficient funds on its balance. The error is only returned to services from the [Solutions for business Catalog](/business-solutions) |\n| **403** | Access denied | The token must not be generated by a deleted user. Access to the method must not be blocked. If you want to use the [Jam](https://seller.wildberries.ru/monetization/jam) methods, check your subscription in your personal account |\n| **404** | Not found | Check the request URL |\n| **409** | Status update error/Error adding label/etc | Check the request data. It must meet the service's requirements and limitations |\n| **413** | The request body size exceeds the given limit | Reduce the number of objects in the request |\n| **422** | Error processing request parameters/Unexpected result/etc | Check the request data. The request data must not contradict each other |\n| **429** | Too many requests | Check the method rate limits and retry the request later |\n| **5ХХ** | Internal service error | Service is unavailable. Retry the request later or contact WB technical support |\n\n<div class=\"description_important\">\n  Pay attention to the <code>details</code> field in <code>404</code> and <code>429</code> errors — we add useful information there regarding the use of methods\n</div>\n\nExample of an error:\n\n```json\n{\n  \"title\": \"path not found\",\n  \"detail\": \"Please consult the https://dev.wildberries.ru/openapi/api-information\",\n  ...\n  \"status\": 404,\n  \"statusText\": \"Not Found\",\n  \"timestamp\": \"2025-04-24T07:25:28Z\"\n}\n```\n\n# Rate Limits\n\nThe WB API has request rate limits. To evenly distribute the load, the `token bucket` algorithm is used. Limits for specific API methods are specified in the documentation.<br><br>\n\nFor example:\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods in the <strong>Marketplace</strong> category:\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 minute | 300 requests | 200 milliseconds | 20 requests |\n| Service | 1 minute | 300 requests | 200 milliseconds | 20 requests |\n| Base | 1 minute | 150 requests | 200 milliseconds | 10 requests |\n| Test | 1 minute | 150 requests | 200 milliseconds | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n</div>\n\n- **Type** — the type of limit. Determined by the token type and authentication.\n\n<div class=\"description_important\">\nThe service request limit applies:<br>\n• for requests with a service token from services in the <a href='/business-solutions'>Catalog for business solutions</a><br>\n• for requests with a basic token with a secret from registered and authorized services that are not included in the Catalog<br><br>\n\nThe service limit applies to all tokens within a single service.\n</div>\n\n- **Period** — the time interval during which the maximum number of requests according to the limit can be sent.\n- **Limit** — the maximum number of requests per period. In the example, up to 300 requests can be sent in one minute. Requests should be evenly distributed over time.\n- **Interval** — the time gap for pauses between requests. In the example, it should be `60 seconds/300 requests` — `200 milliseconds` or `0.2 seconds`. Use the interval to evenly distribute the sending of requests.\n- **Burst** — the maximum number of requests that can be sent simultaneously, without interval pauses. The allowed burst is also returned in the response header `X-Ratelimit-Remaining`. It appears in all response statuses except for error `429`.\n\n`X-Ratelimit-Remaining` is the number of requests that can currently be sent without pauses. The value of `X-Ratelimit-Remaining` decreases by one after each request. If `X-Ratelimit-Remaining` is `0` and you make the next request without a delay, you will receive a `429` error in response. The value of `X-Ratelimit-Remaining` is restored over time.\n\n<div class=\"description_important\">\n  There are cases where one request can count as multiple requests. For example, if you send requests in the <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">Marketplace</a> category, a request with a <code>4XX</code> errors will count as 10 requests with other statuses. In such cases, the value of <code>X-Ratelimit-Remaining</code> will decrease by 10 units immediately.\n</div>\n\nIf you exceed the request rate limit, you will receive a `429` error. In this case, you need to wait a short period before making the next request. To determine how long you need to wait, use the headers from the `429` response:\n\n- `X-Ratelimit-Retry` — the number of seconds after which you can retry the request. If you attempt it earlier, you will continue to receive a `429` error.\n- `X-Ratelimit-Limit` — the maximum allowable burst of requests, which will be replenished after `X-Ratelimit-Reset` seconds.\n- `X-Ratelimit-Reset` — the number of seconds after which the allowable burst of requests will be restored to the maximum value specified in `X-Ratelimit-Limit`.\n\nResponse example:\n\n```sh\nHTTP/1.1 429 Too Many Requests\n...\nX-Ratelimit-Reset: 29\nX-Ratelimit-Retry: 2\n...\nX-Ratelimit-Limit: 10\n```\n",
-      "name": "introduction",
-      "x-displayName": "Introduction"
+      "description": "",
+      "name": "Authorization",
+      "x-displayName": "Authorization",
+      "x-tagKey": "authorization"
     },
     {
-      "description": "You need API token to authenticate requests. It is valid for 180 days after creation. Add the token to the `Authorization` request header.\n\n<div class=\"description_important\">\n  According to clause 9.9.6 of the offer, integration with the seller portal without <a href=\"/en\">WB API</a> is prohibited.\n</div>\n\n# Rules for using API access tokens\n\n<div class=\"description_auth\">\n  The procedure and grounds for revoking access tokens are set out in the <a href=\"https://legal.wildberries.ru/soglashenie-o-razmeschenii-avtorizovannykh-servisov-na-platforme-wb-api/country/ru/lang/ru/\">WB API Platform Access Agreement</a>.\n</div>\n\n\n<div class=\"description_ref\">\n  You can learn more about tokens from the <a href=\"https://seller.wildberries.ru/instructions/ru/ru/material/api-integration-with-token\">guide in the Help Center</a>\n</div>\n\n\nFour types of tokens are available for authorization:\n\n<div class=\"description_limit\">\n  Request limits may differ for different token types\n</div>\n\n1. **Personal token**\n\n- **Purpose:** An exclusive token with advanced features. It is designed to grant access to seller data only to your own programs, including corporate (on-premise) systems hosted on your own or third-party infrastructure.<br />Advanced features mean that over time, a personal access token will provide access to additional categories of seller data that are not available with the basic token. We will announce this in the news in advance.\n- **Suitable for:**\n  - a company's own software products or systems hosted on its own or third-party servers\n  - ready-made on-premise ERP/CRM systems, including local (packaged) versions of 1C hosted on company servers or user computers\n- **Restrictions:** A personal access token provides access to sensitive information, so it must not be shared with third parties or used in cloud services. When creating the token, the system will display a liability warning — you must accept it to proceed.<br />You choose the token settings yourself. If you are unsure which parameters to specify, check with the developer or IT specialist responsible for the system you are connecting.\n\n2. **Service token**\n\n- **Purpose:** A special token for connecting a specific cloud service from the official [Catalog of business solutions](/en/business-solutions) on **Wildberries**.\n- **Features:** Select a service from the [Catalog](/en/business-solutions) when creating the token. Then all necessary settings, including data categories and access levels, are filled in automatically. You only need to confirm the token creation and provide it to the service.\n- **Restrictions:** Token is created for one service only and doesn't work with any other\n\n3. **Base token**\n\n- **Purpose:** An additional token that provides access to a limited set of seller data and is used in all cases where a service or personal access token is not suitable.\n- **Suitable for:**\n  - testing integration on real data before launch\n  - other cases where you cannot use a service or personal access token\n- **Restrictions:** You can only work with a limited set of data.\n\n4. **Test token**\n\n- **Purpose:** A special token for securely testing and debugging integrations in an isolated environment — the [WB API sandbox](/en/sandbox).\n- **Suitable for:**\n  - developing and debugging integrations without risk to real data\n  - exploring API capabilities and experimenting with methods\n  - testing new features before launching in the production environment\n- **Restrictions:** A test token only works with the sandbox and provides access to generated test data. Real seller data is not accessible.\n\n<div class=\"description_important\">\n  In some methods, you may see a section with a key icon — this section outlines usage restrictions. For example, a specific token type or the presence of a service secret in the request may be required.<br><br>\n\n  If there is no key icon section in the method, you can use it with any token type.\n</div>\n\n# How to create a personal access, base, or test token\n\n\n<div class=\"description_ref\">\n  You can learn more about creating a <strong>Service token</strong> from the <a href=\"https://seller.wildberries.ru/instructions/ru/ru/material/how-to-create-update-or-delete-a-wb-api-token?categoryId=api-integration&goBackOption=prevRoute#%D0%BA%D0%B0%D0%BA-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BD%D1%8B%D0%B9-%D1%82%D0%BE%D0%BA%D0%B5%D0%BD\">guide in the Help Center</a>\n</div>\n\n\n1. In your personal access account, go to the [API Integrations](https://seller.wildberries.ru/api-integrations) section.\n2. Click **+ Create token**. A window for creating token with two tabs will open. For all token types except Service token, select the **Manual integration** tab.\n3. Choose the token type.\n4. For base and personal access tokens:\n  - Enter the token name\n  - Choose the method [categories](./api-information#tag/authorization/Token-categories) you will have access to with this token\n  - Set the data access level: **Read and Write** or **Read Only**\n\n<div class=\"description_important\">\n  Only select the categories you plan to work with. For example, if you will only upload listings, select only Content category. If someone gets your token, they will not be able to gain access to the other API categories of your store.\n</div>\n\n5. Optionally, add a comment to the token. For a personal access token, check the **I understand that the token should not be shared with third parties** box.\n6. Click **Create**. A window with your token will appear.\n7. Click the **Copy and close** button — the window will close, and the token will be copied to the clipboard. After this, you will not be able to view the token in your personal account again.\n8. Save the token in a safe place. If you lose the token, create a new one.\n\n<div class=\"description_important\">\n  If you have several services (integrations) that work with different categories, create a token for each service. This will allow access to only the necessary categories, as well as more flexible and secure management of integrations.\n</div>\n\n# Token categories\n\nWhen creating a basic or personal token, you can select the categories of methods that you will have access to:\n\n| Category | Methods |\n|---------------|-----------------------|\n| Content | [Categories, Subcategories and Characteristics](./work-with-products#tag/categoriesSubcategoriesAndCharacteristics)<br />[Listing Items](./work-with-products#tag/listingItems)<br />[Listings](./work-with-products#tag/listings)<br />[mediaFiles](./work-with-products#tag/mediaFiles)<br />[Labels](./work-with-products#tag/labels)<br />[Recommendations](./work-with-products#tag/recommendations) |\n| Analytics | [Analytics and Data](./analytics)<br />[Warehouses Inventory Report](./reports#tag/warehousesInventoryReport)<br />[Report on Items with Mandatory Labeling](./reports#tag/reportOnItemsWithMandatoryLabeling)<br />[Retention Reports](./reports#tag/retentionReports)<br />[Acceptance Expenses](./reports#tag/acceptanceExpenses)<br />[Paid Storage](./reports#tag/paidStorage)<br />[Sales by Regions](./reports#tag/salesByRegions)<br />[Share of Brand in Sales](./reports#tag/shareOfBrandInSales)<br />[Blocked Items](./reports#tag/blockedItems)<br />[Returns and Item Movement Report](./reports#tag/returnsAndItemMovementReport) |\n| Prices and Discounts | [Prices and Discounts](./work-with-products#tag/Prices-and-Discounts)<br />[Promo Calendar](./promotion#tag/promoCalendar) |\n| Marketplace | [Seller Warehouses](./work-with-products#tag/Seller-Warehouses)<br />[Seller Warehouses Inventory](./work-with-products#tag/Seller-Warehouses-Inventory)<br />[FBS Orders](./orders-fbs)<br />[DBW Orders](./orders-dbw)<br />[DBS Orders](./orders-dbs)<br />[In-Store Pickup Orders](./in-store-pickup) |\n| Statistics | [Main Reports](./reports#tag/mainReports) |\n| Promotion | [Campaigns](./promotion#tag/campaigns)<br />[Creating Campaigns](./promotion#tag/creatingCampaigns)<br />[Campaign Management](./promotion#tag/campaignManagement)<br />[Search Clusters](./promotion#tag/searchClusters)<br />[Finances](./promotion#tag/finances)<br />[Media](./promotion#tag/media)<br />[Statistics](./promotion#tag/statistics) |\n| Feedbacks and Questions | [Questions](./user-communication#tag/questions)<br />[Feedbacks](./user-communication#tag/feedbacks)<br />[Pinned Feedback](./user-communication#tag/pinnedFeedbacks) |\n| Buyers Chat | [Buyers Chat](./user-communication#tag/buyersChat) |\n| Supplies | [FBW Supplies](./orders-fbw#tag/FBW-Supplies) |\n| Buyers Returns | [Buyers Returns](./user-communication#tag/buyersReturns) |\n| Documents | [Documents](./financial-reports-and-accounting#tag/documents) |\n| Finance | [Balance](./financial-reports-and-accounting#tag/balance)<br />[Financial Reports](./financial-reports-and-accounting#tag/financialReports) |\n| Users | [Seller User Management](./api-information#tag/sellerUserManagement) |\n\n# About the token\n\nThe token is a JWT according to [RFC 7519](https://www.rfc-editor.org/rfc/rfc7519). To check if your token is valid and which categories of API methods are available with it, you can [decode it](/en/jwt?utm_source=dev-portal&utm_campaign=api-information&utm_content=cta-link).\n\n<div class=\"description_important\">\n  We recommend not to view the token using online tools so no one can take it over.\n</div>\n\n**Token fields**<br><br>\n\nThe token type can be determined by the list of fields from the decoded token `payload`:\n\n| Token              | `acc` value | `for` value      | `t` value |\n| ------------------ | -------------- | ------------------- | ------------ |\n| Base token      | `1`            | The field is missing    | `false`      |\n| Test token     | `2`            | The field is missing    | `true`       |\n| Personal access token | `3`            | `self`              | `false`      |\n| Service token    | `4`            | `asid:{Service ID}` | `false`      |\n\nOther fields:\n\n| **Field**       | **Type**          | **Description**                                                         |\n| ---------- | ------------ | ---------------------------------------------------------------------------- |\n| **id**   | UUIDv4 | Unique token ID |\n| **s**    | uint   | Token properties bitmask |\n| **sid**  | UUIDv4 | Wildberries seller ID|\n| **exp**  | uint   | Token lifetime, complies with [RFC 7519: JSON Web Token (JWT)](https://www.rfc-editor.org/rfc/rfc7519#section-4.1.4) |\n\nThe remaining `payload` fields are for internal use and may be removed.<br><br>\n\n**`s` field**<br><br>\n\nThe ```s``` field is a bitmask, an integer, each bit of which means the presence or absence of some option.<br><br>\n\n[Learn more about bitmask](https://en.wikipedia.org/wiki/Mask_(computing))\n<br><br>\n**Bit values**\n\n|**Bit position**| **Property (if bit is 1)**|\n| ------------ |---------------------------------------|\n| 1| Access to **Content**|\n| 2| Access to **Analytics**|\n| 3| Access to **Prices and discounts**|\n| 4| Access to **Marketplace**|\n| 5| Access to **Statistics**|\n| 6| Access to **Promotion**|\n| 7| Access to **Feedbacks and Questions**|\n| 9| Access to **Buyers chat**|\n| 10| Access to **Supplies**|\n| 11| Access to **Buyers returns**|\n| 12| Access to **Documents**|\n| 13| Access to **Finance**|\n| 16| Access to **Users**|\n| 30| Read only token |\n\n# Token decode\n\nToken decoding will allow to check if the token is valid and which categories of API methods are available. You can decode the token on the [separate page](/en/jwt?utm_source=dev-portal&utm_campaign=api-information&utm_content=cta-link).\n",
-      "name": "authorization",
-      "x-displayName": "Authorization"
+      "description": "",
+      "name": "WB API Connection Check",
+      "x-displayName": "WB API Connection Check",
+      "x-tagKey": "connectionCheck"
     },
     {
-      "description": "<div class=\"description_auth\">\n   You can check connection with a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>\n</div>\n",
-      "name": "connectionCheck",
-      "x-displayName": "WB API Connection Check"
+      "description": "",
+      "name": "News API",
+      "x-displayName": "News API",
+      "x-tagKey": "newsApi"
     },
     {
-      "description": "<div class=\"description_auth\">\n   You can get Seller Portal News with a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>\n</div>\n",
-      "name": "newsApi",
-      "x-displayName": "News API"
+      "description": "",
+      "name": "Seller Information",
+      "x-displayName": "Seller Information",
+      "x-tagKey": "sellerInformation"
     },
     {
-      "description": "Using these methods, you can get:\n  - [seller information](./api-information#tag/sellerInformation/operation/getV1SellerInfo)\n  - [seller rating](./api-information#tag/sellerInformation/operation/getV1Rating)\n  - [Jam subscription information](./api-information#tag/sellerInformation/operation/getV1Subscriptions)\n  - [Plan builder options information](./api-information#tag/sellerInformation/operation/getV1TariffConstructorOptions)\n",
-      "name": "sellerInformation",
-      "x-displayName": "Seller Information"
-    },
-    {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Users</strong> category\n</div>\n\nWith these methods, you can:\n  - [Create an invitation for a user](./api-information#tag/sellerUserManagement/operation/postV1Invite) with access to the seller account\n  - [Get a list of the seller active or invited users](./api-information#tag/sellerUserManagement/operation/getV1Users)\n  - [Update user's access permissions](./api-information#tag/sellerUserManagement/operation/putV1UsersAccess) for the seller account\n  - [Revoke a user's access](./api-information#tag/sellerUserManagement/operation/deleteV1User) to the seller account\n\nYou can manage user access only with a token from the active owner of the seller account.\n",
-      "name": "sellerUserManagement",
-      "x-displayName": "Seller User Management"
+      "description": "",
+      "name": "Seller User Management",
+      "x-displayName": "Seller User Management",
+      "x-tagKey": "sellerUserManagement"
     }
   ],
   "x-wb-extraction": {
-    "mode": "browser-redoc-openapi",
+    "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/api-information",
-    "capturedAt": "2026-08-19T18:12:37.448Z"
+    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/01-general.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-08-19T18:12:37.448Z",
+    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/api-information",
     "operationCount": 10
-  },
-  "x-wb-category-rate-limit-example": {
-    "scope": "Request limit per one seller account for all methods in the Marketplace category:",
-    "limits": [
-      {
-        "type": "Personal",
-        "period": "1 minute",
-        "limit": "300 requests",
-        "interval": "200 milliseconds",
-        "burst": "20 requests"
-      },
-      {
-        "type": "Service",
-        "period": "1 minute",
-        "limit": "300 requests",
-        "interval": "200 milliseconds",
-        "burst": "20 requests"
-      },
-      {
-        "type": "Base",
-        "period": "1 minute",
-        "limit": "150 requests",
-        "interval": "200 milliseconds",
-        "burst": "10 requests"
-      },
-      {
-        "type": "Test",
-        "period": "1 minute",
-        "limit": "150 requests",
-        "interval": "200 milliseconds",
-        "burst": "10 requests"
-      }
-    ],
-    "source": "https://dev.wildberries.ru/en/docs/openapi/api-information#tag/introduction/Rate-Limits",
-    "verifiedAt": "2026-08-19T18:12:37.448Z",
-    "note": "One request with 4XX response codes is counted as 10 requests"
   }
 }

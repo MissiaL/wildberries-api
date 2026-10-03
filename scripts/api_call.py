@@ -92,7 +92,8 @@ def path_template_matches(template, actual_path):
 
 
 def load_operation_rate_limit(method, url):
-    actual_path = urllib.parse.unquote(urllib.parse.urlparse(url).path)
+    parsed = urllib.parse.urlparse(url)
+    actual_path = urllib.parse.unquote(parsed.path)
     matches = []
     for schema_path in OPENAPI_DIR.glob("*.json"):
         if schema_path.name in {
@@ -105,6 +106,9 @@ def load_operation_rate_limit(method, url):
         for template, operations in schema.get("paths", {}).items():
             operation = operations.get(method.lower())
             if operation and path_template_matches(template, actual_path):
+                servers = operation.get("servers", operations.get("servers", schema.get("servers", [])))
+                if not any(urllib.parse.urlparse(server["url"]).hostname == parsed.hostname for server in servers):
+                    continue
                 rate_limit = operation.get("x-wb-rate-limits")
                 if rate_limit:
                     matches.append((template, rate_limit))
@@ -147,6 +151,7 @@ def configured_rate_limit(method, url, token):
         "note": rate_limit.get("note") or rate_limit.get("raw"),
         "source": rate_limit.get("source"),
         "verifiedAt": rate_limit.get("verifiedAt"),
+        "status": rate_limit.get("status", "documented"),
     }
 
 

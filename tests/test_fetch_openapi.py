@@ -243,3 +243,28 @@ def test_write_outputs_handles_empty_records(tmp_path):
 
     assert manifest == {"schemas": []}
     assert allowlist == {"hosts": []}
+
+
+def test_direct_refresh_updates_production_hosts_from_all_server_levels(tmp_path, monkeypatch):
+    (tmp_path / "manifest.json").write_text(json.dumps({"schemas": [{
+        "slug": "reports", "title": "Reports", "schema_filename": "reports.json",
+        "doc_url": "https://dev.wildberries.ru/en/docs/openapi/reports",
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/12-reports.yaml",
+        "hosts": ["obsolete-api.wildberries.ru"],
+    }]}))
+    (tmp_path / "host-allowlist.json").write_text(json.dumps({"hosts": ["obsolete-api.wildberries.ru"]}))
+    schema = {"openapi": "3.0.1", "servers": [{"url": "https://common-api.wildberries.ru"}],
+              "paths": {"/report": {"servers": [{"url": "https://new-api.wildberries.ru"}],
+                "get": {"servers": [
+                    {"url": "https://statistics-api.wildberries.ru"},
+                    {"url": "https://statistics-api-sandbox.wildberries.ru"},
+                    {"url": "https://statistics-api.wildberries.ru.evil.example"},
+                    {"url": "http://unsafe-api.wildberries.ru"},
+                ]}}}}
+    monkeypatch.setattr(fetch_openapi, "fetch_text", lambda url: json.dumps(schema))
+    fetch_openapi.fetch_all(output_dir=tmp_path)
+
+    expected = ["common-api.wildberries.ru", "new-api.wildberries.ru", "statistics-api.wildberries.ru"]
+    manifest = json.loads((tmp_path / "manifest.json").read_text())
+    allowlist = json.loads((tmp_path / "host-allowlist.json").read_text())
+    assert manifest["schemas"][0]["hosts"] == allowlist["hosts"] == expected

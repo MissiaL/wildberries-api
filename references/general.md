@@ -2,7 +2,7 @@
 
 ## Scope
 
-- Connection checks, seller news, seller info, seller rating, Jam subscriptions, and user management.
+- Connection checks, seller news, seller info, seller rating, Jam subscriptions, Plan Builder options, and user management.
 - Primary schema: `assets/openapi/api-information.json`.
 - Production hosts include `common-api.wildberries.ru` and `user-management-api.wildberries.ru`; the schema also carries the shared production host list.
 
@@ -20,8 +20,11 @@ See [rate-limits.md](rate-limits.md) before repeated calls.
 ```bash
 python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/ping"
 python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/v1/seller-info"
-python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/common/v1/rating"
+python3 scripts/api_call.py --method GET --url "https://feedbacks-api.wildberries.ru/api/common/v1/rating"
+python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/api/common/v1/tariff-constructor/options"
 python3 scripts/api_call.py --method GET --url "https://user-management-api.wildberries.ru/api/v1/users"
 ```
 
 For write operations such as inviting users or updating access, state the intended change before sending the request.
+
+Seller rating requires a Service token with Feedbacks and Questions access. Jam subscription and Plan Builder options methods also require Service tokens. User-management methods require a Personal token from the active seller-account owner.

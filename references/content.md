@@ -19,4 +19,4 @@ python3 scripts/api_call.py --method POST --url "https://content-api.wildberries
 
 - For product-card creation or edits, validate required subject characteristics from `GET /content/v2/object/charcs/{subjectId}` first.
 - Large uploads and destructive edits should be summarized to the user before execution.
-
+- Current classification directories include `GET /api/content/v2/directory/okpd`, `/api/content/v2/directory/okpd/all`, and `/api/content/v2/directory/tnved/all`; inspect their query parameters before paginating.

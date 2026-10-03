@@ -5,25 +5,14 @@
       "title": "General",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/api-information",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/general",
-      "schema_source_url": null,
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/01-general.yaml",
       "schema_filename": "api-information.json",
       "hosts": [
         "common-api.wildberries.ru",
-        "content-api.wildberries.ru",
-        "seller-analytics-api.wildberries.ru",
-        "discounts-prices-api.wildberries.ru",
-        "marketplace-api.wildberries.ru",
-        "statistics-api.wildberries.ru",
-        "advert-api.wildberries.ru",
         "feedbacks-api.wildberries.ru",
-        "buyer-chat-api.wildberries.ru",
-        "supplies-api.wildberries.ru",
-        "returns-api.wildberries.ru",
-        "documents-api.wildberries.ru",
-        "finance-api.wildberries.ru",
         "user-management-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
+      "extraction_mode": "direct-schema-url",
       "path_count": 10,
       "operation_count": 10,
       "source_lastmod": null,
@@ -31,73 +20,73 @@
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/api-information",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/general",
-        "schema_source_url": null,
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/01-general.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     },
     {
       "slug": "work-with-products",
       "title": "Item Management",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/work-with-products",
-      "swagger_url": "https://dev.wildberries.ru/en/swagger/products",
-      "schema_source_url": null,
+      "swagger_url": "https://dev.wildberries.ru/en/swagger/items",
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/02-items.yaml",
       "schema_filename": "work-with-products.json",
       "hosts": [
         "content-api.wildberries.ru",
         "discounts-prices-api.wildberries.ru",
         "marketplace-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
-      "path_count": 45,
-      "operation_count": 52,
+      "extraction_mode": "direct-schema-url",
+      "path_count": 48,
+      "operation_count": 55,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/work-with-products",
-        "swagger_url": "https://dev.wildberries.ru/en/swagger/products",
-        "schema_source_url": null,
+        "swagger_url": "https://dev.wildberries.ru/en/swagger/items",
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/02-items.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     },
     {
       "slug": "orders-fbs",
       "title": "FBS Orders",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-fbs",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-fbs",
-      "schema_source_url": null,
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/03-orders-fbs.yaml",
       "schema_filename": "orders-fbs.json",
       "hosts": [
         "marketplace-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
-      "path_count": 32,
-      "operation_count": 40,
+      "extraction_mode": "direct-schema-url",
+      "path_count": 38,
+      "operation_count": 46,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-fbs",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-fbs",
-        "schema_source_url": null,
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/03-orders-fbs.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     },
     {
       "slug": "orders-dbw",
       "title": "DBW Orders",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-dbw",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-dbw",
-      "schema_source_url": null,
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/04-orders-dbw.yaml",
       "schema_filename": "orders-dbw.json",
       "hosts": [
         "marketplace-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
+      "extraction_mode": "direct-schema-url",
       "path_count": 16,
       "operation_count": 16,
       "source_lastmod": null,
@@ -105,73 +94,75 @@
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-dbw",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-dbw",
-        "schema_source_url": null,
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/04-orders-dbw.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     },
     {
       "slug": "orders-dbs",
       "title": "DBS",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-dbs",
-      "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-dbs",
-      "schema_source_url": null,
+      "swagger_url": "https://dev.wildberries.ru/en/swagger/dbs",
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/05-dbs.yaml",
       "schema_filename": "orders-dbs.json",
       "hosts": [
         "marketplace-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
+      "extraction_mode": "direct-schema-url",
       "path_count": 21,
       "operation_count": 21,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-dbs",
-        "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-dbs",
-        "schema_source_url": null,
+        "swagger_url": "https://dev.wildberries.ru/en/swagger/dbs",
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/05-dbs.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     },
     {
       "slug": "promotion",
       "title": "Marketing and Promotion",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/promotion",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/promotion",
-      "schema_source_url": null,
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/08-promotion.yaml",
       "schema_filename": "promotion.json",
       "hosts": [
-        "advert-api.wildberries.ru"
+        "advert-api.wildberries.ru",
+        "advert-media-api.wildberries.ru",
+        "dp-calendar-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
-      "path_count": 38,
-      "operation_count": 39,
+      "extraction_mode": "direct-schema-url",
+      "path_count": 40,
+      "operation_count": 42,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/promotion",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/promotion",
-        "schema_source_url": null,
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/08-promotion.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     },
     {
       "slug": "user-communication",
       "title": "Customer Communication",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/user-communication",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/communications",
-      "schema_source_url": null,
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/09-communications.yaml",
       "schema_filename": "user-communication.json",
       "hosts": [
-        "feedbacks-api.wildberries.ru",
         "buyer-chat-api.wildberries.ru",
+        "feedbacks-api.wildberries.ru",
         "returns-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
+      "extraction_mode": "direct-schema-url",
       "path_count": 21,
       "operation_count": 25,
       "source_lastmod": null,
@@ -179,47 +170,47 @@
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/user-communication",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/communications",
-        "schema_source_url": null,
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/09-communications.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     },
     {
       "slug": "wb-tariffs",
       "title": "Rates",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/wb-tariffs",
-      "swagger_url": "https://dev.wildberries.ru/en/swagger/tariffs",
-      "schema_source_url": null,
+      "swagger_url": "https://dev.wildberries.ru/en/swagger/rates",
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/10-rates.yaml",
       "schema_filename": "wb-tariffs.json",
       "hosts": [
         "common-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
+      "extraction_mode": "direct-schema-url",
       "path_count": 5,
       "operation_count": 5,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/wb-tariffs",
-        "swagger_url": "https://dev.wildberries.ru/en/swagger/tariffs",
-        "schema_source_url": null,
+        "swagger_url": "https://dev.wildberries.ru/en/swagger/rates",
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/10-rates.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     },
     {
       "slug": "in-store-pickup",
       "title": "In-Store Pickup",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/in-store-pickup",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/in-store-pickup",
-      "schema_source_url": null,
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/06-in-store-pickup.yaml",
       "schema_filename": "in-store-pickup.json",
       "hosts": [
         "marketplace-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
+      "extraction_mode": "direct-schema-url",
       "path_count": 18,
       "operation_count": 18,
       "source_lastmod": null,
@@ -227,98 +218,97 @@
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/in-store-pickup",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/in-store-pickup",
-        "schema_source_url": null,
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/06-in-store-pickup.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     },
     {
       "slug": "orders-fbw",
       "title": "FBW Supplies",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-fbw",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-fbw",
-      "schema_source_url": null,
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/07-orders-fbw.yaml",
       "schema_filename": "orders-fbw.json",
       "hosts": [
         "supplies-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
-      "path_count": 7,
-      "operation_count": 7,
+      "extraction_mode": "direct-schema-url",
+      "path_count": 11,
+      "operation_count": 14,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-fbw",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/orders-fbw",
-        "schema_source_url": null,
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/07-orders-fbw.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     },
     {
       "slug": "analytics",
       "title": "Analytics and Data",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/analytics",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/analytics",
-      "schema_source_url": null,
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/11-analytics.yaml",
       "schema_filename": "analytics.json",
       "hosts": [
         "seller-analytics-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
-      "path_count": 18,
-      "operation_count": 19,
+      "extraction_mode": "direct-schema-url",
+      "path_count": 19,
+      "operation_count": 20,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/analytics",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/analytics",
-        "schema_source_url": null,
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/11-analytics.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     },
     {
       "slug": "reports",
       "title": "Reports",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/reports",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/reports",
-      "schema_source_url": null,
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/12-reports.yaml",
       "schema_filename": "reports.json",
       "hosts": [
-        "statistics-api.wildberries.ru",
-        "seller-analytics-api.wildberries.ru"
+        "seller-analytics-api.wildberries.ru",
+        "statistics-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
-      "path_count": 23,
-      "operation_count": 23,
+      "extraction_mode": "direct-schema-url",
+      "path_count": 24,
+      "operation_count": 24,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/reports",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/reports",
-        "schema_source_url": null,
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/12-reports.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     },
     {
       "slug": "financial-reports-and-accounting",
       "title": "Documents and Accounting",
       "doc_url": "https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting",
       "swagger_url": "https://dev.wildberries.ru/en/swagger/finances",
-      "schema_source_url": null,
+      "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/13-finances.yaml",
       "schema_filename": "financial-reports-and-accounting.json",
       "hosts": [
-        "finance-api.wildberries.ru",
-        "statistics-api.wildberries.ru",
-        "documents-api.wildberries.ru"
+        "documents-api.wildberries.ru",
+        "finance-api.wildberries.ru"
       ],
-      "extraction_mode": "browser-redoc-openapi",
+      "extraction_mode": "direct-schema-url",
       "path_count": 11,
       "operation_count": 11,
       "source_lastmod": null,
@@ -326,11 +316,11 @@
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
         "doc_url": "https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting",
         "swagger_url": "https://dev.wildberries.ru/en/swagger/finances",
-        "schema_source_url": null,
+        "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/13-finances.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-08-19T18:12:37.448Z",
-      "rate_limits_verified_at": "2026-08-19T18:12:37.448Z"
+      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
+      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
     }
   ]
 }

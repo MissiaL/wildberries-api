@@ -10,7 +10,7 @@ Rate limits are live operational data and can change independently of endpoint s
 - [Rate-limit knowledge-base article, updated 2026-04-03](https://dev.wildberries.ru/knowledge-base/articles/019d49a1-28ca-7735-bf2f-98210695abc7/limity-zaprosov-wb-api)
 - [Token-type limit change effective 2026-03-30](https://dev.wildberries.ru/news/281/obnovlenie-limitov-zaprosov-wb-api)
 
-Every saved OpenAPI operation carries the live table captured on 2026-08-19 in `x-wb-rate-limits`. `assets/openapi/rate-limit-manifest.json` records coverage and verification time. Never infer a limit from a similar endpoint; if the saved `verifiedAt` may be stale, re-check the exact live operation.
+The official Swagger specifications were refreshed on 2026-10-03. Each saved operation carries `x-wb-rate-limits`; `assets/openapi/rate-limit-manifest.json` records coverage and verification time. Two return-report methods publish no limit and carry `status: undocumented`: `GET /api/v1/analytics/goods-return` and `GET /api/analytics/v1/item-returns`. Verify their limits with WB before repeated calls. Never infer a limit from a similar endpoint; if `verifiedAt` may be stale, re-check the exact live operation.
 
 ## Model
 
@@ -26,7 +26,7 @@ Limits can differ by method or method group and by token type. Since 2026-03-30,
 - Personal and Service tokens use the standard production limits shown for those types.
 - Basic tokens can have materially lower limits; use the Basic-token tables in the official announcement.
 - Test tokens belong to the sandbox and are outside this production-only skill.
-- A limit normally covers all tokens of one type for the seller account. For Service tokens, it covers all tokens for the same Catalog service.
+- A limit normally covers all tokens of one type for the seller account. Service limits apply to all tokens within one service, including Basic tokens with a registered service secret. Current tables may label these as `Base with secret`; the helper only selects the ordinary Basic row from `acc=1` and does not infer a service-secret profile.
 
 Do not multiply throughput by creating more tokens or workers. All processes that share the same WB budget must use one coordinated limiter.
 

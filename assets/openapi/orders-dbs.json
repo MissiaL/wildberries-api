@@ -53,6 +53,53 @@
         "value": {
           "message": "Status change is not allowed for the order"
         }
+      },
+      "AccessDenied": {
+        "value": {
+          "code": "AccessDenied",
+          "message": ""
+        }
+      },
+      "AccessDeniedBatch": {
+        "value": {
+          "detail": {},
+          "origin": "dbs-public-api",
+          "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
+          "title": "AccessDenied"
+        }
+      },
+      "IncorrectRequestBatch": {
+        "value": {
+          "detail": {},
+          "origin": "dbs-public-api",
+          "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
+          "title": "IncorrectRequest"
+        }
+      },
+      "Response403TokenCategory": {
+        "value": {
+          "status": 403,
+          "statusText": "Forbidden",
+          "title": "Forbidden",
+          "detail": "scope is not allowed for this resource",
+          "requestId": "2dbf6fc9-bad8-4ef9-a058-c938a8553ba5",
+          "origin": "ag-marketplace",
+          "timestamp": "2026-09-03T13:55:15Z"
+        },
+        "description": "Invalid token category"
+      },
+      "Response403TokenType": {
+        "value": {
+          "title": "forbidden",
+          "detail": "base token is not allowed",
+          "code": "base token is not allowed for this path",
+          "requestId": "722199b2e15bbca48cc1d488a7989976",
+          "origin": "ag-marketplace",
+          "status": 403,
+          "statusText": "Forbidden",
+          "timestamp": "2026-05-25T02:47:09Z"
+        },
+        "description": "Invalid token type"
       }
     },
     "parameters": {
@@ -85,7 +132,7 @@
             "example": {
               "code": "07e4668e--a53a3d31f8b0-[UK-oWaVDUqNrKG]; 03bce=277; 84bd353bf-75",
               "detail": "token problem; token is malformed: could not base64 decode signature: illegal base64 data at input byte 84",
-              "origin": "s2s-api-auth-catalog",
+              "origin": "ag-marketplace",
               "requestId": "7b80742415072fe8b6b7f7761f1d1211",
               "status": 401,
               "statusText": "Unauthorized",
@@ -132,7 +179,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Unauthorized</span>"
+        "description": "Unauthorized"
       },
       "402": {
         "content": {
@@ -156,7 +203,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Payment required</span>"
+        "description": "Payment required"
       },
       "429": {
         "content": {
@@ -164,7 +211,7 @@
             "example": {
               "code": "07e4668e-ac2242c5c8c5-[UK-4dx7JUdskGZ]",
               "detail": "limited by c122a060-a7fb-4bb4-abb0-32fd4e18d489",
-              "origin": "s2s-api-auth-catalog",
+              "origin": "ag-marketplace",
               "requestId": "9d3c02cc698f8b041c661a7c28bed293",
               "status": 429,
               "statusText": "Too Many Requests",
@@ -211,36 +258,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Too many requests</span>"
-      },
-      "AccessDenied": {
-        "content": {
-          "application/json": {
-            "example": {
-              "message": ""
-            },
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        },
-        "description": "<span class='response__value '>Access denied</span>"
-      },
-      "AccessDeniedBatch": {
-        "content": {
-          "application/json": {
-            "example": {
-              "detail": {},
-              "origin": "dbs-public-api",
-              "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-              "title": "AccessDenied"
-            },
-            "schema": {
-              "$ref": "#/components/schemas/api.BatchError"
-            }
-          }
-        },
-        "description": "<span class='response__value '>Access denied</span>"
+        "description": "Too many requests"
       },
       "IncorrectRequest": {
         "content": {
@@ -250,7 +268,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Bad request</span>"
+        "description": "Bad request"
       },
       "NotFound": {
         "content": {
@@ -263,7 +281,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>The resource is not found</span>"
+        "description": "The resource is not found"
       }
     },
     "schemas": {
@@ -492,7 +510,8 @@
             "description": "Item size ID in WB systems",
             "example": 987654321,
             "nullable": false,
-            "type": "integer"
+            "type": "integer",
+            "format": "uint64"
           },
           "colorCode": {
             "description": "Color code (for tinted items only)",
@@ -515,7 +534,7 @@
             "type": "integer"
           },
           "convertedFinalPrice": {
-            "description": "The sum charged to the buyer in the currency of the seller country including all discounts, multiplied by 100.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `convertedFinalPrice` field only if the response of the method [POST /api/marketplace/v3/dbs/orders/final-price](./docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null`. In all other cases, use the value of the `convertedOriginalFinalPrice` field from the response of the specified method\n",
+            "description": "The sum charged to the buyer in the currency of the seller country including all discounts, multiplied by 100.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `convertedFinalPrice` field only if the response of the method [POST /api/marketplace/v3/dbs/orders/final-price](./docs/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null`. In all other cases, use the value of the `convertedOriginalFinalPrice` field from the response of the specified method\n",
             "example": 1014,
             "type": "integer"
           },
@@ -545,7 +564,7 @@
             "type": "string"
           },
           "finalPrice": {
-            "description": "The sum charged to the buyer in the currency of sale including all discounts, multiplied by 100.\n<br>\nYou can find a currency code in the `currencyCode` field.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `finalPrice` field only if the response of the method [POST /api/marketplace/v3/dbs/orders/final-price](./docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null`. In all other cases, use the value of the `originalFinalPrice` field from the response of the same method\n",
+            "description": "The sum charged to the buyer in the currency of sale including all discounts, multiplied by 100.\n<br>\nYou can find a currency code in the `currencyCode` field.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `finalPrice` field only if the response of the method [POST /api/marketplace/v3/dbs/orders/final-price](./docs/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null`. In all other cases, use the value of the `originalFinalPrice` field from the response of the same method\n",
             "example": 1014,
             "type": "integer"
           },
@@ -595,7 +614,7 @@
             "type": "integer"
           },
           "rid": {
-            "description": "Unique order ID. <br>\nNote: `rid` corresponds to `srid` in the responses of the methods:\n  - [Buyers Return Applications](./user-communication#tag/buyersReturns/operation/getV1Claims)\n  - [Order Feed](./analytics#tag/orderFeed/operation/postV1OrderFeed)\n  - [Orders](./reports#tag/mainReports/operation/getV1SupplierOrders)\n  - [Sales](./reports#tag/mainReports/operation/getV1SupplierSales)\n  - [Returns and Item Movement Report](./reports#tag/returnsAndItemMovementReport)\n  - [Details for the Sales Reports by Report ID](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId)\n  - [Details for the Sales Reports by Period](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed)\n  - [Details for the Acquiring Expenses Reports by Report ID](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId)\n  - [Details for the Acquiring Expenses Reports by Period](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed)\n",
+            "description": "Unique order ID. <br>\nNote: `rid` corresponds to `srid` in the responses of the methods:\n  - [Buyers Return Applications](./customer-communication#tag/buyersReturns/operation/getV1Claims)\n  - [Order Feed](./analytics#tag/orderFeed/operation/postV1OrderFeed)\n  - [Orders](./reports#tag/mainReports/operation/getV1SupplierOrders)\n  - [Sales](./reports#tag/mainReports/operation/getV1SupplierSales)\n  - [Returns and Item Movement Report](./reports#tag/returnsAndItemMovementReport)\n  - [Details for the Sales Reports by Report ID](./documents-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId)\n  - [Details for the Sales Reports by Period](./documents-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed)\n  - [Details for the Acquiring Expenses Reports by Report ID](./documents-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId)\n  - [Details for the Acquiring Expenses Reports by Period](./documents-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed)\n",
             "example": "f884001e44e511edb8780242ac120002"
           },
           "scanPrice": {
@@ -676,7 +695,8 @@
             "description": "Item size ID in WB systems",
             "example": 987654321,
             "nullable": false,
-            "type": "integer"
+            "type": "integer",
+            "format": "uint64"
           },
           "colorCode": {
             "description": "Color code (for tinted items only)",
@@ -699,7 +719,7 @@
             "type": "integer"
           },
           "convertedFinalPrice": {
-            "description": "The sum charged to the buyer in the currency of the seller country including all discounts, multiplied by 100.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `convertedFinalPrice` field only if the response of the method [POST /api/marketplace/v3/dbs/orders/final-price](./docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null`. In all other cases, use the value of the `convertedOriginalFinalPrice` field from the response of the specified method\n",
+            "description": "The sum charged to the buyer in the currency of the seller country including all discounts, multiplied by 100.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `convertedFinalPrice` field only if the response of the method [POST /api/marketplace/v3/dbs/orders/final-price](./docs/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null`. In all other cases, use the value of the `convertedOriginalFinalPrice` field from the response of the specified method\n",
             "example": 1014,
             "type": "integer"
           },
@@ -734,7 +754,7 @@
             "type": "string"
           },
           "finalPrice": {
-            "description": "The sum charged to the buyer in the currency of sale including all discounts, multiplied by 100.\n<br>\nYou can find a currency code in the `currencyCode` field.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `finalPrice` field only if the [POST /api/marketplace/v3/dbs/orders/final-price](./docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) method returned `\"data\": null` in the response. In all other cases, use the value of the `originalFinalPrice` field from the response of the same method\n",
+            "description": "The sum charged to the buyer in the currency of sale including all discounts, multiplied by 100.\n<br>\nYou can find a currency code in the `currencyCode` field.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `finalPrice` field only if the [POST /api/marketplace/v3/dbs/orders/final-price](./docs/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) method returned `\"data\": null` in the response. In all other cases, use the value of the `originalFinalPrice` field from the response of the same method\n",
             "example": 1014,
             "type": "integer"
           },
@@ -784,7 +804,7 @@
             "type": "integer"
           },
           "requiredMeta": {
-            "description": "List of label identifiers available for the assembly order. [Specifying the IMEI](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaImei) is required for `Smartphones` [subcategory](./work-with-products#tag/categoriesSubcategoriesAndCharacteristics/paths/~1content~1v2~1object~1all/get), `\"subjectId\":515`",
+            "description": "List of label identifiers available for the assembly order. [Specifying the IMEI](./dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaImei) is required for `Smartphones` [subcategory](./item-management#tag/categoriesSubcategoriesAndCharacteristics/operation/getV2ObjectAll), `\"subjectId\":515`",
             "example": [
               "uin"
             ],
@@ -795,7 +815,7 @@
             "type": "array"
           },
           "rid": {
-            "description": "Unique order ID. <br>\nNote: `rid` corresponds to `srid` in the responses of the methods:\n  - [Buyers Return Applications](./user-communication#tag/buyersReturns/operation/getV1Claims)\n  - [Order Feed](./analytics#tag/orderFeed/operation/postV1OrderFeed)\n  - [Orders](./reports#tag/mainReports/operation/getV1SupplierOrders)\n  - [Sales](./reports#tag/mainReports/operation/getV1SupplierSales)\n  - [Returns and Item Movement Report](./reports#tag/returnsAndItemMovementReport)\n  - [Details for the Sales Reports by Report ID](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId)\n  - [Details for the Sales Reports by Period](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed)\n  - [Details for the Acquiring Expenses Reports by Report ID](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId)\n  - [Details for the Acquiring Expenses Reports by Period](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed)\n",
+            "description": "Unique order ID. <br>\nNote: `rid` corresponds to `srid` in the responses of the methods:\n  - [Buyers Return Applications](./customer-communication#tag/buyersReturns/operation/getV1Claims)\n  - [Order Feed](./analytics#tag/orderFeed/operation/postV1OrderFeed)\n  - [Orders](./reports#tag/mainReports/operation/getV1SupplierOrders)\n  - [Sales](./reports#tag/mainReports/operation/getV1SupplierSales)\n  - [Returns and Item Movement Report](./reports#tag/returnsAndItemMovementReport)\n  - [Details for the Sales Reports by Report ID](./documents-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId)\n  - [Details for the Sales Reports by Period](./documents-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed)\n  - [Details for the Acquiring Expenses Reports by Report ID](./documents-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId)\n  - [Details for the Acquiring Expenses Reports by Period](./documents-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed)\n",
             "example": "f884001e44e511edb8780242ac120002"
           },
           "salePrice": {
@@ -842,52 +862,6 @@
               "type": "integer"
             },
             "type": "array"
-          }
-        },
-        "type": "object"
-      },
-      "Response403General": {
-        "properties": {
-          "code": {
-            "description": "Internal error code",
-            "example": "base token is not allowed for this path",
-            "type": "string"
-          },
-          "detail": {
-            "description": "Error details",
-            "example": "base token is not allowed",
-            "type": "string"
-          },
-          "origin": {
-            "description": "WB internal service ID",
-            "example": "s2s-finance",
-            "type": "string"
-          },
-          "requestId": {
-            "description": "Request ID",
-            "example": "722199b2e15bbca48cc1d488a7989976",
-            "type": "string"
-          },
-          "status": {
-            "description": "HTTP status code",
-            "example": 403,
-            "type": "number"
-          },
-          "statusText": {
-            "description": "Text of the HTTP status code",
-            "example": "Forbidden",
-            "type": "string"
-          },
-          "timestamp": {
-            "description": "Request date and time",
-            "example": "2026-05-25T02:47:09Z",
-            "format": "date-time",
-            "type": "string"
-          },
-          "title": {
-            "description": "Error title",
-            "example": "forbidden",
-            "type": "string"
           }
         },
         "type": "object"
@@ -1174,7 +1148,7 @@
       "api.OrderFinalPriceResult": {
         "properties": {
           "data": {
-            "description": "Assembly order data.\n<br><br>\nIf `\"data\":{}`, the data is being generated. Please try again later. Maximum data generation time is approximately 3 minutes.\n<br><br>\nIf `data` is absent, the assembly order data is not provided. Use the data from the responses of the methods:\n - [Get New Assembly Orders List](/en/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrdersNew)\n - [Get Information on Completed Orders](/en/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrders)\n",
+            "description": "Assembly order data.\n<br><br>\nIf `\"data\":{}`, the data is being generated. Please try again later. Maximum data generation time is approximately 1 minute.\n<br><br>\nIf `data` is absent, the assembly order data is not provided. Use the data from the responses of the methods:\n - [Get New Assembly Orders List](/en/docs/openapi/dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrdersNew)\n - [Get Information on Completed Orders](/en/docs/openapi/dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrders)\n",
             "nullable": false,
             "properties": {
               "convertedCurrencyCode": {
@@ -1281,7 +1255,7 @@
         },
         "properties": {
           "groups": {
-            "description": "List of `groupId` values. Can be obtained from [new](./orders-dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrdersNew) and [completed](./orders-dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrders) assembly orders.",
+            "description": "List of `groupId` values. Can be obtained from [new](./dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrdersNew) and [completed](./dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrders) assembly orders.",
             "items": {
               "type": "string"
             },
@@ -1456,8 +1430,22 @@
               "properties": {
                 "errors": {
                   "description": "Error data",
-                  "example": "[MaxDepth]",
-                  "items": "[MaxDepth]",
+                  "example": [],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "integer",
+                        "description": "Error code",
+                        "example": 404
+                      },
+                      "detail": {
+                        "type": "string",
+                        "example": "NotFound",
+                        "description": "Additional error data"
+                      }
+                    }
+                  },
                   "type": "array"
                 },
                 "isError": {
@@ -1467,7 +1455,27 @@
                 },
                 "metaDetails": {
                   "description": "Label identifiers and their validation statuses",
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string",
+                        "example": "sgtin",
+                        "description": "Label identifier:\n  - `imei` — [IMEI](./dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaImei)\n  - `uin` — [UIN](./dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaUin)\n  - `gtin` — [GTIN](./dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaGtin)\n  - `sgtin` — [labeling code Chestny ZNAK](./dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaSgtin)\n  - `customsDeclaration` — [customs declaration number](./dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaCustomsDeclaration)\n  - `originCountryCode` — [numeric code of the country of origin](./dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaCustomsDeclaration) according to [Russian classification of countries of the world](https://esnsi.gosuslugi.ru/classifiers/16269)\n"
+                      },
+                      "value": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "Label identifier value",
+                        "example": "123456789012345"
+                      },
+                      "decision": {
+                        "type": "string",
+                        "example": "sgtinIntroduced",
+                        "description": "State:\n- `imei`\n  - `pending` — Label identifier for inspection\n  - `optional` — Label identifier is not required\n  - `filled` — Validation passed\n  - `deadlineExceeded` — Validation passed\n  - `imeiMaySell` — The item is approved for sale. Validation passed\n  - `imeiSoldB2B` — The item was sold to a B2B buyer and allowed to be sold again. Validation passed\n  - `required` — Required label identifier is not filled. Validation failed\n  - `imeiInvalidFormat` — Invalid format. Validation failed\n  - `imeiAlreadySold` — The item with this IMEI has already been sold. Validation failed\n- `uin`\n  - `filled` — Validation passed\n  - `optional` — Label identifier is not required\n- `sgtin`\n  - `pending` — Label identifier for inspection\n  - `optional` — Label identifier is not required\n  - `filled` — Validation passed\n  - `deadlineExceeded` — Validation passed\n  - `sgtinIntroduced` — The item is approved for sale. Validation passed\n  - `sgtinSoldB2B` — The item was sold to a B2B buyer and allowed to be sold again. Validation passed\n  - `required` — Required label identifier is not filled. Validation failed\n  - `sgtinInvalidFormat` — Invalid format. Validation failed\n  - `sgtinNotFound` — Label identifier not found in [Chestny ZNAK](https://chestnyznak.ru/en/). Validation failed\n  - `sgtinEmitted` —  Label identifier has been issued. Validation failed\n  - `sgtinApplied` — Putting into circulation not completed. Validation failed\n  - `sgtinWrittenOff` — Written off. Validation failed\n  - `sgtinRetired` — Retired. Validation failed\n  - `sgtinWithdrawn` — Withdrawn. Validation failed\n  - `sgtinDisaggregation` — Disaggregation. Validation failed\n  - `sgtinDisaggregated` — Disaggregated. Validation failed\n  - `sgtinAppliedNotPaid` — Not paid. Validation failed\n- `gtin`\n  - `optional` — Label identifier is not required\n  - `filled` — Validation passed\n- `customsDeclaration`\n  - `optional` — Label identifier is not required\n  - `filled` — Validation passed\n"
+                      }
+                    }
+                  },
                   "type": "array"
                 },
                 "orderId": {
@@ -1612,7 +1620,13 @@
                 {
                   "code": 409,
                   "detail": "MetaValidationFail",
-                  "metaDetails": "[MaxDepth]"
+                  "metaDetails": [
+                    {
+                      "key": "sgtin",
+                      "value": "0102900304495480215KE",
+                      "decision": "sgtinInvalidFormat"
+                    }
+                  ]
                 }
               ],
               "isError": true,
@@ -1716,6 +1730,44 @@
           "uin"
         ],
         "type": "object"
+      },
+      "Response4XX": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Error title"
+          },
+          "detail": {
+            "type": "string",
+            "description": "Error details"
+          },
+          "code": {
+            "type": "string",
+            "description": "Internal error code"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Request ID"
+          },
+          "origin": {
+            "type": "string",
+            "description": "WB internal service ID"
+          },
+          "status": {
+            "type": "number",
+            "description": "HTTP status code"
+          },
+          "statusText": {
+            "type": "string",
+            "description": "Text of the HTTP status code"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Request date and time"
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -1727,7 +1779,7 @@
     }
   },
   "info": {
-    "description": "<div class=\"api-block\">\n\nDBS orders and label identifiers management.<br><br>\n\nYou can test the DBS methods in the [sandbox](/en/sandbox). Also you can use [special methods](/en/docs/openapi-other/sandbox-environment#tag/Marketplace-DBS) in the sandbox for emulating user actions\n\n</div>\n",
+    "description": "<div class=\"api-block\">\n\nDBS orders and label identifiers management.<br><br>\n\nYou can test the DBS methods in the [sandbox](/en/sandbox). Also you can use [special methods](/en/docs/openapi-other/sandbox-environment#tag/marketplaceDbs) in the sandbox for emulating user actions\n\n</div>\n",
     "title": "DBS",
     "version": "dbs",
     "x-file-name": "dbs"
@@ -1736,7 +1788,7 @@
   "paths": {
     "/api/marketplace/v3/dbs/orders/b2b/info": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns B2B buyers data by assembly orders ID:\n  - Taxpayer Identification Number (TIN or INN in Russian)\n  - Code of Reason for Registration (CRR or KPP in Russian)\n  - Company name\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n\n</div>\n",
+        "description": "The method returns B2B buyers data by assembly orders ID:\n  - Taxpayer Identification Number (TIN or INN in Russian)\n  - Code of Reason for Registration (CRR or KPP in Russian)\n  - Company name\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n\n</div>\n",
         "operationId": "postV3DbsOrdersB2bInfo",
         "requestBody": {
           "content": {
@@ -1757,7 +1809,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -1767,7 +1819,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1778,18 +1830,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "AccessDenied"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1800,9 +1861,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "B2B Buyer Information{{ /api/marketplace/v3/dbs/orders/b2b/info }}",
+        "summary": "B2B Buyer Information",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -1816,10 +1877,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersB2bInfo",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersB2bInfo",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -1829,7 +1891,7 @@
     },
     "/api/marketplace/v3/dbs/orders/final-price": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns:\n  - seller prices excluding discounts\n  - sums charged to the buyer including all discounts and cashback\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>getting and deleting DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 150 requests | 400 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n\n</div>\n",
+        "description": "The method returns:\n  - seller prices excluding discounts\n  - sums charged to the buyer including all discounts and cashback\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>getting and deleting DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 150 requests | 400 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n\n</div>\n",
         "operationId": "postV3DbsOrdersFinalPrice",
         "requestBody": {
           "content": {
@@ -1845,14 +1907,16 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "GetFinalPriceSuccess": "[MaxDepth]"
+                  "GetFinalPriceSuccess": {
+                    "$ref": "#/components/examples/GetFinalPriceSuccess"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/api.OrdersFinalPriceResponse"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -1861,15 +1925,38 @@
             "$ref": "#/components/responses/401"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDeniedBatch"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                },
+                "example": {
+                  "detail": {},
+                  "origin": "dbs-public-api",
+                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
+                  "title": "AccessDenied"
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Get Seller Prices and Amounts Charged to the Buyer{{ /api/marketplace/v3/dbs/orders/final-price }}",
+        "summary": "Get Seller Prices and Amounts Charged to the Buyer",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -1883,10 +1970,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersFinalPrice",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -1896,14 +1984,44 @@
     },
     "/api/marketplace/v3/dbs/orders/meta/customs-declaration": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the customs declaration numbers and numeric codes of the countries of origin for [assembly order label identifiers](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails). One assembly order can have only one customs declaration number.<br>\nCustoms declaration number can only be added if all the conditions are met:\n  - the assembly order has the B2B sale attribute — `\"isB2b\": true` in the response of the method [getting new assembly orders](./orders-dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrdersNew)\n  - the assembly order is in `confirm` or `deliver` [statuses](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo)\n  - the `customsDeclaration` field is returned in the response of the [Get order label identifiers](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) method\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 500 requests | 120 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Sets the customs declaration numbers and numeric codes of the countries of origin for [assembly order label identifiers](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails). One assembly order can have only one customs declaration number.<br>\nCustoms declaration number can only be added if all the conditions are met:\n  - the assembly order has the B2B sale attribute — `\"isB2b\": true` in the response of the method [getting new assembly orders](/openapi/dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrdersNew)\n  - the assembly order is in `confirm` or `deliver` [statuses](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo)\n  - the `customsDeclaration` field is returned in the response of the [Get order label identifiers](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) method\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>adding DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 500 requests | 120 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersMetaCustomsDeclaration",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "properties": {
-                  "orders": "[MaxDepth]"
+                  "orders": {
+                    "type": "array",
+                    "maxItems": 1000,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "customsDeclaration": {
+                          "type": "string",
+                          "minLength": 17,
+                          "maxLength": 29,
+                          "description": "Customs declaration number",
+                          "example": "10704010/010624/0000302"
+                        },
+                        "orderId": {
+                          "type": "integer",
+                          "description": "Assembly order ID"
+                        },
+                        "originCountryCode": {
+                          "type": "string",
+                          "description": "Numeric code of the country of origin according to [Russian classification of countries of the world](https://esnsi.gosuslugi.ru/classifiers/16269). Required only for assembly orders with the B2B sale indicator `\"isB2b\": true`\n",
+                          "maxLength": 3,
+                          "example": "643"
+                        }
+                      },
+                      "required": [
+                        "customsDeclaration",
+                        "orderId",
+                        "originCountryCode"
+                      ]
+                    }
+                  }
                 },
                 "required": [
                   "orders"
@@ -1923,21 +2041,25 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
                 "examples": {
-                  "IncorrectRequest": "[MaxDepth]",
-                  "IncorrectRequestBody": "[MaxDepth]"
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest"
+                  },
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1946,7 +2068,29 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
@@ -1955,14 +2099,16 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "FailedToUpdateMeta": "[MaxDepth]"
+                  "FailedToUpdateMeta": {
+                    "$ref": "#/components/examples/FailedToUpdateMeta"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
               }
             },
-            "description": "<span class='response__value '>Label identifiers update error</span>"
+            "description": "Label identifiers update error"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1973,9 +2119,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Add Custom Declaration to the Orders{{ /api/marketplace/v3/dbs/orders/meta/customs-declaration }}",
+        "summary": "Add Custom Declaration to the Orders",
         "tags": [
-          "dbsLabelIdentifiers"
+          "DBS Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -1989,10 +2135,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaCustomsDeclaration",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaCustomsDeclaration",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsLabelIdentifiers"
       },
       "servers": [
         {
@@ -2007,7 +2154,7 @@
     },
     "/api/marketplace/v3/dbs/orders/meta/delete": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nRemoves all [assembly order label identifiers](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) values.\n<br><br>\nYou can only delete one type of label identifiers in one request.\nSpecify the label identifiers type in the request:\n- `imei` — [IMEI](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaImei)\n- `uin` — [UIN](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaUin)\n- `gtin` — [GTIN](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaGtin)\n- `sgtin` — [labeling code Chestny ZNAK](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaSgtin)\n- `customsDeclaration` — [customs declaration number](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaCustomsDeclaration). Deleting the customs declaration number also deletes the associated country of origin code — `originCountryCode`.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>getting and deleting DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 150 requests | 400 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Removes all [assembly order label identifiers](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) values.\n<br><br>\nYou can only delete one type of label identifiers in one request.\nSpecify the label identifiers type in the request:\n- `imei` — [IMEI](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaImei)\n- `uin` — [UIN](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaUin)\n- `gtin` — [GTIN](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaGtin)\n- `sgtin` — [labeling code Chestny ZNAK](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaSgtin)\n- `customsDeclaration` — [customs declaration number](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaCustomsDeclaration). Deleting the customs declaration number also deletes the associated country of origin code — `originCountryCode`.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>getting and deleting DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 150 requests | 400 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersMetaDelete",
         "requestBody": {
           "content": {
@@ -2028,23 +2175,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2055,18 +2201,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "AccessDenied"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "409": {
             "content": {
@@ -2076,7 +2231,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Label identifiers deletion error</span>"
+            "description": "Label identifiers deletion error"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -2087,9 +2242,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Delete Assembly Orders Label Identifiers{{ /api/marketplace/v3/dbs/orders/meta/delete }}",
+        "summary": "Delete Assembly Orders Label Identifiers",
         "tags": [
-          "dbsLabelIdentifiers"
+          "DBS Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2103,10 +2258,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDelete",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaDelete",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsLabelIdentifiers"
       },
       "servers": [
         {
@@ -2121,7 +2277,7 @@
     },
     "/api/marketplace/v3/dbs/orders/meta/details": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns [assembly orders](./orders-dbs#tag/dbsAssemblyOrders) label identifiers and their validation statuses.<br><br>\nYou can get the list of label identifiers available for the assembly order via the [list of new assembly orders](./orders-dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrdersNew) method, field `requiredMeta`. If the `requiredMeta` field does not contain the label identifier, it means that this label identifier cannot be added to this assembly order.<br>\nPossible label identifiers:\n- `imei` — [IMEI](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaImei)\n- `uin` — [UIN](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaUin)\n- `gtin` — [GTIN](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaGtin)\n- `sgtin` — [labeling code Chestny ZNAK](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaSgtin)\n- `customsDeclaration` — [customs declaration number](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaCustomsDeclaration)\n- `originCountryCode` — [numeric code of the country of origin](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaCustomsDeclaration) according to [Russian classification of countries of the world](https://esnsi.gosuslugi.ru/classifiers/16269)\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>getting and deleting DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n\n</div>\n",
+        "description": "Returns [assembly orders](/openapi/dbs#tag/dbsAssemblyOrders) label identifiers and their validation statuses.<br><br>\nYou can get the list of label identifiers available for the assembly order via the [list of new assembly orders](/openapi/dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrdersNew) method, field `requiredMeta`. If the `requiredMeta` field does not contain the label identifier, it means that this label identifier cannot be added to this assembly order.<br>\nPossible label identifiers:\n- `imei` — [IMEI](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaImei)\n- `uin` — [UIN](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaUin)\n- `gtin` — [GTIN](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaGtin)\n- `sgtin` — [labeling code Chestny ZNAK](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaSgtin)\n- `customsDeclaration` — [customs declaration number](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaCustomsDeclaration)\n- `originCountryCode` — [numeric code of the country of origin](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaCustomsDeclaration) according to [Russian classification of countries of the world](https://esnsi.gosuslugi.ru/classifiers/16269)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>getting and deleting DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n\n</div>\n",
         "operationId": "postV3DbsOrdersMetaDetails",
         "requestBody": {
           "content": {
@@ -2142,23 +2298,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2169,18 +2324,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "AccessDenied"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -2191,9 +2355,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Assembly Orders Label Identifiers{{ /api/marketplace/v3/dbs/orders/meta/details }}",
+        "summary": "Get Assembly Orders Label Identifiers",
         "tags": [
-          "dbsLabelIdentifiers"
+          "DBS Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -2207,10 +2371,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaDetails",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
-        }
+        },
+        "x-tagKey": "dbsLabelIdentifiers"
       },
       "servers": [
         {
@@ -2220,7 +2385,7 @@
     },
     "/api/marketplace/v3/dbs/orders/meta/gtin": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the GTIN, Belarus item unique identifier, for the [assembly order label identifiers](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails). The assembly order can only have one GTIN. <br>\nYou can set the GTIN only for orders in the `confirm` [status](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo), and if the field `gtin` is returned in the response of the [Get Order Label Identifiers](orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) method.<br>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 500 requests | 120 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Sets the GTIN, Belarus item unique identifier, for the [assembly order label identifiers](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails). The assembly order can only have one GTIN. <br>\nYou can set the GTIN only for orders in the `confirm` [status](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo), and if the field `gtin` is returned in the response of the [Get Order Label Identifiers](dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) method.<br>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>adding DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 500 requests | 120 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersMetaGtin",
         "requestBody": {
           "content": {
@@ -2241,23 +2406,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2268,18 +2432,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "AccessDenied"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "409": {
             "content": {
@@ -2289,7 +2462,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Label identifiers update error</span>"
+            "description": "Label identifiers update error"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -2300,9 +2473,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Add GTIN to Assembly Orders{{ /api/marketplace/v3/dbs/orders/meta/gtin }}",
+        "summary": "Add GTIN to Assembly Orders",
         "tags": [
-          "dbsLabelIdentifiers"
+          "DBS Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2316,10 +2489,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaGtin",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaGtin",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsLabelIdentifiers"
       },
       "servers": [
         {
@@ -2334,7 +2508,7 @@
     },
     "/api/marketplace/v3/dbs/orders/meta/imei": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the IMEI for the [assembly orders label identifiers](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails). <br>\nThe assembly order can have only one IMEI. If a device has two IMEIs — **IMEI** and **IMEI2** or **IMEI1** and **IMEI2** — you should only specify **IMEI** or **IMEI1**. You don't need to specify **IMEI2**.<br>\nYou can add the IMEI only for orders in the `confirm` [status](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo), and if the field `imei` is returned in the response of the [Get Order Label Identifiers](orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) method.<br>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 500 requests | 120 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Sets the IMEI for the [assembly orders label identifiers](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails). <br>\nThe assembly order can have only one IMEI. If a device has two IMEIs — **IMEI** and **IMEI2** or **IMEI1** and **IMEI2** — you should only specify **IMEI** or **IMEI1**. You don't need to specify **IMEI2**.<br>\nYou can add the IMEI only for orders in the `confirm` [status](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo), and if the field `imei` is returned in the response of the [Get Order Label Identifiers](dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) method.<br>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>adding DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 500 requests | 120 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersMetaImei",
         "requestBody": {
           "content": {
@@ -2355,23 +2529,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2382,18 +2555,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "409": {
             "content": {
@@ -2403,7 +2585,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Label identifiers update error</span>"
+            "description": "Label identifiers update error"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -2414,9 +2596,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Add IMEI to Assembly Orders{{ /api/marketplace/v3/dbs/orders/meta/imei }}",
+        "summary": "Add IMEI to Assembly Orders",
         "tags": [
-          "dbsLabelIdentifiers"
+          "DBS Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2430,10 +2612,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaImei",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaImei",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsLabelIdentifiers"
       },
       "servers": [
         {
@@ -2448,7 +2631,7 @@
     },
     "/api/marketplace/v3/dbs/orders/meta/sgtin": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the labeling code [Chestny ZNAK](https://chestnyznak.ru/en) for the assembly orders. <br>\nYou can set the labeling code Chestny ZNAK only for orders in the `confirm` status and if the field `sgtin` is returned in the response of the [Get Order Label Identifiers](orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) method.\n<br><br>\nFor more information about labeling code Chestny ZNAK please check: https://chestnyznak.ru/en/.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding DBS label identifiers</strong>:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 500 requests | 120 ms | 20 requests |\n| Service | 1 min | 500 requests | 120 ms | 20 requests |\n| Base with secret | 1 min | 500 requests | 120 ms | 20 requests |\n| Base | 1 h | 10 requests | 6 min | 1 request |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Sets the labeling code [Chestny ZNAK](https://chestnyznak.ru/en) for the assembly orders. <br>\nYou can set the labeling code Chestny ZNAK only for orders in the `confirm` status and if the field `sgtin` is returned in the response of the [Get Order Label Identifiers](dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) method.\n<br><br>\nFor more information about labeling code Chestny ZNAK please check: https://chestnyznak.ru/en/.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>adding DBS label identifiers</strong>:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 500 requests | 120 ms | 20 requests |\n| Service | 1 min | 500 requests | 120 ms | 20 requests |\n| Base with secret | 1 min | 500 requests | 120 ms | 20 requests |\n| Base | 1 h | 10 requests | 6 min | 1 request |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersMetaSgtin",
         "requestBody": {
           "content": {
@@ -2469,23 +2652,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2496,18 +2678,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "AccessDenied"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -2518,9 +2709,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Add Labeling Codes Chestny ZNAK to Assembly Orders{{ /api/marketplace/v3/dbs/orders/meta/sgtin }}",
+        "summary": "Add Labeling Codes Chestny ZNAK to Assembly Orders",
         "tags": [
-          "dbsLabelIdentifiers"
+          "DBS Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2556,10 +2747,11 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaSgtin",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaSgtin",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsLabelIdentifiers"
       },
       "servers": [
         {
@@ -2574,7 +2766,7 @@
     },
     "/api/marketplace/v3/dbs/orders/meta/uin": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the UIN to the [assembly orders label identifiers](./orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails).\nThe order can only have one UIN. <br>\nYou can add the UIN only for assembly orders in the `confirm` [status](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo), and if the field `uin` is returned in the response of the [Get Order Label Identifiers](orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) method.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 500 requests | 120 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Sets the UIN to the [assembly orders label identifiers](/openapi/dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails).\nThe order can only have one UIN. <br>\nYou can add the UIN only for assembly orders in the `confirm` [status](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo), and if the field `uin` is returned in the response of the [Get Order Label Identifiers](dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) method.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>adding DBS label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 500 requests | 120 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersMetaUin",
         "requestBody": {
           "content": {
@@ -2595,23 +2787,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2622,18 +2813,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "AccessDenied"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "409": {
             "content": {
@@ -2643,7 +2843,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Label identifiers update error</span>"
+            "description": "Label identifiers update error"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -2654,9 +2854,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Add UIN (Unique Identification Number) to Assembly Orders{{ /api/marketplace/v3/dbs/orders/meta/uin }}",
+        "summary": "Add UIN (Unique Identification Number) to Assembly Orders",
         "tags": [
-          "dbsLabelIdentifiers"
+          "DBS Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2670,10 +2870,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaUin",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaUin",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsLabelIdentifiers"
       },
       "servers": [
         {
@@ -2688,7 +2889,7 @@
     },
     "/api/marketplace/v3/dbs/orders/status/cancel": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method transfers [assembly orders](./orders-dbs#tag/dbsAssemblyOrders) with the `new` and `confirm` [statuses](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo) to the `cancel` status  — canceled by the seller.\nYou can not cancel assembly orders with the `deliver` status.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method transfers [assembly orders](/openapi/dbs#tag/dbsAssemblyOrders) with the `new` and `confirm` [statuses](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo) to the `cancel` status  — canceled by the seller.\nYou can not cancel assembly orders with the `deliver` status.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersStatusCancel",
         "requestBody": {
           "content": {
@@ -2709,23 +2910,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2736,18 +2936,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "AccessDenied"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -2758,9 +2967,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Cancel Assembly Orders{{ /api/marketplace/v3/dbs/orders/status/cancel }}",
+        "summary": "Cancel Assembly Orders",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2774,10 +2983,11 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusCancel",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStatusCancel",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -2792,7 +3002,7 @@
     },
     "/api/marketplace/v3/dbs/orders/status/confirm": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method transfers [assembly orders](./orders-dbs#tag/dbsAssemblyOrders) with the `new` [status](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo) to the `confirm` status — order on assembly.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method transfers [assembly orders](/openapi/dbs#tag/dbsAssemblyOrders) with the `new` [status](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo) to the `confirm` status — order on assembly.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersStatusConfirm",
         "requestBody": {
           "content": {
@@ -2813,23 +3023,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2840,18 +3049,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "AccessDenied"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -2862,9 +3080,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Transfer to Assembly{{ /api/marketplace/v3/dbs/orders/status/confirm }}",
+        "summary": "Transfer to Assembly",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2878,10 +3096,11 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusConfirm",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStatusConfirm",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -2896,7 +3115,7 @@
     },
     "/api/marketplace/v3/dbs/orders/status/deliver": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method transfers [assembly orders](./orders-dbs#tag/dbsAssemblyOrders) with the `confirm` [status](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo) to the `deliver` status — order on delivery.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method transfers [assembly orders](/openapi/dbs#tag/dbsAssemblyOrders) with the `confirm` [status](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo) to the `deliver` status — order on delivery.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersStatusDeliver",
         "requestBody": {
           "content": {
@@ -2917,23 +3136,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2944,18 +3162,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "AccessDenied"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -2966,9 +3193,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Transfer to Delivery{{ /api/marketplace/v3/dbs/orders/status/deliver }}",
+        "summary": "Transfer to Delivery",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2982,10 +3209,11 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusDeliver",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStatusDeliver",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -3000,7 +3228,7 @@
     },
     "/api/marketplace/v3/dbs/orders/status/info": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns the statuses of [assembly orders](./orders-dbs#tag/dbsAssemblyOrders) based on the list of assembly order IDs.\n\n`supplierStatus` is a status of an order. The trigger for its change is the action of the seller himself.<br>\nPossible values for this field are:\n| Status   | Description               | How to move an order to this status   |\n| -------  | ---------                 | --------------------------------------|\n| `new`      | **New order** | |\n| `confirm`  | **Order on assembly**      |  [Transfer to assembly](./orders-dbs?locale=ru#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusConfirm)\n| `deliver`  | **Order on delivery**<br>    | [Transfer to delivery](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusDeliver)\n| `receive`  | **Received by the buyer**<br>       | [Notify that the order has been accepted by the buyer](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusReceive) <br>\n| `reject`   | **Declined upon receipt**<br>           |  [Notify that the buyer has declined the order](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusReject)\n| `cancel`   | **Canceled by the seller**   |  [Cancel the order](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusCancel)\n| `cancel_missed_call` | **Cancellation due to unreachable buyer**<br> | The status changes automatically |\n\n`wbStatus` is a status of an order on the Wildberries side.<br>\nPossible values for this field are:\n- `waiting` — assembly order in work\n- `sold` — the buyer got the order\n- `canceled` — assembly order canceled\n- `canceled_by_client` — the buyer canceled the order\n- `declined_by_client` — the buyer canceled the order in the first hour <br> Cancellation is available to the buyer in the first hour from the moment of order, if the order is not transferred to confirm status.\n- `defect` — order canceled due to a defect\n- `ready_for_pickup` — the order arrived the pickup point\n- `canceled_by_missed_call`— cancellation due to unreachable buyer. For delivery by seller\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Returns the statuses of [assembly orders](/openapi/dbs#tag/dbsAssemblyOrders) based on the list of assembly order IDs.\n\n`supplierStatus` is a status of an order. The trigger for its change is the action of the seller himself.<br>\nPossible values for this field are:\n| Status   | Description               | How to move an order to this status   |\n| -------  | ---------                 | --------------------------------------|\n| `new`      | **New order** | |\n| `confirm`  | **Order on assembly**      |  [Transfer to assembly](/openapi/orders-dbs?locale=ru#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusConfirm)\n| `deliver`  | **Order on delivery**<br>    | [Transfer to delivery](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusDeliver)\n| `receive`  | **Received by the buyer**<br>       | [Notify that the order has been accepted by the buyer](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusReceive) <br>\n| `reject`   | **Declined upon receipt**<br>           |  [Notify that the buyer has declined the order](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusReject)\n| `cancel`   | **Canceled by the seller**   |  [Cancel the order](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusCancel)\n| `cancel_missed_call` | **Cancellation due to unreachable buyer**<br> | The status changes automatically |\n\n`wbStatus` is a status of an order on the Wildberries side.<br>\nPossible values for this field are:\n- `waiting` — assembly order in work\n- `sold` — the buyer got the order\n- `canceled` — assembly order canceled\n- `canceled_by_client` — the buyer canceled the order\n- `declined_by_client` — the buyer canceled the order in the first hour <br> Cancellation is available to the buyer in the first hour from the moment of order, if the order is not transferred to confirm status.\n- `defect` — order canceled due to a defect\n- `ready_for_pickup` — the order arrived the pickup point\n- `canceled_by_missed_call`— cancellation due to unreachable buyer. For delivery by seller\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersStatusInfo",
         "requestBody": {
           "content": {
@@ -3021,23 +3249,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3048,18 +3275,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "AccessDenied"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "404": {
             "content": {
@@ -3069,7 +3305,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Not found</span>"
+            "description": "Not found"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -3080,9 +3316,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Assembly Order Statuses{{ /api/marketplace/v3/dbs/orders/status/info }}",
+        "summary": "Get Assembly Order Statuses",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -3096,10 +3332,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStatusInfo",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -3114,7 +3351,7 @@
     },
     "/api/marketplace/v3/dbs/orders/status/receive": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method transfers [assembly orders](./orders-dbs#tag/dbsAssemblyOrders) with the `deliver` [status](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo) to the `receive` status — received by the buyer.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method transfers [assembly orders](/openapi/dbs#tag/dbsAssemblyOrders) with the `deliver` [status](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo) to the `receive` status — received by the buyer.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersStatusReceive",
         "requestBody": {
           "content": {
@@ -3130,29 +3367,89 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "example": "[MaxDepth]",
-                  "properties": "[MaxDepth]",
+                  "example": {
+                    "requestId": "03615778-eb9e-4f55-b4Of-fd3ac0fad2сc",
+                    "results": [
+                      {
+                        "orderId": 4299281547,
+                        "isError": true,
+                        "errors": [
+                          {
+                            "code": 404,
+                            "detail": "NotFound"
+                          }
+                        ]
+                      },
+                      {
+                        "orderId": 4279781545,
+                        "isError": false
+                      }
+                    ]
+                  },
+                  "properties": {
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique request ID",
+                      "example": "f1787bd2d1fdс35d6f537316514у4a05"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "errors": {
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "code": {
+                                  "type": "integer",
+                                  "description": "Error code",
+                                  "example": 404
+                                },
+                                "detail": {
+                                  "type": "string",
+                                  "description": "- `NotFound` — assembly order is not found\n- `StatusMismatch` — operation is not possible for this assembly order status\n- `SGTINIsNotFilled` — required [labeling code Chestny ZNAK](./dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaSgtin) is not specified\n",
+                                  "example": "NotFound"
+                                }
+                              }
+                            },
+                            "type": "array",
+                            "description": "Error details"
+                          },
+                          "isError": {
+                            "type": "boolean",
+                            "description": "Are there any errors",
+                            "example": true
+                          },
+                          "orderId": {
+                            "type": "integer",
+                            "description": "Assembly order ID with successfully set data",
+                            "example": 123456
+                          }
+                        }
+                      }
+                    }
+                  },
                   "type": "object"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3163,18 +3460,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "AccessDenied"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -3185,9 +3491,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Notify that the Orders Are Received{{ /api/marketplace/v3/dbs/orders/status/receive }}",
+        "summary": "Notify that the Orders Are Received",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -3201,10 +3507,11 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusReceive",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStatusReceive",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -3219,7 +3526,7 @@
     },
     "/api/marketplace/v3/dbs/orders/status/reject": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method transfers [assembly orders](./orders-dbs#tag/dbsAssemblyOrders) with the `deliver` [status](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo) to the `reject` status — declined upon receipt.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method transfers [assembly orders](/openapi/dbs#tag/dbsAssemblyOrders) with the `deliver` [status](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo) to the `reject` status — declined upon receipt.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersStatusReject",
         "requestBody": {
           "content": {
@@ -3239,23 +3546,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "IncorrectRequest"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "IncorrectRequestBatch": {
+                    "$ref": "#/components/examples/IncorrectRequestBatch"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3266,18 +3572,27 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "detail": "[MaxDepth]",
-                  "origin": "dbs-public-api",
-                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-                  "title": "AccessDenied"
-                },
                 "schema": {
                   "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -3288,9 +3603,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Notify that the Orders Are Declined{{ /api/marketplace/v3/dbs/orders/status/reject }}",
+        "summary": "Notify that the Orders Are Declined",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -3304,10 +3619,11 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusReject",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStatusReject",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -3322,7 +3638,7 @@
     },
     "/api/marketplace/v3/dbs/orders/stickers": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token, \n        <strong>Base</strong> token <strong>with secret</strong>\n</div>\n\nThe method returns stickers for the assembly orders with delivery to pickup points in the [statuses](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo):\n  - `confirm` — on assembly\n  - `deliver` — in delivery\n\nYou can get stickers only with 580x400 px size in PDF format.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n\n</div>\n",
+        "description": "\n<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token, \n        <strong>Base</strong> token <strong>with secret</strong>\n</div>\n\nThe method returns stickers for the assembly orders with delivery to pickup points in the [statuses](/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusInfo):\n  - `confirm` — on assembly\n  - `deliver` — in delivery\n\nYou can get stickers only with 580x400 px size in PDF format.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n\n</div>\n",
         "operationId": "postV3DbsOrdersStickers",
         "parameters": [
           {
@@ -3367,7 +3683,17 @@
             "application/json": {
               "schema": {
                 "properties": {
-                  "orders": "[MaxDepth]"
+                  "orders": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "description": "Assembly order IDs list",
+                    "items": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 5346346
+                    }
+                  }
                 },
                 "required": [
                   "orders"
@@ -3382,26 +3708,79 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "stickers": {
+                      "type": "array",
+                      "nullable": false,
+                      "description": "Stickers",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "barcode",
+                          "file",
+                          "orderId",
+                          "partA",
+                          "partB"
+                        ],
+                        "properties": {
+                          "orderId": {
+                            "type": "integer",
+                            "format": "int64",
+                            "nullable": false,
+                            "description": "Assembly order ID",
+                            "example": 5346346
+                          },
+                          "partA": {
+                            "type": "string",
+                            "nullable": false,
+                            "description": "The first part of the sticker ID",
+                            "example": "231648"
+                          },
+                          "partB": {
+                            "type": "string",
+                            "nullable": false,
+                            "description": "The second part of the sticker ID",
+                            "example": "9753"
+                          },
+                          "barcode": {
+                            "type": "string",
+                            "nullable": false,
+                            "description": "The encoded value of the sticker",
+                            "example": "!uKEtQZVx"
+                          },
+                          "file": {
+                            "type": "string",
+                            "nullable": false,
+                            "description": "Base64 encoded representation of the sticker",
+                            "example": "JVBER...ZWYKMTM5MQolJUVPRg=="
+                          }
+                        }
+                      }
+                    }
+                  },
                   "type": "object"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
                 "examples": {
-                  "IncorrectParameter": "[MaxDepth]",
-                  "StatusMismatch": "[MaxDepth]"
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  },
+                  "StatusMismatch": {
+                    "$ref": "#/components/examples/StatusMismatch"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3422,11 +3801,19 @@
               },
               "application/problem+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Response403General"
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
                 }
               }
             },
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -3437,9 +3824,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Stickers for Assembly Orders with Delivery to Pickup Point{{ /api/marketplace/v3/dbs/orders/stickers }}",
+        "summary": "Get Stickers for Assembly Orders with Delivery to Pickup Point",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -3458,10 +3845,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStickers",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStickers",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -3471,7 +3859,7 @@
     },
     "/api/v3/dbs/groups/info": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method provides information on paid delivery for assembly orders that have been received at a single warehouse (warehouseId) as part of a single buyer transaction (orderUid).\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method provides information on paid delivery for assembly orders that have been received at a single warehouse (warehouseId) as part of a single buyer transaction (orderUid).\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsGroupsInfo",
         "requestBody": {
           "content": {
@@ -3492,20 +3880,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
                 "examples": {
-                  "IncorrectRequestBody": "[MaxDepth]"
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3514,15 +3904,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Get Information on Paid Delivery{{ /api/v3/dbs/groups/info }}",
+        "summary": "Get Information on Paid Delivery",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -3536,10 +3948,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsGroupsInfo",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsGroupsInfo",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -3554,7 +3967,7 @@
     },
     "/api/v3/dbs/orders": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns information on completed orders (either canceled or sold). <br> You can get data for a specified period, maximum of 30 calendar days per request.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Returns information on completed orders (either canceled or sold). <br> You can get data for a specified period, maximum of 30 calendar days per request.\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "getV3DbsOrders",
         "parameters": [
           {
@@ -3588,25 +4001,38 @@
               "application/json": {
                 "schema": {
                   "nullable": false,
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "next": {
+                      "$ref": "#/components/schemas/Next"
+                    },
+                    "orders": {
+                      "type": "array",
+                      "nullable": false,
+                      "items": {
+                        "$ref": "#/components/schemas/OrderDBS"
+                      }
+                    }
+                  },
                   "type": "object"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
                 "examples": {
-                  "IncorrectParameter": "[MaxDepth]"
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3615,7 +4041,29 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -3626,9 +4074,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Information on Completed Orders{{ /api/v3/dbs/orders }}",
+        "summary": "Get Information on Completed Orders",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -3642,10 +4090,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrders",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/getV3DbsOrders",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -3660,7 +4109,7 @@
     },
     "/api/v3/dbs/orders/client": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method allows getting information about the buyer by order ID\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method allows getting information about the buyer by order ID\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersClient",
         "requestBody": {
           "content": {
@@ -3681,22 +4130,28 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
                 "examples": {
-                  "IncorrectParameter": "[MaxDepth]",
-                  "IncorrectRequest": "[MaxDepth]",
-                  "IncorrectRequestBody": "[MaxDepth]"
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  },
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest"
+                  },
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3705,7 +4160,29 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
@@ -3719,9 +4196,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Buyer Information{{ /api/v3/dbs/orders/client }}",
+        "summary": "Buyer Information",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -3735,10 +4212,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersClient",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersClient",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -3753,7 +4231,7 @@
     },
     "/api/v3/dbs/orders/delivery-date": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nMethod provides information about the orders delivery date and time selected by the buyer.\n<br>\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Method provides information about the orders delivery date and time selected by the buyer.\n<br>\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersDeliveryDate",
         "requestBody": {
           "content": {
@@ -3774,21 +4252,25 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
                 "examples": {
-                  "IncorrectRequest": "[MaxDepth]",
-                  "IncorrectRequestBody": "[MaxDepth]"
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest1"
+                  },
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3797,7 +4279,29 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -3808,9 +4312,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Delivery Date and Time{{ /api/v3/dbs/orders/delivery-date }}",
+        "summary": "Get Delivery Date and Time",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -3824,10 +4328,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersDeliveryDate",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersDeliveryDate",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -3842,7 +4347,7 @@
     },
     "/api/v3/dbs/orders/new": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns a list of all new orders for the seller at the moment\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Returns a list of all new orders for the seller at the moment\n\n<div class=\"description_limit\">\n<a href='/en/docs/openapi/api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>DBS assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "getV3DbsOrdersNew",
         "responses": {
           "200": {
@@ -3850,12 +4355,21 @@
               "application/json": {
                 "schema": {
                   "nullable": false,
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "orders": {
+                      "type": "array",
+                      "nullable": false,
+                      "description": "New assembly orders list",
+                      "items": {
+                        "$ref": "#/components/schemas/OrderNewDBS"
+                      }
+                    }
+                  },
                   "type": "object"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3864,7 +4378,29 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -3875,9 +4411,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get New Orders List{{ /api/v3/dbs/orders/new }}",
+        "summary": "Get New Orders List",
         "tags": [
-          "dbsAssemblyOrders"
+          "DBS Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -3891,10 +4427,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrdersNew",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/getV3DbsOrdersNew",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "dbsAssemblyOrders"
       },
       "servers": [
         {
@@ -3915,28 +4452,26 @@
   ],
   "tags": [
     {
-      "description": "<div class=\"api-description\">\n\n<div class=\"api-block\">\n\nDBS orders and label identifiers management.<br><br>\n\nYou can test the DBS methods in the [sandbox](/en/sandbox). Also you can use [special methods](/en/docs/openapi-other/sandbox-environment#tag/Marketplace-DBS) in the sandbox for emulating user actions\n\n</div>\n\n\n</div>",
-      "name": "DBS",
-      "x-traitTag": true
+      "description": "",
+      "name": "DBS Assembly Orders",
+      "x-displayName": "DBS Assembly Orders",
+      "x-tagKey": "dbsAssemblyOrders"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Marketplace</strong> category\n</div>\n\n\n<div class=\"description_ref\">\n  You can learn how to use methods in business cases in the <a href=\"/en/knowledge-base/articles/019d49a3-ff7d-70ba-a872-828430b24ea1/dbs-orders\">instructions</a> on working with <strong>DBS orders</strong>\n</div>\n\n\n**How to work:**\n1. [Get the new order](./orders-dbs#tag/dbsAssemblyOrders/operation/getV3DbsOrdersNew) and save it until it is ready for assembly. If you do not save the order information in advance, you will only be able to access it after the order is completed (either canceled or sold). Check the [delivery date and time](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersDeliveryDate).\n2. [Transfer it for assembly](./orders-dbs?locale=ru#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusConfirm).\n3. [Transfer to delivery](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusDeliver).\n4. After the order is transferred to assembly, [buyer information](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersClient) (name, phone) becomes available.\n5. After delivering the task to the buyer, you need to notify our server that the [order was accepted](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusReceive) by the buyer or that the [buyer declined the order](./orders-dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersStatusReject).\n",
-      "name": "dbsAssemblyOrders",
-      "x-displayName": "DBS Assembly Orders"
-    },
-    {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Marketplace</strong> category\n</div>\n\n\n<div class=\"description_ref\">\n  You can learn how to use methods in business cases in the <a href=\"/en/knowledge-base/articles/019d49a3-ff7d-70ba-a872-828430b24ea1/dbs-orders\">instructions</a> on working with <strong>DBS orders</strong>\n</div>\n\n\nSpecifying label identifiers for the assembly order in the sandbox is optional\n",
-      "name": "dbsLabelIdentifiers",
-      "x-displayName": "DBS Label Identifiers"
+      "description": "",
+      "name": "DBS Label Identifiers",
+      "x-displayName": "DBS Label Identifiers",
+      "x-tagKey": "dbsLabelIdentifiers"
     }
   ],
   "x-wb-extraction": {
-    "mode": "browser-redoc-openapi",
+    "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-dbs",
-    "capturedAt": "2026-08-19T18:12:37.448Z"
+    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/05-dbs.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-08-19T18:12:37.448Z",
+    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/orders-dbs",
     "operationCount": 21
   }

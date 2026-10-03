@@ -1,10 +1,8 @@
-"""Install browser-exported Wildberries OpenAPI specs and verify rate limits.
+"""Install official Wildberries OpenAPI specs and extract documented limits.
 
-Plain HTTP clients receive an anti-bot HTTP 498 from dev.wildberries.ru. A real
-browser can read each rendered page's ``__redoc_state.spec.data`` object and
-write one JSON object keyed by documentation slug. This script turns that
-export into the checked-in snapshots and derives the per-operation limits from
-the official ``description_limit`` blocks embedded in those specs.
+Accepts a JSON export keyed by documentation slug or downloaded specifications
+from ``fetch_openapi.py``. Derives per-operation limits from official
+``description_limit`` blocks and records genuinely absent limits explicitly.
 """
 
 from argparse import ArgumentParser
@@ -13,6 +11,7 @@ import html
 import json
 from pathlib import Path
 import re
+import urllib.parse
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -138,9 +137,38 @@ def path_count(schema):
     )
 
 
-def sync(export_path, captured_at=None):
-    live_specs = load_json(export_path)
-    manifest = load_json(MANIFEST_PATH)
+def preserve_key_order(value, previous):
+    if isinstance(value, dict) and isinstance(previous, dict):
+        return {key: preserve_key_order(value[key], previous.get(key))
+                for key in dict.fromkeys([*previous, *value]) if key in value}
+    if isinstance(value, list) and isinstance(previous, list):
+        return [preserve_key_order(item, previous[index] if index < len(previous) else None)
+                for index, item in enumerate(value)]
+    return value
+
+
+def extract_hosts(schema):
+    nodes = [schema]
+    for path_item in schema.get("paths", {}).values():
+        nodes.append(path_item)
+        nodes.extend(operation for method, operation in path_item.items() if method.lower() in METHODS)
+    hosts = set()
+    for node in nodes:
+        for server in node.get("servers", []):
+            url = urllib.parse.urlparse(server.get("url", ""))
+            host = url.hostname or ""
+            if (url.scheme == "https" and host.endswith("-api.wildberries.ru")
+                    and "sandbox" not in host and url.port in (None, 443)
+                    and url.username is None and url.password is None):
+                hosts.add(host)
+    return sorted(hosts)
+
+
+def sync(export_path, captured_at=None, output_dir=None):
+    live_specs = export_path if isinstance(export_path, dict) else load_json(export_path)
+    openapi_dir = Path(output_dir) if output_dir else OPENAPI_DIR
+    manifest_path = openapi_dir / "manifest.json"
+    manifest = load_json(manifest_path)
     expected_slugs = [record["slug"] for record in manifest["schemas"]]
     if set(live_specs) != set(expected_slugs):
         raise ValueError(
@@ -151,12 +179,14 @@ def sync(export_path, captured_at=None):
     captured_at = captured_at or datetime.now(timezone.utc).isoformat()
     total_operations = 0
     total_special = 0
+    undocumented = []
     output_schemas = {}
 
     for record in manifest["schemas"]:
         slug = record["slug"]
         schema = live_specs[slug]
-        missing = []
+        source_url = record.get("schema_source_url")
+        mode = "direct-schema-url" if source_url else "browser-redoc-openapi"
         for path, path_item in schema.get("paths", {}).items():
             for method, operation in path_item.items():
                 if method.lower() not in METHODS:
@@ -167,24 +197,28 @@ def sync(export_path, captured_at=None):
                         operation.get("description", ""), source, captured_at
                     )
                 except ValueError:
-                    missing.append(f"{method.upper()} {path}")
-                    continue
+                    if LIMIT_BLOCK_RE.search(operation.get("description", "")):
+                        raise
+                    rate_limit = {
+                        "status": "undocumented",
+                        "source": source,
+                        "verifiedAt": captured_at,
+                        "note": "The current official operation publishes no rate limit; verify with WB before repeated calls.",
+                    }
+                    undocumented.append({"slug": slug, "method": method.upper(), "path": path})
                 operation["x-wb-rate-limits"] = rate_limit
                 if "raw" in rate_limit:
                     total_special += 1
 
-        if missing:
-            raise ValueError(
-                f"{slug} operations without live limits:\n" + "\n".join(missing)
-            )
-
         count = operation_count(schema)
         total_operations += count
         schema["x-wb-extraction"] = {
-            "mode": "browser-redoc-openapi",
+            "mode": mode,
             "doc_url": record["doc_url"],
             "capturedAt": captured_at,
         }
+        if source_url:
+            schema["x-wb-extraction"]["schema_source_url"] = source_url
         schema["x-wb-rate-limits"] = {
             "verifiedAt": captured_at,
             "source": record["doc_url"],
@@ -192,16 +226,19 @@ def sync(export_path, captured_at=None):
         }
         if slug == "api-information":
             introduction = next(
-                tag for tag in schema.get("tags", []) if tag.get("name") == "introduction"
+                (tag for tag in schema.get("tags", []) if tag.get("name", "").lower() == "introduction"),
+                {},
             )
-            schema["x-wb-category-rate-limit-example"] = parse_rate_limit(
-                introduction.get("description", ""),
-                f"{record['doc_url']}#tag/introduction/Rate-Limits",
-                captured_at,
-            )
+            if LIMIT_BLOCK_RE.search(introduction.get("description", "")):
+                schema["x-wb-category-rate-limit-example"] = parse_rate_limit(
+                    introduction["description"],
+                    f"{record['doc_url']}#tag/introduction/Rate-Limits",
+                    captured_at,
+                )
 
         record["title"] = schema.get("info", {}).get("title", record["title"])
-        record["extraction_mode"] = "browser-redoc-openapi"
+        record["hosts"] = extract_hosts(schema)
+        record["extraction_mode"] = mode
         record["path_count"] = path_count(schema)
         record["operation_count"] = count
         record["fetched_at"] = captured_at
@@ -209,15 +246,24 @@ def sync(export_path, captured_at=None):
         output_schemas[record["schema_filename"]] = schema
 
     for filename, schema in output_schemas.items():
-        write_json(OPENAPI_DIR / filename, schema)
-    write_json(MANIFEST_PATH, manifest)
+        destination = openapi_dir / filename
+        # Keep unchanged JSON keys in place so refresh diffs show schema changes.
+        if destination.exists():
+            schema = preserve_key_order(schema, load_json(destination))
+        write_json(destination, schema)
+    write_json(manifest_path, manifest)
+    write_json(openapi_dir / "host-allowlist.json", {
+        "hosts": sorted({host for record in manifest["schemas"] for host in record["hosts"]}),
+    })
     write_json(
-        RATE_LIMIT_MANIFEST_PATH,
+        openapi_dir / "rate-limit-manifest.json",
         {
             "schemaVersion": 2,
             "verifiedAt": captured_at,
-            "source": "Live Wildberries OpenAPI data rendered in a browser",
+            "source": "Official Wildberries OpenAPI specifications",
             "operationCount": total_operations,
+            "documentedLimitCount": total_operations - len(undocumented),
+            "undocumentedLimits": undocumented,
             "specialLimitCount": total_special,
             "pages": [
                 {

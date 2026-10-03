@@ -109,7 +109,8 @@
                 "2041546265353"
               ],
               "warehouseAddress": "Москва, район Якиманка, Софийская набережная, 4 с1",
-              "warehouseId": 1234567
+              "warehouseId": 1234567,
+              "tireService": false
             }
           ]
         }
@@ -119,6 +120,32 @@
         "value": {
           "code": "NotFound"
         }
+      },
+      "AccessDenied": {
+        "value": {
+          "code": "AccessDenied",
+          "message": ""
+        }
+      },
+      "AccessDeniedBatch": {
+        "value": {
+          "detail": {},
+          "origin": "market-public-api",
+          "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
+          "title": "AccessDenied"
+        }
+      },
+      "Response403TokenCategory": {
+        "value": {
+          "status": 403,
+          "statusText": "Forbidden",
+          "title": "Forbidden",
+          "detail": "scope is not allowed for this resource",
+          "requestId": "2dbf6fc9-bad8-4ef9-a058-c938a8553ba5",
+          "origin": "ag-marketplace",
+          "timestamp": "2026-09-03T13:55:15Z"
+        },
+        "description": "Invalid token category"
       }
     },
     "responses": {
@@ -128,7 +155,7 @@
             "example": {
               "code": "07e4668e--a53a3d31f8b0-[UK-oWaVDUqNrKG]; 03bce=277; 84bd353bf-75",
               "detail": "token problem; token is malformed: could not base64 decode signature: illegal base64 data at input byte 84",
-              "origin": "s2s-api-auth-catalog",
+              "origin": "ag-marketplace",
               "requestId": "7b80742415072fe8b6b7f7761f1d1211",
               "status": 401,
               "statusText": "Unauthorized",
@@ -175,7 +202,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Unauthorized</span>"
+        "description": "Unauthorized"
       },
       "402": {
         "content": {
@@ -199,7 +226,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Payment required</span>"
+        "description": "Payment required"
       },
       "429": {
         "content": {
@@ -207,7 +234,7 @@
             "example": {
               "code": "07e4668e-ac2242c5c8c5-[UK-4dx7JUdskGZ]",
               "detail": "limited by c122a060-a7fb-4bb4-abb0-32fd4e18d489",
-              "origin": "s2s-api-auth-catalog",
+              "origin": "ag-marketplace",
               "requestId": "9d3c02cc698f8b041c661a7c28bed293",
               "status": 429,
               "statusText": "Too Many Requests",
@@ -254,36 +281,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Too many requests</span>"
-      },
-      "AccessDenied": {
-        "content": {
-          "application/json": {
-            "example": {
-              "message": "Access denied"
-            },
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        },
-        "description": "<span class='response__value '>Access denied</span>"
-      },
-      "AccessDeniedBatch": {
-        "content": {
-          "application/json": {
-            "example": {
-              "detail": {},
-              "origin": "market-public-api",
-              "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
-              "title": "AccessDenied"
-            },
-            "schema": {
-              "$ref": "#/components/schemas/api.BatchError"
-            }
-          }
-        },
-        "description": "<span class='response__value '>Access denied</span>"
+        "description": "Too many requests"
       },
       "IncorrectRequest": {
         "content": {
@@ -299,7 +297,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Bad request</span>"
+        "description": "Bad request"
       }
     },
     "schemas": {
@@ -576,7 +574,13 @@
                 {
                   "code": 409,
                   "detail": "MetaValidationFail",
-                  "metaDetails": "[MaxDepth]"
+                  "metaDetails": [
+                    {
+                      "key": "imei",
+                      "value": "359876543210925",
+                      "decision": "imeiAlreadySold"
+                    }
+                  ]
                 }
               ],
               "isError": true,
@@ -594,7 +598,33 @@
               "properties": {
                 "errors": {
                   "description": "Error details",
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "required": [
+                      "code",
+                      "detail"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "integer",
+                        "description": "Error code"
+                      },
+                      "detail": {
+                        "type": "string",
+                        "description": "- `NotFound` — the assembly order is not found\n- `StatusMismatch` — operation is not possible for this assembly order status\n- `MetaValidationFail` — label identifiers validation failed\n"
+                      },
+                      "metaDetails": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/MetaDetailsErrors"
+                          },
+                          {
+                            "description": "Assembly order label identifiers validation errors"
+                          }
+                        ]
+                      }
+                    },
+                    "type": "object"
+                  },
                   "type": "array"
                 },
                 "isError": {
@@ -721,7 +751,8 @@
           },
           "chrtId": {
             "description": "Item size ID in WB system",
-            "type": "integer"
+            "type": "integer",
+            "format": "uint64"
           },
           "convertedCurrencyCode": {
             "description": "Seller country currency code",
@@ -803,7 +834,7 @@
             "type": "array"
           },
           "rid": {
-            "description": "Unique order ID. <br>\nNote: `rid` corresponds to `srid` in the responses of the methods:\n  - [Buyers Return Applications](./user-communication#tag/buyersReturns/operation/getV1Claims)\n  - [Order Feed](./analytics#tag/orderFeed/operation/postV1OrderFeed)\n  - [Orders](./reports#tag/mainReports/operation/getV1SupplierOrders)\n  - [Sales](./reports#tag/mainReports/operation/getV1SupplierSales)\n  - [Returns and Item Movement Report](./reports#tag/returnsAndItemMovementReport)\n  - [Details for the Sales Reports by Report ID](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId)\n  - [Details for the Sales Reports by Period](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed)\n  - [Details for the Acquiring Expenses Reports by Report ID](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId)\n  - [Details for the Acquiring Expenses Reports by Period](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed)\n",
+            "description": "Unique order ID. <br>\nNote: `rid` corresponds to `srid` in the responses of the methods:\n  - [Buyers Return Applications](./customer-communication#tag/buyersReturns/operation/getV1Claims)\n  - [Order Feed](./analytics#tag/orderFeed/operation/postV1OrderFeed)\n  - [Orders](./reports#tag/mainReports/operation/getV1SupplierOrders)\n  - [Sales](./reports#tag/mainReports/operation/getV1SupplierSales)\n  - [Returns and Item Movement Report](./reports#tag/returnsAndItemMovementReport)\n  - [Details for the Sales Reports by Report ID](./documents-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId)\n  - [Details for the Sales Reports by Period](./documents-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed)\n  - [Details for the Acquiring Expenses Reports by Report ID](./documents-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId)\n  - [Details for the Acquiring Expenses Reports by Period](./documents-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed)\n",
             "type": "string"
           },
           "salePrice": {
@@ -826,6 +857,11 @@
           "warehouseId": {
             "description": "Seller warehouse ID where the assembly order was received\n",
             "type": "integer"
+          },
+          "tireService": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether the buyer indicated that he needs a tire service:\n  - `false` — no, tire service is not needed\n  - `true` — yes, tire service is needed\n"
           }
         },
         "type": "object"
@@ -863,7 +899,8 @@
           "chrtId": {
             "description": "Item size ID in WB systems",
             "example": 12345676,
-            "type": "integer"
+            "type": "integer",
+            "format": "uint64"
           },
           "convertedCurrencyCode": {
             "description": "Seller country currency code",
@@ -940,7 +977,7 @@
             "type": "integer"
           },
           "rid": {
-            "description": "Unique order ID. <br>\nNote: `rid` corresponds to `srid` in the responses of the methods:\n  - [Buyers Return Applications](./user-communication#tag/buyersReturns/operation/getV1Claims)\n  - [Order Feed](./analytics#tag/orderFeed/operation/postV1OrderFeed)\n  - [Orders](./reports#tag/mainReports/operation/getV1SupplierOrders)\n  - [Sales](./reports#tag/mainReports/operation/getV1SupplierSales)\n  - [Returns and Item Movement Report](./reports#tag/returnsAndItemMovementReport)\n  - [Details for the Sales Reports by Report ID](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId)\n  - [Details for the Sales Reports by Period](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed)\n  - [Details for the Acquiring Expenses Reports by Report ID](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId)\n  - [Details for the Acquiring Expenses Reports by Period](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed)\n",
+            "description": "Unique order ID. <br>\nNote: `rid` corresponds to `srid` in the responses of the methods:\n  - [Buyers Return Applications](./customer-communication#tag/buyersReturns/operation/getV1Claims)\n  - [Order Feed](./analytics#tag/orderFeed/operation/postV1OrderFeed)\n  - [Orders](./reports#tag/mainReports/operation/getV1SupplierOrders)\n  - [Sales](./reports#tag/mainReports/operation/getV1SupplierSales)\n  - [Returns and Item Movement Report](./reports#tag/returnsAndItemMovementReport)\n  - [Details for the Sales Reports by Report ID](./documents-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId)\n  - [Details for the Sales Reports by Period](./documents-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed)\n  - [Details for the Acquiring Expenses Reports by Report ID](./documents-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId)\n  - [Details for the Acquiring Expenses Reports by Period](./documents-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed)\n",
             "example": "5044304527347733263.0.0",
             "type": "string"
           },
@@ -963,6 +1000,11 @@
             "description": "Seller warehouse ID where the assembly order was received",
             "example": 1162157,
             "type": "integer"
+          },
+          "tireService": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether the buyer indicated that he needs a tire service:\n  - `false` — no, tire service is not needed\n  - `true` — yes, tire service is needed\n"
           }
         },
         "type": "object"
@@ -1006,7 +1048,7 @@
       "api.OrderFinalPriceResult": {
         "properties": {
           "data": {
-            "description": "Assembly order data.\n<br><br>\nIf `{}`, the data is being generated. Please try again later. Maximum data generation time is approximately 3 minutes.\n<br><br>\nIf `data` absent, assembly order data is not provided. Use the data from the responses of the methods:\n - [Get New Assembly Orders List](/en/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrdersNew)\n - [Get Information on Completed Orders](/en/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrders)\n",
+            "description": "Assembly order data.\n<br><br>\nIf `{}`, the data is being generated. Please try again later. Maximum data generation time is approximately 1 minute.\n<br><br>\nIf `data` absent, assembly order data is not provided. Use the data from the responses of the methods:\n - [Get New Assembly Orders List](/en/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrdersNew)\n - [Get Information on Completed Orders](/en/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrders)\n",
             "nullable": false,
             "properties": {
               "convertedCurrencyCode": {
@@ -1255,8 +1297,26 @@
               "properties": {
                 "errors": {
                   "description": "Error data",
-                  "example": "[MaxDepth]",
-                  "items": "[MaxDepth]",
+                  "example": [],
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "code",
+                      "detail"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "integer",
+                        "description": "Error code",
+                        "example": 404
+                      },
+                      "detail": {
+                        "type": "string",
+                        "example": "NotFound",
+                        "description": "Additional error data"
+                      }
+                    }
+                  },
                   "type": "array"
                 },
                 "isError": {
@@ -1266,7 +1326,31 @@
                 },
                 "metaDetails": {
                   "description": "Label identifiers and their validation statuses",
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "decision",
+                      "key"
+                    ],
+                    "properties": {
+                      "key": {
+                        "type": "string",
+                        "example": "imei",
+                        "description": "Label identifier:\n- `imei` — [IMEI](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaImei)\n- `uin` — [UIN](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaUin)\n- `gtin` — [GTIN](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaGtin)\n- `sgtin` — [labeling code Chestny ZNAK](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaSgtin)\n- `customsDeclaration` — [customs declaration number](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration)\n- `originCountryCode` — [numeric code of the country of origin](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration) according to [Russian classification of countries of the world](https://esnsi.gosuslugi.ru/classifiers/16269)\n"
+                      },
+                      "value": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "Label identifier value",
+                        "example": "359876543210025"
+                      },
+                      "decision": {
+                        "type": "string",
+                        "example": "imeiInvalidFormat",
+                        "description": "Label identifiers validation statuses. <br>\n- `imei`\n  - `filled` — Label identifier is added to the assembly order, validation is not required\n  - `deadlineExceeded` — Label identifier validation is not completed and will continue. The validation can pass or fail\n  - `optional` — Label identifier is not required. Validation passed\n  - `imeiMaySell` — The item is approved for sale. Validation passed\n  - `imeiSoldB2B` — The item was sold to a B2B buyer and approved for sale again. Validation passed\n  - `pending` — Label identifier validation continues. Wait for the validation status to change\n  - `required` — Required label identifier is not added to the assembly order. Validation failed\n  - `imeiInvalidFormat` — Invalid format. Validation failed\n  - `imeiAlreadySold` — The item with this IMEI has already been sold. Validation failed\n- `uin`\n  - `filled` — Label identifier is added to the assembly order, validation is not required\n  - `optional` — Label identifier is not required. Validation passed\n  - `required` — Required label identifier is not added to the assembly order. Validation failed\n- `sgtin`\n  - `filled` — Label identifier is added to the assembly order, validation is not required\n  - `deadlineExceeded` —  Label identifier validation is not completed and will continue. The validation can pass or fail\n  - `optional` — Label identifier is not required. Validation passed\n  - `sgtinIntroduced` — The item is approved for sale. Validation passed\n  - `sgtinSoldB2B` — The item was sold to a B2B buyer and approved for sale again. Validation passed\n  - `pending` — Label identifier validation continues. Wait for the validation status to change\n  - `required` — Required label identifier is not added to the assembly order. Validation failed\n  - `sgtinInvalidFormat` — Invalid format. Validation failed\n  - `sgtinNotFound` — Label identifier not found in [Chestny ZNAK](https://chestnyznak.ru/en/). Validation failed\n  - `sgtinEmitted` —  Label identifier has been issued. Validation failed\n  - `sgtinApplied` — Putting into circulation not completed. Validation failed\n  - `sgtinWrittenOff` — Written off. Validation failed\n  - `sgtinRetired` — Retired. Validation failed\n  - `sgtinWithdrawn` — Withdrawn. Validation failed\n  - `sgtinDisaggregated` — Disaggregated. Validation failed\n  - `sgtinDisaggregation` — Disaggregation. Validation failed\n  - `sgtinAppliedNotPaid` — Not paid. Validation failed\n- `gtin`\n  - `filled` — Label identifier is added to the assembly order, validation is not required\n  - `optional` — Label identifier is not required. Validation passed\n  - `required` — Required label identifier is not added to the assembly order. Validation failed\n- `customsDeclaration`\n  - `filled` — Label identifier is added to the assembly order, validation is not required\n  - `optional` — Label identifier is not required. Validation passed\n  - `required` — Required label identifier is not added to the assembly order. Validation failed\n"
+                      }
+                    }
+                  },
                   "type": "array"
                 },
                 "orderId": {
@@ -1565,6 +1649,44 @@
           "uin"
         ],
         "type": "object"
+      },
+      "Response4XX": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Error title"
+          },
+          "detail": {
+            "type": "string",
+            "description": "Error details"
+          },
+          "code": {
+            "type": "string",
+            "description": "Internal error code"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Request ID"
+          },
+          "origin": {
+            "type": "string",
+            "description": "WB internal service ID"
+          },
+          "status": {
+            "type": "number",
+            "description": "HTTP status code"
+          },
+          "statusText": {
+            "type": "string",
+            "description": "Text of the HTTP status code"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Request date and time"
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -1576,7 +1698,7 @@
     }
   },
   "info": {
-    "description": "<div class=\"api-block\">\n\nManagement of [assembly orders](./in-store-pickup#tag/inStorePickupAssemblyOrders) and [order label identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers) for the In-Store Pickup scheme.<br><br>\n\nYou can test the In-Store Pickup methods in the [sandbox](/en/sandbox). Also you can use [special methods](/en/docs/openapi-other/sandbox-environment#tag/Marketplace-In-Store-Pickup) in the sandbox for emulating user actions\n\n</div>\n",
+    "description": "<div class=\"api-block\">\n\nManagement of [assembly orders](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders) and [order label identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers) for the In-Store Pickup scheme.<br><br>\n\nYou can test the In-Store Pickup methods in the [sandbox](/en/sandbox). Also you can use [special methods](/en/docs/openapi-other/sandbox-environment#tag/marketplaceInStorePickup) in the sandbox for emulating user actions\n\n</div>\n",
     "title": "In-Store Pickup",
     "version": "instorepickup",
     "x-file-name": "in-store-pickup"
@@ -1585,7 +1707,7 @@
   "paths": {
     "/api/marketplace/v3/click-collect/orders/final-price": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns:\n  - seller prices excluding discounts\n  - sums charged to the buyer including all discounts and cashback\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>getting and deleting In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 150 requests | 400 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method returns:\n  - seller prices excluding discounts\n  - sums charged to the buyer including all discounts and cashback\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>getting and deleting In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 150 requests | 400 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersFinalPrice",
         "requestBody": {
           "content": {
@@ -1601,14 +1723,16 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "GetFinalPriceSuccess": "[MaxDepth]"
+                  "GetFinalPriceSuccess": {
+                    "$ref": "#/components/examples/GetFinalPriceSuccess"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/api.OrdersFinalPriceResponse"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -1617,15 +1741,37 @@
             "$ref": "#/components/responses/401"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDeniedBatch"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Get seller prices and amounts charged to the buyer{{ /api/marketplace/v3/click-collect/orders/final-price }}",
+        "summary": "Get seller prices and amounts charged to the buyer",
         "tags": [
-          "inStorePickupAssemblyOrders"
+          "In-Store Pickup Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -1639,10 +1785,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersFinalPrice",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersFinalPrice",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupAssemblyOrders"
       },
       "servers": [
         {
@@ -1652,14 +1799,44 @@
     },
     "/api/marketplace/v3/click-collect/orders/meta/customs-declaration": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the customs declaration numbers and numeric codes of the countries for the assembly orders [label identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails). One assembly order can have only one customs declaration number. <br>\nCustoms declaration number can only be added if all the conditions are met:\n  - the assembly order has the B2B sale attribute — `\"isB2b\": true` in the response of the method [getting new assembly orders](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrdersNew)\n  - the assembly order is in `confirm` or `prepare` statuses\n  - the `customsDeclaration` field is returned in the response of the [Get order label identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails) method\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 20 requests | 3 s | 500 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Sets the customs declaration numbers and numeric codes of the countries for the assembly orders [label identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails). One assembly order can have only one customs declaration number. <br>\nCustoms declaration number can only be added if all the conditions are met:\n  - the assembly order has the B2B sale attribute — `\"isB2b\": true` in the response of the method [getting new assembly orders](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrdersNew)\n  - the assembly order is in `confirm` or `prepare` statuses\n  - the `customsDeclaration` field is returned in the response of the [Get order label identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails) method\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>adding In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 20 requests | 3 s | 500 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersMetaCustomsDeclaration",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "properties": {
-                  "orders": "[MaxDepth]"
+                  "orders": {
+                    "type": "array",
+                    "maxItems": 1000,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "customsDeclaration": {
+                          "type": "string",
+                          "minLength": 17,
+                          "maxLength": 29,
+                          "description": "Customs declaration number",
+                          "example": "10704010/010624/0000302"
+                        },
+                        "orderId": {
+                          "type": "integer",
+                          "description": "Assembly order ID"
+                        },
+                        "originCountryCode": {
+                          "type": "string",
+                          "description": "Numeric code of the country of origin according to [Russian classification of countries of the world](https://esnsi.gosuslugi.ru/classifiers/16269). Required only for assembly orders with the B2B sale indicator `\"isB2b\": true`\n",
+                          "example": "643",
+                          "maxLength": 3
+                        }
+                      },
+                      "required": [
+                        "customsDeclaration",
+                        "orderId",
+                        "originCountryCode"
+                      ]
+                    }
+                  }
                 },
                 "required": [
                   "orders"
@@ -1675,14 +1852,16 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "CustomsDeclarationResponse": "[MaxDepth]"
+                  "CustomsDeclarationResponse": {
+                    "$ref": "#/components/examples/CustomsDeclarationResponse"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/api.CustomsDeclarationSetResponse"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Успешно</span>"
+            "description": "Успешно"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -1691,7 +1870,29 @@
             "$ref": "#/components/responses/401"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1702,9 +1903,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Add Customs Declaration Numbers to the Orders{{ /api/marketplace/v3/click-collect/orders/meta/customs-declaration }}",
+        "summary": "Add Customs Declaration Numbers to the Orders",
         "tags": [
-          "inStorePickupLabelIdentifiers"
+          "In-Store Pickup Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -1718,10 +1919,11 @@
               "burst": "500 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupLabelIdentifiers"
       },
       "servers": [
         {
@@ -1731,7 +1933,7 @@
     },
     "/api/marketplace/v3/click-collect/orders/meta/delete": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method removes [assembly orders label identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails) values. <br><br>\nYou can only delete one type of label identifiers in one request.\nSpecify the label identifiers type in the request:\n  - `imei` — [IMEI](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaImei)\n  - `uin` — [UIN](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaUin)\n  - `gtin` — [GTIN](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaGtin)\n  - `sgtin` — [labeling code Chestny ZNAK](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaSgtin)\n  - `customsDeclaration` — [customs declaration number](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration). Deleting the customs declaration number also deletes the associated country of origin code — `originCountryCode`\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>getting and deleting In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 150 requests | 400 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method removes [assembly orders label identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails) values. <br><br>\nYou can only delete one type of label identifiers in one request.\nSpecify the label identifiers type in the request:\n  - `imei` — [IMEI](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaImei)\n  - `uin` — [UIN](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaUin)\n  - `gtin` — [GTIN](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaGtin)\n  - `sgtin` — [labeling code Chestny ZNAK](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaSgtin)\n  - `customsDeclaration` — [customs declaration number](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration). Deleting the customs declaration number also deletes the associated country of origin code — `originCountryCode`\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>getting and deleting In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 150 requests | 400 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersMetaDelete",
         "requestBody": {
           "content": {
@@ -1752,7 +1954,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -1764,15 +1966,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Delete Assembly Order Label Identifiers{{ /api/marketplace/v3/click-collect/orders/meta/delete }}",
+        "summary": "Delete Assembly Order Label Identifiers",
         "tags": [
-          "inStorePickupLabelIdentifiers"
+          "In-Store Pickup Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -1786,10 +2010,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDelete",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaDelete",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupLabelIdentifiers"
       },
       "servers": [
         {
@@ -1804,7 +2029,7 @@
     },
     "/api/marketplace/v3/click-collect/orders/meta/details": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns [assembly orders](./in-store-pickup#tag/inStorePickupAssemblyOrders) label identifiers and their validation statuses.<br><br>\n\nYou can get the list of label identifiers available for the assembly order with the [list of new assembly orders](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrdersNew), field `requiredMeta`. If the `requiredMeta` field does not contain the label identifier, it means that this label identifier cannot be added to this assembly order.<br>\nPossible label identifiers:\n- `imei` — [IMEI](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaImei)\n- `uin` — [UIN](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaUin)\n- `gtin` — [GTIN](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaGtin)\n- `sgtin` — [labeling code Chestny ZNAK](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaSgtin)\n- `customsDeclaration` — [customs declaration number](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration)\n- `originCountryCode` — [numeric code of the country of origin](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration) according to [Russian classification of countries of the world](https://esnsi.gosuslugi.ru/classifiers/16269)\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>getting and deleting In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 150 requests | 400 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n\n</div>\n",
+        "description": "Returns [assembly orders](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders) label identifiers and their validation statuses.<br><br>\n\nYou can get the list of label identifiers available for the assembly order with the [list of new assembly orders](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrdersNew), field `requiredMeta`. If the `requiredMeta` field does not contain the label identifier, it means that this label identifier cannot be added to this assembly order.<br>\nPossible label identifiers:\n- `imei` — [IMEI](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaImei)\n- `uin` — [UIN](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaUin)\n- `gtin` — [GTIN](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaGtin)\n- `sgtin` — [labeling code Chestny ZNAK](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaSgtin)\n- `customsDeclaration` — [customs declaration number](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration)\n- `originCountryCode` — [numeric code of the country of origin](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration) according to [Russian classification of countries of the world](https://esnsi.gosuslugi.ru/classifiers/16269)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>getting and deleting In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 150 requests | 400 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersMetaDetails",
         "requestBody": {
           "content": {
@@ -1825,7 +2050,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -1834,15 +2059,37 @@
             "$ref": "#/components/responses/401"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDeniedBatch"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Get Assembly Orders Label Identifiers{{ /api/marketplace/v3/click-collect/orders/meta/details }}",
+        "summary": "Get Assembly Orders Label Identifiers",
         "tags": [
-          "inStorePickupLabelIdentifiers"
+          "In-Store Pickup Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -1856,15 +2103,16 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaDetails",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
-        }
+        },
+        "x-tagKey": "inStorePickupLabelIdentifiers"
       }
     },
     "/api/marketplace/v3/click-collect/orders/meta/gtin": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method sets the GTIN, Belarus item unique identifier, for the [assembly orders label identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails).\nThe assembly order can only have one GTIN. <br>\nYou can add the GTIN only for assembly orders in the `confirm` [status](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) and if the field `imei` is returned in the response of the [Get Order Label Identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails) method.<br>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 20 requests | 3 s | 500 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method sets the GTIN, Belarus item unique identifier, for the [assembly orders label identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails).\nThe assembly order can only have one GTIN. <br>\nYou can add the GTIN only for assembly orders in the `confirm` [status](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) and if the field `imei` is returned in the response of the [Get Order Label Identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails) method.<br>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>adding In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 20 requests | 3 s | 500 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersMetaGtin",
         "requestBody": {
           "content": {
@@ -1885,7 +2133,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -1897,15 +2145,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Add GTIN to the Assembly Orders{{ /api/marketplace/v3/click-collect/orders/meta/gtin }}",
+        "summary": "Add GTIN to the Assembly Orders",
         "tags": [
-          "inStorePickupLabelIdentifiers"
+          "In-Store Pickup Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -1919,10 +2189,11 @@
               "burst": "500 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaGtin",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaGtin",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupLabelIdentifiers"
       },
       "servers": [
         {
@@ -1937,7 +2208,7 @@
     },
     "/api/marketplace/v3/click-collect/orders/meta/imei": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the IMEI for the [assembly orders label identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails). <br>\nThe assembly order can have only one IMEI. If a device has two IMEIs — **IMEI** and **IMEI2** or **IMEI1** and **IMEI2** — you should only specify **IMEI** or **IMEI1**. You don't need to specify **IMEI2**.<br>\nYou can add the IMEI only for assembly orders in the `confirm` [status](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) and if the field `imei` is returned in the response of the [Get Order Label Identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails) method.<br>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 20 requests | 3 s | 500 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Sets the IMEI for the [assembly orders label identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails). <br>\nThe assembly order can have only one IMEI. If a device has two IMEIs — **IMEI** and **IMEI2** or **IMEI1** and **IMEI2** — you should only specify **IMEI** or **IMEI1**. You don't need to specify **IMEI2**.<br>\nYou can add the IMEI only for assembly orders in the `confirm` [status](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) and if the field `imei` is returned in the response of the [Get Order Label Identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails) method.<br>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>adding In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 20 requests | 3 s | 500 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersMetaImei",
         "requestBody": {
           "content": {
@@ -1958,7 +2229,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -1970,15 +2241,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Add IMEI to the Assembly Orders{{ /api/marketplace/v3/click-collect/orders/meta/imei }}",
+        "summary": "Add IMEI to the Assembly Orders",
         "tags": [
-          "inStorePickupLabelIdentifiers"
+          "In-Store Pickup Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -1992,10 +2285,11 @@
               "burst": "500 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaImei",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaImei",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupLabelIdentifiers"
       },
       "servers": [
         {
@@ -2010,7 +2304,7 @@
     },
     "/api/marketplace/v3/click-collect/orders/meta/sgtin": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method sets labeling code [Chestny ZNAK](https://chestnyznak.ru/en) to the [assembly orders label identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails).<br>\nYou can add the labeling codes Chestny ZNAK only for orders in the `confirm` status and if the field `sgtin` is returned in the response of the [Get Order Label Identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails) method.<br><br>\nYou can get the added labeling codes in the [assembly orders label identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails).\n<br><br>\nFor more information about labeling codes Chestny ZNAK please check: https://chestnyznak.ru/en/.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 20 requests | 3 s | 500 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method sets labeling code [Chestny ZNAK](https://chestnyznak.ru/en) to the [assembly orders label identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails).<br>\nYou can add the labeling codes Chestny ZNAK only for orders in the `confirm` status and if the field `sgtin` is returned in the response of the [Get Order Label Identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails) method.<br><br>\nYou can get the added labeling codes in the [assembly orders label identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails).\n<br><br>\nFor more information about labeling codes Chestny ZNAK please check: https://chestnyznak.ru/en/.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>adding In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 20 requests | 3 s | 500 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersMetaSgtin",
         "requestBody": {
           "content": {
@@ -2031,7 +2325,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -2043,15 +2337,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Add Labeling codes Chestny ZNAK to the Assembly Orders (Chestny ZNAK){{ /api/marketplace/v3/click-collect/orders/meta/sgtin }}",
+        "summary": "Add Labeling codes Chestny ZNAK to the Assembly Orders (Chestny ZNAK)",
         "tags": [
-          "inStorePickupLabelIdentifiers"
+          "In-Store Pickup Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2065,10 +2381,11 @@
               "burst": "500 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaSgtin",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaSgtin",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupLabelIdentifiers"
       },
       "servers": [
         {
@@ -2083,7 +2400,7 @@
     },
     "/api/marketplace/v3/click-collect/orders/meta/uin": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method sets the UIN (Unique Identification Numbers) for the [assembly orders label identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails).\nThe order can only have one UIN. <br>\nYou can add the UIN only for assembly orders in the `confirm` [status](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) and if the field `uin` is returned in the response of the [Get Order Label Identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails) method.<br>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for all methods for <strong>adding In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 20 requests | 3 s | 500 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method sets the UIN (Unique Identification Numbers) for the [assembly orders label identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails).\nThe order can only have one UIN. <br>\nYou can add the UIN only for assembly orders in the `confirm` [status](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) and if the field `uin` is returned in the response of the [Get Order Label Identifiers](/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails) method.<br>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>adding In-Store Pickup label identifiers</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 20 requests | 3 s | 500 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersMetaUin",
         "requestBody": {
           "content": {
@@ -2104,7 +2421,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -2116,15 +2433,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Add UIN (Unique Identification Numbers) to the Assembly Orders{{ /api/marketplace/v3/click-collect/orders/meta/uin }}",
+        "summary": "Add UIN (Unique Identification Numbers) to the Assembly Orders",
         "tags": [
-          "inStorePickupLabelIdentifiers"
+          "In-Store Pickup Label Identifiers"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2138,10 +2477,11 @@
               "burst": "500 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaUin",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaUin",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupLabelIdentifiers"
       },
       "servers": [
         {
@@ -2156,7 +2496,7 @@
     },
     "/api/marketplace/v3/click-collect/orders/status/cancel": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method transfers [assembly orders](./in-store-pickup#tag/inStorePickupAssemblyOrders) from the `new`, `confirm`, `prepare` [statuses](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) to the `cancel` — canceled by the seller — status.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method transfers [assembly orders](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders) from the `new`, `confirm`, `prepare` [statuses](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) to the `cancel` — canceled by the seller — status.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersStatusCancel",
         "requestBody": {
           "content": {
@@ -2176,7 +2516,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -2188,15 +2528,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDeniedBatch"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Cancel the Assembly Orders{{ /api/marketplace/v3/click-collect/orders/status/cancel }}",
+        "summary": "Cancel the Assembly Orders",
         "tags": [
-          "inStorePickupAssemblyOrders"
+          "In-Store Pickup Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2210,10 +2572,11 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusCancel",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersStatusCancel",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupAssemblyOrders"
       },
       "servers": [
         {
@@ -2228,7 +2591,7 @@
     },
     "/api/marketplace/v3/click-collect/orders/status/confirm": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method transfers [assembly orders](./in-store-pickup#tag/inStorePickupAssemblyOrders) from the `new` [status](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) to the `confirm` — on  assembly — status.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method transfers [assembly orders](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders) from the `new` [status](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) to the `confirm` — on  assembly — status.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersStatusConfirm",
         "requestBody": {
           "content": {
@@ -2248,7 +2611,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -2260,15 +2623,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDeniedBatch"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Transfer to Assembly{{ /api/marketplace/v3/click-collect/orders/status/confirm }}",
+        "summary": "Transfer to Assembly",
         "tags": [
-          "inStorePickupAssemblyOrders"
+          "In-Store Pickup Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2282,10 +2667,11 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusConfirm",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersStatusConfirm",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupAssemblyOrders"
       },
       "servers": [
         {
@@ -2300,7 +2686,7 @@
     },
     "/api/marketplace/v3/click-collect/orders/status/info": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method provides the statuses of [assembly orders](./in-store-pickup#tag/inStorePickupAssemblyOrders) by their ID.\n<br><br>\n`supplierStatus` — the status of the assembly order. The trigger for its change is the action of the seller himself.\n\nPossible values for `supplierStatus`:\n| Status              | Description                | How to set the assembly order to this status                    |\n|---------------------|----------------------------|-----------------------------------------------------------------|\n| `new`                 | **New assembly order**         ||\n| `confirm`             | **In assembly**                | [Transfer to assembly](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusConfirm)          |\n| `prepare`             | **Ready for pickup**           | [Notify that the assembly order is ready for delivery](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusPrepare)           |\n| `receive`             | **Received by buyer**       | [Notify that the order has been received by the buyer](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusReceive)           |\n| `reject`              | **Buyer refusal**           | [Notify that the buyer has declined the order](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusReject)            |\n| `cancel`              | **Canceled by seller**         | [Cancel the order](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusCancel)            |\n| `cancel_shelf_life`   | **Canceled due to shelf life expiration** | Automatically transitions upon event occurrence |\n\n`wbStatus` — the status of the assembly order in the WB system.\n\nPossible values for wbStatus:\n- `waiting` - assembly order is in progress\n- `sorted` - assembly order is sorted\n- `sold` - the buyer got the order\n- `canceled` - assembly order canceled\n- `canceled_by_client` - buyer canceled the order upon receipt\n- `declined_by_client` - buyer canceled the order within the first hour\n<br>Cancellation is available to the buyer within the first hour from the time of order, if the order has not been transitioned to assembly\n- `defect` - order canceled due to defect\n- `ready_for_pickup` - order is ready for pickup\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method provides the statuses of [assembly orders](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders) by their ID.\n<br><br>\n`supplierStatus` — the status of the assembly order. The trigger for its change is the action of the seller himself.\n\nPossible values for `supplierStatus`:\n| Status              | Description                | How to set the assembly order to this status                    |\n|---------------------|----------------------------|-----------------------------------------------------------------|\n| `new`                 | **New assembly order**         ||\n| `confirm`             | **In assembly**                | [Transfer to assembly](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusConfirm)          |\n| `prepare`             | **Ready for pickup**           | [Notify that the assembly order is ready for delivery](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusPrepare)           |\n| `receive`             | **Received by buyer**       | [Notify that the order has been received by the buyer](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusReceive)           |\n| `reject`              | **Buyer refusal**           | [Notify that the buyer has declined the order](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusReject)            |\n| `cancel`              | **Canceled by seller**         | [Cancel the order](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusCancel)            |\n| `cancel_shelf_life`   | **Canceled due to shelf life expiration** | Automatically transitions upon event occurrence |\n\n`wbStatus` — the status of the assembly order in the WB system.\n\nPossible values for wbStatus:\n- `waiting` - assembly order is in progress\n- `sorted` - assembly order is sorted\n- `sold` - the buyer got the order\n- `canceled` - assembly order canceled\n- `canceled_by_client` - buyer canceled the order upon receipt\n- `declined_by_client` - buyer canceled the order within the first hour\n<br>Cancellation is available to the buyer within the first hour from the time of order, if the order has not been transitioned to assembly\n- `defect` - order canceled due to defect\n- `ready_for_pickup` - order is ready for pickup\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersStatusInfo",
         "requestBody": {
           "content": {
@@ -2321,7 +2707,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -2333,15 +2719,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDeniedBatch"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Get Assembly Order Statuses{{ /api/marketplace/v3/click-collect/orders/status/info }}",
+        "summary": "Get Assembly Order Statuses",
         "tags": [
-          "inStorePickupAssemblyOrders"
+          "In-Store Pickup Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -2355,10 +2763,11 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersStatusInfo",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupAssemblyOrders"
       },
       "servers": [
         {
@@ -2373,7 +2782,7 @@
     },
     "/api/marketplace/v3/click-collect/orders/status/prepare": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method transfers [assembly orders](./in-store-pickup#tag/inStorePickupAssemblyOrders) from the `confirm` — on assembly — [status](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) to the `prepare` — ready for pickup — status.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method transfers [assembly orders](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders) from the `confirm` — on assembly — [status](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) to the `prepare` — ready for pickup — status.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersStatusPrepare",
         "requestBody": {
           "content": {
@@ -2393,7 +2802,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -2405,15 +2814,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDeniedBatch"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Notify That the Assembly Orders Are Ready for Pickup{{ /api/marketplace/v3/click-collect/orders/status/prepare }}",
+        "summary": "Notify That the Assembly Orders Are Ready for Pickup",
         "tags": [
-          "inStorePickupAssemblyOrders"
+          "In-Store Pickup Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2427,10 +2858,11 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusPrepare",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersStatusPrepare",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupAssemblyOrders"
       },
       "servers": [
         {
@@ -2445,7 +2877,7 @@
     },
     "/api/marketplace/v3/click-collect/orders/status/receive": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method transfers [assembly orders](./in-store-pickup#tag/inStorePickupAssemblyOrders) from the `prepare` — ready for pickup — [status](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) to the `receive` — received by the buyer — status.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method transfers [assembly orders](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders) from the `prepare` — ready for pickup — [status](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) to the `receive` — received by the buyer — status.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersStatusReceive",
         "requestBody": {
           "content": {
@@ -2465,7 +2897,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -2477,15 +2909,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDeniedBatch"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Notify That the Orders Were Received by the Buyers{{ /api/marketplace/v3/click-collect/orders/status/receive }}",
+        "summary": "Notify That the Orders Were Received by the Buyers",
         "tags": [
-          "inStorePickupAssemblyOrders"
+          "In-Store Pickup Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2499,10 +2953,11 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusReceive",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersStatusReceive",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupAssemblyOrders"
       },
       "servers": [
         {
@@ -2517,7 +2972,7 @@
     },
     "/api/marketplace/v3/click-collect/orders/status/reject": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method transfers [assembly orders](./in-store-pickup#tag/inStorePickupAssemblyOrders) from the `prepare` — ready for pickup — [status](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) to the `reject` — refusal upon receipt — status.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method transfers [assembly orders](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders) from the `prepare` — ready for pickup — [status](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusInfo) to the `reject` — refusal upon receipt — status.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 s | 1 request | 1 s | 10 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersStatusReject",
         "requestBody": {
           "content": {
@@ -2537,7 +2992,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/IncorrectRequest"
@@ -2549,15 +3004,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDeniedBatch"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                },
+                "examples": {
+                  "AccessDeniedBatch": {
+                    "$ref": "#/components/examples/AccessDeniedBatch"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Notify that the Orders Are Declined{{ /api/marketplace/v3/click-collect/orders/status/reject }}",
+        "summary": "Notify that the Orders Are Declined",
         "tags": [
-          "inStorePickupAssemblyOrders"
+          "In-Store Pickup Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": false,
@@ -2571,10 +3048,11 @@
               "burst": "10 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusReject",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersStatusReject",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupAssemblyOrders"
       },
       "servers": [
         {
@@ -2589,7 +3067,7 @@
     },
     "/api/v3/click-collect/orders": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method provides information on completed assembly orders after the sale or cancellation of an order.\n\nYou can get data for a specified period, maximum of 30 calendar days per request.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>In-Store Pickup assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method provides information on completed assembly orders after the sale or cancellation of an order.\n\nYou can get data for a specified period, maximum of 30 calendar days per request.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>In-Store Pickup assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "getV3ClickCollectOrders",
         "parameters": [
           {
@@ -2640,20 +3118,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
                 "examples": {
-                  "IncorrectParameter": "[MaxDepth]"
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2662,15 +3142,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Get Information on Completed Orders{{ /api/v3/click-collect/orders }}",
+        "summary": "Get Information on Completed Orders",
         "tags": [
-          "inStorePickupAssemblyOrders"
+          "In-Store Pickup Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -2684,10 +3186,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrders",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/getV3ClickCollectOrders",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupAssemblyOrders"
       },
       "servers": [
         {
@@ -2702,7 +3205,7 @@
     },
     "/api/v3/click-collect/orders/client": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method provides information about the buyer based on the assembly order ID.\n<br><br>\nAvailable only for assembly orders with the following statuses:\n  - `confirm` — in assembly\n  - `prepare` — ready for pickup\n\nRestrictions:\n- Information can only be obtained for assembly orders that are in the assembly process — status `confirm` and ready for pickup — status `prepare`.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>In-Store Pickup assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method provides information about the buyer based on the assembly order ID.\n<br><br>\nAvailable only for assembly orders with the following statuses:\n  - `confirm` — in assembly\n  - `prepare` — ready for pickup\n\nRestrictions:\n- Information can only be obtained for assembly orders that are in the assembly process — status `confirm` and ready for pickup — status `prepare`.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>In-Store Pickup assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersClient",
         "requestBody": {
           "content": {
@@ -2723,20 +3226,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
                 "examples": {
-                  "IncorrectRequestBody": "[MaxDepth]"
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2745,15 +3250,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Buyer Information{{ /api/v3/click-collect/orders/client }}",
+        "summary": "Buyer Information",
         "tags": [
-          "inStorePickupAssemblyOrders"
+          "In-Store Pickup Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -2767,10 +3294,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersClient",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersClient",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupAssemblyOrders"
       },
       "servers": [
         {
@@ -2785,7 +3313,7 @@
     },
     "/api/v3/click-collect/orders/client/identity": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method indicates whether the checked order belongs to the buyer based on the provided code.\n<br><br>\nAvailable if at least one assembly order from the order is in `prepare` status — ready for pickup.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 30 requests | 2 s | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method indicates whether the checked order belongs to the buyer based on the provided code.\n<br><br>\nAvailable if at least one assembly order from the order is in `prepare` status — ready for pickup.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 30 requests | 2 s | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3ClickCollectOrdersClientIdentity",
         "requestBody": {
           "content": {
@@ -2806,20 +3334,22 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
                 "examples": {
-                  "IncorrectRequestBody": "[MaxDepth]"
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2828,41 +3358,67 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "content": {
               "application/json": {
                 "examples": {
-                  "OrderNotFound": "[MaxDepth]"
+                  "OrderNotFound": {
+                    "$ref": "#/components/examples/OrderNotFound"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/api.Error"
                 }
               }
             },
-            "description": "<span class='response__value '>Not found</span>"
+            "description": "Not found"
           },
           "409": {
             "content": {
               "application/json": {
                 "examples": {
-                  "InvalidPasscode": "[MaxDepth]"
+                  "InvalidPasscode": {
+                    "$ref": "#/components/examples/InvalidPasscode"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/api.Error"
                 }
               }
             },
-            "description": "<span class='response__value '>Incorrect verification code entered</span>"
+            "description": "Incorrect verification code entered"
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Check If the Order Belongs to the Buyer{{ /api/v3/click-collect/orders/client/identity }}",
+        "summary": "Check If the Order Belongs to the Buyer",
         "tags": [
-          "inStorePickupAssemblyOrders"
+          "In-Store Pickup Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -2876,10 +3432,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersClientIdentity",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersClientIdentity",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupAssemblyOrders"
       },
       "servers": [
         {
@@ -2894,21 +3451,23 @@
     },
     "/api/v3/click-collect/orders/new": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method provides a list of all new [assembly orders](./in-store-pickup#tag/inStorePickupAssemblyOrders) that the seller has at the time of the request.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account for <strong>In-Store Pickup assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method provides a list of all new [assembly orders](/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders) that the seller has at the time of the request.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>In-Store Pickup assembly orders</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "getV3ClickCollectOrdersNew",
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "examples": {
-                  "NewOrderClick": "[MaxDepth]"
+                  "NewOrderClick": {
+                    "$ref": "#/components/examples/NewOrderClick"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/api.NewOrders"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2917,15 +3476,37 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/AccessDenied"
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Get New Assembly Orders List{{ /api/v3/click-collect/orders/new }}",
+        "summary": "Get New Assembly Orders List",
         "tags": [
-          "inStorePickupAssemblyOrders"
+          "In-Store Pickup Assembly Orders"
         ],
         "x-category": "marketplace",
         "x-readonly-method": true,
@@ -2939,10 +3520,11 @@
               "burst": "20 requests"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrdersNew",
-          "verifiedAt": "2026-08-19T18:12:37.448Z",
+          "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/getV3ClickCollectOrdersNew",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
-        }
+        },
+        "x-tagKey": "inStorePickupAssemblyOrders"
       },
       "servers": [
         {
@@ -2968,28 +3550,26 @@
   ],
   "tags": [
     {
-      "description": "<div class=\"api-description\">\n\n<div class=\"api-block\">\n\nManagement of [assembly orders](./in-store-pickup#tag/inStorePickupAssemblyOrders) and [order label identifiers](./in-store-pickup#tag/inStorePickupLabelIdentifiers) for the In-Store Pickup scheme.<br><br>\n\nYou can test the In-Store Pickup methods in the [sandbox](/en/sandbox). Also you can use [special methods](/en/docs/openapi-other/sandbox-environment#tag/Marketplace-In-Store-Pickup) in the sandbox for emulating user actions\n\n</div>\n\n\n</div>",
-      "name": "In-Store Pickup",
-      "x-traitTag": true
+      "description": "",
+      "name": "In-Store Pickup Assembly Orders",
+      "x-displayName": "In-Store Pickup Assembly Orders",
+      "x-tagKey": "inStorePickupAssemblyOrders"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Marketplace</strong> category\n</div>\n\n\n<div class=\"description_ref\">\n  You can learn how to use methods in business cases in the <a href=\"/en/knowledge-base/articles/019d49a4-16d3-7b8c-b42a-026b566a8e29/in-store-pickup-orders\">instructions</a> on working with <strong>In-Store Pickup orders</strong>\n</div>\n\n\nWork order by scheme:\n1. [Get new assembly order](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/getV3ClickCollectOrdersNew)\n2. [Transfer it for assembly](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusConfirm)\n3. After this, [information about the buyer](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersClient) (name, phone number) becomes available for the order.\n4. After assembly, [report that the assembly order is ready for pickup](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusPrepare)\n5. After the assembly order receives the status `Ready for pickup`, you can check whether [the assembly order belongs to the buyer](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersClientIdentity).\n6. After delivering the order to the buyer, you need to inform our server that [the assembly order has been received by the buyer](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusReceive) or that [the buyer declined the assembly order](./in-store-pickup#tag/inStorePickupAssemblyOrders/operation/postV3ClickCollectOrdersStatusReject).\n",
-      "name": "inStorePickupAssemblyOrders",
-      "x-displayName": "In-Store Pickup Assembly Orders"
-    },
-    {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Marketplace</strong> category\n</div>\n\n\n<div class=\"description_ref\">\n  You can learn how to use methods in business cases in the <a href=\"/en/knowledge-base/articles/019d49a4-16d3-7b8c-b42a-026b566a8e29/in-store-pickup-orders\">instructions</a> on working with <strong>In-Store Pickup orders</strong>\n</div>\n\n\nUsing these methods, you can [get](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDetails), [delete](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaDelete), and edit label identifiers of assembly orders:\n  - [Labeling code Chestny ZNAK](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaSgtin)\n  - [UIN](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaUin)\n  - [IMEI](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaImei)\n  - [GTIN](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaGtin)\n  - [Customs Declaration Number and Numeric Code of the Country of Origin](./in-store-pickup#tag/inStorePickupLabelIdentifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration)\n\nSpecifying label identifiers for the assembly order in the sandbox is optional\n",
-      "name": "inStorePickupLabelIdentifiers",
-      "x-displayName": "In-Store Pickup Label Identifiers"
+      "description": "",
+      "name": "In-Store Pickup Label Identifiers",
+      "x-displayName": "In-Store Pickup Label Identifiers",
+      "x-tagKey": "inStorePickupLabelIdentifiers"
     }
   ],
   "x-wb-extraction": {
-    "mode": "browser-redoc-openapi",
+    "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/in-store-pickup",
-    "capturedAt": "2026-08-19T18:12:37.448Z"
+    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/06-in-store-pickup.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-08-19T18:12:37.448Z",
+    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/in-store-pickup",
     "operationCount": 18
   }

@@ -17,7 +17,7 @@ Before repeated, parallel, paginated, or polling calls, read [rate-limits.md](ra
 | `orders-dbs` | DBS Orders | `marketplace-api.wildberries.ru` | `orders-dbs.json` | [marketplace.md](marketplace.md) |
 | `in-store-pickup` | In-Store Pickup Orders | `marketplace-api.wildberries.ru` | `in-store-pickup.json` | [marketplace.md](marketplace.md) |
 | `orders-fbw` | FBW Supplies | `supplies-api.wildberries.ru` | `orders-fbw.json` | [supplies.md](supplies.md) |
-| `promotion` | Marketing and Promotions | `advert-api.wildberries.ru` | `promotion.json` | [promotion.md](promotion.md) |
+| `promotion` | Marketing and Promotions | `advert-api.wildberries.ru`, `advert-media-api.wildberries.ru`, `dp-calendar-api.wildberries.ru` | `promotion.json` | [promotion.md](promotion.md) |
 | `user-communication` | Customer Communication | `feedbacks-api.wildberries.ru`, `buyer-chat-api.wildberries.ru`, `returns-api.wildberries.ru` | `user-communication.json` | [feedbacks-and-questions.md](feedbacks-and-questions.md), [buyers-chat.md](buyers-chat.md), [returns.md](returns.md) |
 | `wb-tariffs` | Tariffs | `common-api.wildberries.ru` | `wb-tariffs.json` | [tariffs.md](tariffs.md) |
 | `analytics` | Analytics and Data | `seller-analytics-api.wildberries.ru` | `analytics.json` | [analytics.md](analytics.md) |

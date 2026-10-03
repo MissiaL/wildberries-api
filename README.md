@@ -32,7 +32,7 @@ python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.r
 
 This skill is production-only. Sandbox hosts and test-token workflows are intentionally excluded.
 
-For repeated calls, read [`references/rate-limits.md`](references/rate-limits.md). All 286 saved operations carry a verified `x-wb-rate-limits` block. The helper can show the exact token-type profile with `--show-rate-limit`, retries `429` up to three times, honors `X-Ratelimit-Retry`, and caps a single wait at 60 seconds.
+For repeated calls, read [`references/rate-limits.md`](references/rate-limits.md). The 2026-10-03 snapshot contains 307 operations: 305 have documented limits and two return-report operations are explicitly marked `undocumented`. Current counts and sources live in `assets/openapi/rate-limit-manifest.json`. The helper can show the exact host/method/token-type profile with `--show-rate-limit`, retries `429` up to three times, honors `X-Ratelimit-Retry`, and caps a single wait at 60 seconds.
 
 ## How It Works
 
@@ -71,10 +71,11 @@ The authoritative coverage list is `assets/openapi/manifest.json`; allowed produ
 
 ```bash
 python3 -m pytest -v
+python3 scripts/fetch_openapi.py
 python3 scripts/sync_openapi.py /tmp/wb-live-specs.json --captured-at <ISO-8601-time>
 ```
 
-`dev.wildberries.ru` returns anti-bot HTTP 498 to plain HTTP clients. Refresh the 13 official documentation pages in a real browser, export each rendered `__redoc_state.spec.data` object into one JSON object keyed by page slug, then run `scripts/sync_openapi.py`. The sync installs the full official schemas and requires a rate-limit block for every operation.
+`fetch_openapi.py` downloads the 13 official Swagger YAML files from the source URLs in the manifest and runs the existing sync. Documentation HTML can return anti-bot HTTP 498, while these public YAML downloads return HTTP 200. To rediscover changed source URLs, open the official Swagger pages in a browser and follow their `swagger.yaml` links. The sync also accepts a JSON object of specifications keyed by documentation slug; it records absent limits explicitly instead of retaining stale tables.
 
 ## License
 

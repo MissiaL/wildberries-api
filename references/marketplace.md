@@ -26,6 +26,10 @@ DBS, DBW, and in-store pickup per-order endpoints (`/api/v3/dbs/orders/{orderId}
 - DBS and in-store pickup replaced their `orders/meta/info` methods with `orders/final-price` methods.
 - DBW no longer documents `GET /api/v3/dbw/orders/{orderId}/meta`.
 
+## API Update (October 2026)
+
+FBS includes shipping points, shipping-method changes, supply cargo-place lists and labels, and the OKSM country dictionary under `/api/marketplace/v3/fbs/`. Inspect `orders-fbs.json` for exact payloads and `x-token-types` before changing a supply.
+
 ## Write Safety
 
 - Status transitions, cancellations, sticker generation, and delivery-date changes are write-impacting operations.

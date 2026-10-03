@@ -2,7 +2,7 @@
 
 ## Scope
 
-- FBW supply acceptance, warehouses, transit tariffs, supply list, supply details, supply products, and package details.
+- FBW supply acceptance, warehouses, transit tariffs, supply list, supply details, supply products, packages, supply drafts, draft items, and acceptance discrepancies.
 - Primary schema: `assets/openapi/orders-fbw.json`.
 - Host: `supplies-api.wildberries.ru`.
 
@@ -17,3 +17,4 @@ python3 scripts/api_call.py --method GET --url "https://supplies-api.wildberries
 
 Create or modify supply workflows only after confirming warehouse, acceptance window, and product list.
 
+The `/api/supplies/v1/drafts` methods create, list, fill, and delete drafts and draft items; these and `GET /api/supplies/v1/discrepancies/{supplyId}` require a Personal or Service token. Validate draft IDs and item quantities before changing a draft.

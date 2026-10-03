@@ -141,7 +141,7 @@
             "example": {
               "code": "07e4668e--a53a3d31f8b0-[UK-oWaVDUqNrKG]; 03bce=277; 84bd353bf-75",
               "detail": "token problem; token is malformed: could not base64 decode signature: illegal base64 data at input byte 84",
-              "origin": "s2s-api-auth-catalog",
+              "origin": "ag-marketplace",
               "requestId": "7b80742415072fe8b6b7f7761f1d1211",
               "status": 401,
               "statusText": "Unauthorized",
@@ -188,7 +188,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Unauthorized</span>"
+        "description": "Unauthorized"
       },
       "402": {
         "content": {
@@ -212,7 +212,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Payment required</span>"
+        "description": "Payment required"
       },
       "429": {
         "content": {
@@ -220,7 +220,7 @@
             "example": {
               "code": "07e4668e-ac2242c5c8c5-[UK-4dx7JUdskGZ]",
               "detail": "limited by c122a060-a7fb-4bb4-abb0-32fd4e18d489",
-              "origin": "s2s-api-auth-catalog",
+              "origin": "ag-marketplace",
               "requestId": "9d3c02cc698f8b041c661a7c28bed293",
               "status": 429,
               "statusText": "Too Many Requests",
@@ -267,7 +267,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Too many requests</span>"
+        "description": "Too many requests"
       }
     },
     "schemas": {
@@ -890,7 +890,7 @@
   "paths": {
     "/api/tariffs/v1/acceptance/coefficients": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method is [temporary disabled](https://dev.wildberries.ru/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 6 requests |\n| Service | 1 min | 6 requests | 10 s | 6 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 6 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "The method is [temporary disabled](https://dev.wildberries.ru/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 6 requests |\n| Service | 1 min | 6 requests | 10 s | 6 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 6 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1AcceptanceCoefficients",
         "parameters": [
           {
@@ -908,28 +908,34 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "ResponseCoefficients": "[MaxDepth]"
+                  "ResponseCoefficients": {
+                    "$ref": "#/components/examples/ResponseCoefficients"
+                  }
                 },
                 "schema": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "$ref": "#/components/schemas/models.AcceptanceCoefficient"
+                  },
                   "type": "array"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
               "application/json": {
                 "examples": {
-                  "BadWarehouseIDsParamNew": "[MaxDepth]"
+                  "BadWarehouseIDsParamNew": {
+                    "$ref": "#/components/examples/Response400CoefficientsNew"
+                  }
                 },
                 "schema": {
                   "$ref": "#/components/schemas/models.ErrorModel"
                 }
               }
             },
-            "description": "<span class='response__value '>Incorrect request</span>"
+            "description": "Incorrect request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -938,10 +944,10 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "description": "<span class='response__value '>Access denied</span>"
+            "description": "Access denied"
           },
           "404": {
-            "description": "<span class='response__value '>Not found</span>"
+            "description": "Not found"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -952,9 +958,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Supply Rates{{ /api/tariffs/v1/acceptance/coefficients }}",
+        "summary": "Supply Rates",
         "tags": [
-          "supplyRates"
+          "Supply Rates"
         ],
         "x-category": "commonapi",
         "x-readonly-method": true,
@@ -990,9 +996,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/supplyRates/operation/getV1AcceptanceCoefficients",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/Supply Rates/operation/getV1AcceptanceCoefficients",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "supplyRates"
       },
       "servers": [
         {
@@ -1002,7 +1009,7 @@
     },
     "/api/v1/tariffs/box": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nFor items inventory supplied to the warehouse in boxes, the method returns the [rates](https://seller.wildberries.ru/dynamic-product-categories):\n  - for delivery from warehouse or sorting center to the buyer\n  - for delivery from the buyer to the sorting center\n  - for storage on WB warehouse\n\n<div class=\"description_important\">\n  The rates for boxes match the <strong>Supersafe</strong> rates\n</div>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 60 requests | 1 s | 5 requests |\n| Service | 1 min | 60 requests | 1 s | 5 requests |\n| Base with secret | 1 min | 60 requests | 1 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "For items inventory supplied to the warehouse in boxes, the method returns the [rates](https://seller.wildberries.ru/dynamic-product-categories):\n  - for delivery from warehouse or sorting center to the buyer\n  - for delivery from the buyer to the sorting center\n  - for storage on WB warehouse\n\n<div class=\"description_important\">\n  The rates for boxes match the <strong>Supersafe</strong> rates\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 60 requests | 1 s | 5 requests |\n| Service | 1 min | 60 requests | 1 s | 5 requests |\n| Base with secret | 1 min | 60 requests | 1 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1TariffsBox",
         "parameters": [
           {
@@ -1018,7 +1025,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -1034,7 +1041,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1046,9 +1053,9 @@
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Box Rates{{ /api/v1/tariffs/box }}",
+        "summary": "Box Rates",
         "tags": [
-          "stockRates"
+          "Stock Rates"
         ],
         "x-category": "commonapi",
         "x-readonly-method": true,
@@ -1084,9 +1091,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/stockRates/operation/getV1TariffsBox",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/Stock Rates/operation/getV1TariffsBox",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "stockRates"
       },
       "servers": [
         {
@@ -1096,7 +1104,7 @@
     },
     "/api/v1/tariffs/commission": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n[WB fee](https://seller.wildberries.ru/dynamic-product-categories/commission) by [parent categories of items](./work-with-products#tag/categoriesSubcategoriesAndCharacteristics/paths/~1content~1v2~1object~1parent~1all/get) according to sales model.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 2 requests |\n| Service | 1 min | 1 request | 1 min | 2 requests |\n| Base with secret | 1 min | 1 request | 1 min | 2 requests |\n| Base | 1 h | 5 requests | 12 min | 1 request |\n</div>\n",
+        "description": "[WB fee](https://seller.wildberries.ru/dynamic-product-categories/commission) by [parent categories of items](/openapi/item-management#tag/categoriesSubcategoriesAndCharacteristics/operation/getV2ObjectParentAll) according to sales model.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 2 requests |\n| Service | 1 min | 1 request | 1 min | 2 requests |\n| Base with secret | 1 min | 1 request | 1 min | 2 requests |\n| Base | 1 h | 5 requests | 12 min | 1 request |\n</div>\n",
         "operationId": "getV1TariffsCommission",
         "parameters": [
           {
@@ -1108,18 +1116,44 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "Fee": "[MaxDepth]",
-                  "FeeChina": "[MaxDepth]",
-                  "FeeTurkey": "[MaxDepth]",
-                  "FeeUAE": "[MaxDepth]",
-                  "FeeUzbekistan": "[MaxDepth]"
+                  "Fee": {
+                    "$ref": "#/components/examples/Fee"
+                  },
+                  "FeeChina": {
+                    "$ref": "#/components/examples/FeeChina"
+                  },
+                  "FeeTurkey": {
+                    "$ref": "#/components/examples/FeeTurkey"
+                  },
+                  "FeeUAE": {
+                    "$ref": "#/components/examples/FeeUAE"
+                  },
+                  "FeeUzbekistan": {
+                    "$ref": "#/components/examples/FeeUzbekistan"
+                  }
                 },
                 "schema": {
-                  "oneOf": "[MaxDepth]"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Fee"
+                    },
+                    {
+                      "$ref": "#/components/schemas/FeeChina"
+                    },
+                    {
+                      "$ref": "#/components/schemas/FeeTurkey"
+                    },
+                    {
+                      "$ref": "#/components/schemas/FeeUzbekistan"
+                    },
+                    {
+                      "$ref": "#/components/schemas/FeeUAE"
+                    }
+                  ]
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -1135,7 +1169,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1147,9 +1181,9 @@
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Item Category Fee{{ /api/v1/tariffs/commission }}",
+        "summary": "Item Category Fee",
         "tags": [
-          "fees"
+          "Fees"
         ],
         "x-category": "commonapi",
         "x-readonly-method": true,
@@ -1185,9 +1219,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/fees/operation/getV1TariffsCommission",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/Fees/operation/getV1TariffsCommission",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "fees"
       },
       "servers": [
         {
@@ -1197,7 +1232,7 @@
     },
     "/api/v1/tariffs/pallet": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nFor items supplied to the WB warehouse on pallets, the method returns the [cost](https://seller.wildberries.ru/dynamic-product-categories):\n  - of delivery from warehouse to the buyer\n  - of delivery from the buyer to warehouse\n  - of storage on WB warehouse\n\n<div class=\"description_important\">\n  The rates for pallets match the <strong>Piece pallet</strong> rates\n</div>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 60 requests | 1 s | 5 requests |\n| Service | 1 min | 60 requests | 1 s | 5 requests |\n| Base with secret | 1 min | 60 requests | 1 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "For items supplied to the WB warehouse on pallets, the method returns the [cost](https://seller.wildberries.ru/dynamic-product-categories):\n  - of delivery from warehouse to the buyer\n  - of delivery from the buyer to warehouse\n  - of storage on WB warehouse\n\n<div class=\"description_important\">\n  The rates for pallets match the <strong>Piece pallet</strong> rates\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 60 requests | 1 s | 5 requests |\n| Service | 1 min | 60 requests | 1 s | 5 requests |\n| Base with secret | 1 min | 60 requests | 1 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1TariffsPallet",
         "parameters": [
           {
@@ -1213,7 +1248,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -1229,7 +1264,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1241,9 +1276,9 @@
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Pallet Rates{{ /api/v1/tariffs/pallet }}",
+        "summary": "Pallet Rates",
         "tags": [
-          "stockRates"
+          "Stock Rates"
         ],
         "x-category": "commonapi",
         "x-readonly-method": true,
@@ -1279,9 +1314,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/stockRates/operation/getV1TariffsPallet",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/Stock Rates/operation/getV1TariffsPallet",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "stockRates"
       },
       "servers": [
         {
@@ -1291,7 +1327,7 @@
     },
     "/api/v1/tariffs/return": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns [rates](https://seller.wildberries.ru/dynamic-product-categories/return-cost):\n  - on transfer from Wildberries warehouse or sorting center to the seller\n  - on transfer of returned items that were not picked up by seller\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 60 requests | 1 s | 5 requests |\n| Service | 1 min | 60 requests | 1 s | 5 requests |\n| Base with secret | 1 min | 60 requests | 1 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Returns [rates](https://seller.wildberries.ru/dynamic-product-categories/return-cost):\n  - on transfer from Wildberries warehouse or sorting center to the seller\n  - on transfer of returned items that were not picked up by seller\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 60 requests | 1 s | 5 requests |\n| Service | 1 min | 60 requests | 1 s | 5 requests |\n| Base with secret | 1 min | 60 requests | 1 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1TariffsReturn",
         "parameters": [
           {
@@ -1307,7 +1343,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "content": {
@@ -1323,7 +1359,7 @@
                 }
               }
             },
-            "description": "<span class='response__value '>Bad request</span>"
+            "description": "Bad request"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1335,9 +1371,9 @@
             "$ref": "#/components/responses/429"
           }
         },
-        "summary": "Return Rates{{ /api/v1/tariffs/return }}",
+        "summary": "Return Rates",
         "tags": [
-          "returnCostToSeller"
+          "Return Cost to Seller"
         ],
         "x-category": "commonapi",
         "x-readonly-method": true,
@@ -1373,9 +1409,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/returnCostToSeller/operation/getV1TariffsReturn",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/Return Cost to Seller/operation/getV1TariffsReturn",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "returnCostToSeller"
       },
       "servers": [
         {
@@ -1391,38 +1428,38 @@
   ],
   "tags": [
     {
-      "description": "<div class=\"api-description\">\n\n<div class=\"api-block\">\n\nManagement of rates and fees.\n\n</div>\n\n\n</div>",
-      "name": "Rates",
-      "x-traitTag": true
+      "description": "",
+      "name": "Fees",
+      "x-displayName": "Fees",
+      "x-tagKey": "fees"
     },
     {
-      "description": "<div class=\"description_auth\">\n  You can get Fees with a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>\n</div>\n",
-      "name": "fees",
-      "x-displayName": "Fees"
+      "description": "",
+      "name": "Supply Rates",
+      "x-displayName": "Supply Rates",
+      "x-tagKey": "supplyRates"
     },
     {
-      "description": "<div class=\"description_auth\">\n  You can get Supply Rates with a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>\n</div>\n\nData on [supply rates](./wb-tariffs#tag/supplyRates/operation/getV1AcceptanceCoefficients) fixed coefficients\n",
-      "name": "supplyRates",
-      "x-displayName": "Supply Rates"
+      "description": "",
+      "name": "Stock Rates",
+      "x-displayName": "Stock Rates",
+      "x-tagKey": "stockRates"
     },
     {
-      "description": "<div class=\"description_auth\">\n  You can get Stock Rates with a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>\n</div>\n\nData on current and archived rates for:\n  - [boxes](./wb-tariffs#tag/stockRates/operation/getV1TariffsBox)\n  - [pallets](./wb-tariffs#tag/stockRates/operation/getV1TariffsPallet)\n\nThe methods return rate coefficients that are not fixed to a specific supply\n",
-      "name": "stockRates",
-      "x-displayName": "Stock Rates"
-    },
-    {
-      "description": "<div class=\"description_auth\">\n  You can get Returned Cost to Seller a token of any <a href=\"./api-information#tag/authorization/Token-categories\">category</a>\n</div>\n",
-      "name": "returnCostToSeller",
-      "x-displayName": "Return Cost to Seller"
+      "description": "",
+      "name": "Return Cost to Seller",
+      "x-displayName": "Return Cost to Seller",
+      "x-tagKey": "returnCostToSeller"
     }
   ],
   "x-wb-extraction": {
-    "mode": "browser-redoc-openapi",
+    "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/wb-tariffs",
-    "capturedAt": "2026-08-19T18:12:37.448Z"
+    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/10-rates.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-08-19T18:12:37.448Z",
+    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/wb-tariffs",
     "operationCount": 5
   }

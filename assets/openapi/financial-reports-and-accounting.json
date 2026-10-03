@@ -29,7 +29,7 @@
             "example": {
               "code": "07e4668e--a53a3d31f8b0-[UK-oWaVDUqNrKG]; 03bce=277; 84bd353bf-75",
               "detail": "token problem; token is malformed: could not base64 decode signature: illegal base64 data at input byte 84",
-              "origin": "s2s-api-auth-catalog",
+              "origin": "ag-marketplace",
               "requestId": "7b80742415072fe8b6b7f7761f1d1211",
               "status": 401,
               "statusText": "Unauthorized",
@@ -76,7 +76,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Unauthorized</span>"
+        "description": "Unauthorized"
       },
       "402": {
         "content": {
@@ -100,21 +100,11 @@
             }
           }
         },
-        "description": "<span class='response__value '>Payment required</span>"
+        "description": "Payment required"
       },
       "403": {
         "content": {
           "application/problem+json": {
-            "example": {
-              "code": "base token is not allowed for this path",
-              "detail": "base token is not allowed",
-              "origin": "s2s-finance",
-              "requestId": "722199b2e15bbca48cc1d488a7989976",
-              "status": 403,
-              "statusText": "Forbidden",
-              "timestamp": "2026-05-25T02:47:09Z",
-              "title": "forbidden"
-            },
             "schema": {
               "properties": {
                 "code": {
@@ -152,10 +142,24 @@
                 }
               },
               "type": "object"
+            },
+            "examples": {
+              "Response403TokenCategory": {
+                "value": {
+                  "status": 403,
+                  "statusText": "Forbidden",
+                  "title": "Forbidden",
+                  "detail": "scope is not allowed for this resource",
+                  "requestId": "2dbf6fc9-bad8-4ef9-a058-c938a8553ba5",
+                  "origin": "ag-marketplace",
+                  "timestamp": "2026-09-03T13:55:15Z"
+                },
+                "description": "Invalid token category"
+              }
             }
           }
         },
-        "description": "<span class='response__value '>Access denied</span>"
+        "description": "Access denied"
       },
       "429": {
         "content": {
@@ -163,7 +167,7 @@
             "example": {
               "code": "07e4668e-ac2242c5c8c5-[UK-4dx7JUdskGZ]",
               "detail": "limited by c122a060-a7fb-4bb4-abb0-32fd4e18d489",
-              "origin": "s2s-api-auth-catalog",
+              "origin": "ag-marketplace",
               "requestId": "9d3c02cc698f8b041c661a7c28bed293",
               "status": 429,
               "statusText": "Too Many Requests",
@@ -210,7 +214,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Too many requests</span>"
+        "description": "Too many requests"
       },
       "Responses400Download": {
         "content": {
@@ -249,7 +253,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Bad request</span>"
+        "description": "Bad request"
       },
       "Responses400DownloadAll": {
         "content": {
@@ -303,7 +307,7 @@
             }
           }
         },
-        "description": "<span class='response__value '>Bad request</span>"
+        "description": "Bad request"
       },
       "Responses400List": {
         "content": {
@@ -357,44 +361,183 @@
             }
           }
         },
-        "description": "<span class='response__value '>Bad request</span>"
+        "description": "Bad request"
       },
-      "response400FinancialReports": {
+      "response400SalesReports": {
+        "description": "Bad request",
         "content": {
           "application/problem+json": {
             "schema": {
+              "required": [
+                "status",
+                "title",
+                "detail",
+                "requestId",
+                "origin"
+              ],
+              "type": "object",
               "properties": {
-                "detail": {
-                  "description": "Error details",
-                  "example": "GetReportDetailByPeriodNB decode error: missing dateTo params",
-                  "type": "string"
-                },
-                "origin": {
-                  "description": "WB internal service ID",
-                  "example": "open-api-finreports",
-                  "type": "string"
-                },
-                "requestId": {
-                  "description": "Request ID",
-                  "example": "b065c204-c5f7-431b-b12c-d4c2cc6347ec",
-                  "type": "string"
-                },
                 "status": {
+                  "type": "integer",
                   "description": "HTTP status code",
-                  "example": 400,
-                  "type": "integer"
+                  "example": 400
                 },
                 "title": {
+                  "type": "string",
                   "description": "Error title",
-                  "example": "GetReportDetailByPeriodNB decode error",
-                  "type": "string"
+                  "example": "GetReportDetailByPeriodNBAndNNB decode error"
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "Error details",
+                  "example": "GetReportDetailByPeriodNBAndNNB decode error: Key: 'FinancialDetailedByPeriodRequestV4.DateTo' Error:Field validation for 'DateTo' failed on the 'required' tag"
+                },
+                "requestId": {
+                  "type": "string",
+                  "description": "Request ID",
+                  "example": "b065c204-c5f7-431b-b12c-d4c2cc6347ec"
+                },
+                "origin": {
+                  "type": "string",
+                  "description": "WB internal service ID",
+                  "example": "open-api-finreports"
                 }
-              },
-              "type": "object"
+              }
             }
           }
-        },
-        "description": "<span class='response__value '>Bad request</span>"
+        }
+      },
+      "response400AcquiringReports": {
+        "description": "Bad request",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "required": [
+                "status",
+                "title",
+                "detail",
+                "requestId",
+                "origin"
+              ],
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "description": "HTTP status code",
+                  "example": 400
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Error title",
+                  "example": "GetAcquiringGeneralReport decode error"
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "Error details",
+                  "example": "GetAcquiringGeneralReport decode error: Key: 'AcquiringGeneralReportRequestV2.DateTo' Error:Field validation for 'DateTo' failed on the 'required' tag"
+                },
+                "requestId": {
+                  "type": "string",
+                  "description": "Request ID",
+                  "example": "4950c661-9056-4baa-a0ed-c7e498c4a557"
+                },
+                "origin": {
+                  "type": "string",
+                  "description": "WB internal service ID",
+                  "example": "open-api-finreports"
+                }
+              }
+            }
+          }
+        }
+      },
+      "response404SalesReports": {
+        "description": "Not found",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "required": [
+                "status",
+                "title",
+                "detail",
+                "requestId",
+                "origin"
+              ],
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "description": "HTTP status code",
+                  "example": 404
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Error title",
+                  "example": "GetDetailsByReportID error"
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "Error details",
+                  "example": "GetDetailsByReportID error: generate meta key: get report data: report id not found"
+                },
+                "requestId": {
+                  "type": "string",
+                  "description": "Request ID",
+                  "example": "4565feab-860b-493c-ad8d-6eda4d1902db"
+                },
+                "origin": {
+                  "type": "string",
+                  "description": "WB internal service ID",
+                  "example": "open-api-finreports"
+                }
+              }
+            }
+          }
+        }
+      },
+      "response404AcquiringReports": {
+        "description": "Not found",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "required": [
+                "status",
+                "title",
+                "detail",
+                "requestId",
+                "origin"
+              ],
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "description": "HTTP status code",
+                  "example": 404
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Error title",
+                  "example": "GetAcquiringReportByReportID usecase error"
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "Error details",
+                  "example": "GetAcquiringReportByReportID usecase error: generate meta key: get report data: report id not found"
+                },
+                "requestId": {
+                  "type": "string",
+                  "description": "Request ID",
+                  "example": "b8c4a3db-2860-4df6-99dc-10602ddbc003"
+                },
+                "origin": {
+                  "type": "string",
+                  "description": "WB internal service ID",
+                  "example": "open-api-finreports"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "schemas": {
@@ -509,7 +652,7 @@
             "example": [
               "rrdId",
               "nmId",
-              "docTypeName",
+              "documentType",
               "retailAmount",
               "acquiringFee",
               "srid"
@@ -548,7 +691,7 @@
           },
           "acquiringBank": {
             "description": "Acquiring bank",
-            "example": "Тинькофф",
+            "example": "Вайлдберриз Банк",
             "type": "string"
           },
           "acquiringFee": {
@@ -564,11 +707,6 @@
           "currency": {
             "description": "Report currency",
             "example": "RUB",
-            "type": "string"
-          },
-          "docTypeName": {
-            "description": "Purchased or returned",
-            "example": "Продажа",
             "type": "string"
           },
           "invoiceDate": {
@@ -613,7 +751,7 @@
             "type": "integer"
           },
           "srid": {
-            "description": "Order ID.<br>In the responses of the [FBS](./orders-fbs#tag/FBS-Assembly-Orders), [DBW](./orders-dbw#tag/dbwAssemblyOrders), [DBS](./orders-dbs#tag/dbsAssemblyOrders), and [In-Store Pickup](./in-store-pickup#tag/inStorePickupAssemblyOrders) assembly order methods, `srid` is `rid`\n",
+            "description": "Order ID.<br>In the responses of the [FBS](./orders-fbs#tag/fbsAssemblyOrders), [DBW](./orders-dbw#tag/dbwAssemblyOrders), [DBS](./dbs#tag/dbsAssemblyOrders), and [In-Store Pickup](./in-store-pickup#tag/inStorePickupAssemblyOrders) assembly order methods, `srid` is `rid`\n",
             "example": "D0.r3f80c3eec6f845c6840128b4c19986f9.0.0",
             "type": "string"
           },
@@ -626,6 +764,11 @@
             "description": "Taxpayer identification number",
             "example": "010101010101",
             "type": "string"
+          },
+          "documentType": {
+            "example": "Продажа",
+            "type": "string",
+            "description": "Purchased or returned"
           }
         },
         "required": [
@@ -633,7 +776,7 @@
           "currency",
           "rrdId",
           "nmId",
-          "docTypeName",
+          "documentType",
           "retailAmount",
           "saleDate",
           "acqDate",
@@ -657,7 +800,7 @@
             "example": [
               "rrdId",
               "nmId",
-              "docTypeName",
+              "currency",
               "retailAmount",
               "acquiringFee",
               "srid"
@@ -689,7 +832,18 @@
               "categories": {
                 "description": "Documents categories",
                 "items": {
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "redeem-notification",
+                      "description": "Document category ID from the [request](./documents-and-accounting#tag/documents/operation/getV1DocumentsList) parameter `category`"
+                    },
+                    "title": {
+                      "type": "string",
+                      "example": "Уведомление о выкупе",
+                      "description": "Document category name from the [response](./documents-and-accounting#tag/documents/operation/getV1DocumentsList) field `category`"
+                    }
+                  },
                   "type": "object"
                 },
                 "type": "array"
@@ -754,7 +908,41 @@
               "documents": {
                 "description": "Documents categories",
                 "items": {
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "serviceName": {
+                      "type": "string",
+                      "example": "redeem-notification-44841941",
+                      "description": "Unique document ID"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "redeem-notification",
+                      "description": "Document name"
+                    },
+                    "category": {
+                      "type": "string",
+                      "example": "Уведомление о выкупе",
+                      "description": "[Document category](./documents-and-accounting#tag/documents/operation/getV1DocumentsCategories) name from the response field `title`"
+                    },
+                    "extensions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "zip"
+                      },
+                      "description": "Document formats"
+                    },
+                    "creationTime": {
+                      "type": "string",
+                      "example": "2023-10-03T00:18:06.879Z",
+                      "description": "Date and time of document creation"
+                    },
+                    "viewed": {
+                      "type": "boolean",
+                      "example": false,
+                      "description": "Whether the document has been downloaded from the personal account"
+                    }
+                  },
                   "type": "object"
                 },
                 "type": "array"
@@ -826,7 +1014,7 @@
             "type": "string"
           },
           "cashbackAmountSum": {
-            "description": "Amount deducted for Loyalty Program rewards",
+            "description": "Amount of rewards deducted for Loyalty Program",
             "example": "2",
             "type": "string"
           },
@@ -905,11 +1093,10 @@
             "type": "integer"
           },
           "reportType": {
-            "description": "Report type:\n  - `1` — general\n  - `2` — by purchase\n  - `3` — by purchase for Georgia\n",
+            "description": "Report type:\n  - `1` — general\n  - `2` — by purchase\n",
             "enum": [
               1,
-              2,
-              3
+              2
             ],
             "example": 1,
             "type": "integer"
@@ -1012,7 +1199,7 @@
         "properties": {
           "acquiringBank": {
             "description": "Acquiring bank",
-            "example": "Тинькофф",
+            "example": "Вайлдберриз Банк",
             "type": "string"
           },
           "acquiringFee": {
@@ -1056,7 +1243,7 @@
             "type": "string"
           },
           "cashbackAmount": {
-            "description": "Amount deducted for Loyalty Program rewards",
+            "description": "Amount of rewards deducted for Loyalty Program",
             "example": "2",
             "type": "string"
           },
@@ -1109,7 +1296,7 @@
             "type": "string"
           },
           "deduction": {
-            "description": "Deductions and payments",
+            "description": "Deductions/payments",
             "example": "6354",
             "type": "string"
           },
@@ -1317,11 +1504,10 @@
             "type": "integer"
           },
           "reportType": {
-            "description": "Report type:\n  - `1` — general\n  - `2` — purchase\n  - `3` — purchase for Georgia\n",
+            "description": "Report type:\n  - `1` — general\n  - `2` — purchase\n",
             "enum": [
               1,
-              2,
-              3
+              2
             ],
             "example": 1,
             "type": "integer"
@@ -1390,8 +1576,8 @@
           },
           "sellerPromo": {
             "description": "Promo code (%)",
-            "example": "0",
-            "type": "string"
+            "example": 0,
+            "type": "number"
           },
           "sellerPromoDiscount": {
             "description": "Custom promo discount (%)",
@@ -1419,7 +1605,7 @@
             "type": "number"
           },
           "srid": {
-            "description": "Order ID.<br>In the responses of the [FBS](./orders-fbs#tag/FBS-Assembly-Orders), [DBW](./orders-dbw#tag/dbwAssemblyOrders), [DBS](./orders-dbs#tag/dbsAssemblyOrders), and [In-Store Pickup](./in-store-pickup#tag/inStorePickupAssemblyOrders) assembly order methods, `srid` is `rid`\n",
+            "description": "Order ID.<br>In the responses of the [FBS](./orders-fbs#tag/fbsAssemblyOrders), [DBW](./orders-dbw#tag/dbwAssemblyOrders), [DBS](./dbs#tag/dbsAssemblyOrders), and [In-Store Pickup](./in-store-pickup#tag/inStorePickupAssemblyOrders) assembly order methods, `srid` is `rid`\n",
             "example": "0f1c3999172603062979867564654dac5b702849",
             "type": "string"
           },
@@ -1486,6 +1672,22 @@
             "description": "Wibes discount (%)",
             "example": 1,
             "type": "number"
+          },
+          "buyerTaxRegistrationReasonCode": {
+            "type": "string",
+            "description": "Tax registration reason code of B2B-buyer",
+            "example": "7701123301"
+          },
+          "utdUcdNumber": {
+            "type": "string",
+            "description": "Universal transfer or adjustment document number",
+            "example": "12356856523"
+          },
+          "utdUcdDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Universal transfer or adjustment document date",
+            "example": "2006-01-02"
           }
         },
         "required": [
@@ -1576,6 +1778,9 @@
           "b2bCustomerTin",
           "paidWithSocialCertificate",
           "warehouseLogisticsCoeff",
+          "buyerTaxRegistrationReasonCode",
+          "utdUcdNumber",
+          "utdUcdDate",
           "orderUid",
           "srid"
         ],
@@ -1603,6 +1808,44 @@
           }
         },
         "type": "object"
+      },
+      "Response4XX": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Error title"
+          },
+          "detail": {
+            "type": "string",
+            "description": "Error details"
+          },
+          "code": {
+            "type": "string",
+            "description": "Internal error code"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Request ID"
+          },
+          "origin": {
+            "type": "string",
+            "description": "WB internal service ID"
+          },
+          "status": {
+            "type": "number",
+            "description": "HTTP status code"
+          },
+          "statusText": {
+            "type": "string",
+            "description": "Text of the HTTP status code"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Request date and time"
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -1611,10 +1854,37 @@
         "name": "Authorization",
         "type": "apiKey"
       }
+    },
+    "examples": {
+      "Response403TokenCategory": {
+        "value": {
+          "status": 403,
+          "statusText": "Forbidden",
+          "title": "Forbidden",
+          "detail": "scope is not allowed for this resource",
+          "requestId": "2dbf6fc9-bad8-4ef9-a058-c938a8553ba5",
+          "origin": "ag-marketplace",
+          "timestamp": "2026-09-03T13:55:15Z"
+        },
+        "description": "Invalid token category"
+      },
+      "Response403TokenType": {
+        "value": {
+          "title": "forbidden",
+          "detail": "base token is not allowed",
+          "code": "base token is not allowed for this path",
+          "requestId": "722199b2e15bbca48cc1d488a7989976",
+          "origin": "ag-marketplace",
+          "status": 403,
+          "statusText": "Forbidden",
+          "timestamp": "2026-05-25T02:47:09Z"
+        },
+        "description": "Invalid token type"
+      }
     }
   },
   "info": {
-    "description": "<div class=\"api-block\">\n\nView seller [balance](./financial-reports-and-accounting#tag/balance), [financial reports](./financial-reports-and-accounting#tag/financialReports), and [documents](./financial-reports-and-accounting#tag/documents).\n\n</div>\n",
+    "description": "<div class=\"api-block\">\n\nView seller [balance](/openapi/documents-and-accounting#tag/balance), [financial reports](/openapi/documents-and-accounting#tag/financialReports), and [documents](/openapi/documents-and-accounting#tag/documents).\n\n</div>\n",
     "title": "Documents and Accounting",
     "version": "finances",
     "x-file-name": "finances"
@@ -1623,7 +1893,7 @@
   "paths": {
     "/api/finance/v1/acquiring/detailed": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns details for the [acquiring expenses reports](https://seller.wildberries.ru/suppliers-mutual-settlements/reports-implementations/acquiring-reports) by specified period.\n<br><br>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
+        "description": "\n<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns details for the [acquiring expenses reports](https://seller.wildberries.ru/suppliers-mutual-settlements/reports-implementations/acquiring-reports) by specified period.\n<br><br>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
         "operationId": "postV1AcquiringDetailed",
         "requestBody": {
           "content": {
@@ -1640,18 +1910,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "$ref": "#/components/schemas/AcquiringReportsDetailedRes"
+                  },
                   "type": "array"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "204": {
-            "description": "<span class='response__value response__value_success'>No data</span>"
+            "description": "No data"
           },
           "400": {
-            "$ref": "#/components/responses/response400FinancialReports"
+            "$ref": "#/components/responses/response400AcquiringReports"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1660,7 +1932,22 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/403"
+            "description": "Access denied",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1671,9 +1958,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Details for the Acquiring Expenses Reports by Period{{ /api/finance/v1/acquiring/detailed }}",
+        "summary": "Details for the Acquiring Expenses Reports by Period",
         "tags": [
-          "financialReports"
+          "Financial Reports"
         ],
         "x-category": "finance",
         "x-readonly-method": true,
@@ -1691,9 +1978,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Financial Reports/operation/postV1AcquiringDetailed",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "financialReports"
       },
       "servers": [
         {
@@ -1703,7 +1991,7 @@
     },
     "/api/finance/v1/acquiring/detailed/{reportId}": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns details for the [acquiring expenses reports](https://seller.wildberries.ru/suppliers-mutual-settlements/reports-implementations/acquiring-reports) by report IDs.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
+        "description": "\n<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns details for the [acquiring expenses reports](https://seller.wildberries.ru/suppliers-mutual-settlements/reports-implementations/acquiring-reports) by report IDs.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
         "operationId": "postV1AcquiringDetailedReportId",
         "parameters": [
           {
@@ -1732,18 +2020,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "$ref": "#/components/schemas/AcquiringReportsDetailedRes"
+                  },
                   "type": "array"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "204": {
-            "description": "<span class='response__value response__value_success'>No data</span>"
+            "description": "No data"
           },
           "400": {
-            "$ref": "#/components/responses/response400FinancialReports"
+            "$ref": "#/components/responses/response400AcquiringReports"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1752,10 +2042,28 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/403"
+            "description": "Access denied",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "404": {
+            "$ref": "#/components/responses/response404AcquiringReports"
           }
         },
         "security": [
@@ -1763,9 +2071,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Details for the Acquiring Expenses Reports by Report ID{{ /api/finance/v1/acquiring/detailed/{reportId} }}",
+        "summary": "Details for the Acquiring Expenses Reports by Report ID",
         "tags": [
-          "financialReports"
+          "Financial Reports"
         ],
         "x-category": "finance",
         "x-readonly-method": true,
@@ -1783,9 +2091,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Financial Reports/operation/postV1AcquiringDetailedReportId",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "financialReports"
       },
       "servers": [
         {
@@ -1795,7 +2104,7 @@
     },
     "/api/finance/v1/acquiring/list": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns acquiring expenses reports list in the [the report table](https://seller.wildberries.ru/suppliers-mutual-settlements/reports-implementations/acquiring-reports) format.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
+        "description": "\n<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns acquiring expenses reports list in the [the report table](https://seller.wildberries.ru/suppliers-mutual-settlements/reports-implementations/acquiring-reports) format.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
         "operationId": "postV1AcquiringList",
         "requestBody": {
           "content": {
@@ -1812,24 +2121,41 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "$ref": "#/components/schemas/AcquiringReportListRes"
+                  },
                   "type": "array"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "204": {
-            "description": "<span class='response__value response__value_success'>No data</span>"
+            "description": "No data"
           },
           "400": {
-            "$ref": "#/components/responses/response400FinancialReports"
+            "$ref": "#/components/responses/response400AcquiringReports"
           },
           "401": {
             "$ref": "#/components/responses/401"
           },
           "403": {
-            "$ref": "#/components/responses/403"
+            "description": "Access denied",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -1840,9 +2166,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Acquiring Expenses Reports List{{ /api/finance/v1/acquiring/list }}",
+        "summary": "Acquiring Expenses Reports List",
         "tags": [
-          "financialReports"
+          "Financial Reports"
         ],
         "x-category": "finance",
         "x-readonly-method": true,
@@ -1860,9 +2186,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringList",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Financial Reports/operation/postV1AcquiringList",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "financialReports"
       },
       "servers": [
         {
@@ -1872,7 +2199,7 @@
     },
     "/api/finance/v1/sales-reports/detailed": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns details for the [sales reports](https://seller.wildberries.ru/suppliers-mutual-settlements) by specified period.\n<br><br>\nThe data is available since January 29, 2024.\n\n<div class=\"description_important\">\n  You can save the report in <a href=\"/en/knowledge-base/articles/019d49a4-650c-7b04-9596-ba441936f9d3\">Google Sheets</a>\n</div>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 24 h | 2 requests | 12 h | 1 request |\n</div>\n",
+        "description": "The method returns details for the [sales reports](https://seller.wildberries.ru/suppliers-mutual-settlements) by specified period.\n<br><br>\nThe data is available since January 29, 2024.\n\n<div class=\"description_important\">\n  You can save the report in <a href=\"/en/knowledge-base/articles/019d49a4-650c-7b04-9596-ba441936f9d3\">Google Sheets</a>\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 24 h | 2 requests | 12 h | 1 request |\n</div>\n",
         "operationId": "postV1SalesReportsDetailed",
         "requestBody": {
           "content": {
@@ -1889,18 +2216,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "$ref": "#/components/schemas/SalesReportsDetailedRes"
+                  },
                   "type": "array"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "204": {
-            "description": "<span class='response__value response__value_success'>No data</span>"
+            "description": "No data"
           },
           "400": {
-            "$ref": "#/components/responses/response400FinancialReports"
+            "$ref": "#/components/responses/response400SalesReports"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1910,6 +2239,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -1917,9 +2249,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Details for the Sales Reports by Period{{ /api/finance/v1/sales-reports/detailed }}",
+        "summary": "Details for the Sales Reports by Period",
         "tags": [
-          "financialReports"
+          "Financial Reports"
         ],
         "x-category": "finance",
         "x-readonly-method": true,
@@ -1955,9 +2287,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Financial Reports/operation/postV1SalesReportsDetailed",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "financialReports"
       },
       "servers": [
         {
@@ -1967,7 +2300,7 @@
     },
     "/api/finance/v1/sales-reports/detailed/{reportId}": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns details for the [sales reports](https://seller.wildberries.ru/suppliers-mutual-settlements) by report IDs.\n<br><br>\nThe data is available since January 1, 2025.<br>For technical reasons, the method is currently unavailable for your registration country. For now, you can get this data on [request by period](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed).\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
+        "description": "\n<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns details for the [sales reports](https://seller.wildberries.ru/suppliers-mutual-settlements) by report IDs.\n<br><br>\nThe data is available since January 29, 2024.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
         "operationId": "postV1SalesReportsDetailedReportId",
         "parameters": [
           {
@@ -1996,18 +2329,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "$ref": "#/components/schemas/SalesReportsDetailedRes"
+                  },
                   "type": "array"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "204": {
-            "description": "<span class='response__value response__value_success'>No data</span>"
+            "description": "No data"
           },
           "400": {
-            "$ref": "#/components/responses/response400FinancialReports"
+            "$ref": "#/components/responses/response400SalesReports"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2016,10 +2351,28 @@
             "$ref": "#/components/responses/402"
           },
           "403": {
-            "$ref": "#/components/responses/403"
+            "description": "Access denied",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "404": {
+            "$ref": "#/components/responses/response404SalesReports"
           }
         },
         "security": [
@@ -2027,9 +2380,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Details for the Sales Reports by Report ID{{ /api/finance/v1/sales-reports/detailed/{reportId} }}",
+        "summary": "Details for the Sales Reports by Report ID",
         "tags": [
-          "financialReports"
+          "Financial Reports"
         ],
         "x-category": "finance",
         "x-readonly-method": true,
@@ -2047,9 +2400,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Financial Reports/operation/postV1SalesReportsDetailedReportId",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "financialReports"
       },
       "servers": [
         {
@@ -2059,7 +2413,7 @@
     },
     "/api/finance/v1/sales-reports/list": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\n\n<div class=\"description_token\">\n    Method is <a href=\"./api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns sales reports list in the [report table](https://seller.wildberries.ru/suppliers-mutual-settlements) format.\n<br><br>\nThe list contains data since January 1, 2025.<br>For technical reasons, the method is currently unavailable for your registration country.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
+        "description": "\n<div class=\"description_token\">\n    Method is <a href=\"/openapi/api-information#tag/authorization/Rules-for-using-API-access-tokens\">available</a> by\n        <strong>Personal</strong> token, \n        <strong>Service</strong> token\n</div>\n\nThe method returns sales reports list in the [report table](https://seller.wildberries.ru/suppliers-mutual-settlements) format.\n<br><br>\nThe list contains data since January 29, 2024.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1 request | 1 min | 1 request |\n</div>\n",
         "operationId": "postV1SalesReportsList",
         "requestBody": {
           "content": {
@@ -2076,24 +2430,41 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "items": "[MaxDepth]",
+                  "items": {
+                    "$ref": "#/components/schemas/SalesReportListRes"
+                  },
                   "type": "array"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "204": {
-            "description": "<span class='response__value response__value_success'>No data</span>"
+            "description": "No data"
           },
           "400": {
-            "$ref": "#/components/responses/response400FinancialReports"
+            "$ref": "#/components/responses/response400SalesReports"
           },
           "401": {
             "$ref": "#/components/responses/401"
           },
           "403": {
-            "$ref": "#/components/responses/403"
+            "description": "Access denied",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  },
+                  "Response403TokenType": {
+                    "$ref": "#/components/examples/Response403TokenType"
+                  }
+                }
+              }
+            }
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -2104,9 +2475,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Sales Reports List{{ /api/finance/v1/sales-reports/list }}",
+        "summary": "Sales Reports List",
         "tags": [
-          "financialReports"
+          "Financial Reports"
         ],
         "x-category": "finance",
         "x-readonly-method": true,
@@ -2124,9 +2495,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsList",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Financial Reports/operation/postV1SalesReportsList",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "financialReports"
       },
       "servers": [
         {
@@ -2136,19 +2508,35 @@
     },
     "/api/v1/account/balance": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nBalance widget data on [the main page](https://seller.wildberries.ru) of the sellers portal.\n<br><br>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
+        "description": "Balance widget data on [the main page](https://seller.wildberries.ru) of the sellers portal.\n<br><br>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
         "operationId": "getV1AccountBalance",
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": "[MaxDepth]",
+                  "properties": {
+                    "currency": {
+                      "example": "RUB",
+                      "type": "string",
+                      "description": "Currency"
+                    },
+                    "current": {
+                      "example": 10196.21,
+                      "type": "number",
+                      "description": "Current seller balance"
+                    },
+                    "for_withdraw": {
+                      "example": 6395.8,
+                      "type": "number",
+                      "description": "The money that can be withdrawn now"
+                    }
+                  },
                   "type": "object"
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2158,6 +2546,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2165,9 +2556,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Seller Balance{{ /api/v1/account/balance }}",
+        "summary": "Get Seller Balance",
         "tags": [
-          "balance"
+          "Balance"
         ],
         "x-category": "finance",
         "x-readonly-method": true,
@@ -2203,9 +2594,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/balance/operation/getV1AccountBalance",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Balance/operation/getV1AccountBalance",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "balance"
       },
       "servers": [
         {
@@ -2215,7 +2607,7 @@
     },
     "/api/v1/documents/categories": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns documents categories\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
+        "description": "Returns documents categories\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
         "operationId": "getV1DocumentsCategories",
         "parameters": [
           {
@@ -2231,7 +2623,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2241,6 +2633,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2248,9 +2643,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Documents Categories{{ /api/v1/documents/categories }}",
+        "summary": "Documents Categories",
         "tags": [
-          "documents"
+          "Documents"
         ],
         "x-category": "documents",
         "x-readonly-method": true,
@@ -2286,9 +2681,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/getV1DocumentsCategories",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Documents/operation/getV1DocumentsCategories",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "documents"
       },
       "servers": [
         {
@@ -2298,7 +2694,7 @@
     },
     "/api/v1/documents/download": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns one document\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
+        "description": "Returns one document\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
         "operationId": "getV1DocumentsDownload",
         "parameters": [
           {
@@ -2331,7 +2727,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/Responses400Download"
@@ -2344,6 +2740,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2351,9 +2750,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Document{{ /api/v1/documents/download }}",
+        "summary": "Get Document",
         "tags": [
-          "documents"
+          "Documents"
         ],
         "x-category": "documents",
         "x-readonly-method": true,
@@ -2389,9 +2788,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/getV1DocumentsDownload",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Documents/operation/getV1DocumentsDownload",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "documents"
       },
       "servers": [
         {
@@ -2401,15 +2801,21 @@
     },
     "/api/v1/documents/download/all": {
       "post": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns more than one document.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 min | 1 request | 5 min | 5 requests |\n| Service | 5 min | 1 request | 5 min | 5 requests |\n| Base with secret | 5 min | 1 request | 5 min | 5 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
+        "description": "Returns more than one document.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 5 min | 1 request | 5 min | 5 requests |\n| Service | 5 min | 1 request | 5 min | 5 requests |\n| Base with secret | 5 min | 1 request | 5 min | 5 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
         "operationId": "postV1DocumentsDownloadAll",
         "requestBody": {
           "content": {
             "application/json": {
               "example": {
                 "params": [
-                  "[MaxDepth]",
-                  "[MaxDepth]"
+                  {
+                    "extension": "zip",
+                    "serviceName": "redeem-notification-44841941"
+                  },
+                  {
+                    "extension": "xlsx",
+                    "serviceName": "act-income-mp-392460936"
+                  }
                 ]
               },
               "schema": {
@@ -2427,7 +2833,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/Responses400DownloadAll"
@@ -2440,6 +2846,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2447,9 +2856,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Get Documents{{ /api/v1/documents/download/all }}",
+        "summary": "Get Documents",
         "tags": [
-          "documents"
+          "Documents"
         ],
         "x-category": "documents",
         "x-readonly-method": true,
@@ -2485,9 +2894,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/postV1DocumentsDownloadAll",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Documents/operation/postV1DocumentsDownloadAll",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "documents"
       },
       "servers": [
         {
@@ -2497,7 +2907,7 @@
     },
     "/api/v1/documents/list": {
       "get": {
-        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns seller documents list\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/introduction/Rate-Limits'>Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
+        "description": "Returns seller documents list\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 24 h | 1 request | 24 h | 1 request |\n</div>\n",
         "operationId": "getV1DocumentsList",
         "parameters": [
           {
@@ -2552,7 +2962,7 @@
             }
           },
           {
-            "description": "[Document category](./financial-reports-and-accounting#tag/documents/operation/getV1DocumentsCategories) ID from the `name` field",
+            "description": "[Document category](./documents-and-accounting#tag/documents/operation/getV1DocumentsCategories) ID from the `name` field",
             "in": "query",
             "name": "category",
             "schema": {
@@ -2600,7 +3010,7 @@
                 }
               }
             },
-            "description": "<span class='response__value response__value_success'>Success</span>"
+            "description": "Success"
           },
           "400": {
             "$ref": "#/components/responses/Responses400List"
@@ -2613,6 +3023,9 @@
           },
           "429": {
             "$ref": "#/components/responses/429"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
           }
         },
         "security": [
@@ -2620,9 +3033,9 @@
             "HeaderApiKey": []
           }
         ],
-        "summary": "Documents List{{ /api/v1/documents/list }}",
+        "summary": "Documents List",
         "tags": [
-          "documents"
+          "Documents"
         ],
         "x-category": "documents",
         "x-readonly-method": true,
@@ -2658,9 +3071,10 @@
               "burst": "1 request"
             }
           ],
-          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/documents/operation/getV1DocumentsList",
-          "verifiedAt": "2026-08-19T18:12:37.448Z"
-        }
+          "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Documents/operation/getV1DocumentsList",
+          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+        },
+        "x-tagKey": "documents"
       },
       "servers": [
         {
@@ -2676,33 +3090,32 @@
   ],
   "tags": [
     {
-      "description": "<div class=\"api-description\">\n\n<div class=\"api-block\">\n\nView seller [balance](./financial-reports-and-accounting#tag/balance), [financial reports](./financial-reports-and-accounting#tag/financialReports), and [documents](./financial-reports-and-accounting#tag/documents).\n\n</div>\n\n\n</div>",
-      "name": "Documents and Accounting",
-      "x-traitTag": true
+      "description": "",
+      "name": "Balance",
+      "x-displayName": "Balance",
+      "x-tagKey": "balance"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Finance</strong> category\n</div>\n\nTo view your [current balance](https://seller.wildberries.ru), use the [seller balance method](./financial-reports-and-accounting#tag/balance/operation/getV1AccountBalance).\n",
-      "name": "balance",
-      "x-displayName": "Balance"
+      "description": "",
+      "name": "Financial Reports",
+      "x-displayName": "Financial Reports",
+      "x-tagKey": "financialReports"
     },
     {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Finance</strong> category\n</div>\n\nMethods for getting:\n  1. Sales reports [list](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsList) and details for the reports by [IDs](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailedReportId) and [period](./financial-reports-and-accounting#tag/financialReports/operation/postV1SalesReportsDetailed)\n  2. Acquiring expenses reports [list](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringList) and details for the reports by [IDs](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailedReportId) and [period](./financial-reports-and-accounting#tag/financialReports/operation/postV1AcquiringDetailed). The methods are available only for sellers from Russia\n\n<div class=\"description_important\">\n  You can save the report in <a href=\"/en/knowledge-base/articles/019d49a4-650c-7b04-9596-ba441936f9d3\">Google Sheets</a>\n</div>\n",
-      "name": "financialReports",
-      "x-displayName": "Financial Reports"
-    },
-    {
-      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Documents</strong> category\n</div>\n\nUsing these methods, you can get [seller documents](https://seller.wildberries.ru/supplementary-agreements) of various categories: acts, accounting reports, offers, letters, product lists, CCDs (Correction Calculation Documents), UPDs (Universal Transfer Documents), notifications, and so on.\n<br><br>\nTo work with documents, first get the lists:\n1. Of [document categories](./financial-reports-and-accounting#tag/documents/operation/getV1DocumentsCategories)\n2. Of [seller documents](./financial-reports-and-accounting#tag/documents/operation/getV1DocumentsList) available for download\n\nThen you can download [a single document](./financial-reports-and-accounting#tag/documents/operation/getV1DocumentsDownload) or [multiple documents](./financial-reports-and-accounting#tag/documents/operation/postV1DocumentsDownloadAll) from the list.\n",
-      "name": "documents",
-      "x-displayName": "Documents"
+      "description": "",
+      "name": "Documents",
+      "x-displayName": "Documents",
+      "x-tagKey": "documents"
     }
   ],
   "x-wb-extraction": {
-    "mode": "browser-redoc-openapi",
+    "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting",
-    "capturedAt": "2026-08-19T18:12:37.448Z"
+    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/13-finances.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-08-19T18:12:37.448Z",
+    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting",
     "operationCount": 11
   }
