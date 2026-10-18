@@ -890,7 +890,7 @@
   "paths": {
     "/api/tariffs/v1/acceptance/coefficients": {
       "get": {
-        "description": "The method is [temporary disabled](https://dev.wildberries.ru/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 6 requests |\n| Service | 1 min | 6 requests | 10 s | 6 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 6 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "The method is ]temporary disabled](/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 6 requests |\n| Service | 1 min | 6 requests | 10 s | 6 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 6 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1AcceptanceCoefficients",
         "parameters": [
           {
@@ -997,7 +997,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/Supply Rates/operation/getV1AcceptanceCoefficients",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "supplyRates"
       },
@@ -1092,7 +1092,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/Stock Rates/operation/getV1TariffsBox",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "stockRates"
       },
@@ -1220,7 +1220,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/Fees/operation/getV1TariffsCommission",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "fees"
       },
@@ -1315,7 +1315,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/Stock Rates/operation/getV1TariffsPallet",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "stockRates"
       },
@@ -1410,7 +1410,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/wb-tariffs#tag/Return Cost to Seller/operation/getV1TariffsReturn",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "returnCostToSeller"
       },
@@ -1455,11 +1455,11 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/wb-tariffs",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/10-rates.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/wb-tariffs",
     "operationCount": 5
   }

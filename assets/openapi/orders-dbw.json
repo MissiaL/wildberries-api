@@ -268,11 +268,9 @@
           },
           "additionalPhones": {
             "description": "Additional phone numbers to contact the buyer. <br>\nUse it to call the buyer, if the main number from `phone` is unavailable.<br>\nAn empty value means that the number is not specified\n",
-            "example": [
-              "1234554321"
-            ],
             "items": {
-              "type": "string"
+              "type": "string",
+              "example": "79871234567"
             },
             "nullable": false,
             "type": "array"
@@ -1401,7 +1399,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Assembly Orders/operation/postV3DbwOrdersClient",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwAssemblyOrders"
@@ -1535,7 +1533,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Label Identifiers/operation/postV3DbwOrdersMetaDelete",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwLabelIdentifiers"
@@ -1645,7 +1643,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Label Identifiers/operation/postV3DbwOrdersMetaDetails",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwLabelIdentifiers"
@@ -1773,7 +1771,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Label Identifiers/operation/postV3DbwOrdersMetaSgtin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwLabelIdentifiers"
@@ -1908,7 +1906,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Assembly Orders/operation/postV3DbwOrdersStatusDeliver",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwAssemblyOrders"
@@ -2045,7 +2043,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Assembly Orders/operation/getV3DbwOrders",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwAssemblyOrders"
@@ -2154,7 +2152,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Assembly Orders/operation/postV3DbwOrdersCourier",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwAssemblyOrders"
@@ -2265,7 +2263,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Assembly Orders/operation/postV3DbwOrdersDeliveryDate",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwAssemblyOrders"
@@ -2359,7 +2357,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Assembly Orders/operation/getV3DbwOrdersNew",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwAssemblyOrders"
@@ -2517,7 +2515,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Assembly Orders/operation/postV3DbwOrdersStatus",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwAssemblyOrders"
@@ -2728,7 +2726,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Assembly Orders/operation/postV3DbwOrdersStickers",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwAssemblyOrders"
@@ -2864,7 +2862,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Assembly Orders/operation/patchV3DbwOrdersOrderIdCancel",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwAssemblyOrders"
@@ -2978,7 +2976,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Assembly Orders/operation/patchV3DbwOrdersOrderIdConfirm",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwAssemblyOrders"
@@ -3120,7 +3118,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Label Identifiers/operation/putV3DbwOrdersOrderIdMetaGtin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwLabelIdentifiers"
@@ -3262,7 +3260,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Label Identifiers/operation/putV3DbwOrdersOrderIdMetaImei",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwLabelIdentifiers"
@@ -3404,7 +3402,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbw#tag/DBW Label Identifiers/operation/putV3DbwOrdersOrderIdMetaUin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbwLabelIdentifiers"
@@ -3438,11 +3436,11 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-dbw",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/04-orders-dbw.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/orders-dbw",
     "operationCount": 16
   }

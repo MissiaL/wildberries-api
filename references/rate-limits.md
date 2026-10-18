@@ -10,7 +10,13 @@ Rate limits are live operational data and can change independently of endpoint s
 - [Rate-limit knowledge-base article, updated 2026-04-03](https://dev.wildberries.ru/knowledge-base/articles/019d49a1-28ca-7735-bf2f-98210695abc7/limity-zaprosov-wb-api)
 - [Token-type limit change effective 2026-03-30](https://dev.wildberries.ru/news/281/obnovlenie-limitov-zaprosov-wb-api)
 
-The official Swagger specifications were refreshed on 2026-10-03. Each saved operation carries `x-wb-rate-limits`; `assets/openapi/rate-limit-manifest.json` records coverage and verification time. Two return-report methods publish no limit and carry `status: undocumented`: `GET /api/v1/analytics/goods-return` and `GET /api/analytics/v1/item-returns`. Verify their limits with WB before repeated calls. Never infer a limit from a similar endpoint; if `verifiedAt` may be stale, re-check the exact live operation.
+The official Swagger specifications were refreshed on 2026-10-18. Each saved operation carries `x-wb-rate-limits`; `assets/openapi/rate-limit-manifest.json` records coverage and verification time. Three methods publish no limit and carry `status: undocumented`:
+
+- `GET /api/v1/analytics/goods-return`
+- `GET /api/analytics/v1/item-returns`
+- `PATCH /api/marketplace/v3/fbs/supplies/{supplyId}/orders/transfer`
+
+Verify their limits with WB before repeated calls. Never infer a limit from a similar endpoint; if `verifiedAt` may be stale, re-check the exact live operation.
 
 ## Model
 

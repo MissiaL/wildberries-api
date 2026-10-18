@@ -68,14 +68,15 @@
         }
       },
       "CargoWarehouseRestrictionKGTPlus": {
-        "description": "The selected warehouse is not suitable for items with the type \"CD+\". Upload the balances to the warehouse marked - CD+",
+        "description": "The selected warehouse is not suitable for dimensional cargo+. Upload the inventory to a [warehouse](./item-management#tag/sellerWarehouses/operation/getV3Warehouses) with `\"cargoType\":3`",
         "value": [
           {
             "code": "CargoWarehouseRestrictionKGTPlus",
             "data": [
               {
-                "amount": 10,
-                "sku": "skuTest3"
+                "amount": 11,
+                "sku": "",
+                "chrtId": 123456789
               }
             ],
             "message": "The selected warehouse is not suitable for goods with the type \"CD+\". Upload the balances to the warehouse marked - CD+"
@@ -83,14 +84,15 @@
         ]
       },
       "CargoWarehouseRestrictionMGT": {
-        "description": "The selected warehouse is not suitable for items with the type \"LCL (Less than Container Load)\". Upload the balances to the warehouse without the ODC or CD+ mark",
+        "description": "The selected warehouse is not suitable for small-sized items. Upload the inventory to a [warehouse](./item-management#tag/sellerWarehouses/operation/getV3Warehouses) with `\"cargoType\":1`",
         "value": [
           {
             "code": "CargoWarehouseRestrictionMGT",
             "data": [
               {
-                "amount": 10,
-                "sku": "skuTest3"
+                "amount": 11,
+                "sku": "",
+                "chrtId": 123456789
               }
             ],
             "message": "The selected warehouse is not suitable for goods with the type \"LCL (Less than Container Load)\". Upload the balances to the warehouse without the ODC or CD+ mark"
@@ -98,14 +100,15 @@
         ]
       },
       "CargoWarehouseRestrictionSGT": {
-        "description": "The selected warehouse is not suitable for items with the type \"ODC\". Upload the balances to the warehouse marked - ODC",
+        "description": "The selected warehouse is not suitable for over dimensional cargo. Upload the inventory to a [warehouse](./item-management#tag/sellerWarehouses/operation/getV3Warehouses) with `\"cargoType\":2`",
         "value": [
           {
             "code": "CargoWarehouseRestrictionSGT",
             "data": [
               {
-                "amount": 0,
-                "sku": "2042688657617"
+                "amount": 11,
+                "sku": "",
+                "chrtId": 123456789
               }
             ],
             "message": "The selected warehouse is not suitable for goods with the type \"ODC\". Upload the balances to the warehouse marked - ODC"
@@ -113,14 +116,15 @@
         ]
       },
       "CargoWarehouseRestrictionSGTKGTPlus": {
-        "description": "The selected warehouse is not suitable for items with the type \"ODC/CD+\". Upload the balances to the warehouse with the label - ODC or CD+",
+        "description": "The selected warehouse is not suitable for over dimensional cargo/dimensional cargo+. Upload the inventory to a [warehouse](./item-management#tag/sellerWarehouses/operation/getV3Warehouses) with `\"cargoType\":2` or `\"cargoType\":3`",
         "value": [
           {
             "code": "CargoWarehouseRestrictionSGTKGTPlus",
             "data": [
               {
-                "amount": 10,
-                "sku": "skuTest3"
+                "amount": 11,
+                "sku": "",
+                "chrtId": 123456789
               }
             ],
             "message": "The selected warehouse is not suitable for goods with the type \"ODC/CD+\". Upload the balances to the warehouse with the label - ODC or CD+"
@@ -136,13 +140,13 @@
         }
       },
       "DeliveryTypeRestriction": {
-        "description": "This items category is not available for sale under this delivery type",
+        "description": "Sales using this delivery type are not available for items of this subcategory",
         "value": [
           {
             "code": "DeliveryTypeRestriction",
             "data": [
               {
-                "amount": 10,
+                "amount": 11,
                 "chrtId": 123456789,
                 "sku": ""
               }
@@ -222,19 +226,19 @@
       "IncorrectParameter": {
         "value": {
           "code": "IncorrectParameter",
-          "message": "IncorrectParameter"
+          "message": "Incorrect parameter"
         }
       },
       "IncorrectRequest": {
         "value": {
           "code": "IncorrectRequest",
-          "message": "Incorrect request parameters"
+          "message": "Incorrect Request"
         }
       },
       "IncorrectRequestBody": {
         "value": {
           "code": "IncorrectRequestBody",
-          "message": "Incorrect request body"
+          "message": "Incorrect required body"
         }
       },
       "IncorrectRequestNm": {
@@ -339,15 +343,6 @@
           "error": true,
           "errorText": "vendorCode is required"
         }
-      },
-      "ItemPropertyConflict": {
-        "description": "Wholesale items are not available for sale under this model",
-        "value": [
-          {
-            "code": "ProductPropertyConflict",
-            "message": "Products are not allowed for sale under the selected supply scheme."
-          }
-        ]
       },
       "ListingsVendorCodeUsedInOtherListings": {
         "description": "Seller item number used in another card",
@@ -484,8 +479,9 @@
             "code": "NotFound",
             "data": [
               {
-                "amount": 10,
-                "sku": "skuTest4"
+                "amount": 11,
+                "sku": "",
+                "chrtId": 123456789
               }
             ],
             "message": "Not found"
@@ -564,7 +560,8 @@
         "value": {
           "code": "SKUUploadDisabled",
           "message": "Uploading stock is not allowed by 'sku'. Please use the 'chrtId' key"
-        }
+        },
+        "description": "Inventory updating by SKUs is not possible. Use `chrtId`"
       },
       "SortError": {
         "description": "You should choose sorting by price or by discount, not both values",
@@ -574,21 +571,15 @@
           "errorText": "You can't sort items by price and discount at the same time"
         }
       },
-      "StatusNotAcceptable": {
-        "value": {
-          "code": "StatusNotAcceptable",
-          "message": "Обновление остатков заблокировано в связи с баном поставщика"
-        }
-      },
       "StoreIsProcessing": {
-        "description": "The warehouse is in the process of being updated or deleted. Try again after a few seconds.",
+        "description": "Склад находится в процессе обновления или удаления. Повторите попытку через несколько секунд",
         "value": {
           "code": "StoreIsProcessing",
           "message": "The store is processing"
         }
       },
       "StoreIsProcessing1": {
-        "description": "The warehouse is in the process of being updated or deleted. Try again after a few seconds.",
+        "description": "The warehouse is in the process of being updated or deleted. Try again after a few seconds",
         "value": [
           {
             "code": "StoreIsProcessing",
@@ -651,8 +642,9 @@
             "code": "UploadDataLimit",
             "data": [
               {
-                "amount": 100001,
-                "sku": "skuTest2"
+                "amount": 100011,
+                "sku": "",
+                "chrtId": 123456789
               }
             ],
             "message": "Upload limit exceeded."
@@ -684,14 +676,8 @@
           "title": "Bad Request"
         }
       },
-      "WarehouseNameInvalid": {
-        "value": {
-          "code": "WarehouseNameInvalid",
-          "message": "Incorrect warehouse name"
-        }
-      },
       "WarehouseStocksUpdateBlock": {
-        "description": "Inventory updating is blocked now. Please try again later",
+        "description": "Maintenance, it is currently not possible to update. Please try again later",
         "value": {
           "code": "WarehouseStocksUpdateBlock",
           "message": "The warehouse is processing"
@@ -1243,7 +1229,7 @@
       "AccessDenied": {
         "value": {
           "code": "AccessDenied",
-          "message": ""
+          "message": "Access denied"
         }
       },
       "Response403TokenCategory": {
@@ -1270,6 +1256,45 @@
           "timestamp": "2026-05-25T02:47:09Z"
         },
         "description": "Invalid token type"
+      },
+      "StocksUpdateBlock": {
+        "description": "Inventory updating is blocked due to the seller ban",
+        "value": {
+          "code": "StocksUpdateBlock",
+          "message": "Stocks update block due supplier ban"
+        }
+      },
+      "SubjectRestriction": {
+        "description": "Sales from this warehouse are not available for items of this subcategory",
+        "value": [
+          {
+            "data": [
+              {
+                "sku": "",
+                "chrtId": 123456789,
+                "amount": 11
+              }
+            ],
+            "code": "SubjectRestriction",
+            "message": "Product category is not available for sale in this warehouse"
+          }
+        ]
+      },
+      "TnvedRequired": {
+        "description": "Add HS code to the listing",
+        "value": [
+          {
+            "data": [
+              {
+                "sku": "",
+                "chrtId": 123456789,
+                "amount": 11
+              }
+            ],
+            "code": "TnvedRequired",
+            "message": "Loading stocks is not possible. Add HS code to the product card."
+          }
+        ]
       }
     },
     "parameters": {
@@ -1670,7 +1695,7 @@
           "application/json": {
             "example": {
               "code": "NotFound",
-              "message": ""
+              "message": "Not found"
             },
             "schema": {
               "$ref": "#/components/schemas/Error"
@@ -2263,25 +2288,21 @@
         "type": "string"
       },
       "Error": {
-        "nullable": false,
         "properties": {
           "code": {
             "description": "Error code",
-            "nullable": false,
             "type": "string"
           },
-          "data": {
-            "description": "Additional data enriching the error",
-            "nullable": true,
-            "type": "object"
-          },
           "message": {
-            "description": "Error description",
-            "nullable": false,
+            "description": "Error details",
             "type": "string"
           }
         },
-        "type": "object"
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ]
       },
       "GetRecomReq": {
         "description": "Request for getting recommendations",
@@ -3132,12 +3153,12 @@
               "type": "string"
             },
             "data": {
-              "description": "Additional data enriching the error",
+              "description": "Additional data about the error",
               "items": {
                 "properties": {
                   "amount": {
                     "type": "integer",
-                    "description": "Stock"
+                    "description": "Inventory"
                   },
                   "chrtId": {
                     "type": "integer",
@@ -3146,20 +3167,28 @@
                   },
                   "sku": {
                     "type": "string",
-                    "description": "SKU"
+                    "description": "Not used"
                   }
                 },
-                "type": "object"
+                "type": "object",
+                "required": [
+                  "sku",
+                  "chrtId",
+                  "amount"
+                ]
               },
-              "nullable": true,
               "type": "array"
             },
             "message": {
-              "description": "Error description",
+              "description": "Error details",
               "type": "string"
             }
           },
-          "type": "object"
+          "type": "object",
+          "required": [
+            "code",
+            "message"
+          ]
         },
         "type": "array"
       },
@@ -3235,21 +3264,18 @@
         "properties": {
           "code": {
             "description": "Error code",
-            "nullable": false,
             "type": "string"
           },
-          "data": {
-            "description": "Additional error data",
-            "nullable": true,
-            "type": "object"
-          },
           "message": {
-            "description": "Error description",
-            "nullable": false,
+            "description": "Error details",
             "type": "string"
           }
         },
-        "type": "object"
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ]
       },
       "Warehouse": {
         "description": "Seller warehouse details",
@@ -4132,7 +4158,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV1Brands",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "operationId": "getV1Brands",
         "x-tagKey": "categoriesSubcategoriesAndCharacteristics"
@@ -4223,7 +4249,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Recommendations/operation/postV1RecommendationsList",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "recommendations"
       },
@@ -4323,7 +4349,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Recommendations/operation/postV1RecommendationsSet",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "recommendations"
       },
@@ -4429,7 +4455,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Prices and Discounts/operation/postV1UploadTaskB2bWholesale",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "pricesAndDiscounts"
       },
@@ -4441,7 +4467,7 @@
     },
     "/api/v2/buffer/goods/task": {
       "get": {
-        "description": "Returns items in processing upload including item errors.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Returns items in processing upload including item errors.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/limit"
@@ -4548,7 +4574,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Prices and Discounts/operation/getV2BufferGoodsTask",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2BufferGoodsTask",
@@ -4567,7 +4593,7 @@
     },
     "/api/v2/buffer/tasks": {
       "get": {
-        "description": "Returns the processing upload data.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Returns the processing upload data.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/uploadID"
@@ -4668,7 +4694,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Prices and Discounts/operation/getV2BufferTasks",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2BufferTasks",
@@ -4687,7 +4713,7 @@
     },
     "/api/v2/history/goods/task": {
       "get": {
-        "description": "Returns items in processed upload including item errors.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Returns items in processed upload including item errors.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/limit"
@@ -4794,7 +4820,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Prices and Discounts/operation/getV2HistoryGoodsTask",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2HistoryGoodsTask",
@@ -4813,7 +4839,7 @@
     },
     "/api/v2/history/tasks": {
       "get": {
-        "description": "Returns the processed upload data.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Returns the processed upload data.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/uploadID"
@@ -4914,7 +4940,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Prices and Discounts/operation/getV2HistoryTasks",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2HistoryTasks",
@@ -4933,7 +4959,7 @@
     },
     "/api/v2/list/goods/filter": {
       "get": {
-        "description": "Returns item data.\n<br><br>\nYou can specify only one item number in one request.\n<br><br>\nTo get data for all items, do not set the item number, set `limit=1000`, and use the `offset` field to set the data offset. The offset should be calculated using the formula: `offset` plus `limit` from the previous request. Repeat the request until you receive a response with an empty array.<br><br>\nUse separate methods to get data:\n  - for [more than one item by item number](/openapi/item-management#tag/pricesAndDiscounts/operation/postV2ListGoodsFilter)\n  - for [the size of the item](/openapi/item-management#tag/pricesAndDiscounts/operation/getV2ListGoodsSizeNm)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Returns item data.\n<br><br>\nYou can specify only one item number in one request.\n<br><br>\nTo get data for all items, do not set the item number, set `limit=1000`, and use the `offset` field to set the data offset. The offset should be calculated using the formula: `offset` plus `limit` from the previous request. Repeat the request until you receive a response with an empty array.<br><br>\nUse separate methods to get data:\n  - for [more than one item by item number](/openapi/item-management#tag/pricesAndDiscounts/operation/postV2ListGoodsFilter)\n  - for [the size of the item](/openapi/item-management#tag/pricesAndDiscounts/operation/getV2ListGoodsSizeNm)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/limit"
@@ -5046,14 +5072,14 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Prices and Discounts/operation/getV2ListGoodsFilter",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2ListGoodsFilter",
         "x-tagKey": "pricesAndDiscounts"
       },
       "post": {
-        "description": "Returns item data by its item number.\n<br><br>\nYou can specify more than one item number in one request.\n<br><br>\nUse separate methods to get data:\n  - for [all items without specifying item numbers](/openapi/item-management#tag/pricesAndDiscounts/operation/getV2ListGoodsFilter)\n  - for [the size of the item](/openapi/item-management#tag/pricesAndDiscounts/operation/getV2ListGoodsSizeNm).\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Returns item data by its item number.\n<br><br>\nYou can specify more than one item number in one request.\n<br><br>\nUse separate methods to get data:\n  - for [all items without specifying item numbers](/openapi/item-management#tag/pricesAndDiscounts/operation/getV2ListGoodsFilter)\n  - for [the size of the item](/openapi/item-management#tag/pricesAndDiscounts/operation/getV2ListGoodsSizeNm).\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "requestBody": {
           "$ref": "#/components/requestBodies/FilterPost"
         },
@@ -5155,7 +5181,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Prices and Discounts/operation/postV2ListGoodsFilter",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "postV2ListGoodsFilter",
@@ -5174,7 +5200,7 @@
     },
     "/api/v2/list/goods/size/nm": {
       "get": {
-        "description": "Returns sizes data for the item. Only for items from categories where size price setting is available. For these items `\"editableSizePrice\":true`.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Returns sizes data for the item. Only for items from categories where size price setting is available. For these items `\"editableSizePrice\":true`.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/limit"
@@ -5284,7 +5310,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Prices and Discounts/operation/getV2ListGoodsSizeNm",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2ListGoodsSizeNm",
@@ -5303,7 +5329,7 @@
     },
     "/api/v2/quarantine/goods": {
       "get": {
-        "description": "Returns information about items in quarantine.\n<br><br>\nIf the new item price with discount is lower than the [threshold value](https://seller.wildberries.ru/instructions/ru/ru/material/price-quarantine#2ef3641a-5165-41db-9ac7-e4374c9fc3f1), the item will go into [price quarantine](https://seller.wildberries.ru/instructions/ru/ru/material/price-quarantine) and the price will not change. You will get the error in the [upload details](/openapi/item-management#tag/pricesAndDiscounts/operation/getV2HistoryGoodsTask).\n<br><br>\nYou can change price or discount via API or release item from quarantine in [personal account](https://seller.wildberries.ru/discount-and-prices/quarantine).\n<br><br>\nFor items with [size-based pricing](/openapi/item-management#tag/pricesAndDiscounts/operation/postV2UploadTaskSize), quarantine does not apply.\n<br><br>\nIn [sandbox](/sandbox) items are automatically deleted from quarantine after 3 days.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Returns information about items in quarantine.\n<br><br>\nIf the new item price with discount is lower than the [threshold value](https://seller.wildberries.ru/instructions/ru/ru/material/price-quarantine#2ef3641a-5165-41db-9ac7-e4374c9fc3f1), the item will go into [price quarantine](https://seller.wildberries.ru/instructions/ru/ru/material/price-quarantine) and the price will not change. You will get the error in the [upload details](/openapi/item-management#tag/pricesAndDiscounts/operation/getV2HistoryGoodsTask).\n<br><br>\nYou can change price or discount via API or release item from quarantine in [personal account](https://seller.wildberries.ru/discount-and-prices/quarantine).\n<br><br>\nFor items with [size-based pricing](/openapi/item-management#tag/pricesAndDiscounts/operation/postV2UploadTaskSize), quarantine does not apply.\n<br><br>\nIn the [sandbox](/en/sandbox) items are automatically deleted from quarantine after 3 days.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/limit"
@@ -5425,7 +5451,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Prices and Discounts/operation/getV2QuarantineGoods",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2QuarantineGoods",
@@ -5444,7 +5470,7 @@
     },
     "/api/v2/upload/task": {
       "post": {
-        "description": "Sets prices and discounts.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Sets prices and discounts.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "requestBody": {
           "$ref": "#/components/requestBodies/SellerTaskRequest"
         },
@@ -5609,7 +5635,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Prices and Discounts/operation/postV2UploadTask",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "postV2UploadTask",
@@ -5628,7 +5654,7 @@
     },
     "/api/v2/upload/task/club-discount": {
       "post": {
-        "description": "Sets WB Club subscription discounts.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Sets WB Club subscription discounts.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "requestBody": {
           "$ref": "#/components/requestBodies/SellerTaskRequestClubDisc"
         },
@@ -5772,7 +5798,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Prices and Discounts/operation/postV2UploadTaskClubDiscount",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "postV2UploadTaskClubDiscount",
@@ -5791,7 +5817,7 @@
     },
     "/api/v2/upload/task/size": {
       "post": {
-        "description": "Sets different prices for different sizes.\n\nOnly for items from categories where size price setting is available. For these items `\"editableSizePrice\":true` in [Get item sizes with prices](/openapi/item-management#tag/pricesAndDiscounts/operation/getV2ListGoodsSizeNm) response.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Sets different prices for different sizes.\n\nOnly for items from categories where size price setting is available. For these items `\"editableSizePrice\":true` in [Get item sizes with prices](/openapi/item-management#tag/pricesAndDiscounts/operation/getV2ListGoodsSizeNm) response.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods in the <strong>Prices and Discounts</strong> category:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 6 s | 10 requests | 600 ms | 5 requests |\n| Service | 6 s | 10 requests | 600 ms | 5 requests |\n| Base with secret | 6 s | 10 requests | 600 ms | 5 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "requestBody": {
           "$ref": "#/components/requestBodies/SellerTaskRequestSize"
         },
@@ -5959,7 +5985,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Prices and Discounts/operation/postV2UploadTaskSize",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "postV2UploadTaskSize",
@@ -6092,7 +6118,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Seller Warehouses/operation/getV3DbwWarehousesWarehouseIdContacts",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "operationId": "getV3DbwWarehousesWarehouseIdContacts",
@@ -6200,7 +6226,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Seller Warehouses/operation/putV3DbwWarehousesWarehouseIdContacts",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "operationId": "putV3DbwWarehousesWarehouseIdContacts",
@@ -6285,7 +6311,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Seller Warehouses/operation/getV3Offices",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "getV3Offices",
@@ -6317,14 +6343,12 @@
                 "properties": {
                   "chrtIds": {
                     "type": "array",
-                    "nullable": false,
                     "minItems": 1,
                     "maxItems": 1000,
                     "description": "Size IDs array",
                     "items": {
                       "type": "integer",
                       "format": "uint64",
-                      "nullable": false,
                       "example": 123456789
                     }
                   }
@@ -6355,7 +6379,7 @@
                   "IncorrectRequestBody": {
                     "$ref": "#/components/examples/IncorrectRequestBody"
                   },
-                  "IncorrectSkuParameter": {
+                  "SKUUploadDisabled": {
                     "$ref": "#/components/examples/SKUUploadDisabled"
                   }
                 },
@@ -6398,17 +6422,7 @@
             }
           },
           "404": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "message": ""
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "description": "Not found"
+            "$ref": "#/components/responses/NotFound"
           },
           "409": {
             "content": {
@@ -6423,7 +6437,7 @@
                 }
               }
             },
-            "description": "Error deleting inventory"
+            "description": "Conflict"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -6451,7 +6465,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Seller Warehouses Inventory/operation/deleteV3StocksWarehouseId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "deleteV3StocksWarehouseId",
@@ -6468,7 +6482,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "nullable": false,
                 "properties": {
                   "chrtIds": {
                     "type": "array",
@@ -6498,7 +6511,6 @@
                   "properties": {
                     "stocks": {
                       "type": "array",
-                      "nullable": false,
                       "items": {
                         "type": "object",
                         "properties": {
@@ -6510,9 +6522,8 @@
                           },
                           "amount": {
                             "type": "integer",
-                            "nullable": false,
                             "description": "Amount",
-                            "example": 10
+                            "example": 11
                           }
                         }
                       }
@@ -6537,7 +6548,7 @@
                   "IncorrectRequestBody": {
                     "$ref": "#/components/examples/IncorrectRequestBody"
                   },
-                  "IncorrectSkuParameter": {
+                  "SKUUploadDisabled": {
                     "$ref": "#/components/examples/SKUUploadDisabled"
                   }
                 },
@@ -6608,7 +6619,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Seller Warehouses Inventory/operation/postV3StocksWarehouseId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "postV3StocksWarehouseId",
@@ -6644,9 +6655,13 @@
                           "type": "integer",
                           "maximum": 100000,
                           "description": "Stock",
-                          "example": 10
+                          "example": 11
                         }
-                      }
+                      },
+                      "required": [
+                        "chrtId",
+                        "amount"
+                      ]
                     }
                   }
                 },
@@ -6724,11 +6739,11 @@
             "content": {
               "application/json": {
                 "examples": {
-                  "StatusNotAcceptable": {
-                    "$ref": "#/components/examples/StatusNotAcceptable"
-                  },
                   "WarehouseStocksUpdateBlock": {
                     "$ref": "#/components/examples/WarehouseStocksUpdateBlock"
+                  },
+                  "StocksUpdateBlock": {
+                    "$ref": "#/components/examples/StocksUpdateBlock"
                   }
                 },
                 "schema": {
@@ -6736,7 +6751,7 @@
                 }
               }
             },
-            "description": "Inventory update is blocked"
+            "description": "Not Acceptable"
           },
           "409": {
             "content": {
@@ -6757,9 +6772,6 @@
                   "DeliveryTypeRestriction": {
                     "$ref": "#/components/examples/DeliveryTypeRestriction"
                   },
-                  "ItemPropertyConflict": {
-                    "$ref": "#/components/examples/ItemPropertyConflict"
-                  },
                   "NotFound": {
                     "$ref": "#/components/examples/NotFound"
                   },
@@ -6768,6 +6780,12 @@
                   },
                   "UploadDataLimit": {
                     "$ref": "#/components/examples/UploadDataLimit"
+                  },
+                  "SubjectRestriction": {
+                    "$ref": "#/components/examples/SubjectRestriction"
+                  },
+                  "TnvedRequired": {
+                    "$ref": "#/components/examples/TnvedRequired"
                   }
                 },
                 "schema": {
@@ -6775,7 +6793,7 @@
                 }
               }
             },
-            "description": "Error updating inventory"
+            "description": "Conflict"
           },
           "429": {
             "$ref": "#/components/responses/429"
@@ -6803,7 +6821,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Seller Warehouses Inventory/operation/putV3StocksWarehouseId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "putV3StocksWarehouseId",
@@ -6893,7 +6911,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Seller Warehouses/operation/getV3Warehouses",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "getV3Warehouses",
@@ -6957,9 +6975,6 @@
                 "examples": {
                   "IncorrectRequestBody": {
                     "$ref": "#/components/examples/IncorrectRequestBody"
-                  },
-                  "WarehouseNameInvalid": {
-                    "$ref": "#/components/examples/WarehouseNameInvalid"
                   }
                 },
                 "schema": {
@@ -7039,7 +7054,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Seller Warehouses/operation/postV3Warehouses",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "postV3Warehouses",
@@ -7128,7 +7143,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Seller Warehouses/operation/deleteV3WarehousesWarehouseId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "deleteV3WarehousesWarehouseId",
@@ -7182,9 +7197,6 @@
                 "examples": {
                   "IncorrectRequestBody": {
                     "$ref": "#/components/examples/IncorrectRequestBody"
-                  },
-                  "WarehouseNameInvalid": {
-                    "$ref": "#/components/examples/WarehouseNameInvalid"
                   }
                 },
                 "schema": {
@@ -7264,7 +7276,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Seller Warehouses/operation/putV3WarehousesWarehouseId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "putV3WarehousesWarehouseId",
@@ -7390,7 +7402,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Listing Items/operation/postV2Barcodes",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "Exceptions are the methods:\ncreating listings\ncreating listings with merge\nediting listings\nrecovering product card from trash\ngetting item recommendation list\nsetting item recommendations\nIn Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "postV2Barcodes",
@@ -7557,7 +7569,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Listings/operation/postV2CardsDeleteTrash",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "operationId": "postV2CardsDeleteTrash",
         "x-tagKey": "listings"
@@ -7575,7 +7587,7 @@
     },
     "/content/v2/cards/error/list": {
       "post": {
-        "description": "Returns the listings ([drafts](https://seller.wildberries.ru/new-goods/error-cards)) and the list of errors encountered during listing creation or editing.\n<br><br>\nThe data is returned in batches. One batch contains:\n  - all errors for one `variants` array in one request during listings [creation](/openapi/item-management#tag/listingItems/operation/postV2CardsUpload)\n  - all errors in one request during listings [creation with merge](/openapi/item-management#tag/listingItems/operation/postV2CardsUploadAdd) or [editing](/openapi/item-management#tag/listings/operation/postV2CardsUpdate).\n<br><br>\nTo get more than 100 batches, use pagination:\n\n  1. Make first request: <br>\n      <pre style=\"background-color: rgb(38 50 56 / 5%); color: #e53935\">\n        {\n          \"cursor\": {\n            \"limit\": 100\n          },\n          \"order\": {\n            \"ascending\": true\n          }\n        }</pre>\n  2. Copy `\"updatedAt\":\"***\",\"batchUUID\":\"***\"` from the response `cursor` and paste into the request `cursor`.\n  3. Repeat the request.\n  4. Repeat 2 and 3, until you receive in the response `\"next\":false`. This will mean that you have received all the batches.\n\n<div class=\"description_important\">\n  To delete listing from the errors list, repeat the request for creating or creating with merge and updating request with fixed errors\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for the following methods:\n\n<ul>\n    <li><a href=\"/openapi/item-management#tag/listingItems/operation/getV2CardsLimits\">getting limits for the listings</a></li>\n    <li><a href=\"/openapi/item-management#tag/listings/operation/postV2CardsErrorList\">getting failed listings with errors</a></li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 10 requests | 6 s | 5 requests |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Returns the listings ([drafts](https://seller.wildberries.ru/new-goods/error-cards)) and the list of errors encountered during listing creation or editing.\n<br><br>\nThe data is returned in batches. One batch contains:\n  - all errors for one `variants` array in one request during listings [creation](/openapi/item-management#tag/listingItems/operation/postV2CardsUpload)\n  - all errors in one request during listings [creation with merge](/openapi/item-management#tag/listingItems/operation/postV2CardsUploadAdd) or [editing](/openapi/item-management#tag/listings/operation/postV2CardsUpdate).\n<br><br>\nTo get more than 100 batches, use pagination:\n\n  1. Make first request: <br>\n      <pre style=\"background-color: rgb(38 50 56 / 5%); color: #e53935\">\n        {\n          \"cursor\": {\n            \"limit\": 100\n          },\n          \"order\": {\n            \"ascending\": true\n          }\n        }</pre>\n  2. Copy `\"updatedAt\":\"***\",\"batchUUID\":\"***\"` from the response `cursor` and paste into the request `cursor`.\n  3. Repeat the request.\n  4. Repeat 2 and 3, until you receive in the response `\"next\":false`. This will mean that you have received all the batches.\n\n<div class=\"description_important\">\n  To delete listing from the errors list, repeat the request for creating or creating with merge and updating request with fixed errors\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for the following methods:\n\n<ul>\n    <li><a href=\"/openapi/item-management#tag/listingItems/operation/getV2CardsLimits\">getting limits for the listings</a></li>\n    <li><a href=\"/openapi/item-management#tag/listings/operation/postV2CardsErrorList\">getting failed listings with errors</a></li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 10 requests | 6 s | 5 requests |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "description": "Language of subcategory names:\n  - `ru` — Russian\n  - `en` — English\n  - `zh` — Chinese\n\nNot used in the sandbox. The sandbox data is returned only in Russian\n",
@@ -7762,7 +7774,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Listings/operation/postV2CardsErrorList",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "postV2CardsErrorList",
@@ -7781,7 +7793,7 @@
     },
     "/content/v2/cards/limits": {
       "get": {
-        "description": "The method allows to get separately free and paid vendor limits for creating listings.<br>\nTo calculate the number of items that can be listed, use the formula: (freeLimits + paidLimits) - Number of listed items.<br>\nAll items that can be obtained using the [listings](/openapi/item-management#tag/listings/operation/postV2GetCardsList) and [listings that are in the trash](/openapi/item-management#tag/listings/operation/postV2GetCardsTrash) methods are considered listed.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for the following methods:\n\n<ul>\n    <li><a href=\"/openapi/item-management#tag/listingItems/operation/getV2CardsLimits\">getting limits for the listings</a></li>\n    <li><a href=\"/openapi/item-management#tag/listings/operation/postV2CardsErrorList\">getting failed listings with errors</a></li>\n</ul>\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "The method allows to get separately free and paid vendor limits for creating listings.<br>\nTo calculate the number of items that can be listed, use the formula: (freeLimits + paidLimits) - Number of listed items.<br>\nAll items that can be obtained using the [listings](/openapi/item-management#tag/listings/operation/postV2GetCardsList) and [listings that are in the trash](/openapi/item-management#tag/listings/operation/postV2GetCardsTrash) methods are considered listed.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for the following methods:\n\n<ul>\n    <li><a href=\"/openapi/item-management#tag/listingItems/operation/getV2CardsLimits\">getting limits for the listings</a></li>\n    <li><a href=\"/openapi/item-management#tag/listings/operation/postV2CardsErrorList\">getting failed listings with errors</a></li>\n</ul>\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "responses": {
           "200": {
             "content": {
@@ -7901,7 +7913,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Listing Items/operation/getV2CardsLimits",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2CardsLimits",
@@ -8065,7 +8077,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Listings/operation/postV2CardsMoveNm",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "Exceptions are the methods:\ncreating listings\ncreating listings with merge\nediting listings\nrecovering product card from trash\ngetting item recommendation list\nsetting item recommendations\nIn Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "postV2CardsMoveNm",
@@ -8084,7 +8096,7 @@
     },
     "/content/v2/cards/recover": {
       "post": {
-        "description": "Returns the listing from trash\n\n<div class=\"description_important\">\n  When restoring the listing from the trash, its <code>imtID</code>  — <a href='/en/knowledge-base/articles/019d49a4-1320-71bb-9dac-8ba07e7177ce/working-with-items#merging-and-unmerging-listings'>merged listing ID — doesn't remain the same as it was for the listing in the trash\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 5 requests |\n| Service | 1 min | 3 requests | 20 s | 5 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
+        "description": "Returns the listing from trash\n\n<div class=\"description_important\">\n  When restoring the listing from the trash, its <code>imtID</code>  — <a href='/en/knowledge-base/articles/019d49a4-1320-71bb-9dac-8ba07e7177ce/working-with-items#merging-and-unmerging-listings'>merged</a> listing ID — doesn't remain the same as it was for the listing in the trash\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 5 requests |\n| Service | 1 min | 3 requests | 20 s | 5 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
         "requestBody": {
           "content": {
             "application/json": {
@@ -8232,7 +8244,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Listings/operation/postV2CardsRecover",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "operationId": "postV2CardsRecover",
         "x-tagKey": "listings"
@@ -8544,7 +8556,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Listings/operation/postV2CardsUpdate",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "operationId": "postV2CardsUpdate",
         "x-tagKey": "listings"
@@ -8870,7 +8882,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Listing Items/operation/postV2CardsUpload",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "operationId": "postV2CardsUpload",
         "x-tagKey": "listingItems"
@@ -9313,7 +9325,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Listing Items/operation/postV2CardsUploadAdd",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "operationId": "postV2CardsUploadAdd",
         "x-tagKey": "listingItems"
@@ -9331,7 +9343,7 @@
     },
     "/content/v2/directory/colors": {
       "get": {
-        "description": "Provides values of color characteristic.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>Characteristics</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Provides values of color characteristic.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>Characteristics</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "description": "Language for response of the `subjectName` and `name` fields:\n  - `ru` — Russian\n  - `en` — English\n  - `zh` — Chinese\n\nNot used in the sandbox. The sandbox data is returned only in Russian\n",
@@ -9470,7 +9482,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV2DirectoryColors",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2DirectoryColors",
@@ -9611,7 +9623,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV2DirectoryCountries",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "Exceptions are the methods:\ncreating listings\ncreating listings with merge\nediting listings\nrecovering product card from trash\ngetting item recommendation list\nsetting item recommendations\nIn Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2DirectoryCountries",
@@ -9630,7 +9642,7 @@
     },
     "/content/v2/directory/kinds": {
       "get": {
-        "description": "Provides values of gender characteristic.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>Characteristics</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Provides values of gender characteristic.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>Characteristics</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "description": "Language for response of the `subjectName` and `name` fields:\n  - `ru` — Russian\n  - `en` — English\n  - `zh` — Chinese\n\nNot used in the sandbox. The sandbox data is returned only in Russian\n",
@@ -9760,7 +9772,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV2DirectoryKinds",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2DirectoryKinds",
@@ -9779,7 +9791,7 @@
     },
     "/content/v2/directory/seasons": {
       "get": {
-        "description": "Provide values of season characteristic\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>Characteristics</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Provide values of season characteristic\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>Characteristics</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "description": "Language for response of the `subjectName` and `name` fields:\n  - `ru` — Russian\n  - `en` — English\n  - `zh` — Chinese\n\nNot used in the sandbox. The sandbox data is returned only in Russian\n",
@@ -9909,7 +9921,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV2DirectorySeasons",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2DirectorySeasons",
@@ -10073,7 +10085,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV2DirectoryTnved",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "Exceptions are the methods:\ncreating listings\ncreating listings with merge\nediting listings\nrecovering product card from trash\ngetting item recommendation list\nsetting item recommendations\nIn Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2DirectoryTnved",
@@ -10092,7 +10104,7 @@
     },
     "/content/v2/directory/vat": {
       "get": {
-        "description": "Returns a list of values for the **VAT rate** characteristic\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>Characteristics</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Returns a list of values for the **VAT rate** characteristic\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>Characteristics</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "description": "Language for response of the `subjectName` and `name` fields:\n  - `ru` — Russian\n  - `en` — English\n  - `zh` — Chinese\n\nNot used in the sandbox. The sandbox data is returned only in Russian\n",
@@ -10229,7 +10241,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV2DirectoryVat",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2DirectoryVat",
@@ -10248,7 +10260,7 @@
     },
     "/content/v2/get/cards/list": {
       "post": {
-        "description": "Returns the listings.<br>\n\n<div class=\"description_important\">\n  Listings from the trash are not provided in the method response. You can get these listings via <a href=\"/openapi/item-management#tag/listings/operation/postV2GetCardsTrash\">different method</a>\n</div>\n\nTo get **more than 100** listings, use pagination:\n  1. Make the first request:\n      <pre>\n        {\n          \"settings\": {\n            \"sort\": {\n              \"ascending\": true\n            },\n            \"cursor\": {\n              \"limit\": 100\n            },\n            \"filter\": {\n              \"withPhoto\": -1\n            }\n          }\n        }</pre>\n     To get only new or updated listings after data export, use ascending sorting: `\"sort\":{\"ascending\":true}`.\n  2. Copy `\"updatedAt\": \"***\",\"nmID\":\"***\"` from the `cursor` in the response and insert into the `cursor` of your next request.\n  3. Make the next request.\n  4. Repeat 2 and 3 until `total` value in the response is less than the `limit` value in the request. This will mean you got all listings.\n\nTo get only items that were listed or updated after the previous data export:\n  1. Save the `\"cursor\":{\"updatedAt\":\"***\",\"nmID\":\"***\"}` fields from the last response of the previous data export. When exporting the data, use ascending sorting: `\"sort\":{\"ascending\":true}`.\n  2. Specify the saved `\"cursor\":{\"updatedAt\":\"***\",\"nmID\":\"***\"}` fields in the first request. Keep using ascending sorting.\n  3. Save the `\"cursor\":{\"updatedAt\":\"***\",\"nmID\":\"***\"}` fields from the last response of the current data export.\n\nIn the `documents` object, the method returns:\n  - information about the added documents — the `items` array\n  - the validation results for each document — the `verdict` object in `items'. If `verdict` is not returned in the response, the document validation is not completed yet\n  - the validation result for the entire listing — the `overallVerdict` object. During the listing validation, not only the results of the document validation are taken into account, but also other data. For example, the data of required labeling codes and information from external registries. If `overallVerdict` is not returned in the response, the listing validation is not completed yet\n\n<br>\nDocument and listing validations are performed asynchronously and can take up to 3 days.\nEach change in the validation result updates the date and time in the `updatedAt` response field. <br>\nTo get new validation results, use pagination uploads sorted in ascending order.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 100 requests | 600 ms | 5 requests |\n</div>\n",
+        "description": "Returns the listings.<br>\n\n<div class=\"description_important\">\n  Listings from the trash are not provided in the method response. You can get these listings via <a href=\"/openapi/item-management#tag/listings/operation/postV2GetCardsTrash\">different method</a>\n</div>\n\nTo get **more than 100** listings, use pagination:\n  1. Make the first request:\n      <pre>\n        {\n          \"settings\": {\n            \"sort\": {\n              \"ascending\": true\n            },\n            \"cursor\": {\n              \"limit\": 100\n            },\n            \"filter\": {\n              \"withPhoto\": -1\n            }\n          }\n        }</pre>\n     To get only new or updated listings after data export, use ascending sorting: `\"sort\":{\"ascending\":true}`.\n  2. Copy `\"updatedAt\": \"***\",\"nmID\":\"***\"` from the `cursor` in the response and insert into the `cursor` of your next request.\n  3. Make the next request.\n  4. Repeat 2 and 3 until `total` value in the response is less than the `limit` value in the request. This will mean you got all listings.\n\nTo get only items that were listed or updated after the previous data export:\n  1. Save the `\"cursor\":{\"updatedAt\":\"***\",\"nmID\":\"***\"}` fields from the last response of the previous data export. When exporting the data, use ascending sorting: `\"sort\":{\"ascending\":true}`.\n  2. Specify the saved `\"cursor\":{\"updatedAt\":\"***\",\"nmID\":\"***\"}` fields in the first request. Keep using ascending sorting.\n  3. Save the `\"cursor\":{\"updatedAt\":\"***\",\"nmID\":\"***\"}` fields from the last response of the current data export.\n\nIn the `documents` object, the method returns:\n  - information about the added documents — the `items` array\n  - the validation results for each document — the `verdict` object in `items'. If `verdict` is not returned in the response, the document validation is not completed yet\n  - the validation result for the entire listing — the `overallVerdict` object. During the listing validation, not only the results of the document validation are taken into account, but also other data. For example, the data of required labeling codes and information from external registries. If `overallVerdict` is not returned in the response, the listing validation is not completed yet\n\nDocument and listing validations are performed asynchronously and can take up to 3 days.\nEach change in the validation result updates the date and time in the `updatedAt` response field. <br>\nTo get new validation results, use pagination uploads sorted in ascending order.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 100 requests | 600 ms | 5 requests |\n</div>\n",
         "parameters": [
           {
             "description": "Language for response of the `name`, `value` and `object` fields:\n  - `ru` — Russian\n  - `en` — English\n  - `zh` — Chinese\n\nNot used in the sandbox. The sandbox data is returned only in Russian\n",
@@ -10912,7 +10924,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Listings/operation/postV2GetCardsList",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "operationId": "postV2GetCardsList",
         "x-tagKey": "listings"
@@ -11328,7 +11340,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Listings/operation/postV2GetCardsTrash",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "Exceptions are the methods:\ncreating listings\ncreating listings with merge\nediting listings\nrecovering product card from trash\ngetting item recommendation list\nsetting item recommendations\nIn Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "postV2GetCardsTrash",
@@ -11499,7 +11511,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV2ObjectAll",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "Exceptions are the methods:\ncreating listings\ncreating listings with merge\nediting listings\nrecovering product card from trash\ngetting item recommendation list\nsetting item recommendations\nIn Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2ObjectAll",
@@ -11703,7 +11715,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV2ObjectCharcsSubjectId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "Exceptions are the methods:\ncreating listings\ncreating listings with merge\nediting listings\nrecovering product card from trash\ngetting item recommendation list\nsetting item recommendations\nIn Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2ObjectCharcsSubjectId",
@@ -11844,7 +11856,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV2ObjectParentAll",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "Exceptions are the methods:\ncreating listings\ncreating listings with merge\nediting listings\nrecovering product card from trash\ngetting item recommendation list\nsetting item recommendations\nIn Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2ObjectParentAll",
@@ -11863,7 +11875,7 @@
     },
     "/content/v2/tag": {
       "post": {
-        "description": "Creates a label.\n\nIt is possible to create 15 labels.\n\nThe maximum length of a label is 15 characters\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Labels</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Creates a label.\n\nIt is possible to create 15 labels.\n\nThe maximum length of a label is 15 characters\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Labels</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "requestBody": {
           "content": {
             "application/json": {
@@ -11995,7 +12007,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Labels/operation/postV2Tag",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "postV2Tag",
@@ -12014,7 +12026,7 @@
     },
     "/content/v2/tag/nomenclature/link": {
       "post": {
-        "description": "The method allows to add labels to the listing and remove labels from the listing.<br>\nWhen removing a label from a listing, the label itself is not removed.<br>\nIt is possible to add 15 labels to a listing.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Labels</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "The method allows to add labels to the listing and remove labels from the listing.<br>\nWhen removing a label from a listing, the label itself is not removed.<br>\nIt is possible to add 15 labels to a listing.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Labels</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "requestBody": {
           "content": {
             "application/json": {
@@ -12145,7 +12157,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Labels/operation/postV2TagNomenclatureLink",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "postV2TagNomenclatureLink",
@@ -12164,7 +12176,7 @@
     },
     "/content/v2/tag/{id}": {
       "delete": {
-        "description": "Deletes the label\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Labels</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Deletes the label\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Labels</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "description": "Numeric label ID",
@@ -12285,14 +12297,14 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Labels/operation/deleteV2TagId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "deleteV2TagId",
         "x-tagKey": "labels"
       },
       "patch": {
-        "description": "Changes label data: name and color\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Labels</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Changes label data: name and color\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Labels</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "description": "Numeric label ID",
@@ -12435,7 +12447,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Labels/operation/patchV2TagId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "patchV2TagId",
@@ -12454,7 +12466,7 @@
     },
     "/content/v2/tags": {
       "get": {
-        "description": "Returns seller labels list\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Labels</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Returns seller labels list\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Labels</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "responses": {
           "200": {
             "content": {
@@ -12586,7 +12598,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Labels/operation/getV2Tags",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "getV2Tags",
@@ -12605,7 +12617,7 @@
     },
     "/content/v3/media/file": {
       "post": {
-        "description": "Uploads and adds one media file for the listing.\n\nRequirements for images:\n\n  * maximum images for each listing  — 30,\n  * minimal resolution – 700 × 900 pixels,\n  * maximum size — 32 МB,\n  * minimal quality — 65%,\n  * formats — JPG, PNG, BMP, GIF (static), WebP.\n\nRequirements for video:\n\n  * maximum one video for each listing\n  * maximum size — 50 MB\n  * formats — MOV, MP4\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Media Files</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "Uploads and adds one media file for the listing.\n\nRequirements for images:\n\n  * maximum images for each listing  — 30,\n  * minimal resolution – 700 × 900 pixels,\n  * maximum size — 32 МB,\n  * minimal quality — 65%,\n  * formats — JPG, PNG, BMP, GIF (static), WebP.\n\nRequirements for video:\n\n  * maximum one video for each listing\n  * maximum size — 50 MB\n  * formats — MOV, MP4\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Media Files</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "description": "Wildberries item number",
@@ -12766,7 +12778,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Media Files/operation/postV3MediaFile",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "postV3MediaFile",
@@ -12785,7 +12797,7 @@
     },
     "/content/v3/media/save": {
       "post": {
-        "description": "The method uploads a set of media files to a listing by specifying links in the request.\n\n<div class=\"description_important\">\n  New media files (<code>data</code>) replace old ones (<code>mediaFiles</code>). To add new files, set links both to new and old files.\n</div>\n\nRequirements for links:\n  * no authorization is required to access the file via the link\n  * the link must point directly to the file. Ensure the link does not lead to a preview or authentication page. The link must end with the file name including its extension — for example, `/file_name.jpg`. If the link opens a TXT or HTML page, it is considered invalid. <br>\n  Note that some storage services do not generate direct links and therefore are not suitable for use. **Google Drive** is an example of such a service, as it only generates links to a file preview or internal service pages.\n\nRequirements for images:\n  * maximum images for each listing — 30\n  * minimal resolution – 700 × 900 pixels\n  * maximum size — 32 MB\n  * minimal quality — 65%\n  * formats — JPG, PNG, BMP, GIF (static), WebP\n\n\nRequirements for video:\n  * maximum one video for each listing\n  * maximum size — 50 MB\n  * formats — MOV, MP4\n\n\nIf one or several images or a video do not meet the requirements, no images and a video will be uploaded even if you have the success response (`200`)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Media Files</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
+        "description": "The method uploads a set of media files to a listing by specifying links in the request.\n\n<div class=\"description_important\">\n  New media files (<code>data</code>) replace old ones (<code>mediaFiles</code>). To add new files, set links both to new and old files.\n</div>\n\nRequirements for links:\n  * no authorization is required to access the file via the link\n  * the link must point directly to the file. Ensure the link does not lead to a preview or authentication page. The link must end with the file name including its extension — for example, `/file_name.jpg`. If the link opens a TXT or HTML page, it is considered invalid. <br>\n  Note that some storage services do not generate direct links and therefore are not suitable for use. **Google Drive** is an example of such a service, as it only generates links to a file preview or internal service pages.\n\nRequirements for images:\n  * maximum images for each listing — 30\n  * minimal resolution – 700 × 900 pixels\n  * maximum size — 32 MB\n  * minimal quality — 65%\n  * formats — JPG, PNG, BMP, GIF (static), WebP\n\n\nRequirements for video:\n  * maximum one video for each listing\n  * maximum size — 50 MB\n  * formats — MOV, MP4\n\n\nIf one or several images or a video do not meet the requirements, no images and a video will be uploaded even if you have the success response (`200`)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all <strong>Media Files</strong> methods:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 100 requests | 600 ms | 5 requests |\n| Service | 1 min | 100 requests | 600 ms | 5 requests |\n| Base with secret | 1 min | 100 requests | 600 ms | 5 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Content</strong> methods in total.\n\n</div>\n",
         "requestBody": {
           "content": {
             "application/json": {
@@ -12955,7 +12967,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Media Files/operation/postV3MediaSave",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all Content methods in total."
         },
         "operationId": "postV3MediaSave",
@@ -13131,7 +13143,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV2DirectoryTnvedAll",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "Exceptions are the methods:\ncreating listings\ncreating listings with merge\nediting listings\nrecovering product card from trash\ngetting item recommendation list\nsetting item recommendations"
         }
       }
@@ -13298,7 +13310,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV2DirectoryOkpd",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "Exceptions are the methods:\ncreating listings\ncreating listings with merge\nediting listings\nrecovering product card from trash\ngetting item recommendation list\nsetting item recommendations\nIn Sandbox — maximum of 1 request per second for all Content methods in total."
         }
       }
@@ -13461,7 +13473,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/work-with-products#tag/Categories, Subcategories, and Characteristics/operation/getV2DirectoryOkpdAll",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "Exceptions are the methods:\ncreating listings\ncreating listings with merge\nediting listings\nrecovering product card from trash\ngetting item recommendation list\nsetting item recommendations\nIn Sandbox — maximum of 1 request per second for all Content methods in total."
         }
       }
@@ -13531,11 +13543,11 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/work-with-products",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/02-items.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/work-with-products",
     "operationCount": 55
   }

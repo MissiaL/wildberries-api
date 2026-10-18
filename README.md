@@ -32,7 +32,7 @@ python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.r
 
 This skill is production-only. Sandbox hosts and test-token workflows are intentionally excluded.
 
-For repeated calls, read [`references/rate-limits.md`](references/rate-limits.md). The 2026-10-03 snapshot contains 307 operations: 305 have documented limits and two return-report operations are explicitly marked `undocumented`. Current counts and sources live in `assets/openapi/rate-limit-manifest.json`. The helper can show the exact host/method/token-type profile with `--show-rate-limit`, retries `429` up to three times, honors `X-Ratelimit-Retry`, and caps a single wait at 60 seconds.
+For repeated calls, read [`references/rate-limits.md`](references/rate-limits.md). The 2026-10-18 snapshot contains 308 operations: 305 have documented limits; two return-report operations and the new FBS order-transfer operation are explicitly marked `undocumented`. Current counts and sources live in `assets/openapi/rate-limit-manifest.json`. The helper can show the exact host/method/token-type profile with `--show-rate-limit`, retries `429` up to three times, honors `X-Ratelimit-Retry`, and caps a single wait at 60 seconds.
 
 ## How It Works
 

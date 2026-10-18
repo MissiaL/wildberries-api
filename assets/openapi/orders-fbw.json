@@ -1664,7 +1664,7 @@
   "paths": {
     "/api/v1/acceptance/options": {
       "post": {
-        "description": "The method is [temporary disabled](https://dev.wildberries.ru/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 6 requests |\n| Service | 1 min | 6 requests | 10 s | 6 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 6 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all methods in total.\n\n</div>\n",
+        "description": "The method is ]temporary disabled](/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 6 requests |\n| Service | 1 min | 6 requests | 10 s | 6 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 6 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all methods in total.\n\n</div>\n",
         "operationId": "postV1AcceptanceOptions",
         "parameters": [
           {
@@ -1787,7 +1787,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Information for Forming Supplies/operation/postV1AcceptanceOptions",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all methods in total."
         },
         "x-tagKey": "informationForFormingSupplies"
@@ -1981,7 +1981,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Supplies Information/operation/postV1Supplies",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "suppliesInformation"
       },
@@ -2117,7 +2117,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Supplies Information/operation/getV1SuppliesId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "suppliesInformation"
       },
@@ -2267,7 +2267,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Supplies Information/operation/getV1SuppliesIdGoods",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "suppliesInformation"
       },
@@ -2379,7 +2379,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Supplies Information/operation/getV1SuppliesIdPackage",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "suppliesInformation"
       },
@@ -2391,7 +2391,7 @@
     },
     "/api/v1/transit-tariffs": {
       "get": {
-        "description": "The method is [temporary disabled](https://dev.wildberries.ru/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 10 requests |\n| Service | 1 min | 6 requests | 10 s | 10 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 10 requests |\n| Base | 12 h | 1 request | 12 h | 1 request |\n</div>\n",
+        "description": "The method is ]temporary disabled](/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 10 requests |\n| Service | 1 min | 6 requests | 10 s | 10 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 10 requests |\n| Base | 12 h | 1 request | 12 h | 1 request |\n</div>\n",
         "operationId": "getV1TransitTariffs",
         "responses": {
           "200": {
@@ -2461,7 +2461,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Information for Forming Supplies/operation/getV1TransitTariffs",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "informationForFormingSupplies"
       },
@@ -2473,7 +2473,7 @@
     },
     "/api/v1/warehouses": {
       "get": {
-        "description": "The method is [temporary disabled](https://dev.wildberries.ru/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 6 requests |\n| Service | 1 min | 6 requests | 10 s | 6 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 6 requests |\n| Base | 12 h | 1 request | 12 h | 1 request |\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all methods in total.\n\n</div>\n",
+        "description": "The method is ]temporary disabled](/en/release-notes?id=570)\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 6 requests | 10 s | 6 requests |\n| Service | 1 min | 6 requests | 10 s | 6 requests |\n| Base with secret | 1 min | 6 requests | 10 s | 6 requests |\n| Base | 12 h | 1 request | 12 h | 1 request |\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all methods in total.\n\n</div>\n",
         "operationId": "getV1Warehouses",
         "responses": {
           "200": {
@@ -2546,7 +2546,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Information for Forming Supplies/operation/getV1Warehouses",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "In Sandbox — maximum of 1 request per second for all methods in total."
         },
         "x-tagKey": "informationForFormingSupplies"
@@ -2694,7 +2694,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Supply Drafts/operation/getV1Drafts",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         }
       },
       "post": {
@@ -2743,7 +2743,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Supply Drafts/operation/postV1Drafts",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         }
       }
     },
@@ -2838,7 +2838,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Supply Drafts/operation/deleteV1DraftsDraftId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         }
       }
     },
@@ -2955,7 +2955,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Supply Drafts/operation/getV1DraftsDraftIdItems",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         }
       },
       "post": {
@@ -3080,7 +3080,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Supply Drafts/operation/postV1DraftsDraftIdItems",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         }
       },
       "delete": {
@@ -3195,7 +3195,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Supply Drafts/operation/deleteV1DraftsDraftIdItems",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         }
       }
     },
@@ -3329,7 +3329,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbw#tag/Supplies Information/operation/getV1SuppliesSupplyIdDiscrepanciesQuantity",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         }
       }
     }
@@ -3362,11 +3362,11 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-fbw",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/07-orders-fbw.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/orders-fbw",
     "operationCount": 14
   }

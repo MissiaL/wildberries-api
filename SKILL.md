@@ -1,12 +1,15 @@
 ---
 name: wildberries-api
 description: Use when the user needs to read or change Wildberries (WB, вайлдберриз, вб) seller data through the official production API, including product cards, prices, orders, supplies, analytics, promotions, reviews, reports, finance, returns, documents, tariffs, and seller operations.
-metadata: {"author":"MissiaL","version":"0.5.0","keywords":["wildberries","wb","вайлдберриз","вб","seller-api","marketplace","product-cards","prices","orders","analytics","promotions","reports","finance","rate-limits"]}
+metadata: {"author":"MissiaL","version":"0.5.1","keywords":["wildberries","wb","вайлдберриз","вб","seller-api","marketplace","product-cards","prices","orders","analytics","promotions","reports","finance","rate-limits"]}
 ---
 
 # Wildberries API
 
 Use this skill to work with the official Wildberries seller API in production.
+Official OpenAPI schemas and rate-limit profiles were refreshed on **2026-10-18**:
+13 schemas, 308 operations. Coverage and timestamps live in
+`assets/openapi/manifest.json` and `assets/openapi/rate-limit-manifest.json`.
 
 ## Setup
 
@@ -19,10 +22,12 @@ Use this skill to work with the official Wildberries seller API in production.
 
 ```bash
 python3 scripts/api_call.py --method GET --url "https://common-api.wildberries.ru/ping"
-python3 scripts/api_call.py --method POST --url "https://content-api.wildberries.ru/content/v2/cards/upload" --body '{"cards":[]}'
+python3 scripts/api_call.py --method POST --url "https://content-api.wildberries.ru/content/v2/get/cards/list" --body '{"settings":{"cursor":{"limit":100},"filter":{"withPhoto":-1}}}'
 ```
 
-`--params`, `--body`, and `--headers` must be valid JSON objects. Do not include `Authorization`; the helper reads `WB_API_TOKEN` and adds it.
+`--params` and `--headers` must be JSON objects. `--body` must match the operation's
+JSON schema: card creation and editing use arrays, while card listing uses an
+object. Do not include `Authorization`; the helper reads `WB_API_TOKEN` and adds it.
 
 The helper retries only HTTP `429`, up to 3 times by default. It waits for `X-Ratelimit-Retry`, never sleeps more than 60 seconds for one retry, and prints returned rate-limit state to stderr. Use `--max-retries 0` to inspect a `429` without retrying, or change `--max-wait` when the user explicitly accepts a longer wait.
 

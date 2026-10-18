@@ -1849,7 +1849,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Pinned Feedbacks/operation/deleteV1Pins",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "pinnedFeedbacks"
       },
@@ -2056,7 +2056,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Pinned Feedbacks/operation/getV1Pins",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "pinnedFeedbacks"
       },
@@ -2205,7 +2205,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Pinned Feedbacks/operation/postV1Pins",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "pinnedFeedbacks"
       },
@@ -2392,7 +2392,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Pinned Feedbacks/operation/getV1PinsCount",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "pinnedFeedbacks"
       },
@@ -2481,7 +2481,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Pinned Feedbacks/operation/getV1PinsLimits",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "pinnedFeedbacks"
       },
@@ -2562,7 +2562,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Buyers Returns/operation/patchV1Claim",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "buyersReturns"
       },
@@ -2657,7 +2657,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Buyers Returns/operation/getV1Claims",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "buyersReturns"
       },
@@ -3060,7 +3060,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Feedbacks/operation/getV1Feedback",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "feedbacks"
       },
@@ -3362,7 +3362,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Feedbacks/operation/getV1Feedbacks",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "feedbacks"
       },
@@ -3469,7 +3469,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Feedbacks/operation/patchV1FeedbacksAnswer",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "feedbacks"
       },
@@ -3588,7 +3588,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Feedbacks/operation/postV1FeedbacksAnswer",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "feedbacks"
       },
@@ -3867,7 +3867,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Feedbacks/operation/getV1FeedbacksArchive",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "feedbacks"
       },
@@ -4053,7 +4053,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Feedbacks/operation/getV1FeedbacksCount",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "feedbacks"
       },
@@ -4198,7 +4198,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Feedbacks/operation/getV1FeedbacksCountUnanswered",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "feedbacks"
       },
@@ -4365,7 +4365,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Feedbacks/operation/postV1FeedbacksOrderReturn",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "feedbacks"
       },
@@ -4510,7 +4510,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Questions/operation/getV1NewFeedbacksQuestions",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "questions"
       },
@@ -4773,7 +4773,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Questions/operation/getV1Question",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "questions"
       },
@@ -5106,7 +5106,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Questions/operation/getV1Questions",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "questions"
       },
@@ -5366,7 +5366,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Questions/operation/patchV1Questions",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "questions"
       },
@@ -5552,7 +5552,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Questions/operation/getV1QuestionsCount",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "questions"
       },
@@ -5697,7 +5697,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Questions/operation/getV1QuestionsCountUnanswered",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "questions"
       },
@@ -5789,7 +5789,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Buyers Chat/operation/getV1SellerChats",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "buyersChat"
       }
@@ -6007,7 +6007,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Buyers Chat/operation/getV1SellerDownloadId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "buyersChat"
       }
@@ -6244,7 +6244,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Buyers Chat/operation/getV1SellerEvents",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "buyersChat"
       }
@@ -6448,7 +6448,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/user-communication#tag/Buyers Chat/operation/postV1SellerMessage",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "buyersChat"
       }
@@ -6494,11 +6494,11 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/user-communication",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/09-communications.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/user-communication",
     "operationCount": 25
   }

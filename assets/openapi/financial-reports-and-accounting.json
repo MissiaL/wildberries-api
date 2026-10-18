@@ -1979,7 +1979,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Financial Reports/operation/postV1AcquiringDetailed",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "financialReports"
       },
@@ -2092,7 +2092,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Financial Reports/operation/postV1AcquiringDetailedReportId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "financialReports"
       },
@@ -2187,7 +2187,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Financial Reports/operation/postV1AcquiringList",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "financialReports"
       },
@@ -2199,7 +2199,7 @@
     },
     "/api/finance/v1/sales-reports/detailed": {
       "post": {
-        "description": "The method returns details for the [sales reports](https://seller.wildberries.ru/suppliers-mutual-settlements) by specified period.\n<br><br>\nThe data is available since January 29, 2024.\n\n<div class=\"description_important\">\n  You can save the report in <a href=\"/en/knowledge-base/articles/019d49a4-650c-7b04-9596-ba441936f9d3\">Google Sheets</a>\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 24 h | 2 requests | 12 h | 1 request |\n</div>\n",
+        "description": "The method returns details for the [sales reports](https://seller.wildberries.ru/suppliers-mutual-settlements) by specified period.\n<br><br>\nThe data is available since January 29, 2024.\n\n\n<div class=\"description_important\">\n  You can save the report in <a href=\"/en/knowledge-base/articles/019d49a4-650c-7b04-9596-ba441936f9d3\">Google Sheets</a>\n</div>\n\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 1 request | 1 min | 1 request |\n| Service | 1 min | 1 request | 1 min | 1 request |\n| Base with secret | 1 min | 1 request | 1 min | 1 request |\n| Base | 24 h | 2 requests | 12 h | 1 request |\n</div>\n",
         "operationId": "postV1SalesReportsDetailed",
         "requestBody": {
           "content": {
@@ -2288,7 +2288,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Financial Reports/operation/postV1SalesReportsDetailed",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "financialReports"
       },
@@ -2401,7 +2401,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Financial Reports/operation/postV1SalesReportsDetailedReportId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "financialReports"
       },
@@ -2496,7 +2496,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Financial Reports/operation/postV1SalesReportsList",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "financialReports"
       },
@@ -2595,7 +2595,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Balance/operation/getV1AccountBalance",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "balance"
       },
@@ -2682,7 +2682,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Documents/operation/getV1DocumentsCategories",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "documents"
       },
@@ -2789,7 +2789,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Documents/operation/getV1DocumentsDownload",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "documents"
       },
@@ -2895,7 +2895,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Documents/operation/postV1DocumentsDownloadAll",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "documents"
       },
@@ -3072,7 +3072,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/financial-reports-and-accounting#tag/Documents/operation/getV1DocumentsList",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "documents"
       },
@@ -3111,11 +3111,11 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/13-finances.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/financial-reports-and-accounting",
     "operationCount": 11
   }

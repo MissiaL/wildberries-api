@@ -8,8 +8,19 @@
       "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/01-general.yaml",
       "schema_filename": "api-information.json",
       "hosts": [
+        "advert-api.wildberries.ru",
+        "buyer-chat-api.wildberries.ru",
         "common-api.wildberries.ru",
+        "content-api.wildberries.ru",
+        "discounts-prices-api.wildberries.ru",
+        "documents-api.wildberries.ru",
         "feedbacks-api.wildberries.ru",
+        "finance-api.wildberries.ru",
+        "marketplace-api.wildberries.ru",
+        "returns-api.wildberries.ru",
+        "seller-analytics-api.wildberries.ru",
+        "statistics-api.wildberries.ru",
+        "supplies-api.wildberries.ru",
         "user-management-api.wildberries.ru"
       ],
       "extraction_mode": "direct-schema-url",
@@ -23,8 +34,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/01-general.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     },
     {
       "slug": "work-with-products",
@@ -49,8 +60,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/02-items.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     },
     {
       "slug": "orders-fbs",
@@ -63,8 +74,8 @@
         "marketplace-api.wildberries.ru"
       ],
       "extraction_mode": "direct-schema-url",
-      "path_count": 38,
-      "operation_count": 46,
+      "path_count": 39,
+      "operation_count": 47,
       "source_lastmod": null,
       "provenance": {
         "sitemap_url": "https://dev.wildberries.ru/sitemap.xml",
@@ -73,8 +84,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/03-orders-fbs.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     },
     {
       "slug": "orders-dbw",
@@ -97,8 +108,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/04-orders-dbw.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     },
     {
       "slug": "orders-dbs",
@@ -121,8 +132,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/05-dbs.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     },
     {
       "slug": "promotion",
@@ -147,8 +158,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/08-promotion.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     },
     {
       "slug": "user-communication",
@@ -173,8 +184,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/09-communications.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     },
     {
       "slug": "wb-tariffs",
@@ -197,8 +208,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/10-rates.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     },
     {
       "slug": "in-store-pickup",
@@ -221,8 +232,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/06-in-store-pickup.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     },
     {
       "slug": "orders-fbw",
@@ -245,8 +256,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/07-orders-fbw.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     },
     {
       "slug": "analytics",
@@ -269,8 +280,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/11-analytics.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     },
     {
       "slug": "reports",
@@ -294,8 +305,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/12-reports.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     },
     {
       "slug": "financial-reports-and-accounting",
@@ -319,8 +330,8 @@
         "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/13-finances.yaml",
         "source_lastmod": null
       },
-      "fetched_at": "2026-10-03T09:38:49.191204+00:00",
-      "rate_limits_verified_at": "2026-10-03T09:38:49.191204+00:00"
+      "fetched_at": "2026-10-18T08:14:50.489690+00:00",
+      "rate_limits_verified_at": "2026-10-18T08:14:50.489690+00:00"
     }
   ]
 }

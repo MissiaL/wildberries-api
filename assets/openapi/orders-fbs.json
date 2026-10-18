@@ -298,6 +298,41 @@
           "timestamp": "2026-05-25T02:47:09Z"
         },
         "description": "Invalid token type"
+      },
+      "v3.TransferOrdersToAssemblyResponse": {
+        "value": {
+          "transferredOrders": [
+            {
+              "error": {
+                "detail": "Failed to assign the assembly order to the supply. Make sure that the assembly task and the supply meet all the necessary requirements.",
+                "code": 409
+              },
+              "newStickerId": 0,
+              "oldStickerId": 0,
+              "orderId": 5457166056
+            },
+            {
+              "success": true,
+              "newStickerId": 1234567890,
+              "oldStickerId": 9876543210,
+              "orderId": 5678954321
+            }
+          ]
+        }
+      },
+      "SupplyIsProcessing": {
+        "description": "The supply is busy with another process, for example, assembly orders are being added to it. Repeat the request later",
+        "value": {
+          "code": "SupplyIsProcessing",
+          "message": "The supply is currently being processed. Please try again later"
+        }
+      },
+      "NotAcceptable": {
+        "description": "Not applicable for this account — no [FBS warehouses](./item-management#tag/sellerWarehouses) are available",
+        "value": {
+          "title": "NotAcceptable",
+          "detail": "Not acceptable"
+        }
       }
     },
     "parameters": {
@@ -1033,6 +1068,11 @@
             "example": 658434,
             "nullable": false,
             "type": "integer"
+          },
+          "trackNumber": {
+            "type": "string",
+            "description": "Track number for Cross-Border\n",
+            "example": "NRU56565656"
           }
         },
         "type": "object"
@@ -1399,7 +1439,6 @@
           "cargoType": {
             "description": "Type of cargo:\n  - `1` — small-sized items\n  - `2` — over dimensional cargo (ODC)\n  - `3` — dimensional cargo+ (CD+)\n",
             "enum": [
-              0,
               1,
               2,
               3
@@ -1474,7 +1513,7 @@
             "type": "integer"
           },
           "scanDt": {
-            "description": "Supply or first order scan date (RFC3339)",
+            "description": "Supply scan date (RFC3339).<br>If `\"scanDt\":null`, the supply was not scanned",
             "example": "2022-05-04T07:56:29Z",
             "format": "date-time",
             "nullable": true,
@@ -1534,14 +1573,11 @@
           "barcode": {
             "description": "The encoded value of the sticker",
             "example": "$WBMP:1:123:1234567",
-            "minLength": 1,
             "type": "string"
           },
           "file": {
-            "description": "Base64 encoded sticker file in the requested format",
-            "example": "U3dhZ2dlciByb2Nrcw==",
-            "format": "byte",
-            "minLength": 1,
+            "description": "Encoded sticker file in the requested format",
+            "example": "^XA\\n^CI28\\n^CF0\\n^LS0",
             "type": "string"
           }
         },
@@ -1865,7 +1901,8 @@
             "items": {
               "type": "integer"
             },
-            "type": "array"
+            "type": "array",
+            "nullable": true
           }
         },
         "type": "object"
@@ -2314,6 +2351,63 @@
             "description": "Request date and time"
           }
         }
+      },
+      "v3.TransferOrdersToAssemblyResponse": {
+        "properties": {
+          "transferredOrders": {
+            "items": {
+              "$ref": "#/components/schemas/v3.TransferOrderToAssembly"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "v3.TransferOrderToAssembly": {
+        "required": [
+          "newStickerId",
+          "oldStickerId",
+          "orderId"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "description": "Error detail",
+            "properties": {
+              "detail": {
+                "type": "string",
+                "nullable": false,
+                "description": "Error details"
+              },
+              "code": {
+                "type": "integer",
+                "nullable": false,
+                "description": "Internal error code"
+              }
+            }
+          },
+          "success": {
+            "type": "boolean",
+            "nullable": false,
+            "description": "Whether the request was processed successfully. Can only be `true`"
+          },
+          "newStickerId": {
+            "nullable": false,
+            "type": "integer",
+            "description": "New sticker ID"
+          },
+          "oldStickerId": {
+            "nullable": false,
+            "type": "integer",
+            "description": "Old sticker ID"
+          },
+          "orderId": {
+            "nullable": false,
+            "type": "integer",
+            "description": "Assembly order ID"
+          }
+        },
+        "type": "object"
       }
     },
     "securitySchemes": {
@@ -2461,7 +2555,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Assembly Orders/operation/getV3FbsOrdersArchive",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "operationId": "getV3FbsOrdersArchive",
@@ -2527,6 +2621,21 @@
                 }
               }
             }
+          },
+          "406": {
+            "description": "Not applicable to this account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorV3"
+                },
+                "examples": {
+                  "NotAcceptable": {
+                    "$ref": "#/components/examples/NotAcceptable"
+                  }
+                }
+              }
+            }
           }
         },
         "security": [
@@ -2556,7 +2665,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Auto-return Settings/operation/getV3FbsSettingsAutoreturns",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "autoreturnSettings"
@@ -2659,7 +2768,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Auto-return Settings/operation/patchV3FbsSettingsAutoreturns",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "autoreturnSettings"
@@ -2855,7 +2964,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Auto-return Settings/operation/patchV3FbsSettingsAutoreturnsItems",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "autoreturnSettings"
@@ -3047,7 +3156,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Auto-return Settings/operation/postV3FbsSettingsAutoreturnsItems",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "autoreturnSettings"
@@ -3209,7 +3318,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/Auto-return Settings/operation/getV3FbsSettingsAutoreturnsSubcategoriesRestricted",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "autoreturnSettings"
@@ -3332,7 +3441,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Label Identifiers/operation/postV3OrdersMeta",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "postV3OrdersMeta",
@@ -3482,7 +3591,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Label Identifiers/operation/putV3OrdersOrderIdMetaCustomsDeclaration",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "putV3OrdersOrderIdMetaCustomsDeclaration",
@@ -3594,7 +3703,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/getV3SuppliesSupplyIdOrderIds",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "getV3SuppliesSupplyIdOrderIds",
@@ -3613,7 +3722,7 @@
     },
     "/api/marketplace/v3/supplies/{supplyId}/orders": {
       "patch": {
-        "description": "The method adds up to 100 [assembly orders](/openapi/orders-fbs#tag/fbsAssemblyOrders/operation/getV3Orders) to the supply and moves it to the `confirm` [status](/openapi/orders-fbs#tag/fbsAssemblyOrders/operation/postV3OrdersStatus).\n\nIt can also move the assembly orders:\n  - between active supplies\n  - from a closed to an active supply, if the assembly order requires [reshipment](/openapi/orders-fbs#tag/fbsAssemblyOrders/operation/getV3SuppliesOrdersReshipment).\n\n<div class=\"description_important\">\n  You can add assembly orders of any dimensional type to an empty supply. After adding the first assembly order, the supply acquires the dimensional type of this assembly order from the <code>cargoType</code> <a href=\"/openapi/orders-fbs#tag/fbsSupplies/operation/getV3SuppliesSupplyId\">field</a>.\n  <br>\n  After that, you can only add assembly orders of the same dimensional type as the supply.\n</div>\n\n<div class=\"description_important\">\nAssembly orders received at different warehouses cannot be added to the delivery.\n</div>\n\n<div class=\"description_important\">\n  You can add assembly orders of any type to an empty supply: crossborder or non-crossborder. After adding the first assembly order, the supply acquires the type of this assembly order from the <code>crossBorderType</code> field</a>.\n  <br>\n  After that, you can add to the supply only the assembly orders of the same type as the supply.\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>FBS assembly orders, supplies, passes and auto-return settings</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "The method adds up to 100 [assembly orders](/openapi/orders-fbs#tag/fbsAssemblyOrders/operation/getV3Orders) to the supply and moves it to the `confirm` [status](/openapi/orders-fbs#tag/fbsAssemblyOrders/operation/postV3OrdersStatus).\n\nIt can also move the assembly orders:\n  - between active supplies\n  - from a closed to an active supply, if the assembly order requires [reshipment](/openapi/orders-fbs#tag/fbsAssemblyOrders/operation/getV3SuppliesOrdersReshipment).\n\n<div class=\"description_important\">\n  You can add any assembly orders that arrived at the same warehouse to an empty supply.<br>\n  The supply acquires the attributes of the first assembly order added to it from the <a href=\"/en/docs/openapi/orders-fbs#tag/fbsSupplies/operation/getV3SuppliesSupplyId\">fields</a>:\n  <ul>\n    <li><code>crossBorderType</code> — crossborder or non-crossborder</li>\n    <li><code>cargoType</code> — dimensional type</li>\n    <li><code>isB2b</code> — B2B-sale or not B2B-sale</li>\n  </ul>\n    After that, you can add to the supply only assembly orders with the same <code>crossBorderType</code>, <code>cargoType</code>, <code>isB2b</code> attributes as the supply.\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>FBS assembly orders, supplies, passes and auto-return settings</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/Supply"
@@ -3705,6 +3814,9 @@
                 "examples": {
                   "FailedToAddSupplyOrder": {
                     "$ref": "#/components/examples/FailedToAddSupplyOrder"
+                  },
+                  "SupplyIsProcessing": {
+                    "$ref": "#/components/examples/SupplyIsProcessing"
                   }
                 },
                 "schema": {
@@ -3740,7 +3852,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/patchV3SuppliesSupplyIdOrders",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "patchV3SuppliesSupplyIdOrders",
@@ -3880,7 +3992,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Assembly Orders/operation/getV3Orders",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "getV3Orders",
@@ -3996,7 +4108,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Assembly Orders/operation/postV3OrdersClient",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "postV3OrdersClient",
@@ -4095,7 +4207,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Assembly Orders/operation/getV3OrdersNew",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "getV3OrdersNew",
@@ -4114,7 +4226,7 @@
     },
     "/api/v3/orders/status": {
       "post": {
-        "description": "Returns the statuses of assembly orders from the request.\n\n`supplierStatus` is a status of an assembly order. Its change is always triggered only by the seller.<br>\n\nPossible values of `supplierStatus`:\n\n| Status    | Description              | How to move the assembly orders to this status |\n|-----------|--------------------------|---------------------------------------------|\n| `new`       | **New order**        |                                             |\n| `confirm`   | **In assembly** <br>For delivery by Wildberries `fbs` | [Add assembly orders to the supply](/openapi/orders-fbs#tag/fbsSupplies/operation/patchV3SuppliesSupplyIdOrders)\n| `complete`  | **In delivery** <br> For delivery by Wildberries `fbs` and by WB courier `wbgo` |  [Transfer the supply to delivery](/openapi/orders-fbs#tag/fbsSupplies/operation/patchV3SuppliesSupplyIdDeliver) |\n| `cancel`   | **Canceled by seller** | [Cancel the order](/openapi/orders-fbs#tag/fbsAssemblyOrders/operation/patchV3OrdersOrderIdCancel) |\n| `cancel_carrier`   | **Canceled by carrier** <br>For crossborder only | Changed by the carrier |\n\n`wbStatus` — is a status of an order on the Wildberries side.\n\nPossible values for this field are:\n- `waiting` — the seller confirmed the order, and the Wildberries has not received it yet\n- `sorted` — the Wildberries warehouse sorted the order\n- `sold` — the order is sold\n- `canceled` — the seller canceled the order\n- `canceled_by_client` — the buyer canceled the order upon receipt\n- `declined_by_client` — the buyer canceled the order in the first hour <br> Cancellation is available to the buyer in the first hour from the moment of order, if the order is not transferred to confirm status.\n- `defect` — cancellation of the order due to a defect\n- `ready_for_pickup` — the order came at pickup point and waiting for the client\n- `postponed_delivery` — courier delivery is postponed\n- `accepted_by_carrier` — accepted by carrier. The order is handed over to delivery service in the seller country\n- `sent_to_carrier` — dispatched to carrier. The order is on the way to delivery service's warehouse in the seller\n- `canceled_by_carrier` — the order was cancelled by the carrier. For crossborder only\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>FBS assembly orders, supplies, passes and auto-return settings</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Returns the statuses of assembly orders from the request.\n\n`supplierStatus` is a status of an assembly order. Its change is always triggered only by the seller.<br>\n\nPossible values of `supplierStatus`:\n\n| Status    | Description              | How to move the assembly orders to this status |\n|-----------|--------------------------|---------------------------------------------|\n| `new`       | **New order**        |                                             |\n| `confirm`   | **In assembly** <br>For delivery by Wildberries `fbs` | [Add assembly orders to the supply](/openapi/orders-fbs#tag/fbsSupplies/operation/patchV3SuppliesSupplyIdOrders) <br> [Transfer orders from supply to assembly](/openapi/orders-fbs#tag/fbsSupplies/operation/patchV3FbsSuppliesSupplyIdOrdersTransfer)|\n| `complete`  | **In delivery** <br> For delivery by Wildberries `fbs` and by WB courier `wbgo` |  [Transfer the supply to delivery](/openapi/orders-fbs#tag/fbsSupplies/operation/patchV3SuppliesSupplyIdDeliver) |\n| `cancel`   | **Canceled by seller** | [Cancel the order](/openapi/orders-fbs#tag/fbsAssemblyOrders/operation/patchV3OrdersOrderIdCancel) |\n| `cancel_carrier`   | **Canceled by carrier** <br>For crossborder only | Changed by the carrier |\n\n`wbStatus` — is a status of an order on the Wildberries side.\n\nPossible values for this field are:\n- `waiting` — the seller confirmed the order, and the Wildberries has not received it yet\n- `sorted` — the Wildberries warehouse sorted the order\n- `sold` — the order is sold\n- `canceled` — the seller canceled the order\n- `canceled_by_client` — the buyer canceled the order upon receipt\n- `declined_by_client` — the buyer canceled the order in the first hour <br> Cancellation is available to the buyer in the first hour from the moment of order, if the order is not transferred to confirm status.\n- `defect` — cancellation of the order due to a defect\n- `ready_for_pickup` — the order came at pickup point and waiting for the client\n- `postponed_delivery` — courier delivery is postponed\n- `accepted_by_carrier` — accepted by carrier. The order is handed over to delivery service in the seller country\n- `sent_to_carrier` — dispatched to carrier. The order is on the way to delivery service's warehouse in the seller\n- `canceled_by_carrier` — the order was cancelled by the carrier. For crossborder only\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>FBS assembly orders, supplies, passes and auto-return settings</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4194,6 +4306,12 @@
                               "accepted_by_carrier",
                               "sent_to_carrier"
                             ]
+                          },
+                          "isTransferable": {
+                            "type": "boolean",
+                            "nullable": false,
+                            "description": "Can be [moved](./orders-fbs#tag/fbsSupplies/operation/patchV3FbsSuppliesSupplyIdOrdersTransfer) from delivery to assembly:\n  - `false` — not available\n  - `true` — available\n\nAn assembly order can be moved from delivery to assembly if all the following conditions are met:\n  - the assembly order is in the `complete` status — in delivery\n  - the supply to which the assembly order needs to be moved [is not transferred to delivery](./orders-fbs#tag/fbsSupplies/operation/patchV3SuppliesSupplyIdDeliver)\n  - the assembly order has not been moved before\n",
+                            "example": false
                           }
                         }
                       }
@@ -4283,7 +4401,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Assembly Orders/operation/postV3OrdersStatus",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "postV3OrdersStatus",
@@ -4442,7 +4560,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Assembly Orders/operation/postV3OrdersStatusHistory",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "postV3OrdersStatusHistory",
@@ -4673,7 +4791,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Assembly Orders/operation/postV3OrdersStickers",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "postV3OrdersStickers",
@@ -4880,7 +4998,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Assembly Orders/operation/postV3OrdersStickersCrossBorder",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "operationId": "postV3OrdersStickersCrossBorder",
@@ -4997,7 +5115,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Assembly Orders/operation/patchV3OrdersOrderIdCancel",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "patchV3OrdersOrderIdCancel",
@@ -5132,7 +5250,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Label Identifiers/operation/deleteV3OrdersOrderIdMeta",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "deleteV3OrdersOrderIdMeta",
@@ -5284,7 +5402,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Label Identifiers/operation/putV3OrdersOrderIdMetaExpiration",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "putV3OrdersOrderIdMetaExpiration",
@@ -5431,7 +5549,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Label Identifiers/operation/putV3OrdersOrderIdMetaGtin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "putV3OrdersOrderIdMetaGtin",
@@ -5578,7 +5696,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Label Identifiers/operation/putV3OrdersOrderIdMetaImei",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "putV3OrdersOrderIdMetaImei",
@@ -5734,7 +5852,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Label Identifiers/operation/putV3OrdersOrderIdMetaSgtin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "putV3OrdersOrderIdMetaSgtin",
@@ -5881,7 +5999,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Label Identifiers/operation/putV3OrdersOrderIdMetaUin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "putV3OrdersOrderIdMetaUin",
@@ -5974,14 +6092,14 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Passes/operation/getV3Passes",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "getV3Passes",
         "x-tagKey": "fbsPasses"
       },
       "post": {
-        "description": "Creates a seller pass. <br> The pass is valid for 48 hours from the time of creation.\n\n<div class=\"description_limit\">\n  Maximum of 1 request per 10 <a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">minutes</a> per one seller account\n\n  One request with <code>4XX</code> response codes is counted as 10 requests.\n\n  <hr>\n\n  In <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Creates a seller pass. <br> The pass is valid for 48 hours from the time of creation.\n\n<div class=\"description_limit\">\n  Maximum of 1 request per 10 <a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">minutes</a> per one seller account\n\n  One request with <code>4XX</code> response codes is counted as 10 requests.\n\n  <hr>\n\n  In <a href='/en/sandbox'>sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6125,9 +6243,9 @@
         "x-readonly-method": false,
         "x-wb-rate-limits": {
           "scope": "Non-tabular limit from the official operation description",
-          "raw": "Maximum of 1 request per 10 minutes per one seller account\nOne request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total.",
+          "raw": "Maximum of 1 request per 10 minutes per one seller account\nOne request with 4XX response codes is counted as 10 requests.\nIn sandbox — maximum of 1 request per second for all Marketplace methods in total.",
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Passes/operation/postV3Passes",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "operationId": "postV3Passes",
         "x-tagKey": "fbsPasses"
@@ -6219,7 +6337,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Passes/operation/getV3PassesOffices",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "getV3PassesOffices",
@@ -6308,7 +6426,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Passes/operation/deleteV3PassesPassId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "deleteV3PassesPassId",
@@ -6461,7 +6579,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Passes/operation/putV3PassesPassId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "putV3PassesPassId",
@@ -6586,14 +6704,14 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/getV3Supplies",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "getV3Supplies",
         "x-tagKey": "fbsSupplies"
       },
       "post": {
-        "description": "**Supplies limitations**:\n\n- Supplies applicable only for assembly orders in the FBS (Fulfillment by Seller) delivery.\n- All assembly orders added to supply automatically transferred from the `new` status to the `confirm` status.\n- Please note that if you will `cancel` (`Canceled by the seller`) the order, we will automatically remove it from the supply.\n- A supply can only be assembled from assembly jobs (orders) with the same dimensional type (cargoType). A new supply does not have a dimensional attribute. When the first assembly order is added to a supply, the supply acquires the dimensional attribute of that assembly order.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>FBS assembly orders, supplies, passes and auto-return settings</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "**Supplies limitations**:\n\n- Supplies applicable only for assembly orders in the FBS (Fulfillment by Seller) delivery.\n- All assembly orders added to supply automatically moved from the `new` status to the `confirm` status.\n- Please note that if you will `cancel` (`Canceled by the seller`) the order, we will automatically remove it from the supply.\n- A supply can only be assembled from assembly jobs (orders) with the same dimensional type (cargoType). A new supply does not have a dimensional attribute. When the first assembly order is added to a supply, the supply acquires the dimensional attribute of that assembly order.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for <strong>FBS assembly orders, supplies, passes and auto-return settings</strong> methods:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6704,7 +6822,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/postV3Supplies",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "postV3Supplies",
@@ -6832,7 +6950,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Assembly Orders/operation/getV3SuppliesOrdersReshipment",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "getV3SuppliesOrdersReshipment",
@@ -6916,6 +7034,9 @@
                 "examples": {
                   "SupplyHasOrders": {
                     "$ref": "#/components/examples/SupplyHasOrders"
+                  },
+                  "SupplyIsProcessing": {
+                    "$ref": "#/components/examples/SupplyIsProcessing"
                   }
                 },
                 "schema": {
@@ -6951,7 +7072,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/deleteV3SuppliesSupplyId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "deleteV3SuppliesSupplyId",
@@ -7050,7 +7171,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/getV3SuppliesSupplyId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "getV3SuppliesSupplyId",
@@ -7207,7 +7328,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/getV3SuppliesSupplyIdBarcode",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "getV3SuppliesSupplyIdBarcode",
@@ -7335,7 +7456,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/patchV3SuppliesSupplyIdDeliver",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "patchV3SuppliesSupplyIdDeliver",
@@ -7461,7 +7582,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/deleteV3SuppliesSupplyIdTrbx",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "deleteV3SuppliesSupplyIdTrbx",
@@ -7568,7 +7689,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/getV3SuppliesSupplyIdTrbx",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "getV3SuppliesSupplyIdTrbx",
@@ -7699,7 +7820,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/postV3SuppliesSupplyIdTrbx",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "postV3SuppliesSupplyIdTrbx",
@@ -7729,14 +7850,9 @@
             "name": "type",
             "required": true,
             "schema": {
-              "enum": [
-                "svg",
-                "zplv",
-                "zplh",
-                "png"
-              ],
               "type": "string"
-            }
+            },
+            "example": "png"
           }
         ],
         "requestBody": {
@@ -7766,11 +7882,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "nullable": false,
                   "properties": {
                     "stickers": {
                       "type": "array",
-                      "minItems": 1,
                       "items": {
                         "$ref": "#/components/schemas/TrbxStickers"
                       }
@@ -7857,7 +7971,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/postV3SuppliesSupplyIdTrbxStickers",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "operationId": "postV3SuppliesSupplyIdTrbxStickers",
@@ -7969,7 +8083,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/getV3FbsShippingPoints",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         }
       }
@@ -8101,7 +8215,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/patchV3FbsSuppliesShippingMethod",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         }
       }
@@ -8168,7 +8282,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/getV3FbsDictionariesCountriesOksm",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         }
       }
@@ -8324,7 +8438,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/putV3FbsSuppliesSupplyIdSpot",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         }
       }
@@ -8422,7 +8536,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/postV3FbsSuppliesSpotList",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         }
       }
@@ -8517,8 +8631,136 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/getV3FbsSuppliesSupplyIdStickersSpot",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
+        }
+      }
+    },
+    "/api/marketplace/v3/fbs/supplies/{supplyId}/orders/transfer": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru",
+          "description": "**Prod**\n"
+        }
+      ],
+      "patch": {
+        "x-readonly-method": false,
+        "x-category": "marketplace",
+        "operationId": "patchV3FbsSuppliesSupplyIdOrdersTransfer",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "FBS Supplies"
+        ],
+        "summary": "Transfer Orders From Supply To Assembly",
+        "description": "The method transfers assembly orders from the `complete` status — in delivery to the `confirm` status — in assembly.\n<br>\nUse the method to moved an assembly order from a closed supply to an open one.\n<br>\nAn assembly order can be moved from delivery to assembly if all conditions are met:\n- the assembly order is in the `complete` status — in delivery\n- the supply to which the assembly order needs to be moved [is not transferred to delivery](/openapi/orders-fbs#tag/fbsSupplies/operation/patchV3SuppliesSupplyIdDeliver)\n- the assembly order has not previously been moved from delivery to assembly\nTo check whether an assembly order can be transferred from delivery to assembly, use the [assembly order statuses](/openapi/orders-fbs#tag/fbsAssemblyOrders/operation/postV3OrdersStatus), the isTransferable field.\n",
+        "parameters": [
+          {
+            "name": "supplyId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the supply from which orders will be moved",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "orderIds",
+                  "newSupplyId"
+                ],
+                "properties": {
+                  "orderIds": {
+                    "type": "array",
+                    "description": "List of assembly order IDs that need to be moved to assembly",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "newSupplyId": {
+                    "type": "string",
+                    "description": "ID of the supply to which orders will be moved. The supply must not be in a delivery status"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v3.TransferOrdersToAssemblyResponse"
+                },
+                "examples": {
+                  "v3.TransferOrdersToAssemblyResponse": {
+                    "$ref": "#/components/examples/v3.TransferOrdersToAssemblyResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "AccessDenied": {
+                    "$ref": "#/components/examples/AccessDenied"
+                  }
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response4XX"
+                },
+                "examples": {
+                  "Response403TokenCategory": {
+                    "$ref": "#/components/examples/Response403TokenCategory"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-tagKey": "fbsSupplies",
+        "x-wb-rate-limits": {
+          "status": "undocumented",
+          "source": "https://dev.wildberries.ru/docs/openapi/orders-fbs#tag/FBS Supplies/operation/patchV3FbsSuppliesSupplyIdOrdersTransfer",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
+          "note": "The current official operation publishes no rate limit; verify with WB before repeated calls."
         }
       }
     }
@@ -8563,12 +8805,12 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-fbs",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/03-orders-fbs.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/orders-fbs",
-    "operationCount": 46
+    "operationCount": 47
   }
 }

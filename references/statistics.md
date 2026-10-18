@@ -21,3 +21,10 @@ Do not call deprecated `GET /api/v1/supplier/stocks`; WB scheduled it for shutdo
 Do not call deprecated `GET /api/v5/supplier/reportDetailByPeriod`; WB scheduled it for shutdown on 2026-07-15. Use the Finance API methods described in [finance.md](finance.md).
 
 For returns to the seller, prefer `GET https://seller-analytics-api.wildberries.ru/api/analytics/v1/item-returns`, with required `dateFrom` and `dateTo` and optional `status`, `limit`, and `offset`. The deprecated `GET /api/v1/analytics/goods-return` is scheduled to stop on 2026-10-26. Neither method currently publishes a rate limit; verify with WB before pagination or polling.
+
+`GET /api/v1/analytics/region-sale` is deprecated and scheduled to stop on
+**2026-11-03**. WB directs integrations to the Order Feed report,
+`POST https://seller-analytics-api.wildberries.ru/api/analytics/v1/order-feed`;
+this is a dataset for regional aggregation, not the same response schema.
+Follow the [official migration notice](https://dev.wildberries.ru/en/release-notes?id=590)
+and [regional aggregation instructions](https://dev.wildberries.ru/en/knowledge-base/articles/01a09d9e-4f79-7016-b641-0718252e6572/order-feed#sales-by-region).

@@ -1118,7 +1118,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller Information/operation/getV1Rating",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "sellerInformation"
       },
@@ -1196,7 +1196,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller Information/operation/getV1Subscriptions",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "sellerInformation"
       },
@@ -1322,7 +1322,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller Information/operation/getV1TariffConstructorOptions",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "sellerInformation"
       },
@@ -1503,7 +1503,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/News API/operation/getV2News",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "newsApi"
       },
@@ -1598,7 +1598,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller User Management/operation/postV1Invite",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "sellerUserManagement"
       },
@@ -1620,7 +1620,8 @@
                   "name": "ИП Кружинин В. Р.",
                   "sid": "e8923014-e233-47q8-898e-3cc86d67ea61",
                   "tin": "1234567890",
-                  "tradeMark": "Flax Store"
+                  "tradeMark": "Flax Store",
+                  "country": "ru"
                 },
                 "schema": {
                   "properties": {
@@ -1640,6 +1641,10 @@
                     "tradeMark": {
                       "type": "string",
                       "description": "Seller's trade name"
+                    },
+                    "country": {
+                      "type": "string",
+                      "description": "Seller account registration country"
                     }
                   },
                   "type": "object"
@@ -1702,7 +1707,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller Information/operation/getV1SellerInfo",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "sellerInformation"
       },
@@ -1792,7 +1797,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller User Management/operation/deleteV1User",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "sellerUserManagement"
       },
@@ -2333,7 +2338,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller User Management/operation/getV1Users",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "sellerUserManagement"
       },
@@ -2421,7 +2426,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/Seller User Management/operation/putV1UsersAccess",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "sellerUserManagement"
       },
@@ -2433,7 +2438,7 @@
     },
     "/ping": {
       "get": {
-        "description": "Checks:\n  1. Whether the request successfully reaches the WB API.\n  2. The validity of the authorization token and request URL.\n  3. Whether the token category matches the service.\n\n<div class=\"description_important\">\n  This method is not intended to check the availability of WB services\n</div>\n\nEach service has its own version of the method depending on the domain:\n\n| Category | Request URL |\n|---------------|-----------------------|\n| Content | `https://content-api.wildberries.ru/ping`<br>`https://content-api-sandbox.wildberries.ru/ping` |\n| Analytics | `https://seller-analytics-api.wildberries.ru/ping` |\n| Prices and Discounts | `https://discounts-prices-api.wildberries.ru/ping`<br>`https://discounts-prices-api-sandbox.wildberries.ru/ping` |\n| Marketplace | `https://marketplace-api.wildberries.ru/ping` |\n| Statistics | `https://statistics-api.wildberries.ru/ping`<br>`https://statistics-api-sandbox.wildberries.ru/ping` |\n| Promotion | `https://advert-api.wildberries.ru/ping`<br>`https://advert-api-sandbox.wildberries.ru/ping` |\n| Feedbacks and Questions | `https://feedbacks-api.wildberries.ru/ping`<br>`https://feedbacks-api-sandbox.wildberries.ru/ping` |\n| Buyers Chat | `https://buyer-chat-api.wildberries.ru/ping` |\n| Supplies | `https://supplies-api.wildberries.ru/ping` |\n| Buyers Returns | `https://returns-api.wildberries.ru/ping` |\n| Documents | `https://documents-api.wildberries.ru/ping` |\n| Finance | `https://finance-api.wildberries.ru/ping` |\n| Rates, News, Get Seller Information | `https://common-api.wildberries.ru/ping` |\n| Seller User Management | `https://user-management-api.wildberries.ru/ping` |\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 30 s | 3 requests | 10 s | 99 requests |\n</div>\n\nThe rate limit applies individually to each instance of the method on each host\n",
+        "description": "Checks:\n  1. Whether the request successfully reaches the WB API.\n  2. The validity of the authorization token and request URL.\n  3. Whether the token category matches the service.\n\n<div class=\"description_important\">\n  This method is not intended to check the availability of WB services\n</div>\n\nEach service has its own version of the method depending on the domain.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 30 s | 3 requests | 10 s | 99 requests |\n</div>\n\nThe rate limit applies individually to each instance of the method on each host\n",
         "operationId": "getPing",
         "responses": {
           "200": {
@@ -2487,7 +2492,7 @@
         "x-wb-rate-limits": {
           "scope": "Request limit per one seller account:",
           "source": "https://dev.wildberries.ru/docs/openapi/api-information#tag/WB API Connection Check/operation/getPing",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "limits": [
             {
               "period": "30 s",
@@ -2501,7 +2506,84 @@
       },
       "servers": [
         {
-          "url": "https://common-api.wildberries.ru"
+          "url": "https://common-api.wildberries.ru",
+          "description": "**Rates, News, Seller Information**\n"
+        },
+        {
+          "url": "https://content-api.wildberries.ru",
+          "description": "**Content**\n"
+        },
+        {
+          "url": "https://content-api-sandbox.wildberries.ru",
+          "description": "**Content Sandbox**\n"
+        },
+        {
+          "url": "https://seller-analytics-api.wildberries.ru",
+          "description": "**Analytics**\n"
+        },
+        {
+          "url": "https://discounts-prices-api.wildberries.ru",
+          "description": "**Prices and Discounts**\n"
+        },
+        {
+          "url": "https://discounts-prices-api-sandbox.wildberries.ru",
+          "description": "**Prices and Discounts Sandbox**\n"
+        },
+        {
+          "url": "https://marketplace-api.wildberries.ru",
+          "description": "**Marketplace**\n"
+        },
+        {
+          "url": "https://marketplace-api-sandbox.wildberries.ru",
+          "description": "**Marketplace Sandbox**\n"
+        },
+        {
+          "url": "https://statistics-api.wildberries.ru",
+          "description": "**Statistics**\n"
+        },
+        {
+          "url": "https://statistics-api-sandbox.wildberries.ru",
+          "description": "**Statistics Sandbox**\n"
+        },
+        {
+          "url": "https://advert-api.wildberries.ru",
+          "description": "**Promotion**\n"
+        },
+        {
+          "url": "https://advert-api-sandbox.wildberries.ru",
+          "description": "**Promotion Sandbox**\n"
+        },
+        {
+          "url": "https://feedbacks-api.wildberries.ru",
+          "description": "**Feedbacks and Questions**\n"
+        },
+        {
+          "url": "https://feedbacks-api-sandbox.wildberries.ru",
+          "description": "**Feedbacks and Questions Sandbox**\n"
+        },
+        {
+          "url": "https://buyer-chat-api.wildberries.ru",
+          "description": "**Buyers Chat**\n"
+        },
+        {
+          "url": "https://supplies-api.wildberries.ru",
+          "description": "**Supplies**\n"
+        },
+        {
+          "url": "https://returns-api.wildberries.ru",
+          "description": "**Buyers Returns**\n"
+        },
+        {
+          "url": "https://documents-api.wildberries.ru",
+          "description": "**Documents**\n"
+        },
+        {
+          "url": "https://finance-api.wildberries.ru",
+          "description": "**Finance**\n"
+        },
+        {
+          "url": "https://user-management-api.wildberries.ru",
+          "description": "**Seller User Management**\n"
         }
       ]
     }
@@ -2552,11 +2634,11 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/api-information",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/01-general.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/api-information",
     "operationCount": 10
   }

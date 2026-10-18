@@ -332,6 +332,24 @@
             "example": "79871234567",
             "nullable": false,
             "type": "string"
+          },
+          "additionalPhones": {
+            "nullable": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "79871234567"
+            },
+            "description": "Additional phone numbers to contact the buyer. <br>\nUse it to call the buyer, if the main number from `phone` is unavailable.<br>\nAn empty value means that the number is not specified\n"
+          },
+          "replacementAdditionalPhones": {
+            "nullable": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "79871234567"
+            },
+            "description": "Additional replacement phone numbers to contact the buyer.<br>\nAn empty value means that the number is not specified\n"
           }
         },
         "type": "object"
@@ -534,7 +552,7 @@
             "type": "integer"
           },
           "convertedFinalPrice": {
-            "description": "The sum charged to the buyer in the currency of the seller country including all discounts, multiplied by 100.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `convertedFinalPrice` field only if the response of the method [POST /api/marketplace/v3/dbs/orders/final-price](./docs/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null`. In all other cases, use the value of the `convertedOriginalFinalPrice` field from the response of the specified method\n",
+            "description": "The sum charged to the buyer in the currency of the seller country including all discounts, multiplied by 100.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `convertedFinalPrice` field only if the response of the method for getting [seller prices and amounts charged to the buyer](./dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null`. In all other cases, use the value of the `convertedOriginalFinalPrice` field from the response of the specified method\n",
             "example": 1014,
             "type": "integer"
           },
@@ -564,7 +582,7 @@
             "type": "string"
           },
           "finalPrice": {
-            "description": "The sum charged to the buyer in the currency of sale including all discounts, multiplied by 100.\n<br>\nYou can find a currency code in the `currencyCode` field.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `finalPrice` field only if the response of the method [POST /api/marketplace/v3/dbs/orders/final-price](./docs/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null`. In all other cases, use the value of the `originalFinalPrice` field from the response of the same method\n",
+            "description": "The sum charged to the buyer in the currency of sale including all discounts, multiplied by 100.\n<br>\nYou can find a currency code in the `currencyCode` field.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `finalPrice` field only if the response of the method for getting [seller prices and amounts charged to the buyer](./dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null`. In all other cases, use the value of the `originalFinalPrice` field from the response of the same method\n",
             "example": 1014,
             "type": "integer"
           },
@@ -719,7 +737,7 @@
             "type": "integer"
           },
           "convertedFinalPrice": {
-            "description": "The sum charged to the buyer in the currency of the seller country including all discounts, multiplied by 100.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `convertedFinalPrice` field only if the response of the method [POST /api/marketplace/v3/dbs/orders/final-price](./docs/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null`. In all other cases, use the value of the `convertedOriginalFinalPrice` field from the response of the specified method\n",
+            "description": "The sum charged to the buyer in the currency of the seller country including all discounts, multiplied by 100.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `convertedFinalPrice` field only if the response of the method for getting [seller prices and amounts charged to the buyer](./dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null`. In all other cases, use the value of the `convertedOriginalFinalPrice` field from the response of the specified method\n",
             "example": 1014,
             "type": "integer"
           },
@@ -754,7 +772,7 @@
             "type": "string"
           },
           "finalPrice": {
-            "description": "The sum charged to the buyer in the currency of sale including all discounts, multiplied by 100.\n<br>\nYou can find a currency code in the `currencyCode` field.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `finalPrice` field only if the [POST /api/marketplace/v3/dbs/orders/final-price](./docs/openapi/dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) method returned `\"data\": null` in the response. In all other cases, use the value of the `originalFinalPrice` field from the response of the same method\n",
+            "description": "The sum charged to the buyer in the currency of sale including all discounts, multiplied by 100.\n<br>\nYou can find a currency code in the `currencyCode` field.\n<br>\nProvided for informational purposes only.\n<br><br>\nUse the value of the `finalPrice` field only if the method for getting [seller prices and amounts charged to the buyer](./dbs#tag/dbsAssemblyOrders/operation/postV3DbsOrdersFinalPrice) returned `\"data\": null` in the response. In all other cases, use the value of the `originalFinalPrice` field from the response of the same method\n",
             "example": 1014,
             "type": "integer"
           },
@@ -1878,7 +1896,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersB2bInfo",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -1971,7 +1989,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersFinalPrice",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -2136,7 +2154,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaCustomsDeclaration",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsLabelIdentifiers"
@@ -2259,7 +2277,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaDelete",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsLabelIdentifiers"
@@ -2372,7 +2390,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaDetails",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbsLabelIdentifiers"
@@ -2490,7 +2508,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaGtin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsLabelIdentifiers"
@@ -2613,7 +2631,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaImei",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsLabelIdentifiers"
@@ -2631,7 +2649,7 @@
     },
     "/api/marketplace/v3/dbs/orders/meta/sgtin": {
       "post": {
-        "description": "Sets the labeling code [Chestny ZNAK](https://chestnyznak.ru/en) for the assembly orders. <br>\nYou can set the labeling code Chestny ZNAK only for orders in the `confirm` status and if the field `sgtin` is returned in the response of the [Get Order Label Identifiers](dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) method.\n<br><br>\nFor more information about labeling code Chestny ZNAK please check: https://chestnyznak.ru/en/.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>adding DBS label identifiers</strong>:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 500 requests | 120 ms | 20 requests |\n| Service | 1 min | 500 requests | 120 ms | 20 requests |\n| Base with secret | 1 min | 500 requests | 120 ms | 20 requests |\n| Base | 1 h | 10 requests | 6 min | 1 request |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn <a href='/en/sandbox'>Sandbox</a> — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
+        "description": "Sets the labeling code [Chestny ZNAK](https://chestnyznak.ru/en) for the assembly orders. <br>\nYou can set the labeling code Chestny ZNAK only for orders in the `confirm` status and if the field `sgtin` is returned in the response of the [Get Order Label Identifiers](dbs#tag/dbsLabelIdentifiers/operation/postV3DbsOrdersMetaDetails) method.\n<br><br>\nFor more information about labeling code Chestny ZNAK please check: https://chestnyznak.ru/en/.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account for all methods for <strong>adding DBS label identifiers</strong>:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 500 requests | 120 ms | 20 requests |\n| Service | 1 min | 500 requests | 120 ms | 20 requests |\n| Base with secret | 1 min | 500 requests | 120 ms | 20 requests |\n| Base | 1 h | 10 requests | 6 min | 1 request |\n\nOne request with <code>4XX</code> response codes is counted as 10 requests.\n\n<hr>\n\nIn Sandbox — maximum of 1 request per second for all <strong>Marketplace</strong> methods in total.\n\n</div>\n",
         "operationId": "postV3DbsOrdersMetaSgtin",
         "requestBody": {
           "content": {
@@ -2748,7 +2766,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaSgtin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsLabelIdentifiers"
@@ -2871,7 +2889,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Label Identifiers/operation/postV3DbsOrdersMetaUin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsLabelIdentifiers"
@@ -2984,7 +3002,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStatusCancel",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -3097,7 +3115,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStatusConfirm",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -3210,7 +3228,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStatusDeliver",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -3333,7 +3351,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStatusInfo",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -3508,7 +3526,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStatusReceive",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -3620,7 +3638,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStatusReject",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -3846,7 +3864,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersStickers",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -3949,7 +3967,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsGroupsInfo",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -4091,7 +4109,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/getV3DbsOrders",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -4213,7 +4231,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersClient",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -4329,7 +4347,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/postV3DbsOrdersDeliveryDate",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -4428,7 +4446,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/orders-dbs#tag/DBS Assembly Orders/operation/getV3DbsOrdersNew",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "dbsAssemblyOrders"
@@ -4467,11 +4485,11 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/orders-dbs",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/05-dbs.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/orders-dbs",
     "operationCount": 21
   }

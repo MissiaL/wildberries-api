@@ -30,6 +30,12 @@ DBS, DBW, and in-store pickup per-order endpoints (`/api/v3/dbs/orders/{orderId}
 
 FBS includes shipping points, shipping-method changes, supply cargo-place lists and labels, and the OKSM country dictionary under `/api/marketplace/v3/fbs/`. Inspect `orders-fbs.json` for exact payloads and `x-token-types` before changing a supply.
 
+`PATCH /api/marketplace/v3/fbs/supplies/{supplyId}/orders/transfer` moves FBS
+orders from a closed supply back to assembly in an open supply. Pass `orderIds`
+and `newSupplyId`; check `isTransferable` in the order-status response first.
+An order can make this transition only once. The official schema publishes no
+rate limit for this operation; verify the limit with WB before repeated calls.
+
 ## Write Safety
 
 - Status transitions, cancellations, sticker generation, and delivery-date changes are write-impacting operations.

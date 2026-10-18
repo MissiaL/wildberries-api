@@ -3520,7 +3520,7 @@
             "type": "integer",
             "format": "int64",
             "minimum": 1000,
-            "description": "Daily limit amount. Required when `\"enabled\": true`.\nThe minimum allowed amount is specified in the `minDailyLimit` field of the [GET /api/advert/v1/config]() method\n",
+            "description": "Daily limit amount. Required when `\"enabled\": true`.\nThe minimum allowed amount is specified in the `minDailyLimit` field of the [GET /api/advert/v1/config](./promotion#tag/campaignManagement/operation/getV1Config) method\n",
             "example": 1000
           },
           "carryOverEnabled": {
@@ -3968,7 +3968,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaign Management/operation/patchV0AuctionNms",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "campaignManagement"
       },
@@ -4133,7 +4133,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaign Management/operation/putV0AuctionPlacements",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "campaignManagement"
       },
@@ -4231,7 +4231,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaign Management/operation/getV0Delete",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "campaignManagement"
       },
@@ -4366,7 +4366,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Search Clusters/operation/deleteV0NormqueryBids",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "searchClusters"
       },
@@ -4490,7 +4490,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Search Clusters/operation/postV0NormqueryBids",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "searchClusters"
       }
@@ -4649,7 +4649,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Search Clusters/operation/postV0NormqueryGetBids",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "searchClusters"
       }
@@ -4791,7 +4791,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Search Clusters/operation/postV0NormqueryGetMinus",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "searchClusters"
       }
@@ -4921,7 +4921,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Search Clusters/operation/postV0NormqueryList",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "searchClusters"
       },
@@ -5049,7 +5049,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Search Clusters/operation/postV0NormquerySetMinus",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "searchClusters"
       }
@@ -5443,7 +5443,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Statistics/operation/postV0NormqueryStats",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "statistics"
       }
@@ -5555,7 +5555,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaign Management/operation/getV0Pause",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "campaignManagement"
       },
@@ -5698,7 +5698,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaign Management/operation/postV0Rename",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "campaignManagement"
       },
@@ -5823,7 +5823,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaign Management/operation/getV0Start",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "campaignManagement"
       },
@@ -5945,7 +5945,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaign Management/operation/getV0Stop",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "campaignManagement"
       },
@@ -6322,7 +6322,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Media/operation/getV1Advert",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "media"
       },
@@ -6514,7 +6514,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Media/operation/getV1Adverts",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "media"
       },
@@ -6662,7 +6662,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Finances/operation/getV1Balance",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "finances"
       },
@@ -6679,7 +6679,7 @@
     },
     "/adv/v1/budget": {
       "get": {
-        "description": "The deprecated method will be disabled on [16 November](https://dev.wildberries.ru/en/release-notes?id=582).\n\n\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 s | 4 requests | 250 ms | 4 requests |\n| Service | 1 s | 4 requests | 250 ms | 4 requests |\n| Base with secret | 1 s | 4 requests | 250 ms | 4 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n</div>\n",
+        "description": "The deprecated method will be disabled on [16 November](/en/release-notes?id=582).\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 s | 4 requests | 250 ms | 4 requests |\n| Service | 1 s | 4 requests | 250 ms | 4 requests |\n| Base with secret | 1 s | 4 requests | 250 ms | 4 requests |\n| Base | 1 h | 4 requests | 15 min | 1 request |\n</div>\n",
         "operationId": "getV1Budget",
         "parameters": [
           {
@@ -6798,7 +6798,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Finances/operation/getV1Budget",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "deprecated": true,
         "x-tagKey": "finances"
@@ -6959,7 +6959,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Finances/operation/postV1BudgetDeposit",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "finances"
       },
@@ -7075,7 +7075,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Media/operation/getV1Count",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "media"
       },
@@ -7244,7 +7244,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Statistics/operation/postV1NormqueryStats",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "statistics"
       },
@@ -7418,7 +7418,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Finances/operation/getV1Payments",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "finances"
       },
@@ -7572,7 +7572,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaigns/operation/getV1PromotionCount",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "campaigns"
       },
@@ -7743,7 +7743,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Statistics/operation/postV1Stats",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "statistics"
       },
@@ -7870,7 +7870,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Creating Campaigns/operation/getV1SupplierSubjects",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "creatingCampaigns"
       },
@@ -8054,7 +8054,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Finances/operation/getV1Upd",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "finances"
       },
@@ -8221,7 +8221,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Creating Campaigns/operation/postV2SeacatSaveAd",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "creatingCampaigns"
       },
@@ -8357,7 +8357,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Creating Campaigns/operation/postV2SupplierNms",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "creatingCampaigns"
       },
@@ -8916,7 +8916,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Statistics/operation/getV3Fullstats",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "statistics"
       },
@@ -9050,7 +9050,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaign Management/operation/getV0BidsRecommendations",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "campaignManagement"
       },
@@ -9300,7 +9300,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaign Management/operation/patchV1Bids",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "campaignManagement"
       },
@@ -9543,7 +9543,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Creating Campaigns/operation/postV1BidsMin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "creatingCampaigns"
       },
@@ -9622,7 +9622,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaign Management/operation/getV1Config",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "campaignManagement"
       },
@@ -9728,7 +9728,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Search Clusters/operation/postV1NormqueryBids",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "searchClusters"
       },
@@ -9943,7 +9943,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaigns/operation/getV2Adverts",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "campaigns"
       },
@@ -10038,7 +10038,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Promo Calendar/operation/getV1CalendarPromotions",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "promoCalendar"
       },
@@ -10121,7 +10121,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Promo Calendar/operation/getV1CalendarPromotionsDetails",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "promoCalendar"
       },
@@ -10194,7 +10194,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Promo Calendar/operation/getV1CalendarPromotionsNomenclatures",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "promoCalendar"
       },
@@ -10278,7 +10278,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Promo Calendar/operation/postV1CalendarPromotionsUpload",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "promoCalendar"
       },
@@ -10394,7 +10394,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Finances/operation/postV2Budget",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         }
       }
     },
@@ -10486,7 +10486,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaign Management/operation/getV0DailyLimits",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         }
       },
       "put": {
@@ -10599,7 +10599,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/promotion#tag/Campaign Management/operation/putV0DailyLimits",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         }
       }
     }
@@ -10662,11 +10662,11 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/promotion",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/08-promotion.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/promotion",
     "operationCount": 42
   }

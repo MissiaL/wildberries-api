@@ -361,7 +361,7 @@
         }
       },
       "flag": {
-        "description": "If parameter `flag=0` (or it doesn't exist in requests string), then call of API methods returns data,\nwhich value of field `lastChangeDate` (date and time of refreshing info of service) is greater or equal to the given\nparameter value  `dateFrom`.\nIn this case the number of returned rows of data varies from 0 to approximately 80,000.\n<br>\nIf parameter `flag=1`, then information about all orders or sales with the date will be uploaded,\nthat equals to the passed parameter `dateFrom` (in this case the time in the date doesn't matter).\nAlso the number of returned rows of data will be equal to the number of all orders or sales\nthat were made on the specified date, passed in the `dateFrom` parameter.\n",
+        "description": "If parameter `flag=0` (or it doesn't exist in requests string), then call of API methods returns data,\nwhich value of field `lastChangeDate` (date and time of refreshing info of service) is greater to the given\nparameter value  `dateFrom`.\nIn this case the number of returned rows of data varies from 0 to approximately 80,000.\n<br>\nIf parameter `flag=1`, then information about all orders or sales with the date will be uploaded,\nthat equals to the passed parameter `dateFrom` (in this case the time in the date doesn't matter).\nAlso the number of returned rows of data will be equal to the number of all orders or sales\nthat were made on the specified date, passed in the `dateFrom` parameter.\n",
         "in": "query",
         "name": "flag",
         "required": false,
@@ -1498,7 +1498,7 @@
               "type": "integer"
             },
             "logWarehouseCoef": {
-              "description": "Logistics and storage coefficient. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `0`",
+              "description": "Logistics and storage coefficient. ]At the moment](/en/release-notes?id=570), there can only be `0`",
               "type": "number"
             },
             "loyaltyDiscount": {
@@ -1510,7 +1510,7 @@
               "type": "integer"
             },
             "officeId": {
-              "description": "Warehouse ID. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `0`",
+              "description": "Warehouse ID. ]At the moment](/en/release-notes?id=570), there can only be `0`",
               "type": "integer"
             },
             "originalDate": {
@@ -1522,7 +1522,7 @@
               "type": "number"
             },
             "palletPlaceCode": {
-              "description": "Pallet place code. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `0`",
+              "description": "Pallet place code. ]At the moment](/en/release-notes?id=570), there can only be `0`",
               "type": "integer"
             },
             "size": {
@@ -1550,7 +1550,7 @@
               "type": "number"
             },
             "warehouse": {
-              "description": "Warehouse name. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `Склад WB РФ`",
+              "description": "Warehouse name. ]At the moment](/en/release-notes?id=570), there can only be `Склад WB РФ`",
               "type": "string"
             },
             "warehouseCoef": {
@@ -2260,7 +2260,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Retention Reports/operation/getV1Deductions",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "retentionReports"
       },
@@ -2418,7 +2418,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Retention Reports/operation/getV1MeasurementPenalties",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "retentionReports"
       },
@@ -2576,7 +2576,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Retention Reports/operation/getV1WarehouseMeasurements",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "retentionReports"
       },
@@ -2701,7 +2701,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Acceptance Expenses/operation/getV1AcceptanceReport",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "acceptanceExpenses"
       },
@@ -2872,7 +2872,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Acceptance Expenses/operation/getV1AcceptanceReportTasksTaskIdDownload",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "acceptanceExpenses"
       },
@@ -3000,7 +3000,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Acceptance Expenses/operation/getV1AcceptanceReportTasksTaskIdStatus",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "acceptanceExpenses"
       },
@@ -3095,7 +3095,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Retention Reports/operation/getV1AnalyticsAntifraudDetails",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "retentionReports"
       },
@@ -3285,7 +3285,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Blocked Items/operation/getV1AnalyticsBannedProducsBlocked",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "blockedItems"
       },
@@ -3427,7 +3427,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Share of Brand in Sales/operation/getV1AnalyticsBrandShare",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "shareOfBrandInSales"
       },
@@ -3502,7 +3502,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Share of Brand in Sales/operation/getV1AnalyticsBrandShareBrands",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "shareOfBrandInSales"
       },
@@ -3644,7 +3644,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Share of Brand in Sales/operation/getV1AnalyticsBrandShareParentSubjects",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "shareOfBrandInSales"
       },
@@ -3755,7 +3755,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Report on Items with Mandatory Labeling/operation/postV1AnalyticsExciseReport",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "reportOnItemsWithMandatoryLabeling"
       },
@@ -3868,7 +3868,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Retention Reports/operation/getV1AnalyticsGoodsLabeling",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "retentionReports"
       },
@@ -4087,7 +4087,7 @@
         "x-readonly-method": true,
         "x-wb-rate-limits": {
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Returns and Item Movement Report/operation/getV1AnalyticsGoodsReturn",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "status": "undocumented",
           "note": "The current official operation publishes no rate limit; verify with WB before repeated calls."
         },
@@ -4102,7 +4102,7 @@
     },
     "/api/v1/analytics/region-sale": {
       "get": {
-        "description": "Returns sales data grouped by regions of the countries. You can obtain a report for a maximum of 31 days.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "The deprecated method will be disabled on [November 3](https://dev.wildberries.ru/en/release-notes?id=590).\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 10 s | 1 request | 10 s | 5 requests |\n| Service | 10 s | 1 request | 10 s | 5 requests |\n| Base with secret | 10 s | 1 request | 10 s | 5 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "getV1AnalyticsRegionSale",
         "parameters": [
           {
@@ -4203,9 +4203,10 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Sales by Regions/operation/getV1AnalyticsRegionSale",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
-        "x-tagKey": "salesByRegions"
+        "x-tagKey": "salesByRegions",
+        "deprecated": true
       },
       "servers": [
         {
@@ -4342,7 +4343,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Paid Storage/operation/getV1PaidStorage",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "paidStorage"
       },
@@ -4498,7 +4499,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Paid Storage/operation/getV1PaidStorageTasksTaskIdDownload",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "paidStorage"
       },
@@ -4626,7 +4627,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Paid Storage/operation/getV1PaidStorageTasksTaskIdStatus",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "paidStorage"
       },
@@ -4781,7 +4782,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Main Reports/operation/getV1SupplierOrders",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "mainReports"
       },
@@ -4942,7 +4943,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Main Reports/operation/getV1SupplierSales",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "mainReports"
       },
@@ -5142,7 +5143,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Warehouses Inventory Report/operation/getV1WarehouseRemains",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "warehousesInventoryReport"
       },
@@ -5367,7 +5368,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Warehouses Inventory Report/operation/getV1WarehouseRemainsTasksTaskIdDownload",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "warehousesInventoryReport"
       },
@@ -5495,7 +5496,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Warehouses Inventory Report/operation/getV1WarehouseRemainsTasksTaskIdStatus",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "warehousesInventoryReport"
       },
@@ -5644,7 +5645,7 @@
         "x-wb-rate-limits": {
           "status": "undocumented",
           "source": "https://dev.wildberries.ru/docs/openapi/reports#tag/Returns and Item Movement Report/operation/getV1GoodsReturn",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "The current official operation publishes no rate limit; verify with WB before repeated calls."
         }
       }
@@ -5720,11 +5721,11 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/reports",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/12-reports.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/reports",
     "operationCount": 24
   }

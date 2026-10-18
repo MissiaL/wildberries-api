@@ -1,10 +1,15 @@
 {
   "schemaVersion": 2,
-  "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+  "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
   "source": "Official Wildberries OpenAPI specifications",
-  "operationCount": 307,
+  "operationCount": 308,
   "documentedLimitCount": 305,
   "undocumentedLimits": [
+    {
+      "slug": "orders-fbs",
+      "method": "PATCH",
+      "path": "/api/marketplace/v3/fbs/supplies/{supplyId}/orders/transfer"
+    },
     {
       "slug": "reports",
       "method": "GET",
@@ -28,7 +33,7 @@
     },
     {
       "slug": "orders-fbs",
-      "operationCount": 46
+      "operationCount": 47
     },
     {
       "slug": "orders-dbw",

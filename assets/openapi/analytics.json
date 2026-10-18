@@ -7,7 +7,7 @@
       },
       "InventoryMetricsReportRes": {
         "description": "",
-        "value": "VendorCode,Name,NmID,SubjectName,BrandName,SizeName,ChrtID,RegionName,OfficeName,Availability,OrdersCount,OrdersSum,BuyoutCount,BuyoutSum,BuyoutPercent,AvgOrders,StockCount,StockSum,SaleRate,AvgStockTurnover,ToClientCount,FromClientCount,Price,OfficeMissingTime,LostOrdersCount,LostOrdersSum,LostBuyoutsCount,LostBuyoutsSum,AvgOrdersByMonth_04.2014,AvgOrdersByMonth_05.2014,AvgOrdersByMonth_06.2014,AvgOrdersByMonth_07.2014,Currency\n12345,Item A,456789,Костюмы,Brand X,M,987654321,Склад WB,Склад WB,deficient,5432,2678921,2456,154321,9,48.3,76321,674321678,270,310,15,17,1000,45,3210.5,4578123.56,134.2,196512.78,62412.64,29857.97,0.00,72465.85,RUB\n12346,Item B,456790,Кроссовки,Brand Y,L,987654071,Склад WB,Склад WB,deficient,3876,1978456,1238,98231,7,32.1,59123,487321456,265,300,12,16,1200,30,2458.8,3567821.45,98.4,157843.21,48664.95,0.00,0.00,74502.72,RUB\n12347,Item C,456791,Смартфоны,Brand Z,S,984574321,Свой склад,Свой склад,deficient,4210,2431456,2158,145632,8,35.7,68954,523214789,275,315,18,20,2500,50,3187.6,4978123.87,153.2,214512.54,56237.24,2172.75,74665.30,14296.76,RUB\n12348,Item D,456792,Снасти,Brand W,XL,926554321,Свой склад,Свой склад,deficient,2943,1394521,987,65432,5,26.4,48213,396412356,260,298,13,15,800,20,1923.4,2345123.12,76.5,112348.12,26053.02,0.00,93456.00,63705.26,RUB\n12349,Item E,456793,Мебель,Brand V,XXL,983234321,Склад WB,Склад WB,deficient,1874,987432,543,32123,3,15.6,38217,287943215,255,290,10,12,1500,25,1023.2,1543210.45,48.9,85743.56,38448.89,48599.20,28445.90,90146.29,RUB\n"
+        "value": "VendorCode,Name,NmID,SubjectName,BrandName,SizeName,ChrtID,RegionName,OfficeName,Availability,OrdersCount,OrdersSum,BuyoutCount,BuyoutSum,BuyoutPercent,AvgOrders,StockCount,StockSum,SaleRate,AvgStockTurnover,ToClientCount,FromClientCount,Price,OfficeMissingTime,LostOrdersCount,LostOrdersSum,LostBuyoutsCount,LostBuyoutsSum,AvgOrdersByMonth_11.2013,AvgOrdersByMonth_12.2013,AvgOrdersByMonth_01.2014,AvgOrdersByMonth_02.2014,AvgOrdersByMonth_03.2014,AvgOrdersByMonth_04.2014,AvgOrdersByMonth_05.2014,AvgOrdersByMonth_06.2014,AvgOrdersByMonth_07.2014,Currency\n037456337500,Robust High-Performance Robot,1031126854494603033,Термокомплекты,Amazon Web Services,67-69,987654321,Склад WB,Склад WB,nonLiquid,521124,521124000,123,123000,10,0.57,20,20000,-3,5,111,222,14008,-3,0.71,0.77,0.93,0.68,74067.12,29935.79,8895.27,37019.65,37934.89,62412.64,29857.97,0.00,72465.85,RUB\n089201683406,Luxe Blender Nexus,8904325039176595105,Термокомплекты,iRecycle,54-56,987654071,Склад WB,Склад WB,nonLiquid,1231,1231000,456,456000,20,0.71,30,30000,2,-3,333,444,85162,-2,0.90,0.96,0.31,0.93,,,,,,2628.77,0.00,70534.86,0.00,RUB\n059509746730,Pure Quartz Speaker,6780550382946145952,Термокомплекты,Next Step Living,60-62,984574321,Свой склад,Свой склад,balanced,3214,3214000,789,789000,30,0.30,40,40000,1,11,555,666,66484,-3,0.03,0.08,0.71,0.48,,,47297.22,55308.71,6463.43,48664.95,0.00,0.00,74502.72,RUB\n058266400986,Modular Stainless Monitor,3475827302459171321,Термокомплекты,TagniFi,65-67,926554321,Свой склад,Свой склад,nonActual,312,312000,123,123000,40,0.71,50,50000,13,-2,666,888,53254,-3,0.96,0.01,0.97,0.92,,67227.50,4608.98,90300.06,15890.52,0.00,0.00,41891.11,0.00,RUB\n070198970053,Microwave Quick Eco-Friendly,4734922922328623947,Термокомплекты,Boston Consulting Group,46-48,983234321,Склад WB,Склад WB,nonLiquid,343,343000,456,456000,50,0.92,60,60000,17,-2,777,101010,43823,-1,0.84,0.14,0.26,0.75,30463.57,8073.43,26678.35,0.00,339.99,56237.24,2172.75,74665.30,14296.76,RUB\n"
       },
       "SalesFunnelGroupRes": {
         "description": "",
@@ -598,7 +598,7 @@
             ]
           },
           "localizationPercentDynamic": {
-            "description": "Dynamics of local orders within the same region. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be  `0`",
+            "description": "Dynamics of local orders within the same region. ]At the moment](/en/release-notes?id=570), there can only be  `0`",
             "example": 0,
             "format": "int",
             "type": "integer"
@@ -1539,7 +1539,7 @@
             "type": "object"
           },
           "reportType": {
-            "description": "Report type `STOCK_HISTORY_DAILY_CSV` — Inventory history report. <br> The report data is updated once every 2 hours",
+            "description": "Report type `STOCK_HISTORY_DAILY_CSV` — Inventory history report",
             "type": "string"
           },
           "userReportName": {
@@ -1570,7 +1570,7 @@
             "description": "Report parameters"
           },
           "reportType": {
-            "description": "Report type `STOCK_HISTORY_REPORT_CSV` — Inventory metrics report. <br> The report data is updated once every 2 hours",
+            "description": "Report type `STOCK_HISTORY_REPORT_CSV` — Inventory metrics report",
             "type": "string"
           },
           "userReportName": {
@@ -1670,18 +1670,18 @@
                   "type": "integer"
                 },
                 "regionName": {
-                  "description": "Shipping region. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `Склад WB`",
+                  "description": "Shipping region. ]At the moment](/en/release-notes?id=570), there can only be `Склад WB`",
                   "example": "Склад WB",
                   "type": "string"
                 },
                 "warehouseId": {
-                  "description": "Warehouse ID. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `-999999`",
+                  "description": "Warehouse ID. ]At the moment](/en/release-notes?id=570), there can only be `-999999`",
                   "example": -999999,
                   "format": "int64",
                   "type": "integer"
                 },
                 "warehouseName": {
-                  "description": "Warehouse name. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `Склад WB`",
+                  "description": "Warehouse name. ]At the moment](/en/release-notes?id=570), there can only be `Склад WB`",
                   "example": "Склад WB",
                   "type": "string"
                 }
@@ -2652,12 +2652,12 @@
             "type": "string"
           },
           "warehouseName": {
-            "description": "Warehouse name. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `Склад WB`, for WB warehouses",
+            "description": "Warehouse name. ]At the moment](/en/release-notes?id=570), there can only be `Склад WB`, for WB warehouses",
             "example": "Склад WB",
             "type": "string"
           },
           "warehouseRegion": {
-            "description": "The federal district where the warehouse is located. If the warehouse is not in Russia, the country is returned. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `\"\"`, for WB warehouses",
+            "description": "The federal district where the warehouse is located. If the warehouse is not in Russia, the country is returned. ]At the moment](/en/release-notes?id=570), there can only be `\"\"`, for WB warehouses",
             "example": "",
             "type": "string"
           }
@@ -3234,7 +3234,7 @@
             "type": "object"
           },
           "reportType": {
-            "description": "Report type `GROUPED_HISTORY_REPORT` — Sales funnel report. By categories, brands and labels.\n<br>\nThe report data is updated once every 2 hours.\n",
+            "description": "Report type `GROUPED_HISTORY_REPORT` — Sales funnel report. By categories, brands and labels\n",
             "type": "string"
           },
           "userReportName": {
@@ -3341,7 +3341,7 @@
             "type": "object"
           },
           "reportType": {
-            "description": "Report type `DETAIL_HISTORY_REPORT` — Sales funnel report. By WB item numbers.\n<br>\nThe report data is updated once every 2 hours.\n",
+            "description": "Report type `DETAIL_HISTORY_REPORT` — Sales funnel report. By WB item numbers\n",
             "type": "string"
           },
           "userReportName": {
@@ -3821,7 +3821,7 @@
             ]
           },
           "localizationPercent": {
-            "description": "Local orders within the same region. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be  `100`",
+            "description": "Local orders within the same region. ]At the moment](/en/release-notes?id=570), there can only be  `100`",
             "example": 100,
             "type": "integer"
           },
@@ -4230,7 +4230,7 @@
           "products": {
             "description": "List of items in a group by filter\n",
             "items": {
-              "$ref": "#/components/schemas/TableItemItem"
+              "$ref": "#/components/schemas/TableItem"
             },
             "type": "array"
           }
@@ -4278,7 +4278,7 @@
           "items": {
             "description": "List of the group items",
             "items": {
-              "$ref": "#/components/schemas/TableItemItem"
+              "$ref": "#/components/schemas/TableItem"
             },
             "type": "array"
           },
@@ -4470,7 +4470,7 @@
           "items": {
             "description": "Group items",
             "items": {
-              "$ref": "#/components/schemas/TableItemItemSt"
+              "$ref": "#/components/schemas/TableItemSt"
             },
             "type": "array"
           },
@@ -4704,355 +4704,6 @@
         ],
         "type": "object"
       },
-      "TableItemItem": {
-        "allOf": [
-          {
-            "properties": {
-              "addToCart": {
-                "description": "Adds-to-Cart from search",
-                "properties": {
-                  "current": {
-                    "example": 5,
-                    "description": "Current number",
-                    "type": "integer"
-                  },
-                  "dynamics": {
-                    "example": 50,
-                    "description": "Dynamics compared to the previous period (%)",
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "current"
-                ],
-                "type": "object"
-              },
-              "avgPosition": {
-                "description": "Average item position in search results",
-                "properties": {
-                  "current": {
-                    "example": 5,
-                    "description": "Current average position",
-                    "type": "integer"
-                  },
-                  "dynamics": {
-                    "example": 50,
-                    "description": "Dynamics compared to the previous period (%)",
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "current"
-                ],
-                "type": "object"
-              },
-              "brandName": {
-                "description": "Brand",
-                "example": "Apple",
-                "type": "string"
-              },
-              "cartToOrder": {
-                "description": "Conversion to order from search — the ratio of items ordered to all additions of the item from search to the cart",
-                "properties": {
-                  "current": {
-                    "example": 5,
-                    "description": "Current conversion",
-                    "type": "integer"
-                  },
-                  "dynamics": {
-                    "example": 50,
-                    "description": "Dynamics compared to the previous period (%)",
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "current"
-                ],
-                "type": "object"
-              },
-              "feedbackRating": {
-                "description": "Feedbacks rating",
-                "example": 1,
-                "format": "float64",
-                "type": "number"
-              },
-              "isAdvertised": {
-                "description": "Is the item being promoted in search results",
-                "example": false,
-                "type": "boolean"
-              },
-              "isCardRated": {
-                "description": "If the listing has a rating",
-                "example": true,
-                "type": "boolean"
-              },
-              "isSubstitutedSKU": {
-                "description": "If the item was searched by the promo item.<br>\nThe field will be in the response if the request contains `includeSubstitutedSKUs` and/or `includeSearchTexts`\n",
-                "example": true,
-                "type": "boolean"
-              },
-              "mainPhoto": {
-                "description": "URL of the main photo of the listing",
-                "example": "https://basket-12.wbbasket.ru/vol1788/part178840/178840836/images/c246x328/1.webp",
-                "type": "string"
-              },
-              "name": {
-                "description": "Item name",
-                "example": "iPhone 13 256 ГБ Серебристый",
-                "type": "string"
-              },
-              "nmId": {
-                "description": "WB item number",
-                "example": 268913787,
-                "format": "int64",
-                "type": "integer"
-              },
-              "openCard": {
-                "description": "Click-throughs from search",
-                "properties": {
-                  "current": {
-                    "example": 5,
-                    "description": "Current click-throughs",
-                    "type": "integer"
-                  },
-                  "dynamics": {
-                    "example": 50,
-                    "description": "Dynamics compared to the previous period (%)",
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "current"
-                ],
-                "type": "object"
-              },
-              "openToCart": {
-                "description": "Conversion to cart from search — the ratio of item additions to the cart compared to all transitions to the listing from the search",
-                "properties": {
-                  "current": {
-                    "example": 5,
-                    "description": "Current conversion",
-                    "type": "integer"
-                  },
-                  "dynamics": {
-                    "example": 50,
-                    "description": "Dynamics compared to the previous period (%)",
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "current"
-                ],
-                "type": "object"
-              },
-              "orders": {
-                "description": "Items ordered from search",
-                "properties": {
-                  "current": {
-                    "example": 5,
-                    "description": "Current number",
-                    "type": "integer"
-                  },
-                  "dynamics": {
-                    "example": 50,
-                    "description": "Dynamics compared to the previous period (%)",
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "current"
-                ],
-                "type": "object"
-              },
-              "price": {
-                "description": "Price",
-                "properties": {
-                  "maxPrice": {
-                    "example": 300,
-                    "description": "Maximal price",
-                    "type": "integer",
-                    "format": "uint64"
-                  },
-                  "minPrice": {
-                    "example": 150,
-                    "description": "Minimal price",
-                    "type": "integer",
-                    "format": "uint64"
-                  }
-                },
-                "required": [
-                  "minPrice",
-                  "maxPrice"
-                ],
-                "type": "object"
-              },
-              "rating": {
-                "description": "Listing rating",
-                "example": 6,
-                "format": "float64",
-                "type": "number"
-              },
-              "subjectName": {
-                "description": "Subcategory name",
-                "example": "Смартфоны",
-                "type": "string"
-              },
-              "vendorCode": {
-                "description": "Seller item number",
-                "example": "wb3ha2668w",
-                "type": "string"
-              },
-              "visibility": {
-                "description": "Item visibility percent in search results",
-                "properties": {
-                  "current": {
-                    "example": 5,
-                    "description": "Current visibility percent",
-                    "type": "integer"
-                  },
-                  "dynamics": {
-                    "example": 50,
-                    "description": "Dynamics compared to the previous period (%)",
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "current"
-                ],
-                "type": "object"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "required": [
-          "nmId",
-          "vendorCode",
-          "isAdvertised",
-          "isCardRated",
-          "rating",
-          "feedbackRating",
-          "price",
-          "avgPosition",
-          "openCard",
-          "addToCart",
-          "openToCart",
-          "orders",
-          "cartToOrder",
-          "visibility"
-        ],
-        "type": "object"
-      },
-      "TableItemItemSt": {
-        "description": "Item data",
-        "properties": {
-          "brandName": {
-            "description": "Brand",
-            "example": "Компик",
-            "type": "string"
-          },
-          "hasSizes": {
-            "description": "Does the item have sizes. The item has no size variations when it is represented by '\"techSize\":\"0\"', indicating a single, uniform size for the item.",
-            "example": true,
-            "type": "boolean"
-          },
-          "isDeleted": {
-            "description": "Is the item deleted",
-            "example": false,
-            "type": "boolean"
-          },
-          "mainPhoto": {
-            "description": "Link to the main photo",
-            "example": "https://basket-12.wbbasket.ru/vol1788/part178840/178840836/images/c246x328/1.webp",
-            "type": "string"
-          },
-          "metrics": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/TableCommonMetrics"
-              },
-              {
-                "properties": {
-                  "availability": {
-                    "type": "string",
-                    "description": "Item availability:\n  - `deficient` — Low stock\n  - `actual` — Selling well\n  - `balanced` — Selling steadily\n  - `nonActual` — Selling poorly\n  - `nonLiquid` — Struggling\n  - `invalidData` — Struggling\n",
-                    "example": "deficient",
-                    "enum": [
-                      "deficient",
-                      "actual",
-                      "balanced",
-                      "nonActual",
-                      "nonLiquid",
-                      "invalidData"
-                    ]
-                  },
-                  "currentPrice": {
-                    "type": "object",
-                    "description": "Current price",
-                    "properties": {
-                      "minPrice": {
-                        "type": "integer",
-                        "format": "uint64",
-                        "description": "Minimal seller price with seller discount (excluding WB Club discount)",
-                        "example": 50
-                      },
-                      "maxPrice": {
-                        "type": "integer",
-                        "format": "uint64",
-                        "description": "Maximal seller price with seller discount (excluding WB Club discount)",
-                        "example": 100
-                      }
-                    },
-                    "required": [
-                      "minPrice",
-                      "maxPrice"
-                    ]
-                  }
-                },
-                "required": [
-                  "currentPrice",
-                  "availability"
-                ],
-                "type": "object"
-              }
-            ],
-            "description": "Item metrics"
-          },
-          "name": {
-            "description": "Item name",
-            "example": "Печатник 3000",
-            "type": "string"
-          },
-          "nmID": {
-            "description": "WB item number",
-            "example": 123456789,
-            "format": "int64",
-            "type": "integer"
-          },
-          "subjectName": {
-            "description": "Subcategory name",
-            "example": "Принтеры",
-            "type": "string"
-          },
-          "vendorCode": {
-            "description": "Seller item number",
-            "example": "pechatnik3000",
-            "type": "string"
-          }
-        },
-        "required": [
-          "nmID",
-          "isDeleted",
-          "subjectName",
-          "name",
-          "vendorCode",
-          "brandName",
-          "mainPhoto",
-          "hasSizes",
-          "metrics"
-        ],
-        "type": "object"
-      },
       "TableItemRequest": {
         "allOf": [
           {
@@ -5091,7 +4742,7 @@
           "items": {
             "description": "Set of item data",
             "items": {
-              "$ref": "#/components/schemas/TableItemItemSt"
+              "$ref": "#/components/schemas/TableItemSt"
             },
             "type": "array"
           }
@@ -5114,18 +4765,18 @@
             "description": "Warehouse metrics"
           },
           "officeID": {
-            "description": "Warehouse ID. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `-999999`, for WB warehouses",
+            "description": "Warehouse ID. ]At the moment](/en/release-notes?id=570), there can only be `-999999`, for WB warehouses",
             "example": -999999,
             "format": "int64",
             "type": "integer"
           },
           "officeName": {
-            "description": "Warehouse name. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `\"\"`, for WB warehouses",
+            "description": "Warehouse name. ]At the moment](/en/release-notes?id=570), there can only be `\"\"`, for WB warehouses",
             "example": "",
             "type": "string"
           },
           "regionName": {
-            "description": "Shipping region. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `Склад WB`, for WB warehouses",
+            "description": "Shipping region. ]At the moment](/en/release-notes?id=570), there can only be `Склад WB`, for WB warehouses",
             "example": "Склад WB",
             "type": "string"
           }
@@ -5480,7 +5131,7 @@
             "description": "Metrics by region"
           },
           "offices": {
-            "description": "Warehouse data. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `[]`",
+            "description": "Warehouse data. ]At the moment](/en/release-notes?id=570), there can only be `[]`",
             "example": [],
             "items": {
               "properties": {
@@ -5514,7 +5165,7 @@
             "type": "array"
           },
           "regionName": {
-            "description": "Shipping region. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `Склад WB`, for WB warehouses",
+            "description": "Shipping region. ]At the moment](/en/release-notes?id=570), there can only be `Склад WB`, for WB warehouses",
             "example": "Склад WB",
             "type": "string"
           }
@@ -6259,6 +5910,355 @@
             "description": "Request date and time"
           }
         }
+      },
+      "TableItem": {
+        "type": "object",
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "nmId": {
+                "example": 268913787,
+                "description": "WB item number",
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "example": "iPhone 13 256 ГБ Серебристый",
+                "description": "Item name",
+                "type": "string"
+              },
+              "vendorCode": {
+                "example": "wb3ha2668w",
+                "description": "Seller item number",
+                "type": "string"
+              },
+              "subjectName": {
+                "example": "Смартфоны",
+                "description": "Subcategory name",
+                "type": "string"
+              },
+              "brandName": {
+                "example": "Apple",
+                "description": "Brand",
+                "type": "string"
+              },
+              "mainPhoto": {
+                "example": "https://basket-12.wbbasket.ru/vol1788/part178840/178840836/images/c246x328/1.webp",
+                "description": "URL of the main photo of the listing",
+                "type": "string"
+              },
+              "isAdvertised": {
+                "example": false,
+                "description": "Is the item being promoted in search results",
+                "type": "boolean"
+              },
+              "isSubstitutedSKU": {
+                "type": "boolean",
+                "example": true,
+                "description": "If the item was searched by the promo item.<br>\nThe field will be in the response if the request contains `includeSubstitutedSKUs` and/or `includeSearchTexts`\n"
+              },
+              "isCardRated": {
+                "example": true,
+                "description": "If the listing has a rating",
+                "type": "boolean"
+              },
+              "rating": {
+                "example": 6,
+                "description": "Listing rating",
+                "type": "number",
+                "format": "float64"
+              },
+              "feedbackRating": {
+                "example": 1,
+                "description": "Feedbacks rating",
+                "type": "number",
+                "format": "float64"
+              },
+              "price": {
+                "description": "Price",
+                "type": "object",
+                "properties": {
+                  "minPrice": {
+                    "example": 150,
+                    "description": "Minimal price",
+                    "type": "integer",
+                    "format": "uint64"
+                  },
+                  "maxPrice": {
+                    "example": 300,
+                    "description": "Maximal price",
+                    "type": "integer",
+                    "format": "uint64"
+                  }
+                },
+                "required": [
+                  "minPrice",
+                  "maxPrice"
+                ]
+              },
+              "avgPosition": {
+                "description": "Average item position in search results",
+                "type": "object",
+                "properties": {
+                  "current": {
+                    "example": 5,
+                    "description": "Current average position",
+                    "type": "integer"
+                  },
+                  "dynamics": {
+                    "example": 50,
+                    "description": "Dynamics compared to the previous period (%)",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "current"
+                ]
+              },
+              "openCard": {
+                "description": "Click-throughs from search",
+                "type": "object",
+                "properties": {
+                  "current": {
+                    "example": 5,
+                    "description": "Current click-throughs",
+                    "type": "integer"
+                  },
+                  "dynamics": {
+                    "example": 50,
+                    "description": "Dynamics compared to the previous period (%)",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "current"
+                ]
+              },
+              "addToCart": {
+                "description": "Adds-to-Cart from search",
+                "type": "object",
+                "properties": {
+                  "current": {
+                    "example": 5,
+                    "description": "Current number",
+                    "type": "integer"
+                  },
+                  "dynamics": {
+                    "example": 50,
+                    "description": "Dynamics compared to the previous period (%)",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "current"
+                ]
+              },
+              "openToCart": {
+                "description": "Conversion to cart from search — the ratio of item additions to the cart compared to all transitions to the listing from the search",
+                "type": "object",
+                "properties": {
+                  "current": {
+                    "example": 5,
+                    "description": "Current conversion",
+                    "type": "integer"
+                  },
+                  "dynamics": {
+                    "example": 50,
+                    "description": "Dynamics compared to the previous period (%)",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "current"
+                ]
+              },
+              "orders": {
+                "description": "Items ordered from search",
+                "type": "object",
+                "properties": {
+                  "current": {
+                    "example": 5,
+                    "description": "Current number",
+                    "type": "integer"
+                  },
+                  "dynamics": {
+                    "example": 50,
+                    "description": "Dynamics compared to the previous period (%)",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "current"
+                ]
+              },
+              "cartToOrder": {
+                "description": "Conversion to order from search — the ratio of items ordered to all additions of the item from search to the cart",
+                "type": "object",
+                "properties": {
+                  "current": {
+                    "example": 5,
+                    "description": "Current conversion",
+                    "type": "integer"
+                  },
+                  "dynamics": {
+                    "example": 50,
+                    "description": "Dynamics compared to the previous period (%)",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "current"
+                ]
+              },
+              "visibility": {
+                "description": "Item visibility percent in search results",
+                "type": "object",
+                "properties": {
+                  "current": {
+                    "example": 5,
+                    "description": "Current visibility percent",
+                    "type": "integer"
+                  },
+                  "dynamics": {
+                    "example": 50,
+                    "description": "Dynamics compared to the previous period (%)",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "current"
+                ]
+              }
+            }
+          }
+        ],
+        "required": [
+          "nmId",
+          "vendorCode",
+          "isAdvertised",
+          "isCardRated",
+          "rating",
+          "feedbackRating",
+          "price",
+          "avgPosition",
+          "openCard",
+          "addToCart",
+          "openToCart",
+          "orders",
+          "cartToOrder",
+          "visibility"
+        ]
+      },
+      "TableItemSt": {
+        "type": "object",
+        "description": "Item data",
+        "properties": {
+          "nmID": {
+            "type": "integer",
+            "description": "WB item number",
+            "example": 123456789,
+            "format": "int64"
+          },
+          "isDeleted": {
+            "type": "boolean",
+            "description": "Is the item deleted",
+            "example": false
+          },
+          "subjectName": {
+            "type": "string",
+            "description": "Subcategory name",
+            "example": "Принтеры"
+          },
+          "name": {
+            "type": "string",
+            "description": "Item name",
+            "example": "Печатник 3000"
+          },
+          "vendorCode": {
+            "type": "string",
+            "description": "Seller item number",
+            "example": "pechatnik3000"
+          },
+          "brandName": {
+            "type": "string",
+            "description": "Brand",
+            "example": "Компик"
+          },
+          "mainPhoto": {
+            "type": "string",
+            "description": "Link to the main photo",
+            "example": "https://basket-12.wbbasket.ru/vol1788/part178840/178840836/images/c246x328/1.webp"
+          },
+          "hasSizes": {
+            "type": "boolean",
+            "description": "Does the item have sizes. The item has no size variations when it is represented by '\"techSize\":\"0\"', indicating a single, uniform size for the item.",
+            "example": true
+          },
+          "metrics": {
+            "description": "Item metrics",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TableCommonMetrics"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "currentPrice": {
+                    "type": "object",
+                    "description": "Current price",
+                    "properties": {
+                      "minPrice": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "description": "Minimal seller price with seller discount (excluding WB Club discount)",
+                        "example": 50
+                      },
+                      "maxPrice": {
+                        "type": "integer",
+                        "format": "uint64",
+                        "description": "Maximal seller price with seller discount (excluding WB Club discount)",
+                        "example": 100
+                      }
+                    },
+                    "required": [
+                      "minPrice",
+                      "maxPrice"
+                    ]
+                  },
+                  "availability": {
+                    "type": "string",
+                    "description": "Item availability:\n  - `deficient` — Low stock\n  - `actual` — Selling well\n  - `balanced` — Selling steadily\n  - `nonActual` — Selling poorly\n  - `nonLiquid` — Struggling\n  - `invalidData` — Struggling\n",
+                    "example": "deficient",
+                    "enum": [
+                      "deficient",
+                      "actual",
+                      "balanced",
+                      "nonActual",
+                      "nonLiquid",
+                      "invalidData"
+                    ]
+                  }
+                },
+                "required": [
+                  "currentPrice",
+                  "availability"
+                ]
+              }
+            ]
+          }
+        },
+        "required": [
+          "nmID",
+          "isDeleted",
+          "subjectName",
+          "name",
+          "vendorCode",
+          "brandName",
+          "mainPhoto",
+          "hasSizes",
+          "metrics"
+        ]
       }
     },
     "securitySchemes": {
@@ -6385,7 +6385,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Order Feed/operation/postV1OrderFeed",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "orderFeed"
       },
@@ -6496,7 +6496,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Stocks Report/operation/postV1StocksReportWbWarehouses",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "stocksReport"
       },
@@ -6600,7 +6600,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Item Rating/operation/postV2ItemRating",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "itemRating"
       },
@@ -6612,7 +6612,7 @@
     },
     "/api/analytics/v3/sales-funnel/grouped/history": {
       "post": {
-        "description": "The method returns statistics for listings by day or by week.<br>\nListings are grouped by subcategories, brands and labels.<br>\nYou can get data for a maximum of the last week.<br><br>\n\nThe report data is updated once every 2 hours.<br><br>\nMost of the data appears within an hour of the event:\n  - orders\n  - click-throughs\n  - adds-to-Cart\n\nA small part of this data may appear within a few days.<br><br>\n\nPurchases, cancellations, and returns are displayed in report for the day an item was ordered. For example, if an order was placed on January 1, and the customer returned the item on January 10, data about this return will appear in the report for January 1.<br>\nYou can track the final sales results using [details for the realization reports](/openapi/documents-and-accounting#tag/financialReports).<br><br>\n\nThe `brandNames`, `subjectIDs`, `tagIds`, and `nmIds` parameters can be empty `[]`, in which case the response will return all of the seller listings.<br><br>\n\nThe item of the number of subcategories, brands, and labels in the request cannot be more than 16. For example, 4 brands and 4 subcategories or 2 subcategories, 2 labels, and 4 brands.\n\n<div class=\"description_important\">\n  To get reports for a period of up to a year, use the <a href=\"/openapi/analytics#tag/sellerAnalyticsCsv\">Seller Analytics CSV</a> methods — the <code>GROUPED_HISTORY_REPORT</code> type. Reports of this type are available only with <a href='https://seller.wildberries.ru/monetization/jam'>Jam</a> subscription\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
+        "description": "The method returns statistics for listings by day or by week.<br>\nListings are grouped by subcategories, brands and labels.<br>\nYou can get data for a maximum of the last week.<br><br>\n\nThe report data is updated once every 2 hours.<br><br>\nMost of the data appears within an hour of the event:\n  - orders\n  - click-throughs\n  - adds-to-Cart\n\nA small part of this data may appear within a few days.<br><br>\n\nPurchases, cancellations, and returns are displayed in report for the day an item was ordered. For example, if an order was placed on January 1, and the customer returned the item on January 10, data about this return will appear in the report for January 1.<br>\nYou can track the final sales results using [details for the realization reports](/openapi/documents-and-accounting#tag/financialReports).<br><br>\n\nThe `brandNames`, `subjectIDs`, `tagIds`, and `nmIds` parameters can be empty `[]`, in which case the response will return all of the seller listings.<br><br>\n\nThe item of the number of subcategories, brands, and labels in the request cannot be more than 16. For example, 4 brands and 4 subcategories or 2 subcategories, 2 labels, and 4 brands.\n\n\n<div class=\"description_important\">\n  To get reports for a period of up to a year, use the <a href=\"/openapi/analytics#tag/sellerAnalyticsCsv\">Seller Analytics CSV</a> methods — the <code>GROUPED_HISTORY_REPORT</code> type. Reports of this type are available only with <a href='https://seller.wildberries.ru/monetization/jam'>Jam</a> subscription\n</div>\n\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
         "operationId": "postV3SalesFunnelGroupedHistory",
         "requestBody": {
           "content": {
@@ -6719,7 +6719,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Sales Funnel/operation/postV3SalesFunnelGroupedHistory",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "salesFunnel"
       },
@@ -6847,7 +6847,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Sales Funnel/operation/postV3SalesFunnelProducts",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "salesFunnel"
       },
@@ -6859,7 +6859,7 @@
     },
     "/api/analytics/v3/sales-funnel/products/history": {
       "post": {
-        "description": "The method returns statistics for listings by day or by week.<br>\nYou can get data for a maximum of the last week.<br><br>\n\nThe report data is updated once every 2 hours.<br><br>\n\nMost of the data appears within an hour of the event:\n  - orders\n  - click-throughs\n  - adds-to-Cart\n\nA small part of this data may appear within a few days.<br><br>\n\nPurchases, cancellations, and returns are displayed in report for the day an item was ordered. For example, if an order was placed on January 1, and the customer returned the item on January 10, data about this return will appear in the report for January 1.<br>\nYou can track the final sales results using [details for the realization reports](/openapi/documents-and-accounting#tag/financialReports).\n\n<div class=\"description_important\">\n  To get reports for a period of up to a year, use the <a href=\"/openapi/analytics#tag/sellerAnalyticsCsv\">Seller Analytics CSV</a> methods — the <code>DETAIL_HISTORY_REPORT</code> type. Reports of this type are available only with <a href='https://seller.wildberries.ru/monetization/jam'>Jam</a> subscription\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
+        "description": "The method returns statistics for listings by day or by week.<br>\nYou can get data for a maximum of the last week.<br><br>\n\nThe report data is updated once every 2 hours.<br><br>\n\nMost of the data appears within an hour of the event:\n  - orders\n  - click-throughs\n  - adds-to-Cart\n\nA small part of this data may appear within a few days.<br><br>\n\nPurchases, cancellations, and returns are displayed in report for the day an item was ordered. For example, if an order was placed on January 1, and the customer returned the item on January 10, data about this return will appear in the report for January 1.<br>\nYou can track the final sales results using [details for the realization reports](/openapi/documents-and-accounting#tag/financialReports).\n\n\n<div class=\"description_important\">\n  To get reports for a period of up to a year, use the <a href=\"/openapi/analytics#tag/sellerAnalyticsCsv\">Seller Analytics CSV</a> methods — the <code>DETAIL_HISTORY_REPORT</code> type. Reports of this type are available only with <a href='https://seller.wildberries.ru/monetization/jam'>Jam</a> subscription\n</div>\n\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 2 requests | 30 min | 1 request |\n</div>\n",
         "operationId": "postV3SalesFunnelProductsHistory",
         "requestBody": {
           "content": {
@@ -6959,7 +6959,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Sales Funnel/operation/postV3SalesFunnelProductsHistory",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "salesFunnel"
       },
@@ -7118,12 +7118,12 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Seller Analytics CSV/operation/getV2NmReportDownloads",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "sellerAnalyticsCsv"
       },
       "post": {
-        "description": "The method creates a task for generating a report with advanced seller analytics.\n<br><br>\nYou can create a CSV-version of [sales funnel](/openapi/analytics#tag/salesFunnel) or [search parameters](/openapi/analytics#tag/searchQueriesForYourItems) report with grouping:\n\n  * by WB item numbers\n  * by categories, brands, and labels\n\nIn each of reports on sales funnel, you can group data by days, weeks, or months.\n<br><br>\nAlso you can create a CSV-version of [search texts](/openapi/analytics#tag/searchQueriesForYourItems/operation/postV2SearchReportProductSearchTexts) or [inventory](/openapi/analytics#tag/stocksReport) report.\n<br><br>\n\nEach new report must have a unique ID.\n\n<div class=\"description_important\">\n  Do not use the same ID for different reports — this may cause errors during generation\n</div>\n\nThe set of parameters in the `params` object depends on the report type. To get a description of the parameters, select the report type from the dropdown list in the description of the `reportType` parameter.\n<br><br>\nThe parameters `includeSubstitutedSKUs` and `includeSearchTexts` cannot both be set to `false`\n<br><br>\nIf it was not possible to [get report](/openapi/analytics#tag/sellerAnalyticsCsv/operation/getV2NmReportDownloadsFileDownloadId), you can create a [repeat generation task](/openapi/analytics#tag/sellerAnalyticsCsv/operation/postV2NmReportDownloadsRetry). You can also [get a list and check the statuses](/openapi/analytics#tag/sellerAnalyticsCsv/operation/getV2NmReportDownloads) of reports.\n\n<div class=\"description_important\">\n  <a href=\"https://seller.wildberries.ru/content-analytics/history-remains\">Inventory reports</a> — the <code>STOCK_HISTORY_REPORT_CSV</code> and <code>STOCK_HISTORY_DAILY_CSV</code> types — can be created without <a href=\"https://seller.wildberries.ru/monetization/jam\">Jam</a> subscription\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "The method creates a task for generating a report with advanced seller analytics.\n<br><br>\nYou can create a CSV-version of [sales funnel](/openapi/analytics#tag/salesFunnel) or [search parameters](/openapi/analytics#tag/searchQueriesForYourItems) report with grouping:\n\n  * by WB item numbers\n  * by categories, brands, and labels\n\nIn each of reports on sales funnel, you can group data by days, weeks, or months.\n<br><br>\nAlso you can create a CSV-version of [search texts](/openapi/analytics#tag/searchQueriesForYourItems/operation/postV2SearchReportProductSearchTexts) or [inventory](/openapi/analytics#tag/stocksReport) report.\n<br><br>\n\nEach new report must have a unique ID.\n\n<div class=\"description_important\">\n  Do not use the same ID for different reports — this may cause errors during generation\n</div>\n\nThe set of parameters in the `params` object depends on the report type. To get a description of the parameters, select the report type from the dropdown list in the description of the `reportType` parameter.\n<br><br>\nThe parameters `includeSubstitutedSKUs` and `includeSearchTexts` cannot both be set to `false`\n<br><br>\nIf it was not possible to [get report](/openapi/analytics#tag/sellerAnalyticsCsv/operation/getV2NmReportDownloadsFileDownloadId), you can create a [repeat generation task](/openapi/analytics#tag/sellerAnalyticsCsv/operation/postV2NmReportDownloadsRetry). You can also [get a list and check the statuses](/openapi/analytics#tag/sellerAnalyticsCsv/operation/getV2NmReportDownloads) of reports.\n<br><br>\nThe report data is updated once every 2 hours.\n\n<div class=\"description_important\">\n  <a href=\"https://seller.wildberries.ru/content-analytics/history-remains\">Inventory reports</a> — the <code>STOCK_HISTORY_REPORT_CSV</code> and <code>STOCK_HISTORY_DAILY_CSV</code> types — can be created without <a href=\"https://seller.wildberries.ru/monetization/jam\">Jam</a> subscription\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "postV2NmReportDownloads",
         "requestBody": {
           "content": {
@@ -7558,7 +7558,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Seller Analytics CSV/operation/postV2NmReportDownloads",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "sellerAnalyticsCsv"
       },
@@ -7612,7 +7612,7 @@
                   }
                 },
                 "schema": {
-                  "description": "Fields description in the CSV file:\n<br>\n<br>\n**Sales funnel reports** — `DETAIL_HISTORY_REPORT` by WB item numbers and `GROUPED_HISTORY_REPORT` by categories, brands and labels\n\n| Name | Type | Format | Description |\n|-----------------| --- | --- | --- |\n| nmID (only `DETAIL_HISTORY_REPORT`) | integer | int32 | WB item number |\n| dt | string | date | Date |\n| openCardCount | integer | int32 | Click-throughs |\n| addToCartCount | integer | int32 | Adds-to-Cart |\n| ordersCount | integer | int32 | Items ordered |\n| ordersSumRub | integer | int32 | Total order value |\n| buyoutsCount | integer | int32 | Items purchased |\n| buyoutsSumRub | integer | int32 | Total purchase value |\n| cancelCount | integer | int32 | Items canceled and returned |\n| cancelSumRub | integer | int32 | Canceled and returned item value |\n| addToCartConversion | number | int32 | Conversion to Cart, % (Percentage of visitors who added the item to the cart after opening the item page) |\n| cartToOrderConversion | integer | int32 | Conversion to order, % (Percentage of visitors who made an order after adding the item to the cart) |\n| buyoutPercent | integer | int32 | Purchase rate, % (Percentage of visitors who ordered the item and purchased it. Excluding items still being delivered to the buyer) |\n| addToWishlist | integer | int32 | Adds-to-Favorites |\n| currency | string | string | Report currency |\n\n\n**Search parameters report. By categories, brands, and labels** — `SEARCH_QUERIES_PREMIUM_REPORT_GROUP`\n\n| Name | Type | Format | Description |\n|-----------------| --- | --- | --- |\n| SubjectName |\tstring | string | Subcategory name |\n| SubjectID | integer | int32 | Subcategory ID |\n| BrandName | string | string | Brand |\n| TagID | integer | int64 | Label ID |\n| AveragePosition | integer | uint64 | Average item position in search results in the current period |\n| OpenCard | integer | uint64 | Click-throughs from search in the current period |\n| AddToCart | integer | uint64 | Adds-to-Cart from search in the current period |\n| OpenToCart | integer | uint64\t| Conversion to cart from search in the current period |\n| Orders | integer | uint64 | Items ordered from search in the current period |\n| CartToOrder | integer | uint64 | Conversion to order from search in the current period |\n| Visibility  |integer | uint64 | Visibility in search results in the current period. Probability percentage that a user will see the listing. Depends on the average position |\n| AveragePositionPast | integer | uint64 | Average item position in search results in the past period (filled in if the previous period is specified) |\n| OpenCardPast | integer | uint64 | Click-throughs from search in the past period (filled in if the previous period is specified) |\n| AddToCartPast | integer | uint64 | Adds-to-Cart from search in the past period (filled in if the previous period is specified) |\n| OpenToCartPast | integer | uint64 | Conversion to cart from search in the past period filled in if the previous period is specified) |\n| OrdersPast | integer | uint64 | Items ordered from search in the past period (filled in if the previous period is specified) |\n| CartToOrderPast | integer | uint64 | Conversion to order from search in the past period (filled in if the previous period is specified) |\n| VisibilityPast | integer | uint64 | Visibility in search results in the past period. Probability percentage that a user will see the listing. Depends on the average position (filled in if the previous period is specified) |\n\n\n**Search parameters report. By WB item numbers** — `SEARCH_QUERIES_PREMIUM_REPORT_PRODUCT`\n\n| Name | Type | Format | Description |\n|-----------------| --- | --- | --- |\n| NmID | integer | int64 | WB item number |\n| VendorCode | string | string | Seller item number |\n| Name | string\t| string | Item name |\n| SubjectName | string\t| string | Subcategory name |\n| BrandName | string | string  | Brand |\n| IsAdvertised | boolean | bool\t| Is the item being promoted in search results |\n| IsRated | boolean | bool | Is there an opportunity to rate the listing quality |\n| Rating | float | float64 | Listing rating |\n| FeedbackRating | float | float64 | Feedbacks rating |\n| MinPrice | integer | uint64 | Minimal seller price with seller discount (excluding WB Club discount) |\n| MaxPrice | integer | uint64 | Maximal seller price with seller discount (excluding WB Club discount) |\n| AveragePosition | integer | uint64 | Average item position in search results in the current period |\n| OpenCard | integer | uint64 | Click-throughs from search in the current period |\n| AddToCart | integer | uint64 | Adds-to-Cart from search in the current period |\n| OpenToCart | integer | uint64\t| Conversion to cart from search in the current period |\n| Orders | integer | uint64 | Items ordered from search in the current period |\n| CartToOrder | integer | uint64 | Conversion to order from search in the current period |\n| Visibility  |integer | uint64 | Visibility in search results in the current period. Probability percentage that a user will see the listing. Depends on the average position |\n| AveragePositionPast | integer | uint64 | Average item search results in the past period (filled in if the previous period is specified) |\n| OpenCardPast | integer | uint64 | Click-throughs from search in the past period (filled in if the previous period is specified) |\n| AddToCartPast | integer | uint64 | Adds-to-Cart from search in the past period (filled in if the previous period is specified) |\n| OpenToCartPast | integer | uint64 | Conversion to cart from search in the past period (filled in if the previous period is specified) |\n| OrdersPast | integer | uint64 | Items ordered from search in the past period (filled in if the previous period is specified) |\n| CartToOrderPast | integer | uint64 | Conversion to order from search in the past period (filled in if the previous period is specified) |\n| VisibilityPast | integer | uint64 | Visibility in search results in the past period. Probability percentage that a user will see the listing. Depends on the average position (filled in if the previous period is specified) |\n| IsSubstitutedSKU | boolean | bool | If the item was searched by the promo item. This will be in the response if the request contains `includeSubstitutedSKUs` and/or `includeSearchTexts` |\n| Currency | string | string | Report currency |\n\n\n**Search texts report** — `SEARCH_QUERIES_PREMIUM_REPORT_TEXT`\n\n| Name | Type | Format | Description |\n|-----------------| --- | --- | --- |\n| Text | string\t| string | Search text |\n| NmID | integer | int64 | WB item number |\n| SubjectName | string\t| string | Subcategory name |\n| BrandName | string | string  | Brand |\n| VendorCode | string | string | Seller item number |\n| Name | string\t| string | Item name |\n| Rating | float | float64 | Listing rating. If there is no rating, the value will be `no rating` |\n| FeedbackRating | float | float64 | Feedbacks rating |\n| MinPrice | integer | uint64 | Minimal seller price with seller discount (excluding WB Club discount) |\n| MaxPrice | integer | uint64 | Maximal seller price with seller discount (excluding WB Club discount) |\n| Frequency | integer | uint64 | Number of the search text requests in the current period |\n| MedianPosition | float | float64 | Median position of the item search in the current period. Only positions from which users added the proitem the cart or visited its page are considered. It is the middle value of the position in search results, which excludes significant deviations from the average |\n| AveragePosition | integer | uint64 | Average item position in search results in the current period. Only positions from which users added the item to the cart or visited its page are considered |\n| OpenCard | integer | uint64 | Click-throughs from search in the current period |\n| OpenCardPercentile | float | float64 | The field will be disabled on [October 12](https://dev.wildberries.ru/en/release-notes?id=589) |\n| AddToCart | integer | uint64 | Adds-to-Cart in search results in the current period |\n| AddToCartPercentile | float | float64 | The field will be disabled on [October 12](https://dev.wildberries.ru/en/release-notes?id=589) |\n| OpenToCart | integer | uint64\t| Conversion to cart from search in the current period, % |\n| OpenToCartPercentile\t| float\t| float64\t| The field will be disabled on [October 12](https://dev.wildberries.ru/en/release-notes?id=589) |\n| Orders | integer | uint64 | Items ordered from search in the current period |\n| OrdersPercentile | float | float64 | The field will be disabled on [October 12](https://dev.wildberries.ru/en/release-notes?id=589) |\n| CartToOrder | integer | uint64 | Conversion to order from search in the current period, % |\n| CartToOrderPercentile | float | float64 | The field will be disabled on [October 12](https://dev.wildberries.ru/en/release-notes?id=589) |\n| Visibility  |integer | uint64 | Visibility in search results in the current period. Probability percentage that a user will see the listing. Depends on the average position |\n| FrequencyPast | integer | uint64 | Number of the search text requests in the past period (filled in if the previous period is specified) |\n| MedianPositionPast | float | float64 | Median position of the item in search in the past period (filled in if the previous period is specified) |\n| AveragePositionPast | integer | uint64 | Average item position in search results in the past period (filled in if the previous period is specified) |\n| OpenCardPast | integer | uint64 | Click-throughs from search in the past period (filled in if the previous period is specified) |\n| AddToCartPast | integer | uint64 | Adds-to-Cart from search in the past period (filled in if the previous period is specified) |\n| OpenToCartPast | integer | uint64 | Conversion to cart from search in the past period (filled in if the previous period is specified) |\n| OrdersPast | integer | uint64 | Items ordered from search in the past period (filled in if the previous period is specified) |\n| CartToOrderPast | integer | uint64 | Conversion to order from search in the past period (filled in if the previous period is specified), % |\n| VisibilityPast | integer | uint64 | Visibility in search results in the past period. Probability percentage that a user will see the listing. Depends on the average position (filled in if the previous period is specified) |\n| Currency | string | string | Report currency |\n\n\n**Inventory metrics report** — `STOCK_HISTORY_REPORT_CSV`\n\n| Name | Type | Format | Description |\n|-----------------| --- | --- | --- |\n| VendorCode | string | string | Seller item number |\n| Name | string\t| string | Item name |\n| NmID | integer | int64 | WB item number |\n| SubjectName | string\t| string | Subcategory name |\n| BrandName | string | string  | Brand |\n| SizeName | string\t| string | Size name |\n| ChrtID | integer | uint64 | Size ID |\n| RegionName | string\t| string | Region name. For seller warehouses, the value in the lines will be `Свой склад`, since the data on the seller warehouses is displayed in an aggregated form — for all of them together without details for a specific warehouses. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `Склад WB`, for WB warehouses |\n| OfficeName | string\t| string | Warehouse name. . For seller warehouses, the value in the lines will be `Свой склад`, since the data on the seller warehouses is displayed in an aggregated form — for all of them together without details for a specific warehouses. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `Склад WB`, for WB warehouses |\n| Availability | string\t| enum | Item availability status |\n| OrdersCount | integer\t| uint64 | Items ordered |\n| OrdersSum | integer\t| uint64 | Total order value |\n| BuyoutCount | integer\t| uint64 | Items purchased |\n| BuyoutSum | integer\t| uint64 | Total purchase value |\n| BuyoutPercent | integer\t| uint32 | Purchase rate |\n| AvgOrders | number\t| float64 | Average daily orders |\n| StockCount | integer\t| uint64 | Current inventory |\n| StockSum | integer\t| uint64 | Current inventory value |\n| SaleRate | integer\t| int32 |  Current DSI in hours |\n| AvgStockTurnover | integer\t| int32 | Average DSI in hours |\n| ToClientCount | integer\t| uint64 | On the way to user |\n| FromClientCount | integer\t| uint64 | On the way from user |\n| Price | integer\t| uint64 | Current seller price with seller discount (excluding WB Club discount) |\n| OfficeMissingTime | integer\t| int32 | Out-of-stock time in hours |\n| LostOrdersCount | number\t| float64 | Lost orders |\n| LostOrdersSum | number\t| float64 | Lost order value |\n| LostBuyoutsCount | number\t| float64 | Lost sales |\n| LostBuyoutsSum | number\t| float64 | Lost sale value |\n| AvgOrdersByMonth_MM.YYYY | number\t| float64 | The average number of orders by month. The columns are formed dynamically depending on the current period transmitted in the request. Each month of the current period has one column. If the item did not exist at the time of a particular month, the value will be skipped |\n| Currency | string | string | Report currency |\n\n\n**Inventory history report** — `STOCK_HISTORY_DAILY_CSV `\n\n| Name | Type | Format | Description |\n|-----------------| --- | --- | --- |\n| VendorCode | string | string | Seller item number |\n| Name | string\t| string | Item name |\n| NmID | integer | int64 | WB item number |\n| SubjectName | string\t| string | Subcategory name |\n| BrandName | string | string  | Brand |\n| SizeName | string\t| string | Size name |\n| ChrtID | integer | uint64 | Size ID |\n| OfficeName | string\t| string | Warehouse name. For seller warehouses, the value in the lines will be `Свой склад`, since the data on the seller warehouses is displayed in an aggregated form — for all of them together without details for a specific warehouses. [At the moment](https://dev.wildberries.ru/en/release-notes?id=570), there can only be `Склад WB`, for WB warehouses |\n| DD.MM.YYYY | integer | uint64 | Inventory as of 23:59 p.m. in the header. The columns are formed dynamically depending on the period transmitted in the request. Each day of the period has one column. If the item was not available on a particular day, the value will be skipped |\n",
+                  "description": "Fields description in the CSV file:\n<br>\n<br>\n**Sales funnel reports** — `DETAIL_HISTORY_REPORT` by WB item numbers and `GROUPED_HISTORY_REPORT` by categories, brands and labels\n\n| Name | Type | Format | Description |\n|-----------------| --- | --- | --- |\n| nmID (only `DETAIL_HISTORY_REPORT`) | integer | int32 | WB item number |\n| dt | string | date | Date |\n| openCardCount | integer | int32 | Click-throughs |\n| addToCartCount | integer | int32 | Adds-to-Cart |\n| ordersCount | integer | int32 | Items ordered |\n| ordersSumRub | integer | int32 | Total order value |\n| buyoutsCount | integer | int32 | Items purchased |\n| buyoutsSumRub | integer | int32 | Total purchase value |\n| cancelCount | integer | int32 | Items canceled and returned |\n| cancelSumRub | integer | int32 | Canceled and returned item value |\n| addToCartConversion | number | int32 | Conversion to Cart, % (Percentage of visitors who added the item to the cart after opening the item page) |\n| cartToOrderConversion | integer | int32 | Conversion to order, % (Percentage of visitors who made an order after adding the item to the cart) |\n| buyoutPercent | integer | int32 | Purchase rate, % (Percentage of visitors who ordered the item and purchased it. Excluding items still being delivered to the buyer) |\n| addToWishlist | integer | int32 | Adds-to-Favorites |\n| currency | string | string | Report currency |\n\n\n**Search parameters report. By categories, brands, and labels** — `SEARCH_QUERIES_PREMIUM_REPORT_GROUP`\n\n| Name | Type | Format | Description |\n|-----------------| --- | --- | --- |\n| SubjectName |\tstring | string | Subcategory name |\n| SubjectID | integer | int32 | Subcategory ID |\n| BrandName | string | string | Brand |\n| TagID | integer | int64 | Label ID |\n| AveragePosition | integer | uint64 | Average item position in search results in the current period |\n| OpenCard | integer | uint64 | Click-throughs from search in the current period |\n| AddToCart | integer | uint64 | Adds-to-Cart from search in the current period |\n| OpenToCart | integer | uint64\t| Conversion to cart from search in the current period |\n| Orders | integer | uint64 | Items ordered from search in the current period |\n| CartToOrder | integer | uint64 | Conversion to order from search in the current period |\n| Visibility  |integer | uint64 | Visibility in search results in the current period. Probability percentage that a user will see the listing. Depends on the average position |\n| AveragePositionPast | integer | uint64 | Average item position in search results in the past period (filled in if the previous period is specified) |\n| OpenCardPast | integer | uint64 | Click-throughs from search in the past period (filled in if the previous period is specified) |\n| AddToCartPast | integer | uint64 | Adds-to-Cart from search in the past period (filled in if the previous period is specified) |\n| OpenToCartPast | integer | uint64 | Conversion to cart from search in the past period filled in if the previous period is specified) |\n| OrdersPast | integer | uint64 | Items ordered from search in the past period (filled in if the previous period is specified) |\n| CartToOrderPast | integer | uint64 | Conversion to order from search in the past period (filled in if the previous period is specified) |\n| VisibilityPast | integer | uint64 | Visibility in search results in the past period. Probability percentage that a user will see the listing. Depends on the average position (filled in if the previous period is specified) |\n\n\n**Search parameters report. By WB item numbers** — `SEARCH_QUERIES_PREMIUM_REPORT_PRODUCT`\n\n| Name | Type | Format | Description |\n|-----------------| --- | --- | --- |\n| NmID | integer | int64 | WB item number |\n| VendorCode | string | string | Seller item number |\n| Name | string\t| string | Item name |\n| SubjectName | string\t| string | Subcategory name |\n| BrandName | string | string  | Brand |\n| IsAdvertised | boolean | bool\t| Is the item being promoted in search results |\n| IsRated | boolean | bool | Is there an opportunity to rate the listing quality |\n| Rating | float | float64 | Listing rating |\n| FeedbackRating | float | float64 | Feedbacks rating |\n| MinPrice | integer | uint64 | Minimal seller price with seller discount (excluding WB Club discount) |\n| MaxPrice | integer | uint64 | Maximal seller price with seller discount (excluding WB Club discount) |\n| AveragePosition | integer | uint64 | Average item position in search results in the current period |\n| OpenCard | integer | uint64 | Click-throughs from search in the current period |\n| AddToCart | integer | uint64 | Adds-to-Cart from search in the current period |\n| OpenToCart | integer | uint64\t| Conversion to cart from search in the current period |\n| Orders | integer | uint64 | Items ordered from search in the current period |\n| CartToOrder | integer | uint64 | Conversion to order from search in the current period |\n| Visibility  |integer | uint64 | Visibility in search results in the current period. Probability percentage that a user will see the listing. Depends on the average position |\n| AveragePositionPast | integer | uint64 | Average item search results in the past period (filled in if the previous period is specified) |\n| OpenCardPast | integer | uint64 | Click-throughs from search in the past period (filled in if the previous period is specified) |\n| AddToCartPast | integer | uint64 | Adds-to-Cart from search in the past period (filled in if the previous period is specified) |\n| OpenToCartPast | integer | uint64 | Conversion to cart from search in the past period (filled in if the previous period is specified) |\n| OrdersPast | integer | uint64 | Items ordered from search in the past period (filled in if the previous period is specified) |\n| CartToOrderPast | integer | uint64 | Conversion to order from search in the past period (filled in if the previous period is specified) |\n| VisibilityPast | integer | uint64 | Visibility in search results in the past period. Probability percentage that a user will see the listing. Depends on the average position (filled in if the previous period is specified) |\n| IsSubstitutedSKU | boolean | bool | If the item was searched by the promo item. This will be in the response if the request contains `includeSubstitutedSKUs` and/or `includeSearchTexts` |\n| Currency | string | string | Report currency |\n\n\n**Search texts report** — `SEARCH_QUERIES_PREMIUM_REPORT_TEXT`\n\n| Name | Type | Format | Description |\n|-----------------| --- | --- | --- |\n| Text | string\t| string | Search text |\n| NmID | integer | int64 | WB item number |\n| SubjectName | string\t| string | Subcategory name |\n| BrandName | string | string  | Brand |\n| VendorCode | string | string | Seller item number |\n| Name | string\t| string | Item name |\n| Rating | float | float64 | Listing rating. If there is no rating, the value will be `no rating` |\n| FeedbackRating | float | float64 | Feedbacks rating |\n| MinPrice | integer | uint64 | Minimal seller price with seller discount (excluding WB Club discount) |\n| MaxPrice | integer | uint64 | Maximal seller price with seller discount (excluding WB Club discount) |\n| Frequency | integer | uint64 | Number of the search text requests in the current period |\n| MedianPosition | float | float64 | Median position of the item search in the current period. Only positions from which users added the proitem the cart or visited its page are considered. It is the middle value of the position in search results, which excludes significant deviations from the average |\n| AveragePosition | integer | uint64 | Average item position in search results in the current period. Only positions from which users added the item to the cart or visited its page are considered |\n| OpenCard | integer | uint64 | Click-throughs from search in the current period |\n| OpenCardPercentile | float | float64 | The field will be disabled on [October 12](https://dev.wildberries.ru/en/release-notes?id=589) |\n| AddToCart | integer | uint64 | Adds-to-Cart in search results in the current period |\n| AddToCartPercentile | float | float64 | The field will be disabled on [October 12](https://dev.wildberries.ru/en/release-notes?id=589) |\n| OpenToCart | integer | uint64\t| Conversion to cart from search in the current period, % |\n| OpenToCartPercentile\t| float\t| float64\t| The field will be disabled on [October 12](https://dev.wildberries.ru/en/release-notes?id=589) |\n| Orders | integer | uint64 | Items ordered from search in the current period |\n| OrdersPercentile | float | float64 | The field will be disabled on [October 12](https://dev.wildberries.ru/en/release-notes?id=589) |\n| CartToOrder | integer | uint64 | Conversion to order from search in the current period, % |\n| CartToOrderPercentile | float | float64 | The field will be disabled on [October 12](https://dev.wildberries.ru/en/release-notes?id=589) |\n| Visibility  |integer | uint64 | Visibility in search results in the current period. Probability percentage that a user will see the listing. Depends on the average position |\n| FrequencyPast | integer | uint64 | Number of the search text requests in the past period (filled in if the previous period is specified) |\n| MedianPositionPast | float | float64 | Median position of the item in search in the past period (filled in if the previous period is specified) |\n| AveragePositionPast | integer | uint64 | Average item position in search results in the past period (filled in if the previous period is specified) |\n| OpenCardPast | integer | uint64 | Click-throughs from search in the past period (filled in if the previous period is specified) |\n| AddToCartPast | integer | uint64 | Adds-to-Cart from search in the past period (filled in if the previous period is specified) |\n| OpenToCartPast | integer | uint64 | Conversion to cart from search in the past period (filled in if the previous period is specified) |\n| OrdersPast | integer | uint64 | Items ordered from search in the past period (filled in if the previous period is specified) |\n| CartToOrderPast | integer | uint64 | Conversion to order from search in the past period (filled in if the previous period is specified), % |\n| VisibilityPast | integer | uint64 | Visibility in search results in the past period. Probability percentage that a user will see the listing. Depends on the average position (filled in if the previous period is specified) |\n| Currency | string | string | Report currency |\n\n\n**Inventory metrics report** — `STOCK_HISTORY_REPORT_CSV`\n\n| Name | Type | Format | Description |\n|-----------------| --- | --- | --- |\n| VendorCode | string | string | Seller item number |\n| Name | string\t| string | Item name |\n| NmID | integer | int64 | WB item number |\n| SubjectName | string\t| string | Subcategory name |\n| BrandName | string | string  | Brand |\n| SizeName | string\t| string | Size name |\n| ChrtID | integer | uint64 | Size ID |\n| RegionName | string\t| string | Region name. For seller warehouses, the value in the lines will be `Свой склад`, since the data on the seller warehouses is displayed in an aggregated form — for all of them together without details for a specific warehouses. ]At the moment](/en/release-notes?id=570), there can only be `Склад WB`, for WB warehouses |\n| OfficeName | string\t| string | Warehouse name. . For seller warehouses, the value in the lines will be `Свой склад`, since the data on the seller warehouses is displayed in an aggregated form — for all of them together without details for a specific warehouses. ]At the moment](/en/release-notes?id=570), there can only be `Склад WB`, for WB warehouses |\n| Availability | string\t| enum | Item availability status |\n| OrdersCount | integer\t| uint64 | Items ordered |\n| OrdersSum | integer\t| uint64 | Total order value |\n| BuyoutCount | integer\t| uint64 | Items purchased |\n| BuyoutSum | integer\t| uint64 | Total purchase value |\n| BuyoutPercent | integer\t| uint32 | Purchase rate |\n| AvgOrders | number\t| float64 | Average daily orders |\n| StockCount | integer\t| uint64 | Current inventory |\n| StockSum | integer\t| uint64 | Current inventory value |\n| SaleRate | integer\t| int32 |  Current DSI in hours |\n| AvgStockTurnover | integer\t| int32 | Average DSI in hours |\n| ToClientCount | integer\t| uint64 | On the way to user |\n| FromClientCount | integer\t| uint64 | On the way from user |\n| Price | integer\t| uint64 | Current seller price with seller discount (excluding WB Club discount) |\n| OfficeMissingTime | integer\t| int32 | Out-of-stock time in hours |\n| LostOrdersCount | number\t| float64 | Lost orders |\n| LostOrdersSum | number\t| float64 | Lost order value |\n| LostBuyoutsCount | number\t| float64 | Lost sales |\n| LostBuyoutsSum | number\t| float64 | Lost sale value |\n| AvgOrdersByMonth_MM.YYYY | number\t| float64 | The average number of orders by month. The columns are formed dynamically depending on the current period transmitted in the request. Each month of the current period has one column. If the item did not exist at the time of a particular month, the value will be skipped |\n| Currency | string | string | Report currency |\n\n\n**Inventory history report** — `STOCK_HISTORY_DAILY_CSV `\n\n| Name | Type | Format | Description |\n|-----------------| --- | --- | --- |\n| VendorCode | string | string | Seller item number |\n| Name | string\t| string | Item name |\n| NmID | integer | int64 | WB item number |\n| SubjectName | string\t| string | Subcategory name |\n| BrandName | string | string  | Brand |\n| SizeName | string\t| string | Size name |\n| ChrtID | integer | uint64 | Size ID |\n| OfficeName | string\t| string | Warehouse name. For seller warehouses, the value in the lines will be `Свой склад`, since the data on the seller warehouses is displayed in an aggregated form — for all of them together without details for a specific warehouses. ]At the moment](/en/release-notes?id=570), there can only be `Склад WB`, for WB warehouses |\n| DD.MM.YYYY | integer | uint64 | Inventory as of 23:59 p.m. in the header. The columns are formed dynamically depending on the period transmitted in the request. Each day of the period has one column. If the item was not available on a particular day, the value will be skipped |\n",
                   "format": "binary",
                   "type": "string"
                 }
@@ -7743,7 +7743,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Seller Analytics CSV/operation/getV2NmReportDownloadsFileDownloadId",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "sellerAnalyticsCsv"
       },
@@ -7898,7 +7898,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Seller Analytics CSV/operation/postV2NmReportDownloadsRetry",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "sellerAnalyticsCsv"
       },
@@ -7910,7 +7910,7 @@
     },
     "/api/v2/search-report/product/orders": {
       "post": {
-        "description": "The method forms data for the table:\n  - about orders for each search query for a specific item\n  - about item positions in search results for each query\n\nThe data is provided within the period for the [requested item](/openapi/analytics#tag/searchQueriesForYourItems/operation/postV2SearchReportProductSearchTexts) and grouped by day. The maximum period is 7 days.<br><br>\n\nThe report data is updated once per hour.\n\n<div class=\"description_important\">\n  You can get a report for a maximum of the last 365 days from the moment of the request\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "The method forms data for the table:\n  - about orders for each search query for a specific item\n  - about item positions in search results for each query\n\nThe data is provided within the period for the [requested item](/openapi/analytics#tag/searchQueriesForYourItems/operation/postV2SearchReportProductSearchTexts) and grouped by day. The maximum period is 7 days.<br><br>\n\nThe report data is updated once every 2 hours.\n\n<div class=\"description_important\">\n  You can get a report for a maximum of the last 365 days from the moment of the request\n</div>\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "postV2SearchReportProductOrders",
         "requestBody": {
           "content": {
@@ -8027,7 +8027,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Search Queries for Your Items/operation/postV2SearchReportProductOrders",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "searchQueriesForYourItems"
       },
@@ -8039,7 +8039,7 @@
     },
     "/api/v2/search-report/product/search-texts": {
       "post": {
-        "description": "Forms the top search texts by item.\n\nSearch text selection parameters:\n  - `limit` — number of queries, maximum 30. For the **Advanced** and **Premium** [Jam](https://seller.wildberries.ru/monetization/tariffs) rates, the maximum is 100.\n  - `topOrderBy` — method for selecting the top queries\n\nThe parameters `includeSubstitutedSKUs` and `includeSearchTexts` cannot both be set to `false`.<br><br>\n\nThe report data is updated once an hour.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Forms the top search texts by item.\n\nSearch text selection parameters:\n  - `limit` — number of queries, maximum 30. For the **Advanced** and **Premium** [Jam](https://seller.wildberries.ru/monetization/tariffs) rates, the maximum is 100.\n  - `topOrderBy` — method for selecting the top queries\n\nThe parameters `includeSubstitutedSKUs` and `includeSearchTexts` cannot both be set to `false`.<br><br>\n\nThe report data is updated once every 2 hours.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "postV2SearchReportProductSearchTexts",
         "requestBody": {
           "content": {
@@ -8156,7 +8156,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Search Queries for Your Items/operation/postV2SearchReportProductSearchTexts",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "searchQueriesForYourItems"
       },
@@ -8168,7 +8168,7 @@
     },
     "/api/v2/search-report/report": {
       "post": {
-        "description": "Forms a dataset for the main report page with:\n  - General information\n  - Item positions\n  - Data on visibility and transitions to the listing\n  - Data for the table by groups\n\nTo get additional data in the table, use a separate request for:\n  - Pagination by groups\n  - Retrieval of items within a group\n\nAdditional parameters for selecting the list of items in the table:\n  - `positionCluster` — average position in search\n\nThe parameters `includeSubstitutedSKUs` and `includeSearchTexts` cannot both be set to `false`.<br><br>\n\nThe report data is updated once an hour.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Forms a dataset for the main report page with:\n  - General information\n  - Item positions\n  - Data on visibility and transitions to the listing\n  - Data for the table by groups\n\nTo get additional data in the table, use a separate request for:\n  - Pagination by groups\n  - Retrieval of items within a group\n\nAdditional parameters for selecting the list of items in the table:\n  - `positionCluster` — average position in search\n\nThe parameters `includeSubstitutedSKUs` and `includeSearchTexts` cannot both be set to `false`.<br><br>\n\nThe report data is updated once every 2 hours.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "postV2SearchReportReport",
         "requestBody": {
           "content": {
@@ -8285,7 +8285,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Search Queries for Your Items/operation/postV2SearchReportReport",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "searchQueriesForYourItems"
       },
@@ -8297,7 +8297,7 @@
     },
     "/api/v2/search-report/table/details": {
       "post": {
-        "description": "Pagination by items within a group. It is possible regardless of the presence of filters.\n\nFilters for pagination by items within a group or without filters:\n  - tuple `subjectId`, `brandName`, `tagId` — filter for the group\n  - `nmIds` — filter by listings\n\nAdditional parameters for selecting the list of items in the table:\n  - `positionCluster` — average position in search\n\nThe parameters `includeSubstitutedSKUs` and `includeSearchTexts` cannot both be set to `false`.<br><br>\n\nThe report data is updated once an hour.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Pagination by items within a group. It is possible regardless of the presence of filters.\n\nFilters for pagination by items within a group or without filters:\n  - tuple `subjectId`, `brandName`, `tagId` — filter for the group\n  - `nmIds` — filter by listings\n\nAdditional parameters for selecting the list of items in the table:\n  - `positionCluster` — average position in search\n\nThe parameters `includeSubstitutedSKUs` and `includeSearchTexts` cannot both be set to `false`.<br><br>\n\nThe report data is updated once every 2 hours.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "postV2SearchReportTableDetails",
         "requestBody": {
           "content": {
@@ -8414,7 +8414,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Search Queries for Your Items/operation/postV2SearchReportTableDetails",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "searchQueriesForYourItems"
       },
@@ -8426,7 +8426,7 @@
     },
     "/api/v2/search-report/table/groups": {
       "post": {
-        "description": "Pagination by groups in the report. It is possible only if there is a filter by brand, subcategory, or label.\n\nAdditional parameters for selecting the list of items in the table:\n  - `positionCluster` — average position in search\n\nThe parameters `includeSubstitutedSKUs` and `includeSearchTexts` cannot both be set to `false`.<br><br>\n\nThe report data is updated once an hour.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
+        "description": "Pagination by groups in the report. It is possible only if there is a filter by brand, subcategory, or label.\n\nAdditional parameters for selecting the list of items in the table:\n  - `positionCluster` — average position in search\n\nThe parameters `includeSubstitutedSKUs` and `includeSearchTexts` cannot both be set to `false`.<br><br>\n\nThe report data is updated once every 2 hours.\n\n<div class=\"description_limit\">\n<a href=\"/openapi/api-information#tag/introduction/Rate-Limits\">Request limit</a> per one seller account:\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 3 requests | 20 s | 3 requests |\n| Service | 1 min | 3 requests | 20 s | 3 requests |\n| Base with secret | 1 min | 3 requests | 20 s | 3 requests |\n| Base | 1 h | 1 request | 1 h | 1 request |\n</div>\n",
         "operationId": "postV2SearchReportTableGroups",
         "requestBody": {
           "content": {
@@ -8543,7 +8543,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Search Queries for Your Items/operation/postV2SearchReportTableGroups",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "searchQueriesForYourItems"
       },
@@ -8665,7 +8665,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Stocks Report/operation/postV2StocksReportOffices",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "stocksReport"
       },
@@ -8787,7 +8787,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Stocks Report/operation/postV2StocksReportProductsGroups",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "stocksReport"
       },
@@ -8910,7 +8910,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Stocks Report/operation/postV2StocksReportProductsProducts",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "stocksReport"
       },
@@ -9032,7 +9032,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Stocks Report/operation/postV2StocksReportProductsSizes",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         },
         "x-tagKey": "stocksReport"
       },
@@ -9145,7 +9145,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/analytics#tag/Stocks Report/operation/postV1StocksReportSellerWarehouses",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00"
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00"
         }
       }
     }
@@ -9196,11 +9196,11 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/analytics",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/11-analytics.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/analytics",
     "operationCount": 20
   }

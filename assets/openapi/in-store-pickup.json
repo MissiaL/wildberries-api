@@ -1786,7 +1786,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersFinalPrice",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupAssemblyOrders"
@@ -1920,7 +1920,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaCustomsDeclaration",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupLabelIdentifiers"
@@ -2011,7 +2011,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaDelete",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupLabelIdentifiers"
@@ -2104,7 +2104,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaDetails",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests"
         },
         "x-tagKey": "inStorePickupLabelIdentifiers"
@@ -2190,7 +2190,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaGtin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupLabelIdentifiers"
@@ -2286,7 +2286,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaImei",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupLabelIdentifiers"
@@ -2382,7 +2382,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaSgtin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupLabelIdentifiers"
@@ -2478,7 +2478,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Label Identifiers/operation/postV3ClickCollectOrdersMetaUin",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupLabelIdentifiers"
@@ -2573,7 +2573,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersStatusCancel",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupAssemblyOrders"
@@ -2668,7 +2668,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersStatusConfirm",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupAssemblyOrders"
@@ -2764,7 +2764,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersStatusInfo",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupAssemblyOrders"
@@ -2859,7 +2859,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersStatusPrepare",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupAssemblyOrders"
@@ -2954,7 +2954,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersStatusReceive",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupAssemblyOrders"
@@ -3049,7 +3049,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersStatusReject",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupAssemblyOrders"
@@ -3187,7 +3187,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/getV3ClickCollectOrders",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupAssemblyOrders"
@@ -3295,7 +3295,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersClient",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupAssemblyOrders"
@@ -3433,7 +3433,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/postV3ClickCollectOrdersClientIdentity",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupAssemblyOrders"
@@ -3521,7 +3521,7 @@
             }
           ],
           "source": "https://dev.wildberries.ru/docs/openapi/in-store-pickup#tag/In-Store Pickup Assembly Orders/operation/getV3ClickCollectOrdersNew",
-          "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+          "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
           "note": "One request with 4XX response codes is counted as 10 requests.\nIn Sandbox — maximum of 1 request per second for all Marketplace methods in total."
         },
         "x-tagKey": "inStorePickupAssemblyOrders"
@@ -3565,11 +3565,11 @@
   "x-wb-extraction": {
     "mode": "direct-schema-url",
     "doc_url": "https://dev.wildberries.ru/en/docs/openapi/in-store-pickup",
-    "capturedAt": "2026-10-03T09:38:49.191204+00:00",
+    "capturedAt": "2026-10-18T08:14:50.489690+00:00",
     "schema_source_url": "https://dev.wildberries.ru/api/swagger/yaml/en/06-in-store-pickup.yaml"
   },
   "x-wb-rate-limits": {
-    "verifiedAt": "2026-10-03T09:38:49.191204+00:00",
+    "verifiedAt": "2026-10-18T08:14:50.489690+00:00",
     "source": "https://dev.wildberries.ru/en/docs/openapi/in-store-pickup",
     "operationCount": 18
   }
